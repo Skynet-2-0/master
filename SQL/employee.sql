@@ -4,14 +4,14 @@ create database test;
 use test;
 
 create table customers (
-cs_no integer,
+
 cs_fname varchar(30),
 cs_lname varchar(50) not null,
 cs_status varchar(10) default 'Active',
 cs_adress varchar(50),
 cs_email varchar(50) not null,
 
-constraint customers_pk primary key (cs_no)
+cs_no INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY
 );
 
 insert into customers (cs_no, cs_fname, cs_lname, cs_adress,  
