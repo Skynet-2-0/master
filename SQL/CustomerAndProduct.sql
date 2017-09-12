@@ -58,7 +58,9 @@ VALUES
 (6, 'MSI GTX 1080 Ti', 799, 3),
 (7, 'x4', 6323, 4),
 (8, 'Corsair Tastatur', 299, 4);
-
+/*
+DELETE FROM orders WHERE cs_id = 1; //sletter ordren til Jonas = cs_id 1
+*/
 SELECT customers.cs_id, customers.cs_lname, orders.o_id, orders.o_name
 FROM customers
 INNER JOIN orders
