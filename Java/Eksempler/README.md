@@ -1,7 +1,7 @@
 # TomEE
 Du må ha TomEE sin server kjørende for å kunne bruke dette programmet. 
 
-Har endret det slik at kun kjører det på Chrome nå.
+Har endret det slik at den kun kjører det på Chrome nå.
 
 Filbanen for å kjøre serveren er:
     
