@@ -110,7 +110,7 @@ WEB-INF/
   </target>
 
 
-  <property name="browser" value="/usr/bin/firefox"/>
+  <property name="browser" value="C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"/>
   <property name="starturl" value="slit/index.html"/>
 
   <target name="run" depends="deploy"
