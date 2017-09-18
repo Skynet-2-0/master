@@ -1,3 +1,6 @@
+create database simplewebapp;
+
+use simplewebapp;
 
 create table USER_ACCOUNT(
 
