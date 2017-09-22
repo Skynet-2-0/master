@@ -4,7 +4,6 @@ CREATE DATABASE test;
 USE test;
  -- PART 1 --------------------------------------------------------------------------
 CREATE TABLE customers (
-
 cs_fname VARCHAR(30),
 cs_lname VARCHAR(30) NOT NULL,
 cs_adress VARCHAR(50),
