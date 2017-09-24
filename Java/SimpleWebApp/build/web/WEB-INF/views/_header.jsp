@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ page import = "java.io.*,java.util.*" %>
-<div style="background: #E0E0E0; height: 70px; padding: 5px;">
+<div style="background: rgba(175, 175, 175, 0.6); height: 70px; padding: 5px;">
   <div style="float: left">
      <h1>Skynet 2.0</h1>
   </div>
