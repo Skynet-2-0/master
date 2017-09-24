@@ -1,4 +1,4 @@
-DROP DATABASE test;
+-- DROP DATABASE test;
 CREATE DATABASE test;
 
 USE test;
