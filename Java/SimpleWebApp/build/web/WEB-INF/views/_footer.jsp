@@ -8,7 +8,7 @@
   pageEncoding="UTF-8"%>
   
 <div
-  style="background: #E0E0E0; text-align: center; padding: 5px; margin-top: 10px;">
+  style="background: rgba(175, 175, 175, 0.6); text-align: center; padding: 20px; margin-top: 10px;">
   
   
   
