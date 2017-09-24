@@ -44,9 +44,11 @@ public class DoEditStudentServlet extends HttpServlet{
        catch(Exception e){
            
        }
+       
        Students students = new Students(id, name, email);
        
        String errorString = null;
+       
        try{
            DBUtils.updateStudents(conn, students);
        }

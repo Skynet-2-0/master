@@ -7,6 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
  <head>
@@ -27,8 +28,8 @@
           <input type="hidden" name="id" value="${student.id}" />
           <table border="0">
              <tr>
-                <td>Code</td>
-                <td style="color:red;">${student.id}</td>
+                <td>Id</td>
+                <td style="color: red;">${student.id}</td>
              </tr>
              <tr>
                 <td>Name</td>
