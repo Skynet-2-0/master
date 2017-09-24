@@ -50,7 +50,7 @@ public class DoCreateStudentServlet extends HttpServlet{
        String errorString = null;
        
        try{
-           DBUtils.updateStudents(conn, students);
+           DBUtils.insertStudents(conn, students);
        }
        catch(SQLException e){
            e.printStackTrace();
