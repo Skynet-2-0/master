@@ -26,9 +26,9 @@
          <li>Login</li>
          <li>Storing user information in cookies</li>
          <li>Student List</li>
-         <li>Create Student</li>
-         <li>Edit Product</li>
-         <li>Delete Product</li>
+         <li>Create Students</li>
+         <li>Edit Students</li>
+         <li>Delete Students</li>
       </ul>
  
      <jsp:include page="_footer.jsp"></jsp:include>

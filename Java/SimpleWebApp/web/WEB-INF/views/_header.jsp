@@ -16,28 +16,23 @@
  
      <!-- User store in session with attribute: loginedUser -->
      <b>${loginedUser.userName}</b> <% out.println("IP adresse: " + request.getRemoteAddr()); %> <br>
-     <%
-            // Set refresh, autoload time as 5 seconds
-            response.setIntHeader("Refresh", 5);
-            
-            // Get current time
-            Calendar calendar = new GregorianCalendar();
-            
-            String am_pm;
-            int hour = calendar.get(Calendar.HOUR);
-            int minute = calendar.get(Calendar.MINUTE);
-            int second = calendar.get(Calendar.SECOND);
-            
-            if(calendar.get(Calendar.AM_PM) == 0) 
-               am_pm = "AM";
-            else
-               am_pm = "PM";
-               String CT = hour+":"+ minute +":"+ second +" "+ am_pm;
-               out.println("Current Time is: " + CT + "\n");
-         %>
-   <br/>
+    <br/>
      Search <input name="search">
- 
+ </div>
+      <div style="float: top; padding: 5px; text-align: center; font-size: 25px;">
+          <script type="text/javascript">
+    var myVar=setInterval(function () {myTimer()}, 1000);
+    var counter = 0;
+    function myTimer() {
+    var dateOBJ = new Date();
+    document.getElementById("demo").innerHTML = dateOBJ.toLocaleString();
+    }
+    </script>
+
+<body>
+   <span id="demo"></span>
+</body>
+
+      </div>
   </div>
  
-</div>
