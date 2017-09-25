@@ -23,7 +23,7 @@
     
     <p style="color: red;">${errorString}</p>
     
-    <form method="POST" action="doCreateStudent">
+    <form method="POST" action="${pageContext.request.contextPath}/createStudents">
        <table border="0">
           <tr>
              <td>Id</td>

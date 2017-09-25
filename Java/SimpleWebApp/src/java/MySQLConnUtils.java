@@ -18,7 +18,7 @@ public class MySQLConnUtils {
             throws ClassNotFoundException, SQLException {
         //Må være etter parameterne til din SQL database
         String hostName = "localhost:";
-        String dbName = "simplewebapp";
+        String dbName = "SimpleWebApp";
         String userName = "root";
         String password = "root";
         return getMySQLConnection(hostName, dbName, userName, password);
@@ -29,7 +29,7 @@ public class MySQLConnUtils {
         Class.forName("com.mysql.jdbc.Driver");
         
         // URL Connection for MySQL:
-        // jdbc:mysql://localhost:3306/javaogsql
+        // jdbc:mysql://localhost:3306/SimpleWebApp
         String connectionURL = "jdbc:mysql://" + hostName + "3306/" + dbName;
         
         Connection conn = DriverManager.getConnection(connectionURL, userName, password);

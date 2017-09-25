@@ -21,7 +21,7 @@
  
     <p style="color: red;">${errorString}</p>
  
-    <form method="POST" action="doLogin">
+    <form method="POST" action="${pageContext.request.contextPath}/login">
        <table border="0">
           <tr>
              <td>User Name</td>
@@ -44,7 +44,7 @@
        </table>
     </form>
  
-    <p style="color:blue;">User Name: tom, password: tom001 or mette/mette001</p>
+             <p style="color:blue;">User Name: tom<br> password: tom001 or <br><br> mette/mette001</p>
  
     <jsp:include page="_footer.jsp"></jsp:include>
  

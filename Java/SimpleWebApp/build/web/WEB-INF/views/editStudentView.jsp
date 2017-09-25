@@ -23,21 +23,21 @@
  
     <p style="color: red;">${errorString}</p>
  
-    <c:if test="${not empty student}">
-       <form method="POST" action="doEditStudent">
-          <input type="hidden" name="id" value="${student.id}" />
+    <c:if test="${not empty students}">
+        <form method="POST" action="${pageContext.request.contextPath}/editStudents">
+          <input type="hidden" name="id" value="${students.id}" />
           <table border="0">
              <tr>
                 <td>Id</td>
-                <td style="color: red;">${student.id}</td>
+                <td style="color: red;">${students.id}</td>
              </tr>
              <tr>
                 <td>Name</td>
-                <td><input type="text" name="name" value="${student.name}" /></td>
+                <td><input type="text" name="name" value="${students.name}" /></td>
              </tr>
              <tr>
                 <td>Email</td>
-                <td><input type="text" name="email" value="${student.email}" /></td>
+                <td><input type="text" name="email" value="${students.email}" /></td>
              </tr>
              <tr>
                 <td colspan = "2">

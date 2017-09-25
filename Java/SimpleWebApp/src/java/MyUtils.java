@@ -56,10 +56,12 @@ public class MyUtils {
     
     public static String getUserNameInCookie(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();
+        if(cookies != null){
         for(Cookie cookie : cookies){
         if (ATT_NAME_USER_NAME.equals(cookie.getName())){
             return cookie.getValue();
         }
+      }
     }
         return null;
     }

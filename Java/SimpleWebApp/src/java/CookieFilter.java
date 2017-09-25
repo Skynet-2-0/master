@@ -66,6 +66,7 @@ public class CookieFilter implements Filter{
                 MyUtils.storeLoginedUser(session, user);
             }
             catch(SQLException e){
+                e.printStackTrace();
             }
             //merke checked cookies
             session.setAttribute("COOKIE_CHECKED", "CHECKED");

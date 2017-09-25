@@ -5,6 +5,8 @@
  */
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
  
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,7 +40,41 @@ public class CreateStudentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        doGet(request, response);
-    }
-    
+        
+        Connection conn = MyUtils.getStoredConnection(request);
+       
+       Integer id = (Integer) Integer.parseInt(request.getParameter("id"));
+       String name = (String) request.getParameter("name");
+       String email = (String) request.getParameter("email");
+      
+       
+       Students students = new Students(id, name, email);
+       
+       String errorString = null;
+       
+       if(errorString == null){
+       try{
+           DBUtils.insertStudents(conn, students);
+       }
+       catch(SQLException e){
+           e.printStackTrace();
+           errorString = e.getMessage();
+         }
+       }
+       
+       request.setAttribute("errorString", errorString);
+       request.setAttribute("students", students);
+       
+       if(errorString != null){
+           RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/createStudentView.jsp");
+           dispatcher.forward(request, response);
+       }
+       else{
+           response.sendRedirect(request.getContextPath() + "/studentList");
+       }
+   }
+        
+//doGet(request, response);
 }
+    
+

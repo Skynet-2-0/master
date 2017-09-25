@@ -81,19 +81,19 @@ public class DBUtils {
         return list;
     }
     
-    public static Students findStudents(Connection conn, String id)
+    public static Students findStudents(Connection conn, int id)
             throws SQLException{
         String sql = "Select a.Id, a.Name, a.Email from Students a where a.Id=?";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setString(1, id);
+        pstm.setInt(1, id);
         
         ResultSet rs = pstm.executeQuery();
         
         while(rs.next()){
             String name = rs.getString("Name");
             String email = rs.getString("Email");
-            Students students = new Students(Integer.parseInt(id), name, email);
+            Students students = new Students(id, name, email);
             return students;
         }
         return null;
@@ -101,7 +101,7 @@ public class DBUtils {
     
     public static void updateStudents(Connection conn, Students students)
             throws SQLException{
-        String sql = "Update Students set Name=?, Email=?, where Id=?";
+        String sql = "Update Students set Name=?, Email=? where Id=?";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
         
@@ -135,8 +135,8 @@ public class DBUtils {
         pstm.executeUpdate();
     }
 
-    static Students findStudents(Connection conn, int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   // static Students findStudents(Connection conn, int id) {
+     //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //}
+
     }
-    
-}
