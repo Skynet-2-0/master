@@ -24,11 +24,11 @@
       <b>Den inneholder disse funksjonene til nå:</b>
       <ul>
          <li>Login</li>
-         <li>Storing user information in cookies</li>
+         <li>Lagre brukerinformasjon i cookies</li>
          <li>Student List</li>
-         <li>Create Students</li>
-         <li>Edit Students</li>
-         <li>Delete Students</li>
+         <li>Lage Studenter</li>
+         <li>Redigere Studenter</li>
+         <li>Slette Studenter</li>
       </ul>
  
      <jsp:include page="_footer.jsp"></jsp:include>
