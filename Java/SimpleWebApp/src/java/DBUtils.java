@@ -116,7 +116,7 @@ public class DBUtils {
         String sql = "insert into students (Id, Name, Email) values(?, ?, ?)";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
-        
+              
         pstm.setInt(1, students.getId());
         pstm.setString(2, students.getName());
         pstm.setString(3, students.getEmail());

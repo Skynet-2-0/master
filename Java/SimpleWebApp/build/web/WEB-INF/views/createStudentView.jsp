@@ -26,6 +26,7 @@
     <form method="POST" action="${pageContext.request.contextPath}/createStudents">
        <table border="0">
           <tr>
+              <p style="color: red;">${errorString}</p> 
              <td>Id</td>
              <td><input type="text" name="id" value="${student.id}" /></td>
           </tr>

@@ -1,4 +1,6 @@
 
+use simplewebapp;
+
 create table USER_ACCOUNT(
 
 USER_NAME varchar(30) not null,
