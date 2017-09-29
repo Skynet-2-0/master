@@ -23,8 +23,8 @@
     
     <p style="color: red;">${errorString}</p>
     <a href="studentList">Student List</a>
-    
+    <%--
     <jsp:include page="_footer.jsp"></jsp:include>
-    
+    --%>
  </body>
 </html>

@@ -45,8 +45,8 @@
           </tr>
        </table>
     </form>
-    
+    <%--
     <jsp:include page="_footer.jsp"></jsp:include>
-    
+    --%>
  </body>
 </html>

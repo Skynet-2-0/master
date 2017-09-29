@@ -30,8 +30,8 @@
          <li>Redigere Studenter</li>
          <li>Slette Studenter</li>
       </ul>
- 
+     <%--
      <jsp:include page="_footer.jsp"></jsp:include>
- 
+     --%>
   </body>
 </html>

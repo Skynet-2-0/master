@@ -46,8 +46,8 @@
     </table>
  
     <a href="createStudents" >Create Student</a>
- 
+    <%--
     <jsp:include page="_footer.jsp"></jsp:include>
- 
+    --%>
  </body>
 </html>
