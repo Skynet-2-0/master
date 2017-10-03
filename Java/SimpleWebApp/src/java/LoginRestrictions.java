@@ -28,11 +28,11 @@ import javax.servlet.http.HttpSession;
  */
 
 @WebFilter(filterName = "aut", urlPatterns = {"/aut/*"})
-public class TestJavaLoginRestrictions implements Filter{
+public class LoginRestrictions implements Filter{
     
     //private static final long serialVersionUID = 1L;
     /*
-    public TestJavaLoginRestrictions(){
+    public LoginRestrictions(){
         super();
     }
     */
@@ -67,7 +67,7 @@ public class TestJavaLoginRestrictions implements Filter{
                 needsAuthentication(requestPath);
                 }
         } catch (SQLException ex) {
-            Logger.getLogger(TestJavaLoginRestrictions.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginRestrictions.class.getName()).log(Level.SEVERE, null, ex);
         }
         */
     }
