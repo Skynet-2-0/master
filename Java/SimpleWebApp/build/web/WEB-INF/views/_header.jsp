@@ -17,7 +17,6 @@
      <!-- User store in session with attribute: loginedUser -->
      <b>${loginedUser.userName}</b> <% out.println("IP adresse: " + request.getRemoteAddr()); %> <br>
     <br/>
-     Search <input name="search">
  </div>
       <div style="float: top; padding: 5px; text-align: center; font-size: 25px;">
           <script type="text/javascript">

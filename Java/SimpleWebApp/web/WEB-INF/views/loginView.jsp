@@ -37,13 +37,16 @@
           </tr>
           <tr>
              <td colspan ="2">
-                <input type="submit" value= "Submit" />
+                <input type="submit" value= "Login" />
                 <a href="${pageContext.request.contextPath}/">Cancel</a>
              </td>
           </tr>
        </table>
     </form>
- 
+                <form method="GET" action="${pageContext.request.contextPath}/logout">
+                    <input type="submit" value="Logout"/>
+                </form>
+             
              <p style="color:blue;">User Name: tom<br> password: tom001 or <br><br> mette/mette001</p>
              <%--
     <jsp:include page="_footer.jsp"></jsp:include>
