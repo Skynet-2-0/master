@@ -13,8 +13,8 @@
         <title>Søk etter student</title>
     </head>
     <body>
-        <h1>Søk etter student</h1>
-        <%!
+        <h1>Resultat</h1>
+                <%!
             public class Student {
 
 String url="jdbc:mysql://localhost:3306/simplewebapp";
@@ -30,7 +30,7 @@ public Student () throws SQLException {
 
           conn = DriverManager.getConnection(url, username, password);
             pstm = conn.prepareStatement(
-            "SELECt a.Name FROM students a"
+            "SELECT a.Name FROM students a"
                 + " WHERE a.Name = ?");
             } 
             catch (SQLException e1) {
@@ -39,6 +39,7 @@ public Student () throws SQLException {
                 System.out.println(e1.getMessage());
         }
     }
+
 
 
 
@@ -56,7 +57,7 @@ public ResultSet getStudents(String name) throws SQLException {
         return rs;
 }
 
-
+}
 %>
         <%
             String name = new String();
@@ -70,17 +71,16 @@ public ResultSet getStudents(String name) throws SQLException {
             
             %>
            <table border="1">
-               <tbody>
+               
                    <tr>
-                       <td>Name</td>                      
+                       <td>Navn</td>                      
                   </tr>
-                  <%while(students.next()) {%>
+                  <% while(students.next()){ %>
+                  <% if(name != null){%>
                   <tr>
                       <td><%= students.getString("name") %></td>
                   </tr>
                   <% } %>
-           </tbody>
-        </table>
-       
-    </body>
-</html>
+                  <% } %>
+           </table>
+               <a href="${pageContext.request.contextPath}/">Tilbake</a>

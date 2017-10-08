@@ -17,11 +17,20 @@ import javax.servlet.http.HttpSession;
  *
  * @author Mathias
  */
-@WebServlet(urlPatterns = {"/logout"})
+@WebServlet(urlPatterns = {"/logout.jsp"})
 public class Logout extends HttpServlet {
     public Logout() {
         super();
     }
+
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /*
         HttpSession session = request.getSession();

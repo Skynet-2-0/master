@@ -16,8 +16,14 @@
  
      <!-- User store in session with attribute: loginedUser -->
      <b>${loginedUser.userName}</b> <% out.println("IP adresse: " + request.getRemoteAddr()); %> <br>
-    <br/>
+ <br/>
+ 
+ <div style="padding: 10px;">
+     <a href="logout.jsp"/> <H2> LogOut </H2> </a>
  </div>
+ 
+ </div>
+    
       <div style="float: top; padding: 5px; text-align: center; font-size: 25px;">
           <script type="text/javascript">
     var myVar=setInterval(function () {myTimer()}, 1000);

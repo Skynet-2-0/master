@@ -30,8 +30,8 @@
                   </tr>
               </tbody>
           </table>
-          <input type="reset" value="Clear" name="clear" />
-          <input type="submit" value="Submit" name="submit" />
+          &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="reset" value="Clear" name="clear" />
+          &nbsp;<input type="submit" value="Submit" name="submit" />
       </form>
       
       <br>Dette er en Simple web application med bruk av jsp, servlet &amp; Jdbc. <br><br>
@@ -43,6 +43,7 @@
          <li>Lage Studenter</li>
          <li>Redigere Studenter</li>
          <li>Slette Studenter</li>
+         <li>Søkefunksjon</li>
       </ul>
      <%--
      <jsp:include page="_footer.jsp"></jsp:include>
