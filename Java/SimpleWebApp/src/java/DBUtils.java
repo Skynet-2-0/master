@@ -138,4 +138,36 @@ public class DBUtils {
    // static Students findStudents(Connection conn, int id) {
      //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     //}
+
+    public static String findName(Connection conn, String name)
+            throws SQLException {
+        String sql = "Select a.Name from students a"
+                + " where a.Name = ?";
+        
+     
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, name);
+        
+        ResultSet rs = pstm.executeQuery();
+        
+        try {
+            while (rs.next()) {
+                rs.getString("Name");
+                System.out.println("Name :" + rs.getString("Name"));
+                return rs.getString("Name");
+               
+                
+            }
+            
+        } catch (SQLException e1) {
+            
+           System.out.println(e1.getMessage());
+           
+        }
+           
+   
+      
+   return null;
+    }
 }

@@ -3,18 +3,38 @@
     Created on : Oct 7, 2017, 10:33:08 AM
     Author     : Brage
 --%>
+
+<%@page language="java"  contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
 <% Class.forName("com.mysql.jdbc.Driver");%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Søk etter student</title>
     </head>
-    <body>
-        <h1>Resultat</h1>
-                <%!
+        <jsp:include page="_header.jsp"></jsp:include>
+    <jsp:include page="_menu.jsp"></jsp:include>
+    
+    <h3>Module 1. Godkjenning</h3>
+    
+    <table border = "1">
+         <tr>
+            <th>Module no.</th>
+            <th>Learning Goals</th>
+         </tr>
+    
+           <tr>
+            <td>1 </td>
+            <td>Opprette, åpne og lagre et prosjekt i BlueJ</td>
+         </tr>
+         
+      </table>
+    
+        <h1>Søk etter student</h1>
+        
+        <%!
             public class Student {
 
 String url="jdbc:mysql://localhost:3306/simplewebapp";
@@ -73,14 +93,14 @@ public ResultSet getStudents(String name) throws SQLException {
            <table border="1">
                
                    <tr>
-                       <td>Navn</td>                      
+                       <td>Name</td>                      
                   </tr>
-                  <% while(students.next()){ %>
-                  <% if(name != null){%>
+                  <% while(students.next()){ %> 
                   <tr>
                       <td><%= students.getString("name") %></td>
                   </tr>
                   <% } %>
-                  <% } %>
-           </table>
-               <a href="${pageContext.request.contextPath}/">Tilbake</a>
+           
+        </table>
+                 
+               <a href="${pageContext.request.contextPath}/modules">Tilbake</a>
