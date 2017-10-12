@@ -29,7 +29,11 @@
           </tr>
           <tr>
              <td>Password</td>
-             <td><input type="text" name="password" value= "${user.password}" /> </td>
+             <td><input type="password" name="password" value="${user.password}" size="20" />
+         <button type="button" id="eye" onclick="if(password.type=='text')password.type='password';
+             else password.type='text';"> Show Password
+         </button> 
+        </td>
           </tr>
           <tr>
              <td>Remember me</td>
