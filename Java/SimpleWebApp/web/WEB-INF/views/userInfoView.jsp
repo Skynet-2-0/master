@@ -15,15 +15,14 @@
  <body>
  
     <jsp:include page="_header.jsp"></jsp:include>
-    <jsp:include page="_menu.jsp"></jsp:include>
- 
+    <jsp:include page="_menu.jsp"></jsp:include>  
+   
     <h3>Hello: ${user.userName}</h3>
  
     User Name: <b>${user.userName}</b>
     <br />
     Gender: ${user.gender } <br />
-    <%--
-    <jsp:include page="_footer.jsp"></jsp:include>
-    --%>
+    <br>
+    <a href="${pageContext.request.contextPath}/Snake.jsp">Snake</a>
  </body>
 </html>

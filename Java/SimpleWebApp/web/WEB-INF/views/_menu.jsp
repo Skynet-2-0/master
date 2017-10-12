@@ -10,13 +10,13 @@
 <div style="padding: 5px;">
  
    <a href="${pageContext.request.contextPath}/">Home</a>
-   |
+   |  
    <a href="${pageContext.request.contextPath}/studentList">Student List</a>
-   |
+   |  
    <a href="${pageContext.request.contextPath}/userInfo">My Account Info</a>
-   |
+   |  
    <a href="${pageContext.request.contextPath}/login">Login</a>
-   |
+   |  
    <a href="${pageContext.request.contextPath}/modules">Modules</a>
-    
+   
 </div>  
