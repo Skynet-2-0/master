@@ -21,6 +21,10 @@ ax=ay=15;
 xv=yv=0;
 trail=[];
 tail = 5;
+
+score=0;
+start=true;
+
 function game() {
 	px+=xv;
 	py+=yv;
@@ -44,6 +48,7 @@ function game() {
 		ctx.fillRect(trail[i].x*gs,trail[i].y*gs,gs-2,gs-2);
 		if(trail[i].x==px && trail[i].y==py) {
 			tail = 5;
+                        score=0;
 		}
 	}
 	trail.push({x:px,y:py});
@@ -55,10 +60,14 @@ function game() {
 		tail++;
 		ax=Math.floor(Math.random()*tc);
 		ay=Math.floor(Math.random()*tc);
+                a=++score;
+                var score = tail - 5;
+                document.getElementById('score').value= score;
 	}
 	ctx.fillStyle="red";
 	ctx.fillRect(ax*gs,ay*gs,gs-2,gs-2);
 }
+
 function keyPush(evt) {
 	switch(evt.keyCode) {
 		case 37:
@@ -80,4 +89,5 @@ function keyPush(evt) {
 <div style="padding: 5px; padding-left: 350px;">
 <a href="${pageContext.request.contextPath}/userInfo">Tilbake</a>
 </div>
+<h1>Score:</h1> <input id="score" type="text">
 </div>
