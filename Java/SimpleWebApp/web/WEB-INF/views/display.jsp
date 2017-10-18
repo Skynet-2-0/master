@@ -44,6 +44,10 @@ String password="root";
 Connection conn = null;
 PreparedStatement pstm = null;
 ResultSet rs = null;
+boolean hasError = false;
+String errorString = null;
+
+
 
 public Student () throws SQLException {
     try {
@@ -52,11 +56,14 @@ public Student () throws SQLException {
             pstm = conn.prepareStatement(
             "SELECT a.Name FROM students a"
                 + " WHERE a.Name = ?");
+               
+                
             } 
             catch (SQLException e1) {
                 e1.printStackTrace();
                 e1.getStackTrace();    
                 System.out.println(e1.getMessage());
+             
         }
     }
 
@@ -64,8 +71,8 @@ public Student () throws SQLException {
 
 
 public ResultSet getStudents(String name) throws SQLException {
-
-    try {
+        
+        try {
         pstm.setString(1, name);
         rs = pstm.executeQuery();
         } 
@@ -73,6 +80,8 @@ public ResultSet getStudents(String name) throws SQLException {
                 e1.printStackTrace();
                 e1.getStackTrace();
                 System.out.println(e1.getMessage());
+                
+                
     }
         return rs;
 }
@@ -81,7 +90,6 @@ public ResultSet getStudents(String name) throws SQLException {
 %>
         <%
             String name = new String();
-            
             if (request.getParameter("name") != null) {
                 name = request.getParameter("name");
             }
@@ -103,4 +111,4 @@ public ResultSet getStudents(String name) throws SQLException {
            
         </table>
                  
-               <a href="${pageContext.request.contextPath}/modules">Tilbake</a>
+               <a href="${pageContext.request.contextPath}/modules/modul1">Tilbake</a>
