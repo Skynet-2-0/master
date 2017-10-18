@@ -13,7 +13,7 @@ cd_adress VARCHAR(50)NOT NULL,
 CONSTRAINT customerdetails_pk PRIMARY KEY (cd_email)
 );
 
-INSERT INTO customerdetails (cd_email, cd_fname, cd_lname, cd_adress)
+INSERT INTO customerDetails (cd_email, cd_fname, cd_lname, cd_adress)
                       
 VALUES
 ('bobross@gmail.com', 'Bob', 'Ross', 'Rørosgata 12'),
@@ -22,7 +22,7 @@ VALUES
 ('Jonastestmail@outlook.com', 'Jonas', 'Omdal', 'Jonasveien 15'),
 ('bragetestmail@gmail.com', 'Brage', 'Fosso', 'Bragegata55');
 
-SELECT * FROM customerdetails;
+SELECT * FROM customerDetails;
 
 CREATE TABLE corporation(
 c_id INT NOT NULL,
