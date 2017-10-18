@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS test;
 CREATE DATABASE test;
 
 USE test;
- 
+
 CREATE TABLE customerDetails (
 cd_email VARCHAR(50) NOT NULL,
 cd_fname VARCHAR(30) NOT NULL,
@@ -41,12 +41,12 @@ SELECT * FROM corporation;
 
 CREATE TABLE customer (
 cs_id INT NOT NULL,
-cd_email VARCHAR(500) NOT NULL,
-c_id VARCHAR(50),
+cd_email VARCHAR(50) NOT NULL,
+c_id INT NOT NULL,
 
-CONSTRAINT customer_pk PRIMARY KEY (cs_id),
-CONSTRAINT customerdeatails_fk FOREIGN KEY (cd_email) REFERENCES customerdetails (cd_email), 
-CONSTRAINT corporation_fk FOREIGN KEY (c_id) REFERENCES corporation (c_id)
+CONSTRAINT customerdeatails_fk FOREIGN KEY (cd_email) REFERENCES customerDetails (cd_email), 
+CONSTRAINT corporation_fk FOREIGN KEY (c_id) REFERENCES corporation (c_id),
+CONSTRAINT customer_pk PRIMARY KEY (cs_id)
 );
 
 INSERT INTO customer (cs_id, cd_email, c_id)
@@ -65,12 +65,11 @@ o_billingadress varchar(100) NOT NULL,
 o_date date NOT NULL,
 o_deliverydate date NOT NULL,
 o_orderstatus varchar(10) NOT NULL,
-cs_id int NOT NULL,
+cs_id INT NOT NULL,
 o_id INT NOT NULL,
 
-CONSTRAINT orders_pk PRIMARY KEY(o_id),
-CONSTRAINT customers_fk FOREIGN KEY (cs_id) REFERENCES customers (cs_id)
-
+CONSTRAINT customers_fk FOREIGN KEY (cs_id) REFERENCES customer (cs_id),
+CONSTRAINT orders_pk PRIMARY KEY(o_id)
 );
 
 
@@ -86,16 +85,18 @@ VALUES
 (3,'Finnmarksgata 90',  100917, 170917, 'delivered', 7),
 (1,'Jonasveien 15', 100815, 150815, 'delivered', 6),
 (1,'Jonasveien 15', 100815, 150815, 'delivered', 5);
-
+SELECT * FROM orders;
+/*
 SELECT orders.o_billingadress, orders.o_date, orders.o_deliverydate, orders.o_orderstatus,
-customers.cs_id, products.p_id, products.p_name, orders.o_id
+customer.cs_id, products.p_id, products.p_name, orders.o_id
 FROM (( orders
-INNER JOIN customers ON customers.cs_id=orders.cs_id)
+INNER JOIN customer ON customer.cs_id=orders.cs_id)
 INNER JOIN products ON products.p_id=orders.p_id);
+*/
 
 CREATE TABLE creditcarddetails(
 ccd_number INT NOT NULL,
-ccd_holdersname INT NOT NULL,
+ccd_holdersname VARCHAR(50) NULL,
 ccd_expirydate DATE NOT NULL,
 
 CONSTRAINT creditcarddetails_pk PRIMARY KEY (ccd_number)
