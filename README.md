@@ -1,2 +1,2 @@
 # master
-Har opprettet en github som er knyttet til en organisasjon og ikke en person
+    Skynet 2.0
