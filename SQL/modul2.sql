@@ -80,10 +80,12 @@ INSERT INTO orders(
  cs_id, o_billingadress, o_date, o_deliverydate, o_orderstatus, o_id)
 
 VALUES
+(2, 'Rørosgata 12', 150917, 200917, 'confirmed', 10),
+(2, 'Rørosgata 12', 150917, 200917, 'confirmed', 9),
 (4, 'Bragegata 55', 180917, 250917, 'confirmed', 4),
 (4,'Bragegata 55', 180917, 250917, 'confirmed', 3),
-(2,'Bergensveien 23', 150917, 220917, 'shipped', 2),
-(2,'Bergensveien 23', 150917, 220917, 'shipped', 1),
+(5,'Bergensveien 23', 150917, 220917, 'shipped', 2),
+(5,'Bergensveien 23', 150917, 220917, 'shipped', 1),
 (3,'Finnmarksgata 90', 100917, 170917, 'delivered', 8),
 (3,'Finnmarksgata 90',  100917, 170917, 'delivered', 7),
 (1,'Jonasveien 15', 100815, 150815, 'delivered', 6),
@@ -133,7 +135,9 @@ VALUES
 (5, 'PayPal', 100815, 150815, 4),
 (6, 'PayPal', 100815, 150815, 4), 
 (7, 'Internet Bank', 100917, 160917, 3),
-(8, 'Internet Bank', 100917, 160917, 3); 
+(8, 'Internet Bank', 100917, 160917, 3),
+(9, 'BitCoin', 250316, 300316, 1),
+(10, 'BitCoin', 250316, 300316, 1); 
 
 -- SELECT * FROM invoice;
 -- --------------------------------------------------------------------------------------------------
@@ -188,40 +192,22 @@ VALUES
 (5, 6, 5, 2345,7),
 (6, 7, 6, 1324,14),
 (7, 8, 7, 9999,8),
-(8, 1, 8, 5399,16);
+(8, 1, 8, 5399,16),
+(9, 3, 9, 5000,10),
+(10, 1, 10, 8500,18);
 
 -- SELECT * FROM orderline;
 
 -- A) name, total quantity order, product name, for each customer and each product
-/*
-SELECT customerDetails.cd_fname, customerDetails.cd_lname, products.p_name, orderline.ol_quantity,
-customer.cs_id
-FROM customerdetails
 
-INNER JOIN products 
-ON customerdetails.cd_email = products.p_id
-
-INNER JOIN orderline 
-ON customerdetails.cd_email = orderline.o_id
-AND customerdetails.cd_email = orderline.p_id
-
-INNER JOIN customer
-ON customerdetails.cd_email = customer.cs_id;
-*/
-
-SELECT customerDetails.cd_fname, customerDetails.cd_lname, products.p_name, orderline.ol_quantity
-FROM customerDetails, products, orderline, customer
+SELECT customerDetails.cd_fname, customerDetails.cd_lname, products.p_name, orderline.ol_quantity, customer.cs_id
+FROM customerDetails, products, orderline, customer, orders
 WHERE customerDetails.cd_email = customer.cd_email
-AND products.p_id = orderline.p_id;
+AND products.p_id = orderline.p_id
+AND orders.o_id = orderline.o_id
+AND customer.cs_id = orders.cs_id;
 
 -- B) product name, quantity ordered, total paid by 3 best items
-/*
-SELECT products.p_name, orderline.ol_quantity, orderline.paid + orderline.ol_quantity
-FROM products
-
-INNER JOIN orderline
-ON products.p_id = orderline.o_id AND products.p_id = orderline.p_id;
-*/
 
 SELECT products.p_name, orderline.ol_quantity, orderline.paid * orderline.ol_quantity
 FROM products, orderline
@@ -252,6 +238,7 @@ WHERE products.p_id = orderline.p_id AND products.p_id = orderline.p_id;
 SELECT customerDetails.cd_fname, customerDetails.cd_lname, orders.o_id, orderline.ol_quantity, orderline.paid * orderline.ol_quantity
 FROM customerDetails, orders, orderline, customer
 WHERE customerDetails.cd_email = customer.cd_email
-AND orders.o_id = orderline.o_id;
+AND orders.o_id = orderline.o_id
+AND customer.cs_id = orders.cs_id;
 
 
