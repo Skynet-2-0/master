@@ -5,7 +5,7 @@ Credit til: https://pastebin.com/Z3zhb7cY
             https://www.youtube.com/channel/UC15WSgcM_5tmN6JRbhA4UaQ
 -->
 
-<div style="background: rgba(175, 175, 175, 0.6); height: 950px;">
+<div style="background: rgba(175, 175, 175, 0.6); height: 450px;">
 
 <canvas id="gc" width="400" height="400"></canvas>
 <script>
