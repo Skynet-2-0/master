@@ -42,7 +42,7 @@ public class Blog extends HttpServlet {
             out.println("<title>Blog</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Blogg " + "</h1>");
+            out.println("<h1>Blog " + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

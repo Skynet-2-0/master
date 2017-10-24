@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author evakristine
  */
 @WebServlet(urlPatterns = {"/Blog"})
-public class Blog extends HttpServlet {
+public class BlogPost extends HttpServlet {
     
     
 
@@ -42,7 +42,7 @@ public class Blog extends HttpServlet {
             out.println("<title>Blog</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Blogg " + "</h1>");
+            out.println("<h1>Blog post " + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -52,7 +52,7 @@ public class Blog extends HttpServlet {
             throws ServletException, IOException{
         
         RequestDispatcher dispatcher;
-        dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/blog.jsp");
+        dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/BlogPost.jsp");
         
         dispatcher.forward(request, response);
     }

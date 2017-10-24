@@ -163,7 +163,8 @@
         </div> 
         
         <div>
-        <form>       
+        <form   
+            action = "BlogPost.jsp" method="post" >
             <input type="submit" value="Publiser">
         </form>   
             </div> 
