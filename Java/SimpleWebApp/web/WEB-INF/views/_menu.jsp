@@ -16,5 +16,7 @@
    <a href="${pageContext.request.contextPath}/userInfo">My Account Info</a>
    |
    <a href="${pageContext.request.contextPath}/login">Login</a>
+   |
+   <a href="${pageContext.request.contextPath}/Blog">Blog</a>
     
 </div>  

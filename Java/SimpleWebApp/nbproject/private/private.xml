@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Mathias/OneDrive/IS-201/master/Java/SimpleWebApp/src/java/LoginServlet.java</file>
-            <file>file:/C:/Users/Mathias/OneDrive/IS-201/master/Java/SimpleWebApp/src/java/Logout.java</file>
-            <file>file:/C:/Users/Mathias/OneDrive/IS-201/master/Java/SimpleWebApp/web/WEB-INF/views/loginView.jsp</file>
+            <file>file:/Users/evakristine/Documents/IS202/master/Java/SimpleWebApp/src/java/Blog.java</file>
+            <file>file:/Users/evakristine/Documents/IS202/master/Java/SimpleWebApp/src/java/StudentsListServlet.java</file>
+            <file>file:/Users/evakristine/Documents/IS202/master/Java/SimpleWebApp/web/WEB-INF/views/blog.jsp</file>
+            <file>file:/Users/evakristine/Documents/IS202/master/Java/SimpleWebApp/web/WEB-INF/views/_menu.jsp</file>
         </group>
     </open-files>
 </project-private>

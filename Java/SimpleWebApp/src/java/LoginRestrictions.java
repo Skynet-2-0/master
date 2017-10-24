@@ -38,7 +38,7 @@ public class LoginRestrictions implements Filter{
     */
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        Filter.super.init(filterConfig); //To change body of generated methods, choose Tools | Templates.
+        //Filter.super.init(filterConfig); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
