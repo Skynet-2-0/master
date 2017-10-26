@@ -5,9 +5,9 @@
  */
 
 import java.io.IOException;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.SQLException;
-//import java.util.InputMismatchException;
  
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +15,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-//import javax.transaction.InvalidTransactionException;
 
 /**
  *
@@ -63,13 +62,13 @@ public class CreateStudentServlet extends HttpServlet {
                e.printStackTrace();
                errorString = e.getMessage();
            }
-       }
+           }
           // DBUtils.insertStudents(conn, students);
        }
        catch(SQLException e){
            e.printStackTrace();
            errorString = e.getMessage();
-         }
+       }
        }
        
        request.setAttribute("errorString", errorString);

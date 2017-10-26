@@ -33,7 +33,7 @@
     document.getElementById("demo").innerHTML = dateOBJ.toLocaleString();
     }
     </script>
-
+    
 <body>
    <span id="demo"></span>
 </body>
