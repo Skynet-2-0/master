@@ -11,6 +11,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Blog</title>
         <style>
+            input#titlebar {
+                width: 740px;
+                padding:10px;
+            }
             div#textEditor{
                 margin: 1px;
                 width: 750px;
@@ -121,8 +125,11 @@
     <body>
         <h1>Blog</h1> 
         <p>Blog post:</p>
-
-
+        
+        <form   
+            action = "BlogPost" method="POST" >
+         
+            <input type="text" id="titlebar" name="title"/>
         <div id="textEditor">   
             <div id="theRibbon">
                 <button id="boldButton" title="Bold"><b>B</b></button>
@@ -163,10 +170,12 @@
         </div> 
         
         <div>
-        <form   
-            action = "BlogPost.jsp" method="post" >
-            <input type="submit" value="Publiser">
+        
+            
+            </div>
+            <div style="position: relative; top:50px;">
+                <input type="submit" value="Publiser">
+            </div>
         </form>   
-            </div> 
     </body>
 </html>

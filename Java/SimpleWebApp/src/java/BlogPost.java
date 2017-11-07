@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author evakristine
  */
-@WebServlet(urlPatterns = {"/Blog"})
+@WebServlet(urlPatterns = {"/BlogPost"})
 public class BlogPost extends HttpServlet {
     
     
@@ -34,6 +34,10 @@ public class BlogPost extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        String title = request.getParameter("title");
+        // String content = requests.getParamenter("content");
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
