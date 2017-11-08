@@ -29,7 +29,7 @@
          </tr>
          
       </table>
-        <h1>Søk etter student</h1>
+        <h3>Søk etter student</h3>
         <form name="myForm" action="display.jsp" method="POST">
        
    <table border="1">      

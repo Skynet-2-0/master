@@ -5,7 +5,6 @@
  */
 
 import java.io.IOException;
-
  
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,32 +18,31 @@ import javax.servlet.http.HttpServletResponse;
  * @author brage
  */
 
-@WebServlet(urlPatterns = {"/modules/modul1"})
-public class Modul1 extends HttpServlet{
+@WebServlet(urlPatterns = {"/modules/modul1graded"})
+public class modul1graded extends HttpServlet{
     
     private static final long serialVersionUID = 1L;
     
-    public Modul1(){
+    public modul1graded(){
         super();
     }
     
     @Override
-   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-           throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
         
-       
-              
-    
-        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/modul1Viewcopy2.jsp");
-       
+        //Fremheve til /WEB-INF/views/homeView.jsp
+        //Bruker kan ikke aksesere direkte til JSP sidene plassert i WEB-INF
+        
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/graded1.jsp");
+        
         dispatcher.forward(request, response);
-        
     }
     
     @Override
-    protected void doPost (HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        
         doGet(request, response);
-}
+    }
+    
 }

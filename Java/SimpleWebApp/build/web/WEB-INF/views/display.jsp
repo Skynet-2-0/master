@@ -32,7 +32,7 @@
          
       </table>
     
-        <h1>Søk etter student</h1>
+        <h3>Søk etter student</h3>
         
         <%!
             public class Student {
@@ -98,13 +98,14 @@ public ResultSet getStudents(String name) throws SQLException {
             ResultSet students = student.getStudents(name);
             
             %>
+          
            <table border="1">
                
                    <tr>
                        <td>Name</td>                      
-                  </tr>
+                  
                   <% while(students.next()){ %> 
-                  <tr>
+                  
                       <td><%= students.getString("name") %></td>
                   </tr>
                   <% } %>
@@ -112,3 +113,22 @@ public ResultSet getStudents(String name) throws SQLException {
         </table>
                  
                <a href="${pageContext.request.contextPath}/modules/modul1">Tilbake</a>
+               
+                <br></br>
+               
+               <table border="1">
+               
+                   <tr>
+                       <td>Hvor mange poeng vil du gi</td>                      
+                       <td><input type="text" name="poeng" value="" size="50"</td>
+                   </tr>
+                   
+                   <tr>
+                       <td>Kommentar</td>
+                       <td><input type="text" name="kommentar" value="" size="50" height="500"</td>
+                     
+                   </tr>
+           
+        </table>
+                <form name="myForm" action="modul1graded" method="POST">
+                    <input type="submit" value="Submit" name="submit"/>

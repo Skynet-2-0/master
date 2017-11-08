@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author mathi
+ * @author brage
  */
 
 @WebServlet(urlPatterns = {"/modules/display.jsp"})
