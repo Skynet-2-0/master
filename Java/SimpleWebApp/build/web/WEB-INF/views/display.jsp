@@ -117,6 +117,11 @@ public ResultSet getStudents(String name) throws SQLException {
                 <br></br>
                
                <table border="1">
+                   
+                   <tr>
+                       <td>Er modulen godkjent?</td>                      
+                       <td><input type="text" name="godkjent" value="" size="50"</td>
+                   </tr>
                
                    <tr>
                        <td>Hvor mange poeng vil du gi</td>                      
@@ -124,8 +129,14 @@ public ResultSet getStudents(String name) throws SQLException {
                    </tr>
                    
                    <tr>
-                       <td>Kommentar</td>
-                       <td><input type="text" name="kommentar" value="" size="50" height="500"</td>
+                       <td>Åpen kommentar</td>
+                       <td><input type="text" name="åpen kommentar" value="" size="50" height="500"</td>
+                     
+                   </tr>
+                   
+                     <tr>
+                       <td>Skjult kommentar</td>
+                       <td><input type="text" name="skjult kommentar" value="" size="50" height="500"</td>
                      
                    </tr>
            

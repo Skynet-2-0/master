@@ -42,7 +42,7 @@
                
                 <br></br>
                
-     Poeng og kommentar er lagret
+     Din vurdering er lagret
                   
                    
               

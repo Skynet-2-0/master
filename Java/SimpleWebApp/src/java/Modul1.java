@@ -35,7 +35,7 @@ public class Modul1 extends HttpServlet{
        
               
     
-        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/modul1Viewcopy2.jsp");
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/modul1view.jsp");
        
         dispatcher.forward(request, response);
         
