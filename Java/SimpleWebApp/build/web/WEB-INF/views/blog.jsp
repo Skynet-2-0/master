@@ -127,7 +127,7 @@
         <p>Blog post:</p>
         
         <form   
-            action = "BlogPost" method="POST" >
+            action = "BlogPost" method= "get" >
          
             <input type="text" id="titlebar" name="title"/>
         <div id="textEditor">   

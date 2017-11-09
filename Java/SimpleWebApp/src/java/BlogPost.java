@@ -36,7 +36,7 @@ public class BlogPost extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String title = request.getParameter("title");
-        // String content = requests.getParamenter("content");
+        // String content = request.getParamenter("content");
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
