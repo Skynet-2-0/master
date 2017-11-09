@@ -5,7 +5,7 @@ package Connection;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import Kalender.CalendarCalendar; 
 import Users.Students;
 import Users.UserAccount;
 import java.sql.Connection;
@@ -160,6 +160,56 @@ public class DBUtils {
                 rs.getString("Name");
                 System.out.println("Name :" + rs.getString("Name"));
                 return rs.getString("Name");
+               
+                
+            }
+            
+        } catch (SQLException e1) {
+            
+           System.out.println(e1.getMessage());
+           
+        }
+           
+   
+      
+   return null;
+    }
+    public static CalendarCalendar findDate(Connection conn, Integer Dato, String Hendelse)
+            throws SQLException {
+        String sql = "Select a.Kalender_id, a.Dato, a.Hendelse from Kalender a"
+                + " where a.Dato = ? ";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, Dato);
+        ResultSet rs = pstm.executeQuery();
+        
+        if(rs.next()){
+            Integer dato;
+            dato = rs.getInt(201017);
+            CalendarCalendar calendar = new CalendarCalendar();
+            calendar.setDato(Dato);
+            calendar.setHendelse(Hendelse);
+            return calendar;
+        }
+        return null;
+    }
+        public static Integer findDate(Connection conn, Integer Dato)
+            throws SQLException {
+        String sql = "Select a.Dato from kalender a"
+                + " where a.Dato = ?";
+        
+     
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, Dato);
+        
+        ResultSet rs = pstm.executeQuery();
+        
+        try {
+            while (rs.next()) {
+                rs.getString("Dato");
+                System.out.println("Dato :" + rs.getString("Dato"));
+                return rs.getInt(201017);
                
                 
             }

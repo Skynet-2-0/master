@@ -5,8 +5,14 @@
  */
 package Kalender;
 
+import Connection.DBUtils;
+import Connection.MyUtils;
+import Kalender.CalendarCalendar;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,69 +26,64 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "CalendarServlet", urlPatterns = {"/CalendarServlet"})
 public class CalendarServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CalendarServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CalendarServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+    private static final long serialVersionUID = 1L;
+    
+    public CalendarServlet(){
+        super();
     }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException, IOException{
+        
+        RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/calendar.jsp");
+        dispatcher.forward(request, response);
     }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+            throws ServletException, IOException{
+        
+        Connection conn = MyUtils.getStoredConnection(request);
+       
+       Integer Dato = (Integer) Integer.parseInt(request.getParameter("Dato"));
+       String Hendelse = (String) request.getParameter("Hendelse");
+      
+       
+       CalendarCalendar calendarCalendar = new CalendarCalendar(Dato, Hendelse);
+       
+       String errorString = null;
+       
+       if(errorString == null){
+       try{
+           if(Dato >= 1){
+           try{
+               DBUtils.findDate(conn, Dato);
+           }catch(StringIndexOutOfBoundsException e){
+               e.printStackTrace();
+               errorString = e.getMessage();
+           }
+           }
+          
+       }
+       catch(SQLException e){
+           e.printStackTrace();
+           errorString = e.getMessage();
+       }
+       }
+       
+       request.setAttribute("errorString", errorString);
+       request.setAttribute("CalendarCalendar", calendarCalendar);
+       
+       if(errorString != null){
+           RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/calendar.jsp");
+           dispatcher.forward(request, response);
+       }
+       else{
+           response.sendRedirect(request.getContextPath() + "/studentList");
+       }
+   }
+        
+//doGet(request, response);
 }
+    
+
