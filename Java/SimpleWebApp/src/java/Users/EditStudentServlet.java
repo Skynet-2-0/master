@@ -1,3 +1,5 @@
+package Users;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -29,6 +31,7 @@ public class EditStudentServlet extends HttpServlet {
  
     public EditStudentServlet() {
         super();
+        System.out.println("Runnable editstudentservlet");
     }
     
     @Override
@@ -36,8 +39,8 @@ public class EditStudentServlet extends HttpServlet {
             throws ServletException, IOException{
         Connection conn = MyUtils.getStoredConnection(request);
         
-        //String id = (String) request.getParameter("id");
-        Integer id = (Integer) Integer.parseInt(request.getParameter("id"));
+        String id = (String) request.getParameter("id");  
+        //Integer id = (Integer) Integer.parseInt(request.getParameter("id"));
         
         Students students = null;
         
@@ -66,15 +69,14 @@ public class EditStudentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("dopost1");
         
         Connection conn = MyUtils.getStoredConnection(request);
         
-        Integer id = (Integer) Integer.parseInt(request.getParameter("id"));
+        //Integer id = (Integer) Integer.parseInt(request.getParameter("id"));
+        String id = (String) request.getParameter("id");
         String name = (String) request.getParameter("name");
         String email = (String) request.getParameter("email");
-        
-        
-        
         
         Students students = new Students(id, name, email);
         

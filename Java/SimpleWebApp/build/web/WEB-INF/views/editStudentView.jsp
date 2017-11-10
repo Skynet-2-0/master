@@ -1,3 +1,4 @@
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%-- 
     Document   : editStudentView
     Created on : 17.sep.2017, 23:30:56
@@ -32,7 +33,7 @@
                 <td style="color: red;">${students.id}</td>
              </tr>
              <tr>
-                <td>Name</td>
+                 <td>Name</td>
                 <td><input type="text" name="name" value="${students.name}" /></td>
              </tr>
              <tr>
@@ -46,10 +47,7 @@
                 </td>
              </tr>
           </table>
-       </form>
+        </form>
     </c:if>
-    <%--
-    <jsp:include page="_footer.jsp"></jsp:include>
-    --%>
  </body>
 </html>

@@ -28,7 +28,7 @@
           <tr>
               <p style="color: red;">${errorString}</p> 
              <td>Id</td>
-             <td><input type="text" name="id" value="${student.id}" /></td>
+             <td><input type="hidden" name="id" value="${student.id}" /></td> <%-- Dette skal stå her: <td><input type="text" name="id" value="${student.id}" /></td> --%>
           </tr>
           <tr>
              <td>Name</td>
