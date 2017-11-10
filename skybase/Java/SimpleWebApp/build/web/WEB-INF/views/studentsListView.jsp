@@ -36,12 +36,12 @@
        </tr>
        <c:forEach items="${userAccountList}" var="useraccount" >
           <tr>
-             <td>${useraccount.username}</td>
+             <td>${useraccount.userName}</td>
              <td>${useraccount.gender}</td> 
-             <td>${useraccount.id}</td>
+             <td>${useraccount.user_account_id}</td>
              <td>${useraccount.name}</td>
              <td>${useraccount.email}</td>
-             <td>${useraccount.usertype}</td>
+             <td>${useraccount.userType}</td>
              <td>
                 <a href="editStudents?id=${useraccount.id}">Edit</a>
              </td>
