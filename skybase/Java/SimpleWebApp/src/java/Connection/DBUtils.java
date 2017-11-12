@@ -93,56 +93,73 @@ public class DBUtils {
         return list;
     }
     
-    public static Students findStudents(Connection conn, int id)
+    public static UserAccount findStudents(Connection conn, int user_account_id)
             throws SQLException{
-        String sql = "Select a.Id, a.Name, a.Email from Students a where a.Id=?";
+        
+        String sql = "Select a.user_account_id, a.user_name, a.gender, a.name, a.password, a.email, a.usertype from User_Account a where a.user_account_Id=?";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setInt(1, id);
+        pstm.setInt(1, user_account_id);
+       
         
         ResultSet rs = pstm.executeQuery();
         
         while(rs.next()){
-            String name = rs.getString("Name");
-            String email = rs.getString("Email");
-            Students students = new Students(id, name, email);
-            return students;
+            String username = rs.getString("user_name");
+            String gender = rs.getString("gender");
+            String name = rs.getString("name");
+            String password = rs.getString("password");
+            String email = rs.getString("email");
+            String usertype = rs.getString("UserType");          
+            UserAccount useraccount = new UserAccount(user_account_id, username, gender, name, password, email, usertype);
+            return useraccount;
         }
         return null;
     }
     
-    public static void updateStudents(Connection conn, Students students)
+    public static void updateStudents(Connection conn, UserAccount useraccount)
             throws SQLException{
-        String sql = "Update Students set Name=?, Email=? where Id=?";
+        
+        String sql = "Update User_Account set User_Name=?, Gender=?, Name=?, Password=?, Email=?, Usertype=? where user_account_id=?";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
         
-        pstm.setString(1, students.getName());
-        pstm.setString(2, students.getEmail());
-        pstm.setInt(3, students.getId());
+        pstm.setInt(1, useraccount.getUser_account_id());
+        pstm.setString(2, useraccount.getUserName());
+        pstm.setString(3, useraccount.getGender());
+        pstm.setString(4, useraccount.getName());
+        pstm.setString(5, useraccount.getPassword());
+        pstm.setString(6, useraccount.getEmail());
+        pstm.setString(7, useraccount.getUserType());
+           
         pstm.executeUpdate();
     }
     
-    public static void insertStudents(Connection conn, Students students)
+    public static void insertStudents(Connection conn, UserAccount useraccount)
             throws SQLException{
-        String sql = "insert into students (Id, Name, Email) values(?, ?, ?)";
+        String sql = "insert into user_account (user_account_id, user_name, gender,  name, password, email, usertype) values(?, ?, ?, ?, ?, ?, ?)";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
               
-        pstm.setInt(1, students.getId());
-        pstm.setString(2, students.getName());
-        pstm.setString(3, students.getEmail());
         
+        pstm.setInt(1, useraccount.getUser_account_id());
+        pstm.setString(2, useraccount.getUserName());
+        pstm.setString(3, useraccount.getGender());
+        pstm.setString(4, useraccount.getName());
+        pstm.setString(5, useraccount.getPassword());
+        pstm.setString(6, useraccount.getEmail());
+        pstm.setString(7, useraccount.getUserType());
+           
         pstm.executeUpdate();
     }
     
-    public static void deleteStudents(Connection conn, int id)
+    public static void deleteStudents(Connection conn, int user_account_id)
             throws SQLException{
-        String sql = "Delete From Students where Id=?";
+        String sql = "delete From User_Account where user_account_id=?";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
         
-        pstm.setInt(1, id);
+        pstm.setInt(1, user_account_id);
         
         pstm.executeUpdate();
     }

@@ -43,12 +43,12 @@
              <td>${useraccount.email}</td>
              <td>${useraccount.userType}</td>
              <td>
-                <a href="editStudents?id=${useraccount.id}">Edit</a>
+                <a href="editStudents?user_account_id=${useraccount.user_account_id}">Edit</a>
              </td>
-             <td>
-                <a href="deleteStudents?id=${useraccount.id}">Delete</a>
+              <td>
+                <a href="deleteStudents?user_account_id=${useraccount.user_account_id}">Delete</a>
              </td>
-          </tr>
+             
        </c:forEach>
     </table>
  

@@ -48,25 +48,30 @@ public class CreateStudentServlet extends HttpServlet {
         
         Connection conn = MyUtils.getStoredConnection(request);
        
-       Integer id = (Integer) Integer.parseInt(request.getParameter("id"));
+       
+       Integer user_account_id = (Integer) Integer.parseInt(request.getParameter("user_account_id"));
+       String username = (String) request.getParameter("username");
+       String gender = (String) request.getParameter("gender");
        String name = (String) request.getParameter("name");
+       String password = (String) request.getParameter("password");
        String email = (String) request.getParameter("email");
+       String usertype = (String) request.getParameter("usertype");
       
        
-       Students students = new Students(id, name, email);
+       UserAccount useraccount = new UserAccount(user_account_id, username, gender, name, password, email, usertype);
        
        String errorString = null;
        
        if(errorString == null){
        try{
-           if(id >= 1){
+           if(user_account_id >= 1){
            try{
-               DBUtils.insertStudents(conn, students);
+               DBUtils.insertStudents(conn, useraccount);
            }catch(StringIndexOutOfBoundsException e){
                e.printStackTrace();
                errorString = e.getMessage();
            }
-           }
+           }        
           // DBUtils.insertStudents(conn, students);
        }
        catch(SQLException e){
@@ -76,7 +81,7 @@ public class CreateStudentServlet extends HttpServlet {
        }
        
        request.setAttribute("errorString", errorString);
-       request.setAttribute("students", students);
+       request.setAttribute("userAccount", useraccount);
        
        if(errorString != null){
            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/createStudentView.jsp");

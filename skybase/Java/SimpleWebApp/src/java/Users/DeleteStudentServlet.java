@@ -37,12 +37,12 @@ public class DeleteStudentServlet extends HttpServlet{
             throws ServletException, IOException {
         Connection conn = MyUtils.getStoredConnection(request);
         
-        String id = (String) request.getParameter("id");
+        String user_account_id = (String) request.getParameter("user_account_id");
         
         String errorString = null;
         
         try{
-            DBUtils.deleteStudents(conn, Integer.parseInt(id));
+            DBUtils.deleteStudents(conn, Integer.parseInt(user_account_id));
         }
         catch(SQLException e){
             e.printStackTrace();

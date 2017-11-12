@@ -23,22 +23,37 @@
  
     <p style="color: red;">${errorString}</p>
  
-    <c:if test="${not empty students}">
+    <c:if test="${not empty useraccount}">
         <form method="POST" action="${pageContext.request.contextPath}/editStudents">
-          <input type="hidden" name="id" value="${students.id}" />
+          <input type="hidden" name="user_account_id" value="${useraccount.user_account_id}" />
           <table border="0">
              <tr>
                 <td>Id</td>
-                <td style="color: red;">${students.id}</td>
+                <td style="color: red;">${useraccount.user_account_id}</td>
              </tr>
-             <tr>
-                <td>Name</td>
-                <td><input type="text" name="name" value="${students.name}" /></td>
-             </tr>
-             <tr>
-                <td>Email</td>
-                <td><input type="text" name="email" value="${students.email}" /></td>
-             </tr>
+          <tr>
+             <td>User Name</td>
+             <td><input type="text" name="username" value="${useraccount.userName}" /></td>
+          </tr>
+          <tr>
+             <td>Gender</td>
+             <td><input type="text" name="gender" value="${useraccount.gender}" /></td>
+          <tr>
+              <td>Name</td>
+             <td><input type="text" name="name" value="${useraccount.name}" /></td>
+          </tr>
+          <tr>
+              <td>Password</td>
+             <td><input type="password" name="password" value="${useraccount.password}" size="20" />
+          </tr>
+          <tr>
+             <td>Email</td>
+             <td><input type="text" name="email" value="${useraccount.email}" /></td>
+          </tr>
+          <tr>
+             <td>User type</td>
+             <td><input type="text" name="usertype" value="${useraccount.userType}" /></td>
+          </tr>
              <tr>
                 <td colspan = "2">
                     <input type="submit" value="Submit" />
