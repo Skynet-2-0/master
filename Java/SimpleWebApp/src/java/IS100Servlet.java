@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ellak
  */
-@WebServlet(urlPatterns = {"/studentForum/is100"})
+@WebServlet(urlPatterns = {"/IS-100"})
 public class IS100Servlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
