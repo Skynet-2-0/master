@@ -15,8 +15,8 @@
  </head>
  <body>
  
-    <jsp:include page="_header.jsp"></jsp:include>
-    <jsp:include page="_menu.jsp"></jsp:include>
+    <jsp:include page="_headerUser.jsp"></jsp:include>
+    <jsp:include page="_menuUser.jsp"></jsp:include>
  
     <h3>Student List</h3>
  
@@ -45,10 +45,6 @@
           </tr>
        </c:forEach>
     </table>
- 
-    <a href="createStudents" >Create Student</a>
-    <%--
-    <jsp:include page="_footer.jsp"></jsp:include>
-    --%>
+
  </body>
 </html>

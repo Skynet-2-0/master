@@ -2,6 +2,24 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/LoginLogout/LoginServlet.java</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/viewsUser/_headerUser.jsp</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/viewsUser/studentsListViewUser.jsp</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Connection/DBUtils.java</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/viewsUser/_menuUser.jsp</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/display.jsp</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/viewsUser/Userlogin.jsp</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Users/UserInfoServlet.java</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Connection/ConnectionUtils.java</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Users/CreateStudentServlet.java</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Users/StudentsListServlet.java</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/userInfoView.jsp</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/UserUsers/StudentsListServletUser.java</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Connection/MyUtils.java</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Users/Students.java</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/studentsListView.jsp</file>
+        </group>
     </open-files>
 </project-private>
