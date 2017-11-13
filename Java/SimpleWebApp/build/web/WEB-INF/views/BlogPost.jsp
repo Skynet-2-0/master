@@ -11,10 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Blog post</title>
         <style>
-            input#box {
-                width: 740px;
-                height: 300px;
-                padding:10px;
+            div#boks {
+                
                 
             }
         </style>
@@ -25,12 +23,11 @@
     <body>
         <h1>Blog post:</h1>
         
-        <form 
+        <div id="boks" style="width:600px;height:400px;border:1px solid #000;">
             
-            action = "BlogPost" method= "post" 
-            <input type="hidden" id="box" name="box"/>
-        </form>      
-    <summary>hey</summary>
+        </div>  
+ 
+    <summary></summary>
     
     </body>
 </html>
