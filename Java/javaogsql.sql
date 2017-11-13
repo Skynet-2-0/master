@@ -1,4 +1,5 @@
-
+DROP DATABASE IF EXISTS simplewebapp;
+CREATE DATABASE simplewebapp;
 use simplewebapp;
 
 create table USER_ACCOUNT(
@@ -11,12 +12,12 @@ primary key(USER_NAME)
 
 create table STUDENTS(
 
-ID INT not null,
+ID INT unsigned not null AUTO_INCREMENT,
 NAME VARCHAR(128) not null,
 EMAIL VARCHAR(100) not null,
 primary key(ID)
 );
-
+ALTER TABLE STUDENTS AUTO_INCREMENT=1;
 -- Insert Data --
 
 insert into user_account (USER_NAME, GENDER, PASSWORD)
@@ -26,7 +27,7 @@ insert into user_account (USER_NAME, GENDER, PASSWORD)
 values('mette', 'F', 'mette001');
 
 insert into students (ID, NAME, EMAIL)
-values(1, 'mette marit', 'metteprinsesse@gmail.com');
+values(ID, 'mette marit', 'metteprinsesse@gmail.com');
 
 insert into students (ID, NAME, EMAIL)
-values(2, 'tom cruise', 'tombadass@hotmail.com');
+values(ID, 'tom cruise', 'tombadass@hotmail.com');

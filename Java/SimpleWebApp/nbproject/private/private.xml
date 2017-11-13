@@ -3,7 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/Users/ellak/NetBeansProjects/master/Java/SimpleWebApp/src/java/ForumServlet.java</file>
+=======
+            <file>file:/C:/Users/Mathias/OneDrive/IS-201/master/Java/SimpleWebApp/src/java/Connection/DBUtils.java</file>
+            <file>file:/C:/Users/Mathias/OneDrive/IS-201/master/Java/SimpleWebApp/src/java/Users/Students.java</file>
+            <file>file:/C:/Users/Mathias/OneDrive/IS-201/master/Java/SimpleWebApp/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Mathias/OneDrive/IS-201/master/Java/SimpleWebApp/web/WEB-INF/views/editStudentView.jsp</file>
+            <file>file:/C:/Users/Mathias/OneDrive/IS-201/master/Java/SimpleWebApp/src/java/Users/CreateStudentServlet.java</file>
+            <file>file:/C:/Users/Mathias/OneDrive/IS-201/master/Java/SimpleWebApp/src/java/Users/EditStudentServlet.java</file>
+            <file>file:/C:/Users/Mathias/OneDrive/IS-201/master/Java/SimpleWebApp/web/WEB-INF/views/createStudentView.jsp</file>
+>>>>>>> 5f5f3ece9326754177b3367b50b57534b5743516
         </group>
     </open-files>
 </project-private>
