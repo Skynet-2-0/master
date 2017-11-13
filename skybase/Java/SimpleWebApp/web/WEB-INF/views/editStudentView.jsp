@@ -45,6 +45,8 @@
           <tr>
               <td>Password</td>
              <td><input type="password" name="password" value="${useraccount.password}" size="20" />
+                 <button type="button" id="eye" onclick="if(password.type=='text')password.type='password';
+             else password.type='text';"> Show Password
           </tr>
           <tr>
              <td>Email</td>
@@ -63,8 +65,5 @@
           </table>
        </form>
     </c:if>
-    <%--
-    <jsp:include page="_footer.jsp"></jsp:include>
-    --%>
  </body>
 </html>

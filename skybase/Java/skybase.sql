@@ -4,9 +4,9 @@ CREATE DATABASE Skybase;
 use Skybase;
 
 CREATE TABLE User_Account(
-User_Account_ID INT UNSIGNED NOT NULL,
+User_Account_ID INT UNSIGNED NOT NULL AUTO_INCREMENT,
 User_Name varchar(30) NOT NULL UNIQUE KEY,
-Gender varchar(1) not null,
+Gender varchar(1) NOT NULL,
 Name VARCHAR(50) NOT NULL,
 Password VARCHAR(30) NOT NULL,
 Email VARCHAR(50) NOT NULL,
@@ -14,15 +14,15 @@ Usertype VARCHAR(10),
 
 CONSTRAINT User_Account_pk primary key(User_Account_ID)
 );
-
+ALTER TABLE User_Account AUTO_INCREMENT=1;
 
 -- Insert Data --
 
 INSERT INTO User_Account (User_Account_ID, User_Name, Gender, Name, Password, Email, Usertype)
-VALUES(1, 'tom', 'm','Tom Cruise','tom001', 'tombadass@hotmail.com', 'Admin');
+VALUES(User_Account_ID, 'tom', 'M','TOM CRUISE','tom001', 'tombadass@hotmail.com', 'ADMIN');
 
 INSERT INTO User_Account (User_Account_ID, User_Name, Gender, Name, Password, Email, Usertype)
-VALUES(2, 'mette', 'f','Mette Marit','mette001', 'metteprinsesse@gmail.com', 'Admin');
+VALUES(User_Account_ID, 'mette', 'F','METTE MARIT','mette001', 'metteprinsesse@gmail.com', 'ADMIN');
 
 
 CREATE TABLE Module(
@@ -115,40 +115,3 @@ User_Account_ID INT UNSIGNED NOT NULL,
 CONSTRAINT Log_pk primary key(Log_ID),
 CONSTRAINT User_fk5 FOREIGN KEY (User_Account_ID) references User_Account (User_Account_ID)
 );
-
-
-SELECT *
-FROM User_Account
-;
-
-SELECT *
-FROM Module
-;
-
-SELECT *
-FROM Feedback
-;
-
-SELECT *
-FROM Calendar
-;
-
-SELECT *
-FROM Forum
-;
-
-SELECT *
-FROM Comment
-;
-
-SELECT *
-FROM File_Attachment
-;
-
-SELECT *
-FROM Delivery
-;
-
-SELECT *
-FROM Log
-;

@@ -15,7 +15,7 @@ public class UserAccount {
     public static final String GENDER_MALE ="M";
     public static final String GENDER_FEMALE ="F";
     
-    private int user_account_id;
+    private String user_account_id;
     private String username;
     private String gender;
     private String name;
@@ -27,7 +27,7 @@ public class UserAccount {
 
     }
     
-    public UserAccount(int user_account_id, String username, String gender, String name, String password, String email, String usertype){
+    public UserAccount(String user_account_id, String username, String gender, String name, String password, String email, String usertype){
         this.user_account_id = user_account_id;
         this.username = username;
         this.gender = gender;
@@ -63,11 +63,11 @@ public class UserAccount {
         this.password = password;
     }
     
-     public int getUser_account_id(){
+     public String getUser_account_id(){
         return user_account_id;
     }
     
-    public void setUser_account_id(int user_account_id){
+    public void setUser_account_id(String user_account_id){
         this.user_account_id = user_account_id;
     }
     

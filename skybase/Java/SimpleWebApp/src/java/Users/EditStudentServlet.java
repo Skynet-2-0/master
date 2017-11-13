@@ -1,10 +1,11 @@
+package Users;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-import Users.UserAccount;
 import Connection.MyUtils;
 import Connection.DBUtils;
 import java.io.IOException;
@@ -37,7 +38,7 @@ public class EditStudentServlet extends HttpServlet {
         Connection conn = MyUtils.getStoredConnection(request);
         
         //String id = (String) request.getParameter("id");
-        Integer user_account_id = (Integer) Integer.parseInt(request.getParameter("user_account_id"));
+        String user_account_id = (String) request.getParameter("user_account_id");
         
         UserAccount useraccount = null;
         
@@ -69,17 +70,14 @@ public class EditStudentServlet extends HttpServlet {
         
         Connection conn = MyUtils.getStoredConnection(request);
         
-       Integer user_account_id = (Integer) Integer.parseInt(request.getParameter("user_account_id"));
-       String username = (String) request.getParameter("username");
-       String gender = (String) request.getParameter("gender");
-       String name = (String) request.getParameter("name");
+       String user_account_id = (String) request.getParameter("user_account_id");
+       String username = (String) request.getParameter("username").toLowerCase();
+       String gender = (String) request.getParameter("gender").toUpperCase();
+       String name = (String) request.getParameter("name").toUpperCase();
        String password = (String) request.getParameter("password");
-       String email = (String) request.getParameter("email");
-       String usertype = (String) request.getParameter("usertype");
-        
-        
-        
-        
+       String email = (String) request.getParameter("email").toLowerCase();
+       String usertype = (String) request.getParameter("usertype").toUpperCase();
+
         UserAccount useraccount = new UserAccount(user_account_id, username, gender, name, password, email, usertype);
         
         String errorString = null;
@@ -93,13 +91,14 @@ public class EditStudentServlet extends HttpServlet {
         }
         
         request.setAttribute("errorString", errorString);
-        request.setAttribute("UserAccount", useraccount);
+        request.setAttribute("userAccount", useraccount);
         
         if(errorString != null){
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/editStudentView.jsp");
             dispatcher.forward(request, response);
         }
         else{
+            System.out.println("DODODO POST BOI");
             response.sendRedirect(request.getContextPath() + "/studentList");
         }
 

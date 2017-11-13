@@ -9,7 +9,6 @@ package Users;
 import Connection.MyUtils;
 import Connection.DBUtils;
 import java.io.IOException;
-import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.SQLException;
  
@@ -49,13 +48,13 @@ public class CreateStudentServlet extends HttpServlet {
         Connection conn = MyUtils.getStoredConnection(request);
        
        
-       Integer user_account_id = (Integer) Integer.parseInt(request.getParameter("user_account_id"));
-       String username = (String) request.getParameter("username");
-       String gender = (String) request.getParameter("gender");
-       String name = (String) request.getParameter("name");
+       String user_account_id = (String) request.getParameter("user_account_id");
+       String username = (String) request.getParameter("username").trim().toLowerCase();
+       String gender = (String) request.getParameter("gender").toUpperCase();
+       String name = (String) request.getParameter("name").toUpperCase();
        String password = (String) request.getParameter("password");
-       String email = (String) request.getParameter("email");
-       String usertype = (String) request.getParameter("usertype");
+       String email = (String) request.getParameter("email").toLowerCase();
+       String usertype = (String) request.getParameter("usertype").toUpperCase();
       
        
        UserAccount useraccount = new UserAccount(user_account_id, username, gender, name, password, email, usertype);
@@ -63,21 +62,20 @@ public class CreateStudentServlet extends HttpServlet {
        String errorString = null;
        
        if(errorString == null){
-       try{
-           if(user_account_id >= 1){
+       try{      
            try{
-               DBUtils.insertStudents(conn, useraccount);
+                   DBUtils.insertStudents(conn, useraccount);
+                   
            }catch(StringIndexOutOfBoundsException e){
                e.printStackTrace();
                errorString = e.getMessage();
-           }
-           }        
+           }      
           // DBUtils.insertStudents(conn, students);
        }
        catch(SQLException e){
            e.printStackTrace();
            errorString = e.getMessage();
-       }
+        }
        }
        
        request.setAttribute("errorString", errorString);

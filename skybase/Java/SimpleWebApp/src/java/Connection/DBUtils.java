@@ -6,7 +6,6 @@ package Connection;
  * and open the template in the editor.
  */
 
-import Users.Students;
 import Users.UserAccount;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +16,7 @@ import java.util.List;
 
 /**
  *
- * @author mathi, Brage
+ * @author Mathias, Brage
  */
 public class DBUtils {
     
@@ -73,7 +72,7 @@ public class DBUtils {
         ResultSet rs = pstm.executeQuery();
         List<UserAccount> list = new ArrayList<>();
         while(rs.next()){
-            int user_account_id  = rs.getInt("user_account_id");
+            String user_account_id  = rs.getString("user_account_id");
             String username = rs.getString("user_name");
             String name = rs.getString("name");
             String gender = rs.getString("gender");
@@ -93,13 +92,13 @@ public class DBUtils {
         return list;
     }
     
-    public static UserAccount findStudents(Connection conn, int user_account_id)
+    public static UserAccount findStudents(Connection conn, String user_account_id)
             throws SQLException{
         
         String sql = "Select a.user_account_id, a.user_name, a.gender, a.name, a.password, a.email, a.usertype from User_Account a where a.user_account_Id=?";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setInt(1, user_account_id);
+        pstm.setString(1, user_account_id);
        
         
         ResultSet rs = pstm.executeQuery();
@@ -124,32 +123,32 @@ public class DBUtils {
         
         PreparedStatement pstm = conn.prepareStatement(sql);
         
-        pstm.setInt(1, useraccount.getUser_account_id());
-        pstm.setString(2, useraccount.getUserName());
-        pstm.setString(3, useraccount.getGender());
-        pstm.setString(4, useraccount.getName());
-        pstm.setString(5, useraccount.getPassword());
-        pstm.setString(6, useraccount.getEmail());
-        pstm.setString(7, useraccount.getUserType());
+        
+        pstm.setString(1, useraccount.getUserName());
+        pstm.setString(2, useraccount.getGender());
+        pstm.setString(3, useraccount.getName());
+        pstm.setString(4, useraccount.getPassword());
+        pstm.setString(5, useraccount.getEmail());
+        pstm.setString(6, useraccount.getUserType());
+        pstm.setString(7, useraccount.getUser_account_id());
            
         pstm.executeUpdate();
     }
     
     public static void insertStudents(Connection conn, UserAccount useraccount)
             throws SQLException{
-        String sql = "insert into user_account (user_account_id, user_name, gender,  name, password, email, usertype) values(?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into user_account (user_name, gender,  name, password, email, usertype) values(?, ?, ?, ?, ?, ?)";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
-              
+
+        //pstm.setString(1, useraccount.getUser_account_id());
+        pstm.setString(1, useraccount.getUserName());
+        pstm.setString(2, useraccount.getGender());
+        pstm.setString(3, useraccount.getName());
+        pstm.setString(4, useraccount.getPassword());
+        pstm.setString(5, useraccount.getEmail());
+        pstm.setString(6, useraccount.getUserType());
         
-        pstm.setInt(1, useraccount.getUser_account_id());
-        pstm.setString(2, useraccount.getUserName());
-        pstm.setString(3, useraccount.getGender());
-        pstm.setString(4, useraccount.getName());
-        pstm.setString(5, useraccount.getPassword());
-        pstm.setString(6, useraccount.getEmail());
-        pstm.setString(7, useraccount.getUserType());
-           
         pstm.executeUpdate();
     }
     

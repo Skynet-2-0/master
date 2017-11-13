@@ -27,8 +27,8 @@
        <table border="0">
           <tr>
               <p style="color: red;">${errorString}</p> 
-             <td>Id</td>
-             <td><input type="text" name="user_account_id" value="${useraccount.user_account_id}" /></td>
+             <td>Id - autogenerert</td>
+             <td><input type="hidden" name="user_account_id" value="${useraccount.user_account_id}" /></td>
           </tr>
           <tr>
              <td>User Name</td>
@@ -44,6 +44,8 @@
           <tr>
               <td>Password</td>
              <td><input type="password" name="password" value="${useraccount.password}" size="20" />
+                 <button type="button" id="eye" onclick="if(password.type=='text')password.type='password';
+             else password.type='text';"> Show Password
           </tr>
           <tr>
              <td>Email</td>
@@ -51,7 +53,11 @@
           </tr>
           <tr>
              <td>User type</td>
-             <td><input type="text" name="usertype" value="${useraccount.userType}" /></td>
+             <td><select name="usertype" size="2" value="${useraccount.userType}">
+              <option>ADMIN</option>
+              <option>BRUKER</option>
+              </select>
+                 <%--<input type="text" name="usertype" value="${useraccount.userType}" /></td>--%>
           </tr>
           <tr>
              <td colspan="2">                  
