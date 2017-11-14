@@ -17,23 +17,21 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ellak
  */
-@WebServlet(urlPatterns = {"/studentForum/createCat"})
-public class CreateCatServlet extends HttpServlet {
-    
-    private static final long serialVersionUID = 1L;
-    
-    public CreateCatServlet(){
-        super();
-        
-    }
+@WebServlet(urlPatterns = {"/IS-109"})
+public class IS109Servlet extends HttpServlet {
 
- 
+        private static final long serialVersionUID = 1L;
+        
+        public IS109Servlet(){
+            super();
+        }
+   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/createCatView.jsp");
-        dispatcher.forward(request, response);
+       RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/is109View.jsp");
+       dispatcher.forward(request, response);
     }
 
     /**
@@ -47,13 +45,8 @@ public class CreateCatServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         doGet(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-   
 }

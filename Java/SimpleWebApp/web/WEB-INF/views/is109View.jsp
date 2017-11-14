@@ -1,6 +1,6 @@
 <%-- 
-    Document   : is104View
-    Created on : 13.nov.2017, 09:23:12
+    Document   : is100View
+    Created on : 26.okt.2017, 10:02:14
     Author     : ellak
 --%>
 
@@ -18,16 +18,15 @@
     <head>
         <meta charset="UTF-8">
         <title>Forum</title>
-         <style>
+        <style>
             
-            
-            table {
+            table{
                 border: 2px solid black;
                 border-collapse: collapse;
-                width: 100% 
-           
+                width: 100%
+            
             }
-     
+       
         </style>
     </head>
     <body>
@@ -36,7 +35,7 @@
     <jsp:include page="_menu2.jsp"></jsp:include>
 
     
-        <h3>IS-104 forums</h3>
+        <h3>IS-100 forums</h3>
         
         <table border ="1">
             <th>QuestionID</th>
@@ -49,7 +48,7 @@
             
             </tr>
             <td>001</td>
-            <td> <a href="${pageContext.request.contextPath}/">What is usability? </td>
+            <td> <a href="${pageContext.request.contextPath}/"> How to create a project </td>
             <td>Mette</td>
             <td>2017.11.13 <p>16:12:24</p> </td>
             <td>0</td>
@@ -57,7 +56,7 @@
             
             <tr>
                 <td>002</td>
-                <td> <a href="${pageContext.request.contextPath}/">What is UI Stack?</a></td>
+                <td> <a href="${pageContext.request.contextPath}/">What local variable means??</a></td>
                 <td>Tom</td>
                 <td>2017.11.13 <p>15:37:54</p> </td>
                 <td>0</td>
@@ -67,7 +66,7 @@
             
             <tr>
                 <td>003</td>
-                <td> <a href="${pageContext.request.contextPath}/">What is the key concept of gamification? </td>
+                <td> <a href="${pageContext.request.contextPath}/">What is parameter? </td>
                 <td>Vegar</td>
                 <td>2017.11.13 <p>15:12:24</p> </td>
                 <td>0</td>
@@ -77,7 +76,7 @@
             
             <tr>
                 <td>004</td>
-                <td> <a href="${pageContext.request.contextPath}/">What is the purpose of Human Interface design?</td>
+                <td> <a href="${pageContext.request.contextPath}/"> What is class means?</td>
                 <td>Joakim</td>
                 <td>2017.11.13 <p>15:12:04</p> </td>
                 <td>0</td>
@@ -90,4 +89,3 @@
        
     </body>
 </html>
-

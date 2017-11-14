@@ -18,45 +18,14 @@
     <head>
         <meta charset="UTF-8">
         <title>Forum</title>
-         <style>
+        <style>
             
-            
-            table {
-                border: 1px solid black;
+            table{
+                border: 2px solid black;
                 border-collapse: collapse;
-                
-                width: 100% 
-                
-                
-                
-            }
+                width: 100%
             
-            table, th, td {
-                color: #000;
-           
             }
-            
-            table a hover {
-                color: #B40E1F;
-                text-align: left;
-                
-            }   
-            
-            th{
-                background-color: #B40E1F;
-                color: #F0F0F0;
-                padding: 5px;
-              
-            }
-            
-            .leftpart {
-                width: 60%;
-            }
-            
-            .rightpart {
-                width: 40%;
-            }
-     
        
         </style>
     </head>
@@ -70,26 +39,52 @@
         
         <table border ="1">
             <th>QuestionID</th>
+            <th>Question</th>
             <th>Name</th>
+            <th>CreateDate</th>
+            <th>View</th>
+            <th>Reply</th>
+            
+            
             </tr>
-            <td> <a href="${pageContext.request.contextPath}/IS-100">IS-100-1</a> <p></p> Introduksjon til informasjonssystemer</td>
-            <td>No topic</td>
+            <td>001</td>
+            <td> <a href="${pageContext.request.contextPath}/">What is means with Process Effectiveness? </td>
+            <td>Mette</td>
+            <td>2017.11.13 <p>16:12:24</p> </td>
+            <td>0</td>
+            <td>0</td>
             
             <tr>
-                <td> <a href="${pageContext.request.contextPath}/IS-104">IS-104-1</a> <p></p> Brukergrensesnitt</td>
-                <td>No topic</td>
+                <td>002</td>
+                <td> <a href="${pageContext.request.contextPath}/">What is a database?</a></td>
+                <td>Tom</td>
+                <td>2017.11.13 <p>15:37:54</p> </td>
+                <td>0</td>
+                <td>0</td>
+                
             </tr>
             
             <tr>
-                <td> <a href="${pageContext.request.contextPath}/IS-109">IS-109-1</a> <p></p> Objektorientert programmering 1 </td>
-                <td>No topic</td>
+                <td>003</td>
+                <td> <a href="${pageContext.request.contextPath}/">What is primary key? </td>
+                <td>Vegar</td>
+                <td>2017.11.13 <p>15:12:24</p> </td>
+                <td>0</td>
+                <td>0</td>
+                
             </tr>
             
             <tr>
-                <td> <a href="${pageContext.request.contextPath}/IS-111">IS-111-1 </a> <p></p> Introduksjon til systemutviklingsprosjekter </td>
-                <td>No topic</td>
+                <td>004</td>
+                <td> <a href="${pageContext.request.contextPath}/">What is information silo?</td>
+                <td>Joakim</td>
+                <td>2017.11.13 <p>15:12:04</p> </td>
+                <td>0</td>
+                <td>0</td>
             </tr>
         </table>
+                <a href="${pageContext.request.contextPath}/studentForum">Back to previous</a>
+                <a href="${pageContext.request.contextPath}/">Next>></a>
             
        
     </body>

@@ -10,9 +10,7 @@
 <div style="padding: 5px;">   
         <a href="${pageContext.request.contextPath}/">Home</a>
         |
-        <a href="${pageContext.request.contextPath}/">Create a category</a>
-        |
-        <a href="${pageContext.request.contextPath}/">Create a topic</a>
+        <a href="${pageContext.request.contextPath}/">Create a new topic</a>
         
         
 </div>

@@ -17,30 +17,47 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ellak
  */
-@WebServlet(urlPatterns = {"/IS-104"})
-public class IS104Servlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/topic"})
+public class TopicServlet extends HttpServlet {
     
     private static final long serialVersionUID = 1L;
     
-    public IS104Servlet(){
+    public TopicServlet(){
         super();
     }
-
-  
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-       RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/is104View.jsp");
-       dispatcher.forward(request, response);
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/topicView.jsp");
+        
+        dispatcher.forward(request, response);
     }
 
-    
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+       
         doGet(request, response);
     }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
 }
