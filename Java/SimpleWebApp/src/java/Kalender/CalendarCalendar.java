@@ -10,7 +10,7 @@ package Kalender;
  * @author Ann Margrethe
  */
 public class CalendarCalendar {
-    private int Kalender_id;
+    private int Calendar_ID;
     private int Dato;
     private String Hendelse;
     
@@ -18,8 +18,8 @@ public class CalendarCalendar {
         
     }
     
-    public CalendarCalendar(int Kalendar_id, int Dato, String Hendelse){
-        this.Kalender_id = Kalender_id;
+    public CalendarCalendar(int Calendar_ID, int Dato, String Hendelse){
+        this.Calendar_ID = Calendar_ID;
         this.Dato = Dato;
         this.Hendelse = Hendelse;
     }

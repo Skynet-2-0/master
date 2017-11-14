@@ -50,18 +50,17 @@ public class CalendarServlet extends HttpServlet {
       
        
        CalendarCalendar calendarCalendar = new CalendarCalendar(Dato, Hendelse);
-       
+       calendarCalendar = null;
        String errorString = null;
        
        if(errorString == null){
        try{
-           if(Dato >= 1){
+           
            try{
                DBUtils.findDate(conn, Dato);
            }catch(StringIndexOutOfBoundsException e){
                e.printStackTrace();
                errorString = e.getMessage();
-           }
            }
           
        }
@@ -79,7 +78,7 @@ public class CalendarServlet extends HttpServlet {
            dispatcher.forward(request, response);
        }
        else{
-           response.sendRedirect(request.getContextPath() + "/studentList");
+           response.sendRedirect(request.getContextPath() + "/CalendarSearch");
        }
    }
         

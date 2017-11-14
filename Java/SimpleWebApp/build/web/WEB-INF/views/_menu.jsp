@@ -21,4 +21,5 @@
    |
    <a href="${pageContext.request.contextPath}/Calendar">Kalender</a>
    |
+   <a href="${pageContext.request.contextPath}/CalendarServlet">kalender 2</a>
 </div>  

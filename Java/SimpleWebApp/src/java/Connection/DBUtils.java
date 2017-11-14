@@ -208,7 +208,7 @@ public class DBUtils {
         try {
             while (rs.next()) {
                 rs.getString("Dato");
-                System.out.println("Dato :" + rs.getString("Dato"));
+                System.out.println("Dato :" + rs.getInt("Dato"));
                 return rs.getInt(201017);
                
                 

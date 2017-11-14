@@ -15,30 +15,18 @@
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
  
-        <h3>Create Student</h3>
+        <h3>Kalender</h3>
     
     <p style="color: red;">${errorString}</p>
     
-    <form method="POST" action="${pageContext.request.contextPath}/createStudents">
+    <form method="POST" action="${pageContext.request.contextPath}/CalendarResult">
        <table border="0">
           <tr>
               <p style="color: red;">${errorString}</p> 
-             <td>Id</td>
-             <td><input type="text" name="id" value="${student.id}" /></td>
-          </tr>
-          <tr>
-             <td>Name</td>
-             <td><input type="text" name="name" value="${student.name}" /></td>
-          </tr>
-          <tr>
-             <td>Email</td>
-             <td><input type="text" name="email" value="${student.email}" /></td>
-          </tr>
-          <tr>
-             <td colspan="2">                  
-                 <input type="submit" value="Submit" />
-                 <a href="studentList">Cancel</a>
-             </td>
+             <td>Søk etter dato</td>
+             
+             <td><input type="text" name="search" value="${calendarCalendar.dato}" /></td>
+             <input type="submit" value="Submit" name="submit" />
           </tr>
        </table>
     </form>
