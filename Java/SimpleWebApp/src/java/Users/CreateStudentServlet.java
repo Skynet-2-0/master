@@ -32,6 +32,8 @@ public class CreateStudentServlet extends HttpServlet {
     
     public CreateStudentServlet(){
         super();
+        System.out.println("create student servlet initializing....");
+        
     }
     
     @Override
@@ -47,8 +49,9 @@ public class CreateStudentServlet extends HttpServlet {
             throws ServletException, IOException{
         
         Connection conn = MyUtils.getStoredConnection(request);
+         
        
-       Integer id = (Integer) Integer.parseInt(request.getParameter("id"));
+       String id = (String) request.getParameter("id");
        String name = (String) request.getParameter("name");
        String email = (String) request.getParameter("email");
       
@@ -59,20 +62,17 @@ public class CreateStudentServlet extends HttpServlet {
        
        if(errorString == null){
        try{
-           if(id >= 1){
-           try{
                DBUtils.insertStudents(conn, students);
-           }catch(StringIndexOutOfBoundsException e){
-               e.printStackTrace();
-               errorString = e.getMessage();
-           }
+               System.out.println("eyhey, inserted into students");
+               //response.sendRedirect(request.getContextPath() + "/studentList");
+               System.out.println("redirect m8");
+            
            }
           // DBUtils.insertStudents(conn, students);
-       }
+      
        catch(SQLException e){
            e.printStackTrace();
            errorString = e.getMessage();
-       }
        }
        
        request.setAttribute("errorString", errorString);
@@ -84,10 +84,8 @@ public class CreateStudentServlet extends HttpServlet {
        }
        else{
            response.sendRedirect(request.getContextPath() + "/studentList");
-       }
+       } 
    }
-        
-//doGet(request, response);
+   
+  }
 }
-    
-
