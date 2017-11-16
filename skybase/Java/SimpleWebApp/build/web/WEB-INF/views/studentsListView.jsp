@@ -12,6 +12,7 @@
  <head>
     <meta charset="UTF-8">
     <title>Student List</title>
+    <link href="Main.css" rel="stylesheet" type="text/css">
  </head>
  <body>
  
@@ -22,7 +23,7 @@
  
     <p style="color: red;">${errorString}</p>
  
-    <table border="1" cellpadding="5" cellspacing="1" >
+    <table style="border-collapse:collapse; margin-left: 25px;" class="tables">
        <tr>
           <th>Username</th>
           <th>Gender</th>
@@ -51,7 +52,7 @@
              
        </c:forEach>
     </table>
- 
-    <a href="createStudents" >Create Student</a>
+    <p></p>
+    <button style="margin-left: 25px;"><a href="createStudents" class="createStudent">Create student</a></button>
  </body>
 </html>
