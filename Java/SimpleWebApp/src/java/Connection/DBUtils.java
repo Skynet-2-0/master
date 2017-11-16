@@ -174,4 +174,21 @@ public class DBUtils {
       
    return null;
     }
+    
+    public static void insertBlogPost(Connection conn, int userid, String title, String content) {
+        String sql = "Insert into blog_post (title, content, stud_id) VALUES (?,?,?);";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, title);
+            ps.setString(2, content);
+            ps.setInt(3, userid);
+            
+            ps.executeUpdate();
+            conn.commit();
+            
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
 }
