@@ -41,7 +41,7 @@
     </div>
 </div>
                  
-    <center><p style="color:pink;">User Name: tom<br> password: tom001 or <br><br> mette/mette001</p></center>
+    <center><p style="color:pink; margin-bottom: 25px">User Name: tom<br> password: tom001 or <br><br> mette/mette001</p></center>
             <%--
    <jsp:include page="_footer.jsp"></jsp:include>
             --%>     

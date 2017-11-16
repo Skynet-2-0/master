@@ -54,7 +54,7 @@
 
 <div class="menu">
     <ul class="nav">
-        <li><a href="${pageContext.request.contextPath}/">Home</a></li>  
+        <li><a href="${pageContext.request.contextPath}/homeView.jsp">Home</a></li>  
         <li><a href="${pageContext.request.contextPath}/studentList">Student List</a></li>
         <li><a href="${pageContext.request.contextPath}/userInfo">My Account Info</a></li> 
         <%--<li class="menulogin"><a href="${pageContext.request.contextPath}/login">Login</a></li>--%>  

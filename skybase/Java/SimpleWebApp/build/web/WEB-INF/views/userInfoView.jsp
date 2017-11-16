@@ -27,4 +27,4 @@
     <button style="padding: 7px 25px 7px 25px;"><a href="${pageContext.request.contextPath}/Snake.jsp">Snake</a></button>
     </div> 
  </body>
-</html>
+</html> 
