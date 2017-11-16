@@ -10,7 +10,7 @@
 <html>
   <head>
      <meta charset="UTF-8">
-     <title>Home Page</title>
+     <title>Home Page</title>    
   </head>
   <body>
  
@@ -21,7 +21,7 @@
       <img src="http://tflip.uia.no/images/uia_logo.gif" alt="uia_logo" style="width:600px;height:100px;">
       
       <form name="myForm" action="display.jsp" method="POST">
-          <table border="0">
+          <table border="0">    
               
               <tbody>
                   <tr>

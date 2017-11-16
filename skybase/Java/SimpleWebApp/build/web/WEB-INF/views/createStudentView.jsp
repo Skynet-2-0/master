@@ -13,18 +13,22 @@
  <head>
     <meta charset="UTF-8">
     <title>Create Student</title>
+    <link href="Main.css" rel="stylesheet" type="text/css">
  </head>
  <body>
  
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
     
-    <h3>Create Student</h3>
+    <%--<h3>Create Student</h3>--%>
     
     <p style="color: red;">${errorString}</p>
     
     <form method="POST" action="${pageContext.request.contextPath}/createStudents">
-       <table border="0">
+        <table style="border-collapse: collapse;" class="opprettStudent" border="0">
+            <tr>         
+                <th colspan="2">Create Student</th>
+            </tr>
           <tr>
               <p style="color: red;">${errorString}</p> 
              <td>Id</td>
@@ -41,7 +45,7 @@
           <tr>
              <td colspan="2">                  
                  <input type="submit" value="Submit" />
-                 <a href="studentList">Cancel</a>
+                 <a href="studentList" style="margin-left: 30px;">Cancel</a>
              </td>
           </tr>
        </table>

@@ -12,6 +12,7 @@
  <head>
     <meta charset="UTF-8">
     <title>Student List</title>
+    <link href="Main.css" rel="stylesheet" type="text/css">
  </head>
  <body>
  
@@ -21,8 +22,8 @@
     <h3>Student List</h3>
  
     <p style="color: red;">${errorString}</p>
- 
-    <table border="1" cellpadding="5" cellspacing="1" >
+    <%---<table border="1" cellpadding="5" cellspacing="1" class="studentList">--%>
+    <table style="border-collapse:collapse; margin-left: 25px;" class="tables">
        <tr>
           <th>Username</th>
           <th>Gender</th>
@@ -31,8 +32,7 @@
           <th>Email</th>
           <th>Usertype</th>
           <th>Edit</th>
-          <th>Delete</th>
-          
+          <th>Delete</th> 
        </tr>
        <c:forEach items="${userAccountList}" var="useraccount" >
           <tr>
@@ -45,9 +45,10 @@
           </tr>
        </c:forEach>
     </table>
- 
-    <a href="createStudents" >Create Student</a>
+    <p></p>
+    <button style="margin-left: 25px;"><a href="createStudents" class="createStudent">Create student</a></button>
     <%--
+    <a href="createStudents" >Create Student</a>
     <jsp:include page="_footer.jsp"></jsp:include>
     --%>
  </body>

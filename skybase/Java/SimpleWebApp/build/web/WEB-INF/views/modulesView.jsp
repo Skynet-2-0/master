@@ -11,6 +11,7 @@
  <head>
     <meta charset="UTF-8">
     <title>Modules</title>
+    <link href="Main.css" rel="stylesheet" type="text/css">
  </head>
  <body>
      
@@ -20,7 +21,7 @@
  
     <h3>Modules Overview</h3>
 
-<table border = "1">
+<table style="border-collapse:collapse; margin-left: 25px;" class="tables">
          <tr>
             <th>Module no.</th>
             <th>Delivery date</th>

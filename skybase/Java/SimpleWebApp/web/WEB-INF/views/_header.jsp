@@ -9,19 +9,13 @@
 <%@ page import = "java.io.*,java.util.*" %>
 <div style="background: rgba(175, 175, 175, 0.6); height: 70px; padding: 5px;">
   <div style="float: left">
-     <h1>Skynet 2.0</h1>
-  </div>
-    
+     <h2>Skynet 2.0</h2>
+  </div>   
   <div style="float: right; padding: 10px; text-align: right;">
  
      <!-- User store in session with attribute: loginedUser -->
      <b>${loginedUser.userName}</b> <% out.println("IP adresse: " + request.getRemoteAddr()); %> <br>
- <br/>
- 
- <div style="padding: 10px;">
-     <a href="logout.jsp"/> <H2> LogOut </H2> </a>
- </div>
- 
+    <br/>
  </div>
     
       <div style="float: top; padding: 5px; text-align: center; font-size: 25px;">
