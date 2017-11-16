@@ -101,7 +101,7 @@ CONSTRAINT Module_fk2 FOREIGN KEY (Module_ID) references Module (Module_ID)
 create table Delivery(
 Delivery_ID INT UNSIGNED NOT NULL,
 Date date,
-File_ID INT UNSIGNED NOT NULL,
+File_ID INT NOT NULL,
 
 CONSTRAINT Delivery_pk primary key(Delivery_ID),
 CONSTRAINT File_fk1 FOREIGN KEY (File_ID) references File_Attachment(File_ID)
