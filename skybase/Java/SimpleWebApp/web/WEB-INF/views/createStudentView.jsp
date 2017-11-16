@@ -1,7 +1,7 @@
 <%-- 
     Document   : createStudentView
     Created on : 17.sep.2017, 22:18:42
-    Author     : mathi
+    Author     : mathi, Brage
 --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"

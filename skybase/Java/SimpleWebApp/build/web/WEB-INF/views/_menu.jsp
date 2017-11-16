@@ -18,5 +18,8 @@
    <a href="${pageContext.request.contextPath}/login">Login</a>
    |  
    <a href="${pageContext.request.contextPath}/modules">Modules</a>
+   |
+   <a href="${pageContext.request.contextPath}/progressMenu">Progress</a>
+   
    
 </div>  

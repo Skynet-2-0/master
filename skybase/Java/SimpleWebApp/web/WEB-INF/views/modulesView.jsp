@@ -26,7 +26,7 @@
             <th>Delivery date</th>
          </tr>
          <tr>
-            <td> <a href="${pageContext.request.contextPath}/modules/modul1">1</a></td>
+            <td> <a href="${pageContext.request.contextPath}/modul1">1</a></td>
             <td>2. September</td>
          </tr>
          
