@@ -26,7 +26,6 @@
             input#titlebar {
                 width: 729px;
                 padding:10px;
-                value: Title;
             }
             iframe#richTextArea{
                 height: 100%;
@@ -115,7 +114,9 @@
                     editor.execCommand("redo", false, null);
                 }, false);
 
-
+                titleInput.addEventListener("click", function () {
+                    editor.execCommand("clear", false, null);
+                }, false);
             }, false);
         </script>
     </head>
@@ -125,8 +126,9 @@
 
     <body>
 
-        <h1>Blog</h1> 
-        <p>Blog post:</p>
+        <h1>Blog</h1>
+        <a href="${pageContext.request.contextPath}/BlogPost">Your posts</a>
+        <p>New blog post:</p>
         
 
         <div id="textEditor">   
@@ -164,7 +166,7 @@
 
              <form action=BlogPost name="myform" id="myform" method= "post" > 
                  
-                    <input type="text" id="titlebar" name="title">
+                 <input type="text" id="titlebar" name="title" value="Title">
                     
             <textarea style= "display: none;" name= "blog-post"  id="blog-post" cols="100" rows="20"></textarea>
             <iframe name="richTextArea" id="richTextArea" frameborder="2"></iframe>
@@ -174,6 +176,7 @@
             <input name="upload" type="button" value="Upload" onClick="Upload();"/>
             
              </form>
+            
             <script>
 
                 function Upload() {

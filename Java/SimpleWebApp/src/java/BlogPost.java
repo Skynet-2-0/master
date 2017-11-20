@@ -21,7 +21,13 @@ import java.sql.Connection;
 @WebServlet(urlPatterns = {"/BlogPost"})
 public class BlogPost extends HttpServlet {
     
+ private static final long serialVersionUID = 1L;
+    
+    public BlogPost(){
+        super();
+    }
 
+  
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,7 +42,6 @@ public class BlogPost extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         
-       
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -60,6 +65,9 @@ public class BlogPost extends HttpServlet {
             out.println("<p>" + content +  "</p>");
             out.println("</body>");
             out.println("</html>");
+            
+            
+       
         }
     }
 @Override
@@ -69,8 +77,7 @@ public class BlogPost extends HttpServlet {
         RequestDispatcher dispatcher;
         dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/BlogPost.jsp");
         
-        dispatcher.forward(request, response);
-        
+        dispatcher.forward(request, response); 
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -96,7 +103,6 @@ public class BlogPost extends HttpServlet {
         processRequest(request, response);
         
     
-        
         RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/BlogPost.jsp");
            dispatcher.forward(request, response);
     }
