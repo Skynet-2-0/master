@@ -174,18 +174,18 @@ public class DBUtils {
       
    return null;
     }
-    public static CalendarCalendar findDate(Connection conn, Integer Dato, String Hendelse)
+    public static CalendarCalendar findDate(Connection conn, String Dato, String Hendelse)
             throws SQLException {
         String sql = "Select a.Kalender_id, a.Dato, a.Hendelse from Kalender a"
                 + " where a.Dato = ? ";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setInt(1, Dato);
+        pstm.setString(1, Dato);
         ResultSet rs = pstm.executeQuery();
         
         if(rs.next()){
-            Integer dato;
-            dato = rs.getInt(201017);
+            String dato;
+            dato = rs.getString("dato");
             CalendarCalendar calendar = new CalendarCalendar();
             calendar.setDato(Dato);
             calendar.setHendelse(Hendelse);
@@ -193,7 +193,7 @@ public class DBUtils {
         }
         return null;
     }
-        public static Integer findDate(Connection conn, Integer Dato)
+        public static String findDate(Connection conn, String Dato)
             throws SQLException {
         String sql = "Select a.Dato from kalender a"
                 + " where a.Dato = ?";
@@ -201,15 +201,15 @@ public class DBUtils {
      
 
         PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setInt(1, Dato);
+        pstm.setString(1, Dato);
         
         ResultSet rs = pstm.executeQuery();
         
         try {
             while (rs.next()) {
                 rs.getString("Dato");
-                System.out.println("Dato :" + rs.getInt("Dato"));
-                return rs.getInt(201017);
+                System.out.println("Dato :" + rs.getString("Dato"));
+                return rs.getString("dato");
                
                 
             }

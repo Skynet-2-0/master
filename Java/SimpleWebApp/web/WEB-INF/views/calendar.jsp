@@ -19,7 +19,7 @@
     
     <p style="color: red;">${errorString}</p>
     
-    <form method="POST" action="${pageContext.request.contextPath}/CalendarResult">
+    <form method="POST" action="${pageContext.request.contextPath}/CalendarSearch">
        <table border="0">
           <tr>
               <p style="color: red;">${errorString}</p> 

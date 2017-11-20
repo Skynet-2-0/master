@@ -41,9 +41,9 @@ public CalendarCalendar () throws SQLException {
                 System.out.println(e1.getMessage());
         }
     }
-public ResultSet getDato(Integer dato) throws SQLException {
+public ResultSet getDato(String dato) throws SQLException {
     try {
-        pstm.setInt(1, dato);
+        pstm.setString(1, dato);
         rs = pstm.executeQuery();
         } 
         catch (SQLException e1) {
@@ -56,14 +56,14 @@ public ResultSet getDato(Integer dato) throws SQLException {
 }
 %>
         <%
-            String name = new String();
+            String dato = new String();
             
             if (request.getParameter("dato") != null) {
-                name = request.getParameter("dato");
+                dato = request.getParameter("dato");
             }
             
             CalendarCalendar calendarCalendar = new CalendarCalendar();
-            ResultSet dato = calendarCalendar.getDato(Integer.parseInt(name));
+            ResultSet datos = calendarCalendar.getDato(dato);
             
             %>
            <table border="1">
@@ -71,9 +71,9 @@ public ResultSet getDato(Integer dato) throws SQLException {
                    <tr>
                        <td>Dato</td>                      
                   </tr>
-                  <% while(dato.next()){ %> 
+                  <% while(datos.next()){ %> 
                   <tr>
-                      <td><%= dato.getInt("Dato") %></td>
+                      <td><%= datos.getString("Dato") %></td>
                   </tr>
                   <% } %>
            

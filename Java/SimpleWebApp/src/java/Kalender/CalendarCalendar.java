@@ -11,24 +11,24 @@ package Kalender;
  */
 public class CalendarCalendar {
     private int Calendar_ID;
-    private int Dato;
+    private String Dato;
     private String Hendelse;
     
     public CalendarCalendar(){
         
     }
     
-    public CalendarCalendar(int Calendar_ID, int Dato, String Hendelse){
+    public CalendarCalendar(int Calendar_ID, String Dato, String Hendelse){
         this.Calendar_ID = Calendar_ID;
         this.Dato = Dato;
         this.Hendelse = Hendelse;
     }
 
-    CalendarCalendar(Integer Dato, String Hendelse) {
+    CalendarCalendar(String Dato, String Hendelse) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public int getDato(){
+    public String getDato(){
         return Dato;
     }
     
@@ -36,7 +36,7 @@ public class CalendarCalendar {
         return Hendelse;
     }
     
-    public void setDato(int Dato){
+    public void setDato(String Dato){
         this.Dato = Dato;
     }
 

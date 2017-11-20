@@ -45,7 +45,7 @@ public class CalendarServlet extends HttpServlet {
         
         Connection conn = MyUtils.getStoredConnection(request);
        
-       Integer Dato = (Integer) Integer.parseInt(request.getParameter("Dato"));
+       String Dato = (String) request.getParameter ("Dato");
        String Hendelse = (String) request.getParameter("Hendelse");
       
        

@@ -27,6 +27,7 @@ public class CalendarSearch extends HttpServlet {
         super();
     }
     
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
@@ -38,6 +39,14 @@ public class CalendarSearch extends HttpServlet {
         
         dispatcher.forward(request, response);
     }
+    
+    public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) 
+            throws IOException, ServletException { 
+
+  request.getRequestDispatcher("CalendarSearch.jsp").forward(request, response);
+  ((HttpServletResponse)response).sendRedirect("CalendarSearch.jsp");
+  chain.doFilter(request, response);
+ }
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
