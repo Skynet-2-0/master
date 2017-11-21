@@ -35,11 +35,13 @@ public class CalendarSearch extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         Connection conn = MyUtils.getStoredConnection(request);
+        String Dato = (String) request.getParameter("Dato");
+        String Hendelse = (String) request.getParameter("Hendelse");
         
         String errorString = null;
         List<CalendarCalendar> list = null;
         try{
-            list = DBUtils.queryCalendar(conn);
+            list = (List<CalendarCalendar>) DBUtils.findDate(conn, Dato, Hendelse);
         }
         catch(SQLException e){
             e.printStackTrace();

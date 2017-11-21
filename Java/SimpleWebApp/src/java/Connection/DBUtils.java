@@ -174,7 +174,7 @@ public class DBUtils {
     
        public static List<CalendarCalendar> queryCalendar(Connection conn)
             throws SQLException{
-        String sql = "Select a.Dato, a.Hendelse from Students a";
+        String sql = "Select a.Dato, a.Hendelse from Calendar a";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
         
@@ -195,26 +195,27 @@ public class DBUtils {
 
     public static CalendarCalendar findDate(Connection conn, String Dato, String Hendelse)
             throws SQLException {
-        String sql = "Select a.Kalender_id, a.Dato, a.Hendelse from Kalender a"
+        String sql = "Select a.Calendar_ID, a.Dato, a.Hendelse from Calendar a"
                 + " where a.Dato = ? ";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setString(1, Dato);
         ResultSet rs = pstm.executeQuery();
-        
+        List<CalendarCalendar> list = new ArrayList<>();
         if(rs.next()){
             String dato;
             dato = rs.getString("dato");
             CalendarCalendar calendar = new CalendarCalendar();
             calendar.setDato(Dato);
             calendar.setHendelse(Hendelse);
+            list.add(calendar);
             return calendar;
         }
         return null;
     }
         public static String findDate(Connection conn, String Dato)
             throws SQLException {
-        String sql = "Select a.Dato from kalender a"
+        String sql = "Select a.Dato from Calendar a"
                 + " where a.Dato = ?";
         
      

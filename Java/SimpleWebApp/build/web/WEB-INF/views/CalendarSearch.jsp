@@ -16,7 +16,7 @@
         <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
     <body>
-         <h1>Søk etter student</h1>
+         <h1>Søk etter dato</h1>
         
        
     <p style="color: red;">${errorString}</p>
@@ -28,10 +28,10 @@
           <th>Edit</th>
           <th>Delete</th>
        </tr>
-       <c:forEach items="${CalendarCalendar}" var="calendar" >
+       <c:forEach items="${CalendarCalendar}" var="list" >
           <tr>
-             <td>${calendar.dato}</td>
-             <td>${calendar.hendelse}</td>
+             <td>${CalendarCalendar.dato}</td>
+             <td>${CalendarCalendar.hendelse}</td>
              <td>
                 <a href="editStudents?id=${student.id}">Edit</a>
              </td>

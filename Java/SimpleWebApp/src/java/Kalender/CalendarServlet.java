@@ -70,9 +70,9 @@ public class CalendarServlet extends HttpServlet {
            e.printStackTrace();
            errorString = e.getMessage();
        }
-               List<Students> list = null;
+               List<CalendarCalendar> list = null;
         try{
-            list = DBUtils.queryStudents(conn);
+            list = DBUtils.queryCalendar(conn);
         }
         catch(SQLException e){
             e.printStackTrace();
