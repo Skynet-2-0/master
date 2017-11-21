@@ -127,7 +127,10 @@
     <body>
 
         <h1>Blog</h1>
-        <a href="${pageContext.request.contextPath}/BlogPost">Your posts</a>
+        <form method="post" action="${pageContext.request.contextPath}/BlogListView">
+        <input type="submit" value="Your posts" name="Yourposts" />
+    
+    </form>
         <p>New blog post:</p>
         
 

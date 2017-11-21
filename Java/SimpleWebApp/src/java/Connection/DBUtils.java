@@ -5,7 +5,7 @@ package Connection;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import Blog.BlogBlog;
 import Users.Students;
 import Users.UserAccount;
 import java.sql.Connection;
@@ -225,5 +225,34 @@ public class DBUtils {
             e.printStackTrace();
         }
         
+    }
+
+    /**
+     *
+     * @param conn
+     * @return
+     * @throws SQLException
+     */
+    public static List<BlogBlog> queryBlogList(Connection conn)
+            throws SQLException{
+        String sql =  "Insert into Log (title, content, date, User_Account_ID) VALUES (?, ?, now(), ?)";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        ResultSet rs = pstm.executeQuery();
+        List<BlogBlog> list = new ArrayList<>();
+        while(rs.next()){
+            int Log_ID = rs.getInt("Log_ID");
+            String Title = rs.getString("Title");
+            String Content = rs.getString("Content");
+            String Date = rs.getString("Date");
+            BlogBlog blog = new BlogBlog();
+            blog.setLog_ID(Log_ID);
+            blog.setTitle(Title);
+            blog.setContent(Content);
+            blog.setDate(Date);
+            list.add(blog);
+        }
+        return list;
     }
 }
