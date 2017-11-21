@@ -5,7 +5,7 @@
                        http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
      id="WebApp_ID" version="3.0">
  <display-name>SimpleWebApp</display-name>
-<!-- --><filter-mapping>
+ <filter-mapping>
        <filter-name>aut</filter-name>
        <url-pattern>/createStudents</url-pattern>
    </filter-mapping>
@@ -18,7 +18,7 @@
    <filter-mapping>
        <filter-name>aut</filter-name>
        <url-pattern>/deleteStudents</url-pattern>
-   </filter-mapping> <!-- -->
+   </filter-mapping>
    
    <filter-mapping>
        <filter-name>jdbcFilter</filter-name>

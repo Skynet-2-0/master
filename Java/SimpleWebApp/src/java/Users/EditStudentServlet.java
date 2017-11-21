@@ -6,7 +6,6 @@ package Users;
  * and open the template in the editor.
  */
 
-import Users.Students;
 import Connection.MyUtils;
 import Connection.DBUtils;
 import java.io.IOException;
@@ -31,7 +30,6 @@ public class EditStudentServlet extends HttpServlet {
  
     public EditStudentServlet() {
         super();
-        System.out.println("Runnable editstudentservlet");
     }
     
     @Override
@@ -39,28 +37,28 @@ public class EditStudentServlet extends HttpServlet {
             throws ServletException, IOException{
         Connection conn = MyUtils.getStoredConnection(request);
         
-        String id = (String) request.getParameter("id");  
-        //Integer id = (Integer) Integer.parseInt(request.getParameter("id"));
+        //String id = (String) request.getParameter("id");
+        String user_account_id = (String) request.getParameter("user_account_id");
         
-        Students students = null;
+        UserAccount useraccount = null;
         
         String errorString = null;
         
         try{
-            students = DBUtils.findStudents(conn, id);
+            useraccount = DBUtils.findStudents(conn, user_account_id);
         }
         catch(SQLException e){
             e.printStackTrace();
             errorString = e.getMessage();
         }
         
-        if(errorString != null && students == null){
+        if(errorString != null && useraccount == null){
             response.sendRedirect(request.getServletPath() + "/studentList");
             return;
         }
         
         request.setAttribute("errorString", errorString);
-        request.setAttribute("students", students);
+        request.setAttribute("useraccount", useraccount);
         
         RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/editStudentView.jsp");
         dispatcher.forward(request, response);
@@ -69,21 +67,23 @@ public class EditStudentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("dopost1");
         
         Connection conn = MyUtils.getStoredConnection(request);
         
-        //Integer id = (Integer) Integer.parseInt(request.getParameter("id"));
-        String id = (String) request.getParameter("id");
-        String name = (String) request.getParameter("name");
-        String email = (String) request.getParameter("email");
-        
-        Students students = new Students(id, name, email);
+       String user_account_id = (String) request.getParameter("user_account_id");
+       String username = (String) request.getParameter("username").toLowerCase();
+       String gender = (String) request.getParameter("gender").toUpperCase();
+       String name = (String) request.getParameter("name").toUpperCase();
+       String password = (String) request.getParameter("password");
+       String email = (String) request.getParameter("email").toLowerCase();
+       String usertype = (String) request.getParameter("usertype").toUpperCase();
+
+        UserAccount useraccount = new UserAccount(user_account_id, username, gender, name, password, email, usertype);
         
         String errorString = null;
         
         try{
-            DBUtils.updateStudents(conn, students);
+            DBUtils.updateStudents(conn, useraccount);
         }
         catch(SQLException e){
             e.printStackTrace();
@@ -91,13 +91,14 @@ public class EditStudentServlet extends HttpServlet {
         }
         
         request.setAttribute("errorString", errorString);
-        request.setAttribute("students", students);
+        request.setAttribute("userAccount", useraccount);
         
         if(errorString != null){
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/editStudentView.jsp");
             dispatcher.forward(request, response);
         }
         else{
+            System.out.println("DODODO POST BOI");
             response.sendRedirect(request.getContextPath() + "/studentList");
         }
 

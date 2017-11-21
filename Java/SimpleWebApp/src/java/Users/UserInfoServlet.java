@@ -8,7 +8,6 @@ package Users;
 
 import Connection.MyUtils;
 import java.io.IOException;
- 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,9 +43,12 @@ public class UserInfoServlet extends HttpServlet{
             response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
+    
         
-        //lagre info i request attributes
+         //lagre info i request attributes
         request.setAttribute("user", loginedUser);
+        
+  
         
         //Logined fremover til /WEB-INF/views/userInfoView.jsp
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/userInfoView.jsp");

@@ -108,9 +108,15 @@ CONSTRAINT File_fk1 FOREIGN KEY (File_ID) references File_Attachment(File_ID)
 );
 
 create table Log(
+<<<<<<< HEAD
 Log_ID INT auto_increment,
 Title varchar(50),
 Content varchar (1000),
+=======
+Log_ID INT UNSIGNED NOT NULL,
+Content varchar (1000),
+Week int,
+>>>>>>> c51ce32eb7cc076be4aed029d48378dd2730531f
 Date date,
 User_Account_ID INT NOT NULL,
 

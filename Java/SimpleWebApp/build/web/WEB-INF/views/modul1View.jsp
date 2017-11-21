@@ -1,78 +1,88 @@
 <%-- 
-    Document   : modulView
-    Created on : Sep 24, 2017, 10:35:44 PM
+    Document   : display
+    Created on : Oct 7, 2017, 10:33:08 AM
     Author     : Brage
 --%>
 
-
-<%@page import="java.sql.SQLException"%>
-<%@page import="java.sql.ResultSetMetaData"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
- pageEncoding="UTF-8"%>
+<%@page language="java"  contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
+<% Class.forName("com.mysql.jdbc.Driver");%>
 
 <!DOCTYPE html>
-<html>
- <head>
-    <meta charset="UTF-8">
-    <title>Modules</title>
- </head>
- <body>
-     
- 
-    <jsp:include page="_header.jsp"></jsp:include>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Søk etter student</title>
+    </head>
+        <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
     
     <h3>Module 1. Godkjenning</h3>
     
-
-
-
-
-             <form action="modul1" method="GET">
-             <td>Search by name</td>
-             <input type="text" value="${ requestScope.name}"></>
-             <input type ="submit" value="Search">
-                 
-               
-      
-          
-          <table border="0">
-             <td>${ requestScope.name}</td>
-             </tr>
-          
-          </table>
-       </form>
-    </c:if>
-                   
-
-                     </tbody>                  
-                 </table>
-
-                             
-                 </form>
-           
-         
-      
-    
-
-
- 
-    <h3>Module 1. Learning Goals</h3>
-
-<table border = "1">
+    <table border = "1">
          <tr>
+            <th>Module no.</th>
             <th>Learning Goals</th>
          </tr>
     
            <tr>
+            <td>1 </td>
             <td>Opprette, åpne og lagre et prosjekt i BlueJ</td>
          </tr>
          
       </table>
     
-    </body>
-    </html>
+
+
+<a href="${pageContext.request.contextPath}/modules">Tilbake</a>
+               
+                <br></br>
+               
+                    <p style="color: red;">${errorString}</p>
+    
+    <form method="POST" action="${pageContext.request.contextPath}/modul1">
+       <table border="0">
+                
+               <table border="1">
+                   
+                     <tr>
+                       <td>Hvem vurderer du?</td>                      
+                     <td><input type="text" name="user_account_id" value="${feedback.user_account_id}" /></td>
+                   </tr>
+                                      <tr>
+
+                       <td>Er modulen godkjent?</td>                      
+                     <td><input type="text" name="status" value="${feedback.status}" /></td>
+                   </tr>
+               
+                   <tr>
+                       <td>Hvor mange poeng vil du gi</td>                      
+                    <td><input type="text" name="score" value="${feedback.score}" /></td>
+                   </tr>
+                   
+                   <tr>
+                       <td>Åpen kommentar</td>
+                       <td><input type="text" name="commentOpen" value="${feedback.commentOpen}" /></td>
+                     
+                   </tr>
+                   
+                     <tr>
+                       <td>Skjult kommentar</td>
+                       <td><input type="text" name="commentHidden" value="${feedback.commentHidden}" /></td>
+                     
+                   </tr>
+                   
+                        <tr>
+                       <td>Module no.</td>
+                       <td><input type="text" name="module_id" value="${feedback.module_id}" /></td>
+                     
+                   </tr>
+                          <td colspan="2">                  
+                 <input type="submit" value="submit" />
+                <a href="${pageContext.request.contextPath}/modules">Cancel</a>
+           
+        </table>
+             
+           
+                    
+             

@@ -13,7 +13,7 @@ package Users;
  */
 public class Students {
     
-    private String id;
+    private int id;
     private String name;
     private String email;
     
@@ -21,20 +21,20 @@ public class Students {
         
     }
     
-    public Students(String id, String name, String email){
+    public Students(int id, String name, String email){
         this.id = id;
         this.name = name;
         this.email = email;
     }
     
-    public String getId(){
+    public int getId(){
         return id;
     }
     
-    public void setId(String id){
+    public void setId(int id){
         this.id = id;
     }
-      
+    
     public String getName(){
         return name;
     }

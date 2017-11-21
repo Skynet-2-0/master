@@ -1,5 +1,4 @@
-DROP DATABASE IF EXISTS simplewebapp;
-CREATE DATABASE simplewebapp;
+
 use simplewebapp;
 
 create table USER_ACCOUNT(
@@ -12,7 +11,7 @@ primary key(USER_NAME)
 
 create table STUDENTS(
 
-ID INT unsigned not null AUTO_INCREMENT,
+ID INT not null AUTO_INCREMENT,
 NAME VARCHAR(128) not null,
 EMAIL VARCHAR(100) not null,
 primary key(ID)

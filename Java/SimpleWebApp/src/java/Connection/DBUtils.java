@@ -5,20 +5,24 @@ package Connection;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+<<<<<<< HEAD
 import Blog.BlogBlog;
 import Users.Students;
+=======
+
+>>>>>>> c51ce32eb7cc076be4aed029d48378dd2730531f
 import Users.UserAccount;
+import Feedback.Feedback;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author mathi
+ * @author Mathias, Brage
  */
 public class DBUtils {
     
@@ -78,98 +82,109 @@ public class DBUtils {
         return null;
     }
     
+<<<<<<< HEAD
     
     
     
     public static List<Students> queryStudents(Connection conn)
+=======
+    public static List<UserAccount> queryUserAccount(Connection conn)
+>>>>>>> c51ce32eb7cc076be4aed029d48378dd2730531f
             throws SQLException{
-        String sql = "Select a.Id, a.Name, a.Email from Students a";
+        String sql = "Select a.User_Account_Id, a.User_Name, a.Gender, a.Name, a.Email, a.Usertype from User_Account a";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
         
         ResultSet rs = pstm.executeQuery();
-        List<Students> list = new ArrayList<>();
+        List<UserAccount> list = new ArrayList<>();
         while(rs.next()){
-            String id = rs.getString("Id");
-            String name = rs.getString("Name");
-            String email = rs.getString("Email");
-            Students students = new Students();
-            students.setId(id);
-            students.setName(name);
-            students.setEmail(email);
-            list.add(students);
+            String user_account_id  = rs.getString("user_account_id");
+            String username = rs.getString("user_name");
+            String name = rs.getString("name");
+            String gender = rs.getString("gender");
+            String email = rs.getString("email");
+            String usertype = rs.getString("usertype");
+            
+            
+            UserAccount useraccount = new UserAccount();
+            useraccount.setUser_account_id(user_account_id);
+            useraccount.setUserName(username);
+            useraccount.setName(name);
+            useraccount.setGender(gender);
+            useraccount.setEmail(email);
+            useraccount.setUserType(usertype);
+            list.add(useraccount);
         }
         return list;
     }
     
-    public static Students findStudents(Connection conn, String id)
+    public static UserAccount findStudents(Connection conn, String user_account_id)
             throws SQLException{
-        String sql = "Select a.Id, a.Name, a.Email from Students a where a.Id=?";
+        
+        String sql = "Select a.user_account_id, a.user_name, a.gender, a.name, a.password, a.email, a.usertype from User_Account a where a.user_account_Id=?";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setString(1, id);
+        pstm.setString(1, user_account_id);
+       
         
         ResultSet rs = pstm.executeQuery();
         
         while(rs.next()){
-            String name = rs.getString("Name");
-            String email = rs.getString("Email");
-            Students students = new Students(id, name, email);
-            return students;
+            String username = rs.getString("user_name");
+            String gender = rs.getString("gender");
+            String name = rs.getString("name");
+            String password = rs.getString("password");
+            String email = rs.getString("email");
+            String usertype = rs.getString("UserType");          
+            UserAccount useraccount = new UserAccount(user_account_id, username, gender, name, password, email, usertype);
+            return useraccount;
         }
         return null;
     }
     
-    public static void updateStudents(Connection conn, Students students)
+    public static void updateStudents(Connection conn, UserAccount useraccount)
             throws SQLException{
-        String sql = "Update Students set Name=?, Email=? where Id=?";
+        
+        String sql = "Update User_Account set User_Name=?, Gender=?, Name=?, Password=?, Email=?, Usertype=? where user_account_id=?";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
         
-        pstm.setString(1, students.getName());
-        pstm.setString(2, students.getEmail());
-        pstm.setString(3, students.getId());
+        
+        pstm.setString(1, useraccount.getUserName());
+        pstm.setString(2, useraccount.getGender());
+        pstm.setString(3, useraccount.getName());
+        pstm.setString(4, useraccount.getPassword());
+        pstm.setString(5, useraccount.getEmail());
+        pstm.setString(6, useraccount.getUserType());
+        pstm.setString(7, useraccount.getUser_account_id());
+           
         pstm.executeUpdate();
     }
     
-    public static void insertStudents(Connection conn, Students students)
+    public static void insertStudents(Connection conn, UserAccount useraccount)
             throws SQLException{
-        
-        PreparedStatement pstm = conn.prepareStatement("Insert into Students (Name, Email) values(?, ?)");
-        
-        //pstm.setString(1, students.getId());
-        
-        pstm.setString(1, students.getName());
-        
-        pstm.setString(2, students.getEmail());
-            
-        pstm.executeUpdate();
-        
-        //ResultSet tableKeys = pstm.getGeneratedKeys();
-        //tableKeys.next();
-        //int autoGeneratedID = tableKeys.getInt(1);
-        //pstm.setInt(1, autoGeneratedID);
-        
-        /*
-        String sql = "insert into students (Id, Name, Email) values(?, ?, ?)";
+        String sql = "insert into user_account (user_name, gender,  name, password, email, usertype) values(?, ?, ?, ?, ?, ?)";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
-            
-        pstm.setInt(1, students.getId());
-        pstm.setString(2, students.getName());
-        pstm.setString(3, students.getEmail());
+
+        //pstm.setString(1, useraccount.getUser_account_id());
+        pstm.setString(1, useraccount.getUserName());
+        pstm.setString(2, useraccount.getGender());
+        pstm.setString(3, useraccount.getName());
+        pstm.setString(4, useraccount.getPassword());
+        pstm.setString(5, useraccount.getEmail());
+        pstm.setString(6, useraccount.getUserType());
         
         pstm.executeUpdate();
-        */
     }
     
-    public static void deleteStudents(Connection conn, int id)
+    public static void deleteStudents(Connection conn, int user_account_id)
             throws SQLException{
-        String sql = "Delete From Students where Id=?";
+        String sql = "delete From User_Account where user_account_id=?";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
         
-        pstm.setInt(1, id);
+        pstm.setInt(1, user_account_id);
         
         pstm.executeUpdate();
     }
@@ -205,11 +220,10 @@ public class DBUtils {
            
         }
            
-   
-      
    return null;
     }
     
+<<<<<<< HEAD
     public static void insertBlogPost(Connection conn, int userid, String title, String content) {
         String sql = "Insert into Log (title, content, date, User_Account_ID) VALUES (?, ?, now(), ?)";
         try {
@@ -255,4 +269,94 @@ public class DBUtils {
         }
         return list;
     }
+=======
+    public static void insertOralFeedback (Connection conn, Feedback feedback)
+            throws SQLException{
+        
+        String sql = "insert into feedback (status, comment_open, comment_hidden, score, module_id, user_account_id) values(?, ?, ?, ?, ?, ?)";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+
+        //pstm.setString(1, useraccount.getUser_account_id());
+        pstm.setString(1, feedback.getStatus());
+        pstm.setString(2, feedback.getCommentOpen());
+        pstm.setString(3, feedback.getCommentHidden());
+        pstm.setString(4, feedback.getScore());
+        pstm.setString(5, feedback.getModule_id());
+        pstm.setString(6, feedback.getUser_account_id());
+   
+        
+
+        
+        pstm.executeUpdate();
+        
+    }
+    
+    public static Feedback findFeedback (Connection conn, String module_ID)
+            throws SQLException{
+        
+         String sql = "Select status, comment_open, comment_hidden, score, module_id, user_account_id from Feedback"
+                + "module_id = ?";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, module_ID);
+        
+        ResultSet rs = pstm.executeQuery();
+        
+        if(rs.next()){
+            String status = rs.getString("status");
+            String comment_open = rs.getString("comment_open");
+            String comment_hidden = rs.getString("comment_hidden");
+            String score = rs.getString("score");
+            String module_id = rs.getString("module_:id");
+            String user_account_id = rs.getString("user_account_id");
+            Feedback feedback = new Feedback();
+            feedback.setStatus(status);
+            feedback.setCommentOpen(comment_open);
+            feedback.setCommentHidden(comment_hidden);
+            feedback.setScore(score);
+            feedback.setModule_id(module_id);
+            feedback.setUser_account_id(user_account_id);
+            return feedback;
+        }
+        return null;
+    }
+    
+     public static List<Feedback> queryFeedback(Connection conn)
+            throws SQLException{
+        String sql = "select status, comment_open, score, module_id from Feedback where user_account_id=?";
+               
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+       // pstm.setString(1, user_account_id);
+        
+        
+        
+        ResultSet rs = pstm.executeQuery();
+        List<Feedback> list = new ArrayList<>();
+        while(rs.next()){
+            String status = rs.getString("status");
+            String comment_open = rs.getString("comment_open");
+            String score = rs.getString("score");
+            String module_id = rs.getString("module_id");
+           
+            
+            
+            Feedback feedback = new Feedback();
+            feedback.setStatus(status);
+            feedback.setCommentOpen(comment_open);
+            feedback.setScore(score);
+            feedback.setModule_id(module_id);
+            list.add(feedback);
+        }
+        return list;
+    }
+    
+    
+    
+        
+>>>>>>> c51ce32eb7cc076be4aed029d48378dd2730531f
 }
+    
+
+

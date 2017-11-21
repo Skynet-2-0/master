@@ -18,7 +18,13 @@
    <a href="${pageContext.request.contextPath}/login">Login</a>
    |  
    <a href="${pageContext.request.contextPath}/modules">Modules</a>
+<<<<<<< HEAD
    |  
    <a href="${pageContext.request.contextPath}/Blog">Blog</a>
+=======
+   |
+   <a href="${pageContext.request.contextPath}/progressMenu">Progress</a>
+   
+>>>>>>> c51ce32eb7cc076be4aed029d48378dd2730531f
    
 </div>  
