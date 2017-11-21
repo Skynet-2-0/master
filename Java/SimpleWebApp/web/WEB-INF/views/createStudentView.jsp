@@ -1,7 +1,7 @@
 <%-- 
     Document   : createStudentView
     Created on : 17.sep.2017, 22:18:42
-    Author     : mathi
+    Author     : mathi, Brage
 --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -27,16 +27,37 @@
        <table border="0">
           <tr>
               <p style="color: red;">${errorString}</p> 
-             <td>Id</td>
-             <td><input type="hidden" name="id" value="${student.id}" /></td> <%-- Dette skal stå her: <td><input type="text" name="id" value="${student.id}" /></td> --%>
+             <td>Id - autogenerert</td>
+             <td><input type="hidden" name="user_account_id" value="${useraccount.user_account_id}" /></td>
           </tr>
           <tr>
-             <td>Name</td>
-             <td><input type="text" name="name" value="${student.name}" /></td>
+             <td>User Name</td>
+             <td><input type="text" name="username" value="${useraccount.userName}" /></td>
+          </tr>
+          <tr>
+             <td>Gender</td>
+             <td><input type="text" name="gender" value="${useraccount.gender}" /></td>
+          <tr>
+              <td>Name</td>
+             <td><input type="text" name="name" value="${useraccount.name}" /></td>
+          </tr>
+          <tr>
+              <td>Password</td>
+             <td><input type="password" name="password" value="${useraccount.password}" size="20" />
+                 <button type="button" id="eye" onclick="if(password.type=='text')password.type='password';
+             else password.type='text';"> Show Password
           </tr>
           <tr>
              <td>Email</td>
-             <td><input type="text" name="email" value="${student.email}" /></td>
+             <td><input type="text" name="email" value="${useraccount.email}" /></td>
+          </tr>
+          <tr>
+             <td>User type</td>
+             <td><select name="usertype" size="2" value="${useraccount.userType}">
+              <option>ADMIN</option>
+              <option>BRUKER</option>
+              </select>
+                 <%--<input type="text" name="usertype" value="${useraccount.userType}" /></td>--%>
           </tr>
           <tr>
              <td colspan="2">                  

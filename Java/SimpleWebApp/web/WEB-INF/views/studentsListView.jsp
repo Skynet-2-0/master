@@ -1,7 +1,7 @@
 <%-- 
     Document   : studentsListView
     Created on : 17.sep.2017, 21:52:27
-    Author     : mathi
+    Author     : mathi, Brage
 --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -24,24 +24,31 @@
  
     <table border="1" cellpadding="5" cellspacing="1" >
        <tr>
+          <th>Username</th>
+          <th>Gender</th>
           <th>Id</th>
           <th>Name</th>
           <th>Email</th>
+          <th>Usertype</th>
           <th>Edit</th>
           <th>Delete</th>
+          
        </tr>
-       <c:forEach items="${studentList}" var="student" >
+       <c:forEach items="${userAccountList}" var="useraccount" >
           <tr>
-             <td>${student.id}</td>
-             <td>${student.name}</td>
-             <td>${student.email}</td>
+             <td>${useraccount.userName}</td>
+             <td>${useraccount.gender}</td> 
+             <td>${useraccount.user_account_id}</td>
+             <td>${useraccount.name}</td>
+             <td>${useraccount.email}</td>
+             <td>${useraccount.userType}</td>
              <td>
-                <a href="editStudents?id=${student.id}">Edit</a>
+                <a href="editStudents?user_account_id=${useraccount.user_account_id}">Edit</a>
              </td>
-             <td>
-                <a href="deleteStudents?id=${student.id}">Delete</a>
+              <td>
+                <a href="deleteStudents?user_account_id=${useraccount.user_account_id}">Delete</a>
              </td>
-          </tr>
+             
        </c:forEach>
     </table>
  

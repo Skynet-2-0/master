@@ -90,4 +90,7 @@ function keyPush(evt) {
 <a href="${pageContext.request.contextPath}/userInfo">Tilbake</a>
 </div>
 <h1>Score:</h1> <input id="score" type="text">
+<br><br>
+<b>Credit til:&nbsp;&emsp; https://pastebin.com/Z3zhb7cY<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;  https://www.youtube.com/channel/UC15WSgcM_5tmN6JRbhA4UaQ</b>
 </div>

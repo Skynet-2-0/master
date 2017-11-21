@@ -66,10 +66,14 @@ public class CookieFilter implements Filter{
         String checked = (String) session.getAttribute("COOKIE_CHECKED");
         if(checked == null && conn != null){
             String userName = MyUtils.getUserNameInCookie(req);
+            
             try{
                 UserAccount user = DBUtils.findUser(conn, userName);
                 MyUtils.storeLoginedUser(session, user);
             }
+            
+            
+            
             catch(SQLException e){
                 e.printStackTrace();
             }

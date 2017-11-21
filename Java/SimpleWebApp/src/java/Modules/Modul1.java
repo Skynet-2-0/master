@@ -8,6 +8,7 @@ package Modules;
 
 import Connection.DBUtils;
 import Connection.MyUtils;
+import Feedback.Feedback;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -25,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author brage
  */
 
-@WebServlet(urlPatterns = {"/modules/modul1"})
+@WebServlet(urlPatterns = {"/modul1"})
 public class Modul1 extends HttpServlet{
     
     private static final long serialVersionUID = 1L;
@@ -38,24 +39,7 @@ public class Modul1 extends HttpServlet{
    protected void doGet(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
         
-         Connection conn = MyUtils.getStoredConnection(request);
-         
-       String name = (String) request.getParameter("name");
-       
-           String errorString = null;
-         
-     
-       try{
-           request.setAttribute("name", DBUtils.findName(conn, name));
-                
-        }
-        
-          catch(SQLException e){
-           errorString = e.getMessage();
-       }   
-              
-    
-        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/modul1Viewcopy2.jsp");
+       RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/modul1view.jsp");
        
         dispatcher.forward(request, response);
         
@@ -65,6 +49,52 @@ public class Modul1 extends HttpServlet{
     protected void doPost (HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         
-        doGet(request, response);
+        Connection conn = MyUtils.getStoredConnection(request);
+       
+       
+       String status = (String) request.getParameter("status");
+       String commentOpen = (String) request.getParameter("commentOpen");
+       String commentHidden = (String) request.getParameter("commentHidden");
+       String score = (String) request.getParameter("score");
+       String module_id = (String) request.getParameter("module_id");
+       String user_account_id = (String) request.getParameter("user_account_id");
+
+      
+       
+       Feedback feedback = new Feedback(status, commentOpen, commentHidden, score, module_id, user_account_id );
+       
+       String errorString = null;
+       
+       if(errorString == null){
+       try{      
+           try{
+                   DBUtils.insertOralFeedback(conn, feedback);
+                   
+           }catch(StringIndexOutOfBoundsException e){
+               e.printStackTrace();
+               errorString = e.getMessage();
+           }      
+         
+       }
+       catch(SQLException e){
+           e.printStackTrace();
+           errorString = e.getMessage();
+        }
+       }
+       
+       request.setAttribute("errorString", errorString);
+       request.setAttribute("feedback", feedback);
+       
+       if(errorString != null){
+           RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/modul1view.jsp");
+           dispatcher.forward(request, response);
+       }
+       else{
+           response.sendRedirect(request.getContextPath()+ "/modul1graded");
+        
+        
+        
+  // doGet(request, response);
+}
 }
 }

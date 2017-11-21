@@ -1,17 +1,10 @@
-package Users;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-import Connection.MyUtils;
-import Connection.DBUtils;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.List;
  
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,33 +18,24 @@ import javax.servlet.http.HttpServletResponse;
  * @author mathi
  */
 
-@WebServlet(urlPatterns = {"/studentList"})
-public class StudentsListServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/home"})
+public class HomeServlet extends HttpServlet{
     
     private static final long serialVersionUID = 1L;
     
-    public StudentsListServlet(){
+    public HomeServlet(){
         super();
     }
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        Connection conn = MyUtils.getStoredConnection(request);
         
-        String errorString = null;
-        List<UserAccount> list = null;
-        try{
-            list = DBUtils.queryUserAccount(conn);
-        }
-        catch(SQLException e){
-            e.printStackTrace();
-            errorString = e.getMessage();
-        }
-        request.setAttribute("errorString", errorString);
-        request.setAttribute("userAccountList", list);
+        //Fremheve til /WEB-INF/views/homeView.jsp
+        //Bruker kan ikke aksesere direkte til JSP sidene plassert i WEB-INF
         
-        RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/studentsListView.jsp");
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/homeView.jsp");
+        
         dispatcher.forward(request, response);
     }
     

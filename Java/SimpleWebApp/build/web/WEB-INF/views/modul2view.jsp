@@ -28,7 +28,67 @@
     
            <tr>
             <td>2 </td>
-            <td>Opprette, åpne og lagre et prosjekt i BlueJ</td>
+            <td>Studenten skal lage en blå sirkel og få den til å bevege på seg</td>
          </tr>
          
       </table>
+    
+    <table border  ="1">
+        
+        <br>
+        
+         <h3>Oversikt</h3>
+        
+        <tr>
+            <th>Navn</th>
+            <th>Filnavn</th>
+            <th>Innleveringsdato</th>
+            <th>Status</th>
+            <th>Poeng</th>
+            <th>Vurdert av</th>
+            <th>Kommentar</th>
+        </tr>
+            
+        <tr>
+            
+            <td>Brage Fosso</td>
+            <td>Modul2.jar</td>
+            <td>01.02.18 04:20</td>
+            <td>Godkjent</td>
+            <td>10</td> 
+            <td>Christian Moen</td>
+            <td></td>
+            
+      </tr>
+      
+      <tr>
+            
+            <td>Jonas Omdal</td>
+            <td></td>
+            <td></td>
+            <td>Ikke levert</td>
+            <td></td>
+            <td></td>
+            <td></td>
+           
+            
+      </tr>
+      
+            <tr>
+            
+            <td>Mathias Evensen</td>
+            <td>Modul2boi.jar</td>
+            <td>02.05.18 21:54</td>
+            <td>Levert</td>
+            <td><input type="text" name="Poeng"</td>
+            <td><input type="text" name="Vurdert av"</td>
+            <td><input type="text" name="Kommentar"</td>
+            
+      </tr>
+        
+    </table>
+    
+    <form name="myForm" action="kjøyr" method="POST">
+                    <input type="submit" value="Submit" name="submit"/>
+
+                    <a href="${pageContext.request.contextPath}/modules">Tilbake</a>
