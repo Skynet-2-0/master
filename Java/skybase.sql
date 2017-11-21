@@ -59,11 +59,18 @@ CONSTRAINT Module_fk1 FOREIGN KEY (Module_ID) references Module (Module_ID)
 
 create table Calendar(
 Calendar_ID INT UNSIGNED NOT NULL,
-Dato DATE,
-Event VARCHAR(300),
+Dato VARCHAR(10),
+Hendelse VARCHAR(300),
 
 CONSTRAINT Calendar_pk primary key(Calendar_ID)
 );
+
+insert into Calendar (Calendar_ID, Dato, Hendelse)
+values(1, '20171101', 'Eksamen');
+
+SELECT *
+FROM Calendar
+;
 
 create table Forum(
 Post_ID INT UNSIGNED NOT NULL,

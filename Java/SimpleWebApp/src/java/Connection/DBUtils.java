@@ -169,11 +169,30 @@ public class DBUtils {
            System.out.println(e1.getMessage());
            
         }
-           
-   
-      
-   return null;
+     return null;
     }
+    
+       public static List<CalendarCalendar> queryCalendar(Connection conn)
+            throws SQLException{
+        String sql = "Select a.Dato, a.Hendelse from Students a";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        ResultSet rs = pstm.executeQuery();
+        List<CalendarCalendar> list = new ArrayList<>();
+        while(rs.next()){
+            String dato = rs.getString("Dato");
+            String hendelse = rs.getString("Hendelse");
+            CalendarCalendar calendar = new CalendarCalendar();
+            calendar.setDato(dato);
+            calendar.setHendelse(hendelse);
+            list.add(calendar);
+        }
+        return list;
+    }
+      
+  
+
     public static CalendarCalendar findDate(Connection conn, String Dato, String Hendelse)
             throws SQLException {
         String sql = "Select a.Kalender_id, a.Dato, a.Hendelse from Kalender a"

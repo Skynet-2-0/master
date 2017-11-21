@@ -8,10 +8,12 @@ package Kalender;
 import Connection.DBUtils;
 import Connection.MyUtils;
 import Kalender.CalendarCalendar;
+import Users.Students;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -68,6 +70,14 @@ public class CalendarServlet extends HttpServlet {
            e.printStackTrace();
            errorString = e.getMessage();
        }
+               List<Students> list = null;
+        try{
+            list = DBUtils.queryStudents(conn);
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+            errorString = e.getMessage();
+        }
        }
        
        request.setAttribute("errorString", errorString);
