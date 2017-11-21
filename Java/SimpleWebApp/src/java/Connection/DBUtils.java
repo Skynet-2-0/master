@@ -42,7 +42,20 @@ public class DBUtils {
         }
         return null;
     }
-    
+    public static int findUserID_byUsername(Connection conn, String userName) throws SQLException{
+        String sql = "Select a.User_Account_ID "
+                + " where a.User_Name = ?";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, userName);
+        
+        ResultSet rs = pstm.executeQuery();
+        
+        if(rs.next()){
+            return rs.getInt("User_Account_ID");
+        }
+        return -1;
+    }
     public static UserAccount findUser(Connection conn, String userName)
             throws SQLException{
         String sql = "Select a.User_Name, a.Password, a.Gender from User_Account a"
@@ -64,6 +77,9 @@ public class DBUtils {
         }
         return null;
     }
+    
+    
+    
     
     public static List<Students> queryStudents(Connection conn)
             throws SQLException{
@@ -195,7 +211,7 @@ public class DBUtils {
     }
     
     public static void insertBlogPost(Connection conn, int userid, String title, String content) {
-        String sql = "Insert into blog_post (title, content, stud_id) VALUES (?,?,?);";
+        String sql = "Insert into Log (title, content, date, User_Account_ID) VALUES (?, ?, now(), ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, title);
