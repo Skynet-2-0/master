@@ -23,7 +23,7 @@ public class DBUtils {
     
     public static UserAccount findUser(Connection conn, String userName, String password)
             throws SQLException {
-        String sql = "Select a.User_Name, a.Password, a.Gender from User_Account a"
+        String sql = "Select a.User_Name, a.Password, a.Gender, a.User_account_id  from User_Account a"
                 + " where a.User_Name = ? and a.password= ?";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
@@ -33,10 +33,13 @@ public class DBUtils {
         
         if(rs.next()){
             String gender = rs.getString("Gender");
+            String userid = rs.getString("User_account_id");
             UserAccount user = new UserAccount();
             user.setUserName(userName);
             user.setPassword(password);
             user.setGender(gender);
+            user.setUser_account_id(userid);
+            
             return user;
         }
         return null;
@@ -44,7 +47,7 @@ public class DBUtils {
     
     public static UserAccount findUser(Connection conn, String userName)
             throws SQLException{
-        String sql = "Select a.User_Name, a.Password, a.Gender from User_Account a"
+        String sql = "Select a.User_Name, a.Password, a.Gender, a.User_account_id from User_Account a"
                 + " where a.User_Name = ?";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
@@ -60,6 +63,48 @@ public class DBUtils {
             user.setPassword(password);
             user.setGender(gender);
             return user;
+        }
+        return null;
+    }
+    
+    public static UserAccount findUserID(Connection conn, String username)
+            throws SQLException{
+        String sql = "Select a.User_account_id from User_Account a"
+                + " where a.User_Name = ?";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, username);
+        
+        ResultSet rs = pstm.executeQuery();
+        
+        if(rs.next()){
+            UserAccount id = new UserAccount();
+            id.setUser_account_id(rs.getString("User_account_id"));
+            return id;
+        }
+        return null;
+    }
+    
+    public static UserAccount findStudents(Connection conn, String user_account_id)
+            throws SQLException{
+        
+        String sql = "Select a.user_account_id, a.user_name, a.gender, a.name, a.password, a.email, a.usertype from User_Account a where a.user_account_Id=?";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, user_account_id);
+       
+        
+        ResultSet rs = pstm.executeQuery();
+        
+        while(rs.next()){
+            String username = rs.getString("user_name");
+            String gender = rs.getString("gender");
+            String name = rs.getString("name");
+            String password = rs.getString("password");
+            String email = rs.getString("email");
+            String usertype = rs.getString("UserType");          
+            UserAccount useraccount = new UserAccount(user_account_id, username, gender, name, password, email, usertype);
+            return useraccount;
         }
         return null;
     }
@@ -93,29 +138,7 @@ public class DBUtils {
         return list;
     }
     
-    public static UserAccount findStudents(Connection conn, String user_account_id)
-            throws SQLException{
-        
-        String sql = "Select a.user_account_id, a.user_name, a.gender, a.name, a.password, a.email, a.usertype from User_Account a where a.user_account_Id=?";
-        
-        PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setString(1, user_account_id);
-       
-        
-        ResultSet rs = pstm.executeQuery();
-        
-        while(rs.next()){
-            String username = rs.getString("user_name");
-            String gender = rs.getString("gender");
-            String name = rs.getString("name");
-            String password = rs.getString("password");
-            String email = rs.getString("email");
-            String usertype = rs.getString("UserType");          
-            UserAccount useraccount = new UserAccount(user_account_id, username, gender, name, password, email, usertype);
-            return useraccount;
-        }
-        return null;
-    }
+    
     
     public static void updateStudents(Connection conn, UserAccount useraccount)
             throws SQLException{
@@ -250,17 +273,17 @@ public class DBUtils {
         return null;
     }
     
-     public static List<Feedback> queryFeedback(Connection conn)
+     public static List<Feedback> queryFeedback(Connection conn, UserAccount id)
             throws SQLException{
         String sql = "select status, comment_open, score, module_id from Feedback where user_account_id=?";
                
         
         PreparedStatement pstm = conn.prepareStatement(sql);
-       // pstm.setString(1, user_account_id);
+        pstm.setString(1, id.getUser_account_id());
         
         
         
-        ResultSet rs = pstm.executeQuery();
+        ResultSet rs = pstm.executeQuery("select * from feedback where user_account_id= "+id.getUser_account_id()+"");
         List<Feedback> list = new ArrayList<>();
         while(rs.next()){
             String status = rs.getString("status");

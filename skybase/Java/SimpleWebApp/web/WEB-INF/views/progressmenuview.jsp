@@ -23,8 +23,9 @@
     
 
       
+       
        Oversikt over <b>${user.userName}</b>'s progresjon
-                   B  <b>${id.user_account_id}</b> B
+                   B  <b>${userid.user_account_id}</b> B
     
     <br>
     
@@ -38,7 +39,7 @@
         </tr>
 
             <c:forEach items="${feedbackList}" var="feedback" >
- 
+                
           <tr>
              <td>${feedback.module_id}</td>
              <td>${feedback.status}</td>

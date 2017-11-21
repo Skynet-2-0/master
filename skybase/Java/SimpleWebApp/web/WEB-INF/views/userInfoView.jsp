@@ -22,7 +22,7 @@
     User Name: <b>${user.userName}</b>
     <br />
     Gender: ${user.gender } <br />
-    <br>
+    <br> ${id.user_account_id}
     <a href="${pageContext.request.contextPath}/Snake.jsp">Snake</a>
  </body>
 </html>

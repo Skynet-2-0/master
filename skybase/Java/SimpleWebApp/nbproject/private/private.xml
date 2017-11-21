@@ -4,14 +4,19 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/progressmenuview.jsp</file>
-            <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/editStudentView.jsp</file>
+            <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/src/java/LoginLogout/LoginServlet.java</file>
             <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/studentsListView.jsp</file>
-            <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/src/java/Users/StudentsListServlet.java</file>
             <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/userInfoView.jsp</file>
             <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/src/java/Feedback/Feedback.java</file>
             <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/src/java/Users/UserInfoServlet.java</file>
             <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/src/java/Users/EditStudentServlet.java</file>
             <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/src/java/Connection/MyUtils.java</file>
+            <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/src/java/Connection/ConnectionUtils.java</file>
+            <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/src/java/Users/UserAccount.java</file>
+            <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/editStudentView.jsp</file>
+            <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/src/java/Users/StudentsListServlet.java</file>
+            <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/src/java/Progress/ProgressMenu1.java</file>
+            <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/src/java/Filter/CookieFilter.java</file>
             <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/src/java/Connection/DBUtils.java</file>
             <file>file:/C:/Git/Skynet/master/skybase/Java/SimpleWebApp/src/java/Progress/ProgressMenu.java</file>
         </group>

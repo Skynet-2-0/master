@@ -39,12 +39,17 @@ public class ProgressMenu extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         
-        Connection conn = MyUtils.getStoredConnection(request);
-            //sjekker om bruker er logget på
+           //sjekker om bruker er logget på
         HttpSession session = request.getSession();
+        HttpSession session2 = request.getSession();
+        
+        Connection conn = MyUtils.getStoredConnection(request);
+        UserAccount id = MyUtils.getLoginedUserID(session2);
+      
+         
         
         UserAccount loginedUser = MyUtils.getLoginedUser(session);
-        UserAccount loginedID = MyUtils.getLoginedUser(session);
+        UserAccount loginedUserID = MyUtils.getLoginedUserID(session2);
         //ikke logge inn
         if(loginedUser == null){
             //redirect
@@ -54,14 +59,14 @@ public class ProgressMenu extends HttpServlet{
         
          //lagre info i request attributes
         request.setAttribute("user", loginedUser);
-        request.setAttribute("id", loginedID);
+        request.setAttribute("id", loginedUserID);
     
        //String user_account_id = (String) request.getParameter("user_account_id");
       
         String errorString = null;
         List<Feedback> list = null;
         try{
-            list = DBUtils.queryFeedback(conn);
+            list = DBUtils.queryFeedback(conn, id);
         }
         catch(SQLException e){
             e.printStackTrace();

@@ -54,7 +54,9 @@ public class CookieFilter implements Filter{
         
         UserAccount userInSession = MyUtils.getLoginedUser(session);
         
-        if(userInSession != null){
+        UserAccount userIDInSession = MyUtils.getLoginedUserID(session);
+        
+        if(userInSession != null || userIDInSession != null) {
             session.setAttribute("COOKIE_CHECKED", "CHECKED");
             chain.doFilter(request, response);
             return;
@@ -66,10 +68,13 @@ public class CookieFilter implements Filter{
         String checked = (String) session.getAttribute("COOKIE_CHECKED");
         if(checked == null && conn != null){
             String userName = MyUtils.getUserNameInCookie(req);
+            String user_account_id = MyUtils.getIDInCookie(req);
             
             try{
                 UserAccount user = DBUtils.findUser(conn, userName);
                 MyUtils.storeLoginedUser(session, user);
+                UserAccount id = DBUtils.findUserID(conn, user_account_id);
+                MyUtils.storeLoginedUserID(session, id);
             }
             
             

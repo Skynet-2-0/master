@@ -19,7 +19,7 @@
    |  
    <a href="${pageContext.request.contextPath}/modules">Modules</a>
    |
-   <a href="${pageContext.request.contextPath}/progressMenu">Progress</a>
+   <a href="${pageContext.request.contextPath}/progressMenu1">Progress</a>
    
    
 </div>  

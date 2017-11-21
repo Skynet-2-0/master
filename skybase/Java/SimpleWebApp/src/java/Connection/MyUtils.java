@@ -22,7 +22,7 @@ public class MyUtils {
     
     public static final String ATT_NAME_CONNECTION = "ATTRIBUTE_FOR_CONNECTION";
     
-    public static final String ATT_NAME_USER_NAME = "ATTRIBUTE_FOR_STORE_USER_NAME_IN_COOKIE";
+        public static final String ATT_NAME_USER_NAME = "ATTRIBUTE_FOR_STORE_USER_NAME_IN_COOKIE";
     
     public static final String ATT_NAME_USER_ID = "ATTRIBUTE_FOR_STORE_USER_ID_IN_COOKIE";
     
@@ -50,14 +50,26 @@ public class MyUtils {
         return loginedUser;
     }
     
+     //lagre bruker info i session
+        public static void storeLoginedUserID(HttpSession session, UserAccount loginedUserID){
+        //JSP kan aksesere via ${loginedUser}
+        session.setAttribute("loginedUserID", loginedUserID);
+    }
+    
+    //få brukeren sin info lagret i session
+    public static UserAccount getLoginedUserID(HttpSession session){
+        UserAccount loginedUserID = (UserAccount) session.getAttribute("loginedUserID");
+        return loginedUserID;
+    }
+    
     
     
     //lagre info i cookie
     public static void storeUserCookie(HttpServletResponse response, UserAccount user){
         System.out.println("Store user cookie");
-        Cookie cookieUserName = new Cookie(ATT_NAME_USER_NAME, user.getUserName());
+            Cookie cookieUserName = new Cookie(ATT_NAME_USER_NAME, user.getUserName());
         // 1 dag (i sekunder)
-        cookieUserName.setMaxAge(24*60*60);
+        cookieUserName.setMaxAge(24*60*60); 
         response.addCookie(cookieUserName);
     }
     
@@ -75,9 +87,9 @@ public class MyUtils {
         return null;
     }
     
-      public static void storeIDCookie(HttpServletResponse response, UserAccount id){
-        System.out.println("Store user cookie");
-        Cookie cookieUserID = new Cookie (ATT_NAME_USER_ID, id.getUser_account_id());
+        public static void storeIDCookie(HttpServletResponse response, UserAccount user){
+        System.out.println("Store id cookie");
+        Cookie cookieUserID = new Cookie (ATT_NAME_USER_ID, user.getUser_account_id());
         // 1 dag (i sekunder)
         
         cookieUserID.setMaxAge(24*60*60);
