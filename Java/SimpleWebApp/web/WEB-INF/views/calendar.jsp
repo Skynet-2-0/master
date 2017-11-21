@@ -18,14 +18,16 @@
         <h3>Kalender</h3>
     
     <p style="color: red;">${errorString}</p>
-    
+   
+  
+</form>
     <form method="POST" action="${pageContext.request.contextPath}/CalendarSearch">
        <table border="0">
           <tr>
               <p style="color: red;">${errorString}</p> 
              <td>Søk etter dato</td>
              
-             <td><input type="text" name="search" value="${list.dato}" /></td>
+             <td><input type="text" name="search" value="${calendar.dato}" /></td>
              <input type="submit" value="Submit" name="submit" />
           </tr>
        </table>

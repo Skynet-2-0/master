@@ -28,10 +28,10 @@
           <th>Edit</th>
           <th>Delete</th>
        </tr>
-       <c:forEach items="${CalendarCalendar}" var="list" >
+       <c:forEach items="${calendar}" var="calendar" >
           <tr>
-             <td>${CalendarCalendar.dato}</td>
-             <td>${CalendarCalendar.hendelse}</td>
+             <td>${calendar.dato}</td>
+             <td>${calendar.hendelse}</td>
              <td>
                 <a href="editStudents?id=${student.id}">Edit</a>
              </td>

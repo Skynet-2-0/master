@@ -27,6 +27,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "CalendarSearch", urlPatterns = {"/CalendarSearch"})
 public class CalendarSearch extends HttpServlet {
     
+    private static final long serialVersionUID = 1L;
+    
    public CalendarSearch() {
        super();
    }
@@ -35,20 +37,21 @@ public class CalendarSearch extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         Connection conn = MyUtils.getStoredConnection(request);
+        
         String Dato = (String) request.getParameter("Dato");
         String Hendelse = (String) request.getParameter("Hendelse");
         
         String errorString = null;
         List<CalendarCalendar> list = null;
         try{
-            list = (List<CalendarCalendar>) DBUtils.findDate(conn, Dato, Hendelse);
+            list = DBUtils.queryCalendar(conn);
         }
         catch(SQLException e){
             e.printStackTrace();
             errorString = e.getMessage();
         }
         request.setAttribute("errorString", errorString);
-        request.setAttribute("CalendarCalendar", list);
+        request.setAttribute("calendar", list);
         
         RequestDispatcher dispatcher;
         dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/CalendarSearch.jsp");
@@ -70,7 +73,7 @@ public class CalendarSearch extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+       //doGet(request, response);
         RequestDispatcher dispatcher;
         dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/CalendarSearch.jsp");
         
