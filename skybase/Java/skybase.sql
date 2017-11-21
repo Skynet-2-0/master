@@ -44,6 +44,9 @@ VALUES('bli kjent med blueJ', 'Kunne BlueJ sine grunnleggende funksjoner', 'kap1
 insert into Module (Description, Teaching_Goal, Resources)
 VALUES('bli kjent med koding', 'Kunne hente og legge til verdier', 'kap2');
 
+insert into Module (Description, Teaching_Goal, Resources)
+VALUES('bli kjent med koding', 'Kunne hente og legge til verdier', 'kap3');
+
 
 CREATE TABLE Feedback(
 Status varchar(30) NOT NULL,
@@ -99,16 +102,16 @@ CONSTRAINT Module_fk2 FOREIGN KEY (Module_ID) references Module (Module_ID)
 );
 
 create table Delivery(
-Delivery_ID INT UNSIGNED NOT NULL,
+Delivery_ID INT NOT NULL,
 Date date,
-File_ID INT UNSIGNED NOT NULL,
+File_ID INT NOT NULL,
 
 CONSTRAINT Delivery_pk primary key(Delivery_ID),
 CONSTRAINT File_fk1 FOREIGN KEY (File_ID) references File_Attachment(File_ID)
 );
 
 create table Log(
-Log_ID INT UNSIGNED NOT NULL,
+Log_ID INT NOT NULL,
 Content varchar (1000),
 Week int,
 Date date,

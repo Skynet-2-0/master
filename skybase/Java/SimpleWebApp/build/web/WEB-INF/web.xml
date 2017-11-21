@@ -9,6 +9,13 @@
        <filter-name>aut</filter-name>
        <url-pattern>/createStudents</url-pattern>
    </filter-mapping>
+ <filter-mapping>
+       <filter-name>aut</filter-name>
+       <url-pattern>/progressMenu</url-pattern>
+   </filter-mapping>
+      
+  
+
    
    <filter-mapping>
        <filter-name>aut</filter-name>

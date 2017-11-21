@@ -25,7 +25,7 @@
       
        
        Oversikt over <b>${user.userName}</b>'s progresjon
-                   B  <b>${userid.user_account_id}</b> B
+                
     
     <br>
     
