@@ -42,4 +42,4 @@
                
                 <br></br>
                
-     Din vurdering er lagret
+     Din vurdering er lagret i Skybase

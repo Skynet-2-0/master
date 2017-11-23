@@ -25,6 +25,7 @@ INSERT INTO User_Account (User_Name, Gender, Name, Password, Email, Usertype)
 VALUES('mette', 'F','METTE MARIT','mette001', 'metteprinsesse@gmail.com', 'ADMIN');
 
 
+
 CREATE TABLE Module(
 Module_ID INT NOT NULL AUTO_INCREMENT,
 Description varchar (500) NOT NULL,
@@ -56,6 +57,7 @@ Score int,
 Module_ID INT NOT NULL,
 User_Account_ID INT NOT NULL,
 
+
 CONSTRAINT User_Account_fk1 FOREIGN KEY (User_Account_ID) references User_Account (User_Account_ID),
 CONSTRAINT Module_fk1 FOREIGN KEY (Module_ID) references Module (Module_ID),
 CONSTRAINT Feedback_pk PRIMARY KEY(User_Account_ID, Module_ID)
@@ -63,7 +65,7 @@ CONSTRAINT Feedback_pk PRIMARY KEY(User_Account_ID, Module_ID)
 );
 
 create table Calendar(
-Calendar_ID INT UNSIGNED NOT NULL,
+Calendar_ID INT NOT NULL,
 Dato DATE,
 Event VARCHAR(300),
 
@@ -71,7 +73,7 @@ CONSTRAINT Calendar_pk primary key(Calendar_ID)
 );
 
 create table Forum(
-Post_ID INT UNSIGNED NOT NULL,
+Post_ID INT NOT NULL,
 Title varchar(50),
 User_Account_ID INT NOT NULL,
 

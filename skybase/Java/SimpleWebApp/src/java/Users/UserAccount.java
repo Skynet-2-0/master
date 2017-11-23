@@ -36,6 +36,11 @@ public class UserAccount {
         this.email = email;
         this.usertype = usertype;
     }
+    
+    public UserAccount (String name) {
+        
+        this.name = name;
+    }
 
     
     

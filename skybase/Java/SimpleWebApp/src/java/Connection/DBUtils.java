@@ -221,10 +221,20 @@ public class DBUtils {
    return null;
     }
     
-    public static void insertOralFeedback (Connection conn, Feedback feedback)
+    public static void insertOralFeedback (Connection conn, Feedback feedback, UserAccount user_account)
             throws SQLException{
         
-        String sql = "insert into feedback (status, comment_open, comment_hidden, score, module_id, user_account_id) values(?, ?, ?, ?, ?, ?)";
+        // String sql = "insert into feedback (status, comment_open, comment_hidden, score, module_id, user_account_id) values(?, ?, ?, ?, ?, ?)";
+        
+       /* String sql = "insert into feedback (status, comment_open, comment_hidden, score, module_id, name) values(?, ?, ?, ?, ?, ?)"
+                + "from user_account, feedback"
+                + " where feedback.user_account_id=user_account.user_account_id";
+       */
+       
+       String sql = "insert into feedback(status, comment_open, comment_hidden, score, module_id, user_account_id, name) values(?, ?, ?, ?, ?, ?, ?)";
+             
+                 
+                
         
         PreparedStatement pstm = conn.prepareStatement(sql);
 
@@ -235,11 +245,12 @@ public class DBUtils {
         pstm.setString(4, feedback.getScore());
         pstm.setString(5, feedback.getModule_id());
         pstm.setString(6, feedback.getUser_account_id());
-   
-        
+        pstm.setString(7, user_account.getName());
+       
+        //lag en ekstra spørring som knytter sammen navnet med user_account_id, så henter du id
 
         
-        pstm.executeUpdate();
+        pstm.executeUpdate("insert into feedback where user_account_id= "+user_account.getName()+"");
         
     }
     

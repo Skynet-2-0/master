@@ -9,6 +9,7 @@ package Modules;
 import Connection.DBUtils;
 import Connection.MyUtils;
 import Feedback.Feedback;
+import Users.UserAccount;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -58,17 +59,22 @@ public class Modul1 extends HttpServlet{
        String score = (String) request.getParameter("score");
        String module_id = (String) request.getParameter("module_id");
        String user_account_id = (String) request.getParameter("user_account_id");
+       String name = (String) request.getParameter("name");
 
       
        
        Feedback feedback = new Feedback(status, commentOpen, commentHidden, score, module_id, user_account_id );
+       
+       // UserAccount  user_account = new UserAccount(user_account_id, username, gender, name, password, email, usertype);
+       
+       UserAccount user_account =  new UserAccount(name);
        
        String errorString = null;
        
        if(errorString == null){
        try{      
            try{
-                   DBUtils.insertOralFeedback(conn, feedback);
+                   DBUtils.insertOralFeedback(conn, feedback, user_account);
                    
            }catch(StringIndexOutOfBoundsException e){
                e.printStackTrace();
@@ -84,6 +90,7 @@ public class Modul1 extends HttpServlet{
        
        request.setAttribute("errorString", errorString);
        request.setAttribute("feedback", feedback);
+       request.setAttribute("user_account", user_account);
        
        if(errorString != null){
            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/modul1view.jsp");
