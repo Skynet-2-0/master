@@ -229,7 +229,7 @@ VALUES
  (114, 'Brage Fosso', '.SQL', 2510, 158, 5, 4, 'n'),
  (115, 'Brage Fosso', '.SQL', 2510, 158, 5, 5, 'n'),
  (116, 'Jonas Omdal', '.SQL', 2510, 158, 4, 5, 'a'),
- (117, 'Brage Fosso', 'Jar', 2510, 158, 5, 6, 'g'),
+ (117, 'Brage Fosso', 'Jar', 2510, 158, 5, 5, 'g'),
  (118, 'Brage Fosso', '.SQL', 2510, 158, 5, 7, 'i'),
  (119, 'Jonas Omdal', '.SQL', 2510, 158, 4, 7, 'v'),
  (120, 'Jonas Omdal', 'Jar', 2510, 158, 4, 7, 'e'),
