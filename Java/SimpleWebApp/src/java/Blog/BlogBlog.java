@@ -23,7 +23,7 @@ package Blog;
         
     }
     
-    public BlogBlog(int Log_ID, String Title, String Date, String User_Account_ID){
+    public BlogBlog(int Log_ID, String Title, String Content, String Date, String User_Account_ID){
         this.Log_ID = Log_ID;
         this.Title = Title;
         this.Content = Content;
@@ -31,9 +31,7 @@ package Blog;
         this.User_Account_ID = User_Account_ID;
     }
 
-    BlogBlog(int Log_ID, String Title, String Content, String Date, String User_Account_ID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     public int getLog_ID(){
         return Log_ID;
     }
@@ -51,16 +49,12 @@ package Blog;
     }
     
     
-    public void setDate(String Date){
-        this.Date = Date;
-    }
-
+   
     public void getUser_Account_ID(String User_Account_ID){
         this.User_Account_ID = User_Account_ID;
     }
     public void setLog_ID(int Log_ID){
-        this.Log_ID = Log_ID;
-         
+        this.Log_ID = Log_ID;    
     }
     
     public void setTitle(String Title){
@@ -71,5 +65,9 @@ package Blog;
         this.Content= Content;
     }  
     
+    public void setDate(String Date){
+        this.Date = Date;
+    }
+ 
 }   
 

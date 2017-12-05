@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-       
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Post View</title>
     </head>
@@ -16,24 +16,73 @@
     <jsp:include page="_menu.jsp"></jsp:include>
 
 
-    <body>
-        <h1>Your blog posts</h1>
-        
-         <table border="1" cellpadding="5" cellspacing="1" >
-       <tr>
-          <th>Date</th>
-          <th>Title</th>
-          <th>Content</th>
-          
-          
-       </tr>
-       <c:forEach items="${Blog}" var="blog" >
-          <tr>
-             <td>${blog.title}</td>
-             <td>${blog.content}</td>
-          </tr>
-       </c:forEach>
-    </table>
-             
-    </body>
-</html>
+        <body>
+            <h1>Your blog posts</h1>
+
+            
+
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+
+            <%
+        String id = request.getParameter("Log_ID");
+        String driverName = "com.mysql.jdbc.Driver";
+        String hostName = "jdbc:mysql://localhost:3306/";
+        String dbName = "Skybase";
+        String userName = "root";
+        String password = "root";
+
+        try {
+        Class.forName(driverName);
+        } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+        }
+
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+
+        %>
+            <table 
+                align = "left" cellpadding = "5" cellspacing = "5" border = "1"
+                <tr
+                    
+            </tr>
+                <tr bgcolor = "grey" >
+                     <td><b>Title</b></td> 
+                     <td><b>Content</b></td>
+                     <td><b>Date</b></td>
+                     
+                     </tr>
+                     <%
+                        try {
+                        conn = DriverManager.getConnection(hostName+ dbName, userName, password);
+                        st = conn.createStatement();
+                        String sql = "SELECT * FROM Log LIMIT 100;";
+
+                        rs = st.executeQuery(sql);
+                        while (rs.next()) {
+                        %> 
+                        <tr 
+                    bgcolor = "white"
+                  
+                    <td><%= rs.getInt("Log_ID") %></td>
+                    <td><%= rs.getString("Title") %></td>
+                    <td><%= rs.getString("Content") %></td>
+                    <td><%= rs.getString("Date")%></td> 
+                    </tr>
+                    
+           
+                        <%
+                        }
+
+                        } catch (Exception e) {
+                        e.printStackTrace();
+                        }
+                        %>
+                        </table>
+
+                        </body>
+                        </html>

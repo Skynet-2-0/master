@@ -20,11 +20,7 @@ public class MySQLConnUtils {
             throws ClassNotFoundException, SQLException {
         //Må være etter parameterne til din SQL database
         String hostName = "localhost:";
-<<<<<<< HEAD
-        String dbName = "skybase";
-=======
         String dbName = "Skybase";
->>>>>>> c51ce32eb7cc076be4aed029d48378dd2730531f
         String userName = "root";
         String password = "root";
         return getMySQLConnection(hostName, dbName, userName, password);

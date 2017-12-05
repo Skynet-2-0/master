@@ -5,12 +5,12 @@ package Connection;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-<<<<<<< HEAD
+
 import Blog.BlogBlog;
 import Users.Students;
-=======
 
->>>>>>> c51ce32eb7cc076be4aed029d48378dd2730531f
+
+
 import Users.UserAccount;
 import Feedback.Feedback;
 import java.sql.Connection;
@@ -82,14 +82,10 @@ public class DBUtils {
         return null;
     }
     
-<<<<<<< HEAD
+
     
-    
-    
-    public static List<Students> queryStudents(Connection conn)
-=======
     public static List<UserAccount> queryUserAccount(Connection conn)
->>>>>>> c51ce32eb7cc076be4aed029d48378dd2730531f
+
             throws SQLException{
         String sql = "Select a.User_Account_Id, a.User_Name, a.Gender, a.Name, a.Email, a.Usertype from User_Account a";
         
@@ -223,7 +219,7 @@ public class DBUtils {
    return null;
     }
     
-<<<<<<< HEAD
+
     public static void insertBlogPost(Connection conn, int userid, String title, String content) {
         String sql = "Insert into Log (title, content, date, User_Account_ID) VALUES (?, ?, now(), ?)";
         try {
@@ -241,15 +237,10 @@ public class DBUtils {
         
     }
 
-    /**
-     *
-     * @param conn
-     * @return
-     * @throws SQLException
-     */
+    
     public static List<BlogBlog> queryBlogList(Connection conn)
             throws SQLException{
-        String sql =  "Insert into Log (title, content, date, User_Account_ID) VALUES (?, ?, now(), ?)";
+        String sql =  "Select, a.Log_ID, a.Title, a.Content a.Date, a.User_Account_Id from Log a";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
         
@@ -269,7 +260,65 @@ public class DBUtils {
         }
         return list;
     }
-=======
+      
+
+    public static BlogBlog findPost(Connection conn, int userid, String title, String content)
+            throws SQLException {
+        String sql = "Select, a.Log_ID, a.Title, a.Content a.Date, a.User_Account_Id from Log a"
+                + " where a.Title = ? ";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, title);
+        ResultSet rs = pstm.executeQuery();
+        List<BlogBlog> list = new ArrayList<>();
+        
+        if(rs.next()){
+            int Log_ID = rs.getInt("Log_ID");
+            String Title = rs.getString("Title");
+            String Content = rs.getString("Content");
+            String Date = rs.getString("Date");
+            BlogBlog blog = new BlogBlog();
+            blog.setLog_ID(Log_ID);
+            blog.setTitle(Title);
+            blog.setContent(Content);
+            blog.setDate(Date);
+            list.add(blog);
+            return blog;
+        }
+        return null;
+    }
+        public static String findTitle(Connection conn, String title)
+            throws SQLException {
+        String sql = "Select a.Title from Log a"
+                + " where a.Title = ?";
+        
+     
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, title);
+        
+        ResultSet rs = pstm.executeQuery();
+        
+        try {
+            while (rs.next()) {
+                rs.getString("Title");
+                System.out.println("Title :" + rs.getString("Title"));
+                return rs.getString("title");
+               
+                
+            }
+            
+        } catch (SQLException e1) {
+            
+           System.out.println(e1.getMessage());
+           
+        }
+           
+   
+      
+   return null;
+    }
+
     public static void insertOralFeedback (Connection conn, Feedback feedback)
             throws SQLException{
         
@@ -355,7 +404,7 @@ public class DBUtils {
     
     
         
->>>>>>> c51ce32eb7cc076be4aed029d48378dd2730531f
+
 }
     
 
