@@ -204,8 +204,8 @@ public class DBUtils {
         List<CalendarCalendar> list = new ArrayList<>();
         
         if(rs.next()){
-            String dato;
-            dato = rs.getString("dato");
+            //String Dato;
+            Dato = rs.getString("dato");
             CalendarCalendar calendar = new CalendarCalendar();
             calendar.setDato(Dato);
             calendar.setHendelse(Hendelse);

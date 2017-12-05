@@ -19,7 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.sql.*;
 /**
  *
  * @author Ann Margrethe
@@ -36,6 +36,7 @@ public class CalendarSearch extends HttpServlet {
    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
+        
         Connection conn = MyUtils.getStoredConnection(request);
         
         String Dato = (String) request.getParameter("Dato");

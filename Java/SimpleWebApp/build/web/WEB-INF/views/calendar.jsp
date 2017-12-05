@@ -27,10 +27,10 @@
               <p style="color: red;">${errorString}</p> 
              <td>Søk etter dato</td>
              
-             <td><input type="text" name="search" value="${calendar.dato}" /></td>
+             <td><input type="text" name="search" /></td>
              <input type="submit" value="Submit" name="submit" />
           </tr>
        </table>
     </form>
- </body>
+ 
 </html>
