@@ -27,61 +27,77 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@ page import="java.sql.SQLException" %> 
 
-            <%
-            
-        //String id = request.getParameter("Log_ID");
+  <%
+	String keyword = "";
+	if(request.getParameter("txtKeyword") != null) {
+		keyword = request.getParameter("txtKeyword");
+	}
+%>
+
+
+
+       <%
         String driverName = "com.mysql.jdbc.Driver";
         String hostName = "jdbc:mysql://localhost:3306/";
         String dbName = "Skybase";
         String userName = "root";
         String password = "root";
-        try {
-        Class.forName(driverName);
-        } catch (ClassNotFoundException e) {
-        e.printStackTrace();
-        }
-        Connection conn = null;
+        
+	Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
-        %>
-            <table 
-                cellpadding = "10" cellspacing = "10" border = "1">
-              
-                     <tr bgcolor = "brickred" >
-                     <td><b>Dato</b></td> 
-                     <td><b>Hendelse</b></td>
-                     
-                     </tr>
-                     <%
-                        try {
-                        conn = DriverManager.getConnection(hostName+ dbName, userName, password);
-                        st = conn.createStatement();
-                          //String sql = "Select a.Calendar_ID, a.Dato, a.Hendelse from Calendar a"
-                //+ " where a.Dato = ? ";
-                          String sql = "Select a.Dato, a.Hendelse from Calendar a";
-                        //String sql = "SELECT * FROM Calendar LIMIT 100;";
-                        rs = st.executeQuery(sql);
-                        while (rs.next()) {
-                        %> 
-                        <tbody> 
-                            <tr>
-                  
-                    <td><%= rs.getString("Dato") %></td>
-                    <td><%= rs.getString("Hendelse") %></td>
-
-                    </tr>
-                    
-           
-                        <%
-                        }
-                        } catch (Exception e) {
-                        e.printStackTrace();
-                        }
-                        %>
-                        </table>
+	
+	try {
+		Class.forName(driverName);
+		
+		conn =  DriverManager.getConnection(hostName+ dbName, userName, password);
+		
+		st = conn.createStatement();
+		
+		String sql = "SELECT * FROM  Calendar WHERE Dato like '%" +  keyword + "%' ";
+		
+		System.out.println(sql);
+		
+		rs = st.executeQuery(sql);
+		%>      
+             
+                <table width="600" border="1">
+		  <tr>
+		    <th width="91"> <div align="center">Dato </div></th>
+		    <th width="98"> <div align="center">Hendelse </div></th>
+		    
+		  </tr>	
+			<%while((rs!=null) && (rs.next())) { %>
+				  <tr>
+				    <td><div align="center"><%=rs.getString("Dato")%></div></td>
+				    <td><%=rs.getString("Hendelse")%></td>
+				  </tr>
+	       	<%}%>
+	  	</table>      
+             
+                <%	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			out.println(e.getMessage());
+			e.printStackTrace();
+		}
+	
+		try {
+			if(st!=null){
+				st.close();
+				conn.close();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			out.println(e.getMessage());
+			e.printStackTrace();
+		}
+	%>
+                      
                         
                         <a href="${pageContext.request.contextPath}/Calendar">Tilbake</a>
                         
                         </body>
-                        </html>
+                         </html>
