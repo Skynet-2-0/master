@@ -27,7 +27,7 @@
 <%@page import="java.sql.Connection"%>
 
             <%
-        String id = request.getParameter("Log_ID");
+      
         String driverName = "com.mysql.jdbc.Driver";
         String hostName = "jdbc:mysql://localhost:3306/";
         String dbName = "Skybase";
@@ -46,14 +46,17 @@
 
         %>
             <table 
-                align = "left" cellpadding = "5" cellspacing = "5" border = "1"
-                <tr
+                align = "left" cellpadding = "5" cellspacing = "5" border = "1" >
+                <tr>
                     
-            </tr>
-                <tr bgcolor = "grey" >
+                </tr>
+                <tr bgcolor = "firebrick" >
+                    
+                     <td><b>Log_ID</b></td> 
                      <td><b>Title</b></td> 
                      <td><b>Content</b></td>
                      <td><b>Date</b></td>
+                    <td><b>User_Account_ID</b></td> 
                      
                      </tr>
                      <%
@@ -66,12 +69,13 @@
                         while (rs.next()) {
                         %> 
                         <tr 
-                    bgcolor = "white"
-                  
+                            bgcolor = "white" >
+                    
                     <td><%= rs.getInt("Log_ID") %></td>
                     <td><%= rs.getString("Title") %></td>
                     <td><%= rs.getString("Content") %></td>
                     <td><%= rs.getString("Date")%></td> 
+                     <td><%= rs.getInt("User_Account_ID")%></td> 
                     </tr>
                     
            

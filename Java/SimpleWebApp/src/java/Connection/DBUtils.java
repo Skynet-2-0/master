@@ -240,7 +240,7 @@ public class DBUtils {
     
     public static List<BlogBlog> queryBlogList(Connection conn)
             throws SQLException{
-        String sql =  "Select, a.Log_ID, a.Title, a.Content a.Date, a.User_Account_Id from Log a";
+        String sql =  "Select, a.Log_ID, a.Title, a.Content a.Date, a.User_Account_ID from Log a";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
         
@@ -251,6 +251,7 @@ public class DBUtils {
             String Title = rs.getString("Title");
             String Content = rs.getString("Content");
             String Date = rs.getString("Date");
+            int User_Account_ID = rs.getInt("User_Account_ID");
             BlogBlog blog = new BlogBlog();
             blog.setLog_ID(Log_ID);
             blog.setTitle(Title);
