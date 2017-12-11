@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Brage
  */
-@WebServlet(urlPatterns = {"/progressMenu"})
+@WebServlet(urlPatterns = {"/progressMenus"})
 public class ProgressMenu1 extends HttpServlet{
     
     private static final long serialVersionUID = 1L;

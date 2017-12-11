@@ -9,12 +9,14 @@ import Admin.UserAccount;
 import Feedback.Feedback;
 import Uploads.Files;
 import java.sql.Blob;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.String;
 
 /**
  *
@@ -290,22 +292,17 @@ public class DBUtils {
     public static void createFeedback (Connection conn, Feedback feedback, UserAccount user_account)
             throws SQLException{
         
-        String sql = "insert into feedback (status, comment_open, comment_hidden, score, module_id, user_account_id) values(?, ?, ?, ?, ?, ?)";
-    
-        PreparedStatement pstm = conn.prepareStatement(sql);
-
+        CallableStatement statement = conn.prepareCall("{call create_feedback(?, ?, ?, ?, ?, ?)}");
         
-        pstm.setString(1, feedback.getStatus());
-        pstm.setString(2, feedback.getCommentOpen());
-        pstm.setString(3, feedback.getCommentHidden());
-        pstm.setString(4, feedback.getScore());
-        pstm.setString(5, feedback.getModule_id());
-        pstm.setString(6, feedback.getUser_account_id());  
-    
-       
-       
-
-        
+        statement.setString(1, feedback.getStatus());
+        statement.setString(2, feedback.getCommentOpen());
+        statement.setString(3, feedback.getCommentHidden());
+        statement.setString(4, feedback.getScore());
+        statement.setString(5, feedback.getModule_id());    
+        statement.setString(6, user_account.getName());  
+   
+        statement.execute();  
+      
     }
    
     public static Feedback findFeedback (Connection conn, String module_ID)
@@ -325,7 +322,7 @@ public class DBUtils {
             String comment_open = rs.getString("comment_open");
             String comment_hidden = rs.getString("comment_hidden");
             String score = rs.getString("score");
-            String module_id = rs.getString("module_:id");
+            String module_id = rs.getString("module_id");
             String user_account_id = rs.getString("user_account_id");
             Feedback feedback = new Feedback();
             feedback.setStatus(status);
@@ -368,45 +365,7 @@ public class DBUtils {
         }
         return list;
     }
-    /*
-      public static Map<String, List<Feedback>> queryAllFeedback(Connection conn)
-            throws SQLException{
-          List<Feedback> list = new ArrayList<>();
-          Map<String,List<Feedback>> map = new HashMap<>();
-          //String sql = "select feedback.status, feedback.comment_open, feedback.comment_hidden, feedback.score, feedback.module_id, user_account.name from feedback, user_account where user_account.user_account_id=feedback.user_account_id";
-          String sql = "select status, comment_open, comment_hidden, score, module_id, name from feedback, user_account where user_account.user_account_id=feedback.user_account_id";
-               
-          
-       
-          PreparedStatement pstm = conn.prepareStatement(sql);
-          ResultSet rs = pstm.executeQuery();
-        
-          
-        while(rs.next()){
-            String status = rs.getString("status");
-            String comment_open = rs.getString("comment_open");
-            String comment_hidden = rs.getString("comment_hidden");
-            String score = rs.getString("Score");
-            String module_id = rs.getString("module_id");
-            String name = rs.getString("name");
-            
-                    
-            Feedback feedback = new Feedback();
-            UserAccount user_account = new UserAccount();
-            user_account.setName(name);
-            feedback.setStatus(status);
-            feedback.setCommentOpen(comment_open);
-            feedback.setCommentHidden(comment_hidden);
-            feedback.setScore(score);
-            feedback.setModule_id(module_id);
-            list.add(feedback);
-            map.put(name,list);
-            
-        
-    }
     
-    return map;
-    */
      public static List<Feedback> queryStudentFeedback(Connection conn, String user_account_id)
             throws SQLException{
           List<Feedback> list = new ArrayList<>();

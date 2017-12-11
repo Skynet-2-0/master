@@ -105,11 +105,8 @@ CONSTRAINT File_pk primary key(ID)
 create table Delivery(
 Delivery_ID INT NOT NULL,
 Date date,
-<<<<<<< HEAD
 ID BIGINT NOT NULL,
-=======
 File_ID INT NOT NULL,
->>>>>>> origin/BrageEksamen
 
 CONSTRAINT Delivery_pk primary key(Delivery_ID),
 CONSTRAINT File_fk1 FOREIGN KEY (ID) references ATTACHMENT(ID)
@@ -125,11 +122,3 @@ User_Account_ID INT NOT NULL,
 CONSTRAINT Log_pk primary key(Log_ID),
 CONSTRAINT User_fk5 FOREIGN KEY (User_Account_ID) references User_Account (User_Account_ID)
 );
-
-
-
-
-
-
-
-select * from feedback;
