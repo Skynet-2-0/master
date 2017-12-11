@@ -1,4 +1,5 @@
-<%-- 
+
+ <%-- 
     Document   : modulView
     Created on : Sep 24, 2017, 10:35:44 PM
     Author     : Brage
@@ -6,6 +7,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
  <head>
@@ -14,65 +16,33 @@
     <link href="Main.css" rel="stylesheet" type="text/css">
  </head>
  <body>
-     
- 
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
- 
-    <h3>Modules Overview</h3>
 
-<table style="border-collapse:collapse; margin-left: 25px;" class="tables">
+     <h3>Modules Overview</h3>
+     <table style="border-collapse:collapse; margin-left: 25px;" class="tables">
          <tr>
-            <th>Module no.</th>
-            <th>Delivery date</th>
+             <th>ID</th>
+             <th>Name</th>
+             <th>Delivery Date</th>
+             <th>Edit</th>
+             <th>Delete</th>
          </tr>
+        <c:forEach items="${moduleList}" var="module">
          <tr>
-            <td> <a href="${pageContext.request.contextPath}/modules/modul1">1</a></td>
-            <td>2. September</td>
+             <td>${module.module_id}</td>
+             <td>${module.module_name}</td>
+             <td>${module.delivery_date}</td>
+             <td>
+                 <a href="editModule?module_id=${module.module_id}">Edit</a>
+             </td>
+             <td>
+                 <a href="deleteModule?module_id=${module.module_id}">Delete</a>
+             </td>
          </tr>
-         
-         <tr>
-            <td> <a href="${pageContext.request.contextPath}/modules/modul2">2</a></td>
-            <td>14. September</td>
-         </tr>
-         
-             <tr>
-          <td> <a href="${pageContext.request.contextPath}/modules/modul3">3</a></td>
-            <td>21. September</td>
-         </tr>
-         
-             <tr>
-          <td> <a href="${pageContext.request.contextPath}/modules/modul4">4</a></td>
-            <td>4. Oktober</td>
-         </tr>
-         
-             <tr>
-            <td> <a href="${pageContext.request.contextPath}/modules/modul5">5</a></td>
-            <td>11. Oktober</td>
-         </tr>
-         
-             <tr>
-          <td> <a href="${pageContext.request.contextPath}/modules/modul6">6</a></td>
-          <td> 18. Oktober</td>
-         </tr>
-         
-             <tr>
-            <td> <a href="${pageContext.request.contextPath}/modules/modul7">7</a></td>
-            <td>25. Oktober</td>
-         </tr>
-         
-             <tr>
-            <td> <a href="${pageContext.request.contextPath}/modules/modul8">8</a></td>
-            <td>2. November</td>
-         </tr>
-         
-              <tr>
-            <td> <a href="${pageContext.request.contextPath}/modules/modul9">9</a></td>
-            <td>9. November</td>
-         </tr>
-         
-              <tr>
-            <td> <a href="${pageContext.request.contextPath}/modules/modul10">10</a></td>
-            <td>16. November</td>
-         </tr>
-      </table>
+        </c:forEach>
+     </table>
+     <p></p>
+     <button style="margin-left: 25px;"><a href="createModule" class="createModule">Create Module</a></button> 
+     </body>
+ </html>

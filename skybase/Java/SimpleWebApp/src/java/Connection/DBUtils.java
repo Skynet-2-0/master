@@ -7,6 +7,7 @@ package Connection;
  */
 
 import Users.UserAccount;
+import Modules.Module;
 import Feedback.Feedback;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import sun.util.logging.PlatformLogger;
 
 /**
  *
@@ -198,6 +200,97 @@ public class DBUtils {
    return null;
     }
     
+    // For modules
+    public static void createModules (Connection conn, Module module) throws SQLException{
+        String sql = "insert into Module (Module_Name, Delivery_Date, Description, LearningGoals, Resources) values (?, ?, ?, ?, ?)";
+        PreparedStatement pstm = conn.prepareStatement (sql);
+        
+        pstm.setString(1, module.getModule_name());
+        pstm.setString(2, module.getDelivery_date());
+        pstm.setString(3, module.getDescription());
+        pstm.setString(4, module.getLearningGoals());
+        pstm.setString(5, module.getResources());
+        
+        pstm.executeUpdate();
+    }
+   
+    public static List<Module> listAllModules(Connection conn) throws SQLException {
+        List<Module> listM = new ArrayList<>();
+         
+        String sql = "SELECT * FROM Module";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        ResultSet rs = pstm.executeQuery();
+         
+        while (rs.next()) {
+            String module_id = rs.getString("module_id");
+            String module_name = rs.getString("module_name");
+            String delivery_date = rs.getString("delivery_date");
+            String description = rs.getString("description");
+            String learningGoals = rs.getString("learningGoals");
+            String resources = rs.getString("resources");
+             
+            Module module = new Module(module_id, module_name, delivery_date, description, learningGoals, resources);
+            listM.add(module);
+        }
+
+        return listM;
+    }
+    
+        public static Module findModule(Connection conn, String module_id)
+            throws SQLException{
+        
+        String sql = "Select a.module_id, a.module_Name, a.delivery_date, a.description, a.learningGoals, a.resources from Module a where a.module_id=?";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, module_id);
+       
+        ResultSet rs = pstm.executeQuery();
+        
+        while(rs.next()){
+            String module_name = rs.getString("module_name");
+            String delivery_date = rs.getString("delivery_date");
+            String description = rs.getString("description");
+            String learningGoals = rs.getString("learningGoals");
+            String resources = rs.getString("resources");
+            Module module = new Module(module_id, module_name, delivery_date, description, learningGoals, resources);
+            return module;
+        }
+        return null;
+    }
+    
+    
+    public static void editModules(Connection conn, Module module)throws SQLException{
+    try{   
+    String sql = "Update Module set Module_Name=?, Delivery_Date=?, Description=?, LearningGoals=?, Resources=? where Module_id=?";
+    PreparedStatement pstm = conn.prepareStatement(sql);
+    
+    pstm.setString(1, module.getModule_name());
+    pstm.setString(2, module.getDelivery_date());
+    pstm.setString(3, module.getDescription());
+    pstm.setString(4, module.getLearningGoals());
+    pstm.setString(5, module.getResources());
+   
+    pstm.executeUpdate();
+    
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+    public static void deleteModule(Connection conn, int module_id)throws SQLException{
+        try{
+            String sql = "Delete from Module where Module_ID=?";
+            PreparedStatement pstm = conn.prepareStatement(sql);      
+            
+            pstm.setInt(1,module_id);
+            pstm.executeUpdate();            
+        }
+        catch (SQLException e) {
+        e.printStackTrace();
+    }
+    }
+    
+    //For feedback
+   
     public static void insertOralFeedback (Connection conn, Feedback feedback)
             throws SQLException{
         

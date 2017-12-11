@@ -16,19 +16,20 @@
     .menu{
         font-family: brandon;
     }
-    ul {
+    .menu ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #171e21;
+    box-shadow: 0px 3px 5px gray;
     }
     
-    li {
+    .menu li {
     float: left;
     }
     
-    li a {
+    .menu li a {
     display: block;
     color: white;
     text-align: center;
@@ -36,28 +37,30 @@
     text-decoration: none;
     }
     
-    li a:hover {
-    background-color: #111;
+    .menu li a:hover {
+    background-color: #444444;
     }
     
     .logoutbutton {
-        margin-left: 25.5cm;
+        margin-left: 16.9cm;
         font-size: 18px;
         background-color: #355C7D
     }
     
-    .logoutbutton:hover {
-        background-color: #2C4D68; 
-    }
 </style>
 
 <div class="menu">
-    <ul class="nav">
-        <li><a href="${pageContext.request.contextPath}/homeView.jsp">Home</a></li>  
+    <ul>
+        <li><a href="${pageContext.request.contextPath}/home">Home</a></li>  
         <li><a href="${pageContext.request.contextPath}/studentList">Student List</a></li>
         <li><a href="${pageContext.request.contextPath}/userInfo">My Account Info</a></li> 
         <%--<li class="menulogin"><a href="${pageContext.request.contextPath}/login">Login</a></li>--%>  
-        <li><a href="${pageContext.request.contextPath}/modules">Modules</a></li>
+        <li><a href="${pageContext.request.contextPath}/moduleList">Modules</a></li>
+        <li><a href="${pageContext.request.contextPath}/progressMenu">Progress</a></li>
+        <li><a href="${pageContext.request.contextPath}/progressMenu">Blogg</a></li>
+        <li><a href="${pageContext.request.contextPath}/progressMenu">Forum</a></li>
+        <li><a href="${pageContext.request.contextPath}/progressMenu">Kalender</a></li>
         <li><a class="logoutbutton" href="logout.jsp"/>LOGOUT</a></li>
+
     </ul>
 </div> 

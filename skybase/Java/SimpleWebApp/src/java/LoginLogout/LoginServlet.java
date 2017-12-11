@@ -125,7 +125,7 @@ public class LoginServlet extends HttpServlet{
                     session.setMaxInactiveInterval(10*60);
                     session.setAttribute("user", userName);
                     request.setAttribute("userName", userName);
-                    request.getRequestDispatcher("/WEB-INF/studentViews/userInfoStud.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/views/newjsp.jsp").forward(request, response);
                     }
             }
             catch (IOException e1){

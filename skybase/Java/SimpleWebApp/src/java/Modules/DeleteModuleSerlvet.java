@@ -1,4 +1,4 @@
-package Users;
+package Modules;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,7 +11,6 @@ import Connection.DBUtils;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
  
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,40 +23,46 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mathi
  */
-
-@WebServlet(urlPatterns = {"/studentList"})
-public class StudentsListServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/deleteModule"})
+public class DeleteModuleSerlvet extends HttpServlet{
     
     private static final long serialVersionUID = 1L;
-    
-    public StudentsListServlet(){
+ 
+    public DeleteModuleSerlvet() {
         super();
     }
-    
+ 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+            throws ServletException, IOException {
         Connection conn = MyUtils.getStoredConnection(request);
         
+        String module_id = (String) request.getParameter("module_id");
+        
         String errorString = null;
-        List<UserAccount> list = null;
+        
         try{
-            list = DBUtils.queryUserAccount(conn);
+            DBUtils.deleteModule(conn, Integer.parseInt(module_id));
         }
         catch(SQLException e){
             e.printStackTrace();
             errorString = e.getMessage();
         }
-        request.setAttribute("errorString", errorString);
-        request.setAttribute("userAccountList", list);
         
-        RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/studentsListView.jsp");
-        dispatcher.forward(request, response);
+        if(errorString != null){
+            request.setAttribute("errorString", errorString);
+            
+            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/DeleteModuleServlet.jsp");
+            dispatcher.forward(request, response);
+        }
+        else{
+            response.sendRedirect(request.getContextPath() + "/moduleList");
+        }
     }
     
-    @Override
+     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+            throws ServletException, IOException {
         doGet(request, response);
     }
     

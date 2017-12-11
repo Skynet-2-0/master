@@ -21,6 +21,7 @@ src: url(font/roboto.ttf);
 body {
     font-family: roboto;
     font-size: 16px;
+    margin-left: 25px;
 }
 
 h3 {
@@ -42,15 +43,11 @@ h3 {
 
 .tables td, .tables th {
     font-family: roboto;
-    border: 2px solid #ddd;
+    border: 1.3px solid #c6c6c6;
     padding: 12px;
 }
 
 .tables tr:nth-child(even){background-color: #f2f2f2;}
-
-.tables tr:hover {
-    background-color: #ddd;
-}
 
 .tables th {
     padding-top: 12px;

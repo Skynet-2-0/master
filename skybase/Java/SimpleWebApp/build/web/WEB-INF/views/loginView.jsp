@@ -30,7 +30,7 @@
                 else password.type='text';"> Show Password
                 </button></th>
                 <th>&emsp;Remember me</th>
-                <th><input type="checkbox" name="rememberMe" value= "Y" /></th>
+                <th><input type="checkbox" name="rememberMe" value= "Y" style="-webkit-appearance: none;" /></th>
             </tr>
         </table>
             <%--<label for="chechbox">Remember me</label>

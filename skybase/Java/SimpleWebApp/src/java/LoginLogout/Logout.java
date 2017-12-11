@@ -43,6 +43,6 @@ public class Logout extends HttpServlet {
         HttpSession session = request.getSession(false);
             if(session != null)
                 session.invalidate();
-                    request.getRequestDispatcher("/WEB-INF/views/homeView.jsp").forward(request,response);
+                    request.getRequestDispatcher("/WEB-INF/views/loginView.jsp").forward(request,response);
         }
     }

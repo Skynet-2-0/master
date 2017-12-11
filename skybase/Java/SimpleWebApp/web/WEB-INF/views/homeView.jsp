@@ -11,18 +11,16 @@
   <head>
      <meta charset="UTF-8">
      <title>Home Page</title>
-  </head>
+     <link href="Main.css" rel="stylesheet" type="text/css">
   <body>
  
      <jsp:include page="_header.jsp"></jsp:include>
      <jsp:include page="_menu.jsp"></jsp:include>
     
+      <img src="http://tflip.uia.no/images/uia_logo.gif" alt="uia_logo" style="width:600px;height:100px; margin-top: 25px;">
       <h3>Home Page</h3>
-      <img src="http://tflip.uia.no/images/uia_logo.gif" alt="uia_logo" style="width:600px;height:100px;">
-      
-      <form name="myForm" action="display.jsp" method="POST">
-          <table border="0">
-              
+      <div style="margin-left: 25px">
+
               <tbody>
                   <tr>
                       <td>Studentsøk: </td>
@@ -30,12 +28,12 @@
                   </tr>
               </tbody>
           </table>
-          &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="reset" value="Clear" name="clear" />
+          &nbsp;&emsp;<input type="reset" value="Clear" name="clear" />
           &nbsp;<input type="submit" value="Submit" name="submit" />
       </form>
-      
+ <%--     
       <br>Dette er en Simple web application med bruk av jsp, servlet &amp; Jdbc. <br><br>
-      <b>Den inneholder disse funksjonene til nå:</b>
+      <b>Den inneholder disse funksjonene til nå:</b>    
       <ul>
          <li>Login</li>
          <li>Lagre brukerinformasjon i cookies</li>
@@ -45,8 +43,9 @@
          <li>Slette Studenter</li>
          <li>Søkefunksjon</li>
       </ul>
+          </div>  
     <textarea name="txtReason" id="txtReason" style="display: none;" class="textboxmulti">
- 
+
 ─────────▄▄───────────────────▄▄──
 ──────────▀█───────────────────▀█─
 ──────────▄█───────────────────▄█─
@@ -64,7 +63,7 @@
 ───────────█████████████──────────
 ──────────────────────────────────
 ──────────────────────────────────
-
+--%> 
 </textarea>
   </body>
 </html>

@@ -1,3 +1,56 @@
+ 
+ 
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+ <head>
+    <meta charset="UTF-8">
+    <title>Modules</title>
+    <link href="../Main.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+    <jsp:include page="_header.jsp"></jsp:include>
+    <jsp:include page="_menu.jsp"></jsp:include>
+ 
+    <h3>Module 2</h3>
+
+    <table style="border-collapse: collapse; margin: 25px 0px 0px 25px;" class="tables" border="1">
+         <tr>
+            <th colspan="2">Module 2 - Introduksjon til BlueJ</th>
+         </tr>
+         <tr>
+            <td><b>Beskrivelse</b></td>
+            <td>Studenten skal lage en blå sirkel og få den til å bevege på seg</td>
+         </tr>      
+         <tr>
+             <td><b>Læreplanmål</b></td>
+         <td>
+          <ul>
+             <li>Forstå grunnlegende funksjoner ved blueJ</li>
+             <li>Kune lagre, slette og exportere filer i blueJ</li>
+             <li>Forstå forskjellen på klasser og objekter</li>
+          </ul>
+         </td>
+         </tr> 
+         <tr>
+             <td><b>Ressurser<br>og vedlegg</b></td>
+             <td>
+                 <ul>
+                     <li> https://www.bluej.org/ </li>
+                     <li> https://www.youtube.com/watch?v=UMcijMC4Dwk </li>
+                 </ul>
+             </td>
+         </tr>
+      </table>  
+    <h2 style="font-family: roboto; margin-left: 25px; font-size: 20px;">Last opp besvarelse:</h2> 
+    
+
+    
+    
+    
+    
     <%-- 
     Document   : modulView
     Created on : Sep 24, 2017, 10:35:44 PM

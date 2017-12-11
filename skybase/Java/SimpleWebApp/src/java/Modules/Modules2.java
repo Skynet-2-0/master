@@ -21,11 +21,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 @WebServlet(urlPatterns = {"/modules"})
-public class Modules extends HttpServlet{
+public class Modules2 extends HttpServlet{
     
     private static final long serialVersionUID = 1L;
     
-    public Modules(){
+    public Modules2(){
         super();
     }
     

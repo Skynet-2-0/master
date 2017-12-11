@@ -26,23 +26,21 @@ VALUES('mette', 'F','METTE MARIT','mette001', 'metteprinsesse@gmail.com', 'ADMIN
 
 
 CREATE TABLE Module(
-Module_ID INT NOT NULL AUTO_INCREMENT,
+Module_id INT NOT NULL AUTO_INCREMENT,
+Module_Name varchar (70) NOT NULL,
+Delivery_Date varchar (70) NOT NULL,
 Description varchar (500) NOT NULL,
-Teaching_Goal varchar (300) NOT NULL,
-Resources varchar (100),
-
-
+LearningGoals varchar (500) NOT NULL,
+Resources varchar (300),
 
 CONSTRAINT Modul_pk primary key(Module_ID)
 );
 
 -- Insert Data --
 
-INSERT INTO Module (Description, Teaching_Goal, Resources)
-VALUES('bli kjent med blueJ', 'Kunne BlueJ sine grunnleggende funksjoner', 'kap1');
+INSERT INTO Module (Module_Name, Delivery_Date, Description, LearningGoals, Resources)
+VALUES('Introduksjon til BlueJ', '2.februar - kl. 23.59', 'bli kjent med blueJ', 'Kunne BlueJ sine grunnleggende funksjoner', 'kap1');
 
-insert into Module (Description, Teaching_Goal, Resources)
-VALUES('bli kjent med koding', 'Kunne hente og legge til verdier', 'kap2');
 
 
 CREATE TABLE Feedback(
@@ -101,7 +99,7 @@ CONSTRAINT Module_fk2 FOREIGN KEY (Module_ID) references Module (Module_ID)
 create table Delivery(
 Delivery_ID INT UNSIGNED NOT NULL,
 Date date,
-File_ID INT UNSIGNED NOT NULL,
+File_ID INT NOT NULL,
 
 CONSTRAINT Delivery_pk primary key(Delivery_ID),
 CONSTRAINT File_fk1 FOREIGN KEY (File_ID) references File_Attachment(File_ID)
