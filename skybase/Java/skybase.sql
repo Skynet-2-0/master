@@ -122,3 +122,11 @@ User_Account_ID INT NOT NULL,
 CONSTRAINT Log_pk primary key(Log_ID),
 CONSTRAINT User_fk5 FOREIGN KEY (User_Account_ID) references User_Account (User_Account_ID)
 );
+
+
+
+
+
+
+
+select * from feedback;

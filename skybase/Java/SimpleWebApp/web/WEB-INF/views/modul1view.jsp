@@ -47,8 +47,8 @@
                    
                      <tr>
                        <td>Hvem vurderer du?</td>                      
-                     <td><input type="text" name="user_account_id" value="${user_account.name}" /></td>
-       <%--             <td><input type="text" name="user_account_id" value="${feedback.user_account_id}" /></td>  --%> 
+                     <td><input type="text" name="name" value="${user_account.name}" /></td>  
+                         <%--     <td><input type="text" name="user_account_id" value="${feedback.user_account_id}" /></td>  --%>  
 
                    </tr>
                                       <tr>

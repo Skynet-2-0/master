@@ -93,12 +93,6 @@ public class ProgressMenu1 extends HttpServlet{
         
       
       
-        
-        
-   /*     RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/studentsListView.jsp");
-        dispatcher.forward(request, response);
- */   
-
 
     
 

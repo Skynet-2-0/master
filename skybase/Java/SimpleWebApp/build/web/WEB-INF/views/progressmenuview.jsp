@@ -24,7 +24,7 @@
 
       
        
-       Oversikt over <b>${user.userName}</b>'s progresjon
+        Oversikt over <b>${user.userName}</b>'s progresjon <b>${id.id}</b>
                 
     
     <br>

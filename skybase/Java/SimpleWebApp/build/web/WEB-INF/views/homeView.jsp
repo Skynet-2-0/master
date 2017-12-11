@@ -34,17 +34,8 @@
           &nbsp;<input type="submit" value="Submit" name="submit" />
       </form>
       
-      <br>Dette er en Simple web application med bruk av jsp, servlet &amp; Jdbc. <br><br>
-      <b>Den inneholder disse funksjonene til nå:</b>
-      <ul>
-         <li>Login</li>
-         <li>Lagre brukerinformasjon i cookies</li>
-         <li>Student List</li>
-         <li>Lage Studenter</li>
-         <li>Redigere Studenter</li>
-         <li>Slette Studenter</li>
-         <li>Søkefunksjon</li>
-      </ul>
+     
+    
     <textarea name="txtReason" id="txtReason" style="display: none;" class="textboxmulti">
  
 ─────────▄▄───────────────────▄▄──

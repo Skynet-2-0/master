@@ -8,12 +8,16 @@ package Connection;
 
 import Users.UserAccount;
 import Feedback.Feedback;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.lang.String;
+import java.util.HashMap;
 
 /**
  *
@@ -85,6 +89,29 @@ public class DBUtils {
         return null;
     }
     
+     public static UserAccount findStudentName(Connection conn, String name)
+            throws SQLException{
+        String sql = "Select User_account_id from User_Account "
+                + " where name = ?";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, name);
+        
+        ResultSet rs = pstm.executeQuery();
+        
+        if(rs.next()){
+            UserAccount id = new UserAccount();
+            id.setUser_account_id(rs.getString("User_account_id"));
+            return id;
+           
+            
+           
+        }
+        return null;
+    }
+    
+   
+     
     public static UserAccount findStudents(Connection conn, String user_account_id)
             throws SQLException{
         
@@ -221,39 +248,76 @@ public class DBUtils {
    return null;
     }
     
-    public static void insertOralFeedback (Connection conn, Feedback feedback, UserAccount user_account)
+    public static void createFeedback (Connection conn, Feedback feedback, UserAccount user_account)
             throws SQLException{
         
-        // String sql = "insert into feedback (status, comment_open, comment_hidden, score, module_id, user_account_id) values(?, ?, ?, ?, ?, ?)";
+    
         
-       /* String sql = "insert into feedback (status, comment_open, comment_hidden, score, module_id, name) values(?, ?, ?, ?, ?, ?)"
-                + "from user_account, feedback"
-                + " where feedback.user_account_id=user_account.user_account_id";
-       */
+  
+    CallableStatement statement = conn.prepareCall("{call create_feedback(?, ?, ?, ?, ?, ?)}");
+        
+        statement.setString(1, feedback.getStatus());
+        statement.setString(2, feedback.getCommentOpen());
+        statement.setString(3, feedback.getCommentHidden());
+        statement.setString(4, feedback.getScore());
+        statement.setString(5, feedback.getModule_id());    
+        statement.setString(6, user_account.getName());  
+   
+        statement.execute();
+
+        
+    }
+  /* dette dritet funker ikke. sjekk metoden over :)
+    public static UserAccount insertOralFeedback (Connection conn, Feedback feedback, UserAccount user_account)
+            throws SQLException{
+        
+        
+     
+       String sql2 = "select user_account_id from user_account where name=?";  
        
-       String sql = "insert into feedback(status, comment_open, comment_hidden, score, module_id, user_account_id, name) values(?, ?, ?, ?, ?, ?, ?)";
-             
-                 
-                
+       
+       PreparedStatement pstm2 = conn.prepareStatement(sql2);
+       pstm2.setString(1, user_account.getName());
+       
+       ResultSet rs = pstm2.executeQuery();
+        
+       if(rs.next()){
+           // String user_account_id = rs.getString("user_account_id");
+            
+            UserAccount id = new UserAccount();
+           
+            id.setUser_account_id(rs.getString("user_account_id"));
+            return id;
+      
+        }
+        
+       UserAccount id = new UserAccount();
+                  
+       String sql = "insert into feedback(status, comment_open, comment_hidden, score, module_id, user_account_id) values(?, ?, ?, ?, ?, ?)";
+       
+
+        
         
         PreparedStatement pstm = conn.prepareStatement(sql);
 
-        //pstm.setString(1, useraccount.getUser_account_id());
+        
         pstm.setString(1, feedback.getStatus());
         pstm.setString(2, feedback.getCommentOpen());
         pstm.setString(3, feedback.getCommentHidden());
         pstm.setString(4, feedback.getScore());
         pstm.setString(5, feedback.getModule_id());
-        pstm.setString(6, feedback.getUser_account_id());
-        pstm.setString(7, user_account.getName());
+        pstm.setString(6, feedback.getUser_account_id());  
+    
        
-        //lag en ekstra spørring som knytter sammen navnet med user_account_id, så henter du id
+       
 
         
-        pstm.executeUpdate("insert into feedback where user_account_id= "+user_account.getName()+"");
-        
+        pstm.executeUpdate("insert into feedback where user_account_id= " +id.getUser_account_id()+"");
+     
+        return null;
     }
-    
+   
+*/
     public static Feedback findFeedback (Connection conn, String module_ID)
             throws SQLException{
         
@@ -264,6 +328,7 @@ public class DBUtils {
         pstm.setString(1, module_ID);
         
         ResultSet rs = pstm.executeQuery();
+       
         
         if(rs.next()){
             String status = rs.getString("status");
@@ -313,11 +378,88 @@ public class DBUtils {
         }
         return list;
     }
-    
-    
-    
+    /*
+      public static Map<String, List<Feedback>> queryAllFeedback(Connection conn)
+            throws SQLException{
+          List<Feedback> list = new ArrayList<>();
+          Map<String,List<Feedback>> map = new HashMap<>();
+          //String sql = "select feedback.status, feedback.comment_open, feedback.comment_hidden, feedback.score, feedback.module_id, user_account.name from feedback, user_account where user_account.user_account_id=feedback.user_account_id";
+          String sql = "select status, comment_open, comment_hidden, score, module_id, name from feedback, user_account where user_account.user_account_id=feedback.user_account_id";
+               
+          
+       
+          PreparedStatement pstm = conn.prepareStatement(sql);
+          ResultSet rs = pstm.executeQuery();
         
+          
+        while(rs.next()){
+            String status = rs.getString("status");
+            String comment_open = rs.getString("comment_open");
+            String comment_hidden = rs.getString("comment_hidden");
+            String score = rs.getString("Score");
+            String module_id = rs.getString("module_id");
+            String name = rs.getString("name");
+            
+                    
+            Feedback feedback = new Feedback();
+            UserAccount user_account = new UserAccount();
+            user_account.setName(name);
+            feedback.setStatus(status);
+            feedback.setCommentOpen(comment_open);
+            feedback.setCommentHidden(comment_hidden);
+            feedback.setScore(score);
+            feedback.setModule_id(module_id);
+            list.add(feedback);
+            map.put(name,list);
+            
+        
+    }
+    
+    return map;
+    */
+     public static List<Feedback> queryStudentFeedback(Connection conn, String user_account_id)
+            throws SQLException{
+          List<Feedback> list = new ArrayList<>();
+          String sql = "select a.user_account_id, a.status, a.comment_open, a.comment_hidden, a.score, a.module_id from feedback a where a.user_account_id=?";
+               
+          
+          
+          PreparedStatement pstm = conn.prepareStatement(sql);
+          pstm.setString(1, user_account_id);
+         
+       
+          ResultSet rs = pstm.executeQuery();
+        
+          
+        while(rs.next()){
+            
+            String status = rs.getString("status");
+            String commentOpen = rs.getString("comment_open");
+            String commentHidden = rs.getString("comment_hidden");
+            String score = rs.getString("Score");
+            String module_id = rs.getString("module_id");
+           
+          
+            
+                    
+            Feedback feedback = new Feedback(status, commentOpen, commentHidden, score, module_id, user_account_id);
+            
+            feedback.setStatus(status);
+            feedback.setCommentOpen(commentOpen);
+            feedback.setCommentHidden(commentHidden);
+            feedback.setScore(score);
+            feedback.setModule_id(module_id);
+            list.add(feedback);
+          
+            
+        
+    }
+    
+    return list;   
 }
+}
+      
+
     
 
 
