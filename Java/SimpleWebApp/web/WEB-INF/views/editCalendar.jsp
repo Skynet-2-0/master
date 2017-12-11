@@ -21,6 +21,7 @@
     <body>
 
 <%	
+        String id = request.getParameter("Calendar_ID");
 	String driverName = "com.mysql.jdbc.Driver";
         String hostName = "jdbc:mysql://localhost:3306/";
         String dbName = "Skybase";
@@ -40,23 +41,23 @@
 		
 		String sql = "SELECT * FROM Calendar WHERE Calendar_ID = '" + Calendar_ID + "'  ";
 		
-		ResultSet rec = st.executeQuery(sql);
-		if(rec != null) {
-			rec.next();
+		rs = st.executeQuery(sql);
+		if(rs != null) {
+			rs.next();
 		%>
 
-                <form name="frmUpdate" method="post" action="save.jsp?Dato=<%=rec.getString("Calendar_ID")%>">	
+                <form name="frmUpdate" method="post" action="save.jsp?Dato=<%=rs.getString("Calendar_ID")%>">	
 		Update Form
 			<table width="428" border="1">	
 			<tr>
 				<th width="181">
 				<div align="left">Calendar_ID </div></th>
-				<td width="231"><%=rec.getString("Calendar_ID")%></td>
+				<td width="231"><%=rs.getString("Calendar_ID")%></td>
 			</tr>
 			<tr>
 				<th width="181">
 				<div align="left">Dato </div></th>
-				<td><input type="text" name="txtName" size="20" value="<%=rec.getString("Dato")%>"></td>
+				<td><input type="text" name="txtName" size="20" value="<%=rs.getString("Dato")%>"></td>
 			</tr>
 			<tr>
 				<th width="181">
@@ -64,11 +65,8 @@
 				<td><input type="text" name="txtEmail" size="20" value="<%=rec.getString("Hendelse")%>"></td>
 			</tr>
 			
-			<tr>
-				<th width="181">
-				<div align="left">Used </div></th>
-				<td><input type="text" name="txtUsed" size="5" value="<%=rec.getFloat("Used")%>"></td>
-			</tr>
+			
+	
 			</table> 
 		<input type="submit" value="Save">
 		</form> 

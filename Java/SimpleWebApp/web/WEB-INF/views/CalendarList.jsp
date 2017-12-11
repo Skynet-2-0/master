@@ -61,7 +61,7 @@
                         st = conn.createStatement();
                           //String sql = "Select a.Calendar_ID, a.Dato, a.Hendelse from Calendar a"
                 //+ " where a.Dato = ? ";
-                          String sql = "Select a. Calendar_ID, a.Dato, a.Hendelse from Calendar a";
+                          String sql = "Select Calendar_ID, Dato, Hendelse from Calendar ";
                         //String sql = "SELECT * FROM Calendar LIMIT 100;";
                         rs = st.executeQuery(sql);
                         while (rs.next()) {
