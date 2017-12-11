@@ -25,6 +25,8 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="java.sql.SQLException" %>
+<%@page import="java.sql.PreparedStatement"%>
 
             <%
             
@@ -47,8 +49,10 @@
                 cellpadding = "10" cellspacing = "10" border = "1">
               
                      <tr bgcolor = "brickred" >
+                     <td><b>Calendar_ID</b></td> 
                      <td><b>Dato</b></td> 
                      <td><b>Hendelse</b></td>
+                     <td><b>Edit</b></td>
                      
                      </tr>
                      <%
@@ -57,16 +61,19 @@
                         st = conn.createStatement();
                           //String sql = "Select a.Calendar_ID, a.Dato, a.Hendelse from Calendar a"
                 //+ " where a.Dato = ? ";
-                          String sql = "Select a.Dato, a.Hendelse from Calendar a";
+                          String sql = "Select a. Calendar_ID, a.Dato, a.Hendelse from Calendar a";
                         //String sql = "SELECT * FROM Calendar LIMIT 100;";
                         rs = st.executeQuery(sql);
                         while (rs.next()) {
                         %> 
                         <tbody> 
                             <tr>
-                  
+                                
+                    <td><%= rs.getString("Calendar_ID") %></td>
                     <td><%= rs.getString("Dato") %></td>
                     <td><%= rs.getString("Hendelse") %></td>
+                    <td> <a href="editCalendar.jsp?Calendar_ID=<%=rs.getString("Calendar_ID")%>">Edit</a></td>
+                    
 
                     </tr>
                     
@@ -77,6 +84,8 @@
                         e.printStackTrace();
                         }
                         %>
+                        
+                        
                         </table>
                         
                         <a href="${pageContext.request.contextPath}/Calendar">Tilbake</a>

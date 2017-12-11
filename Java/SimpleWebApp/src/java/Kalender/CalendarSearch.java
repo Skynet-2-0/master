@@ -7,9 +7,7 @@ package Kalender;
 
 import Connection.DBUtils;
 import Connection.MyUtils;
-import Users.Students;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -37,22 +35,22 @@ public class CalendarSearch extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         
-        Connection conn = MyUtils.getStoredConnection(request);
+        //Connection conn = MyUtils.getStoredConnection(request);
         
-        String Dato = (String) request.getParameter("Dato");
-        String Hendelse = (String) request.getParameter("Hendelse");
+        //String Dato = (String) request.getParameter("Dato");
+        //String Hendelse = (String) request.getParameter("Hendelse");
         
-        String errorString = null;
-        List<CalendarCalendar> list = null;
-        try{
-            list = DBUtils.queryCalendar(conn);
-        }
-        catch(SQLException e){
-            e.printStackTrace();
-            errorString = e.getMessage();
-        }
-        request.setAttribute("errorString", errorString);
-        request.setAttribute("calendar", list);
+        //String errorString = null;
+        //List<CalendarCalendar> list = null;
+        //try{
+            //list = DBUtils.queryCalendar(conn);
+        //}
+        //catch(SQLException e){
+            //e.printStackTrace();
+            //errorString = e.getMessage();
+        //}
+        //request.setAttribute("errorString", errorString);
+        //request.setAttribute("calendar", list);
         
         RequestDispatcher dispatcher;
         dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/CalendarSearch.jsp");

@@ -25,7 +25,7 @@
 
 
     <body>
-<h3>Kalender</h3>
+<h1>Kalender</h1>
     
  
    
@@ -36,10 +36,10 @@
 	}
 %>
 
-<form name="frmSearch" method="get" action="CalendarSearch">
-	  <table width="599" border="1">
+<form name="frmSearch" method="get" action="CalendarSearch"><p>
+	  
 	    <tr>
-	      <th>Keyword
+	      <th>Søk etter dato
 	      <input name="txtKeyword" type="text" id="txtKeyword" value="<%=keyword%>">
 	      <input type="submit" value="Search"></th>
 	    </tr>
@@ -72,10 +72,14 @@
 		rs = st.executeQuery(sql);
 		%>      
              
-                <table width="600" border="1">
+                <table width="400" border="1" >
+                    
 		  <tr>
-		    <th width="91"> <div align="center">Dato </div></th>
-		    <th width="98"> <div align="center">Hendelse </div></th>
+                     <tr bgcolor = "#009999" >
+                    
+  
+		    <th width="50" height="40"> <div align="center">Dato </div></th>
+		    <th width="50" height="40"> <div align="center">Hendelse </div></th>
 		    
 		  </tr>	
 			<%while((rs!=null) && (rs.next())) { %>
