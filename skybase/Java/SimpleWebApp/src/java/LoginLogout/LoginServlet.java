@@ -6,7 +6,7 @@ package LoginLogout;
  * and open the template in the editor.
  */
 
-import Users.UserAccount;
+import Admin.UserAccount;
 import Connection.MyUtils;
 import Connection.DBUtils;
 import java.io.IOException;
@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mathi
+ * @author mathi, Jonas
  */
 
 @WebServlet(urlPatterns = {"/login"})
@@ -52,8 +52,12 @@ public class LoginServlet extends HttpServlet{
         String password = request.getParameter("password");
         String rememberMeStr = request.getParameter("rememberMe");
         boolean remember = "Y".equals(rememberMeStr);
+        UserAccount user = new UserAccount();
+        user.setUserName(userName);
+        user.setPassword(password);
+        LoginDao loginDao = new LoginDao();
         
-        UserAccount user = null;
+        user = null;
         boolean hasError = false;
         String errorString = null;
         
@@ -102,7 +106,37 @@ public class LoginServlet extends HttpServlet{
             else{
                 MyUtils.deleteUserCookie(response);
             }
-            response.sendRedirect(request.getContextPath() + "/userInfo");
+            try{
+                String userValidate = loginDao.authenticateUser(user);
+                switch (userValidate) {
+                    case "Admin_Role":
+                        System.out.println("Admin Home");
+                        //HttpSession session = request.getSession(); // Lager session
+                        session.setAttribute("Admin", userName);
+                        request.setAttribute("userName", userName);
+                        //request.getRequestDispatcher("/WEB-INF/views/userInfoView.jsp").forward(request, response);
+                        response.sendRedirect(request.getContextPath() + "/userInfo");
+                        break;
+                    case "User_Role":
+                        System.out.println("User Home");
+                        //HttpSession session = request.getSession();
+                        session.setAttribute("User", userName);
+                        request.setAttribute("userName", userName);
+                        //request.getRequestDispatcher("/WEB-INF/views/userInfoStud.jsp").forward(request, response);
+                        response.sendRedirect(request.getContextPath() + "/userInfo2");
+                        break;
+                    default:
+                        System.out.println("Error message = "+userValidate);
+                        request.setAttribute("errMessage", userValidate);
+                        request.getRequestDispatcher("/WEB-INF/views/loginView.jsp").forward(request, response);
+                        break;
+                }
+            }catch(IOException e){
+                e.printStackTrace();
+            }catch(ClassNotFoundException | ServletException e1){
+                e1.printStackTrace();
+            }
+            //response.sendRedirect(request.getContextPath() + "/userInfo");
         }
     }
         

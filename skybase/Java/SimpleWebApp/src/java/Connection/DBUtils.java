@@ -5,9 +5,10 @@ package Connection;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-import Users.UserAccount;
+import Admin.UserAccount;
 import Feedback.Feedback;
+import Uploads.Files;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,9 +22,39 @@ import java.util.List;
  */
 public class DBUtils {
     
+    public static List<Files> queryFiles(Connection conn) throws SQLException{
+        
+        String sql = "SELECT a.id, a.file_name, a.file_data, a.description FROM attachment a";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        ResultSet rs = pstm.executeQuery();
+        List<Files> list = new ArrayList<>();
+        while(rs.next()){
+            Integer id  = Integer.parseInt(rs.getString("id"));
+            String fileName = rs.getString("file_name");
+            Blob fileData = rs.getBlob("file_data");
+            String description = rs.getString("description");
+            
+            int blobLength = (int) fileData.length();  
+            byte[] blobAsBytes = fileData.getBytes(1, blobLength);
+
+            //release the blob and free up memory.
+            fileData.free();
+            
+            Files file = new Files();
+            file.setId(id);
+            file.setFileName(fileName);
+            file.setFileData(fileData);
+            file.setDescription(description);
+            
+            list.add(file);
+        }
+        return list; 
+    }
+    
     public static UserAccount findUser(Connection conn, String userName, String password)
             throws SQLException {
-        String sql = "Select a.User_Name, a.Password, a.Gender from User_Account a"
+        String sql = "Select a.User_Name, a.Password, a.user_account_id, a.name, a.usertype from User_Account a"
                 + " where a.User_Name = ? and a.password= ?";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
@@ -32,11 +63,15 @@ public class DBUtils {
         ResultSet rs = pstm.executeQuery();
         
         if(rs.next()){
-            String gender = rs.getString("Gender");
+            String user_account_id = rs.getString("user_account_id");
+            String name = rs.getString("name");
+            String usertype = rs.getString("usertype");
             UserAccount user = new UserAccount();
             user.setUserName(userName);
             user.setPassword(password);
-            user.setGender(gender);
+            user.setUser_account_id(user_account_id);
+            user.setName(name);
+            user.setUserType(usertype);
             return user;
         }
         return null;
@@ -160,6 +195,17 @@ public class DBUtils {
         PreparedStatement pstm = conn.prepareStatement(sql);
         
         pstm.setInt(1, user_account_id);
+        
+        pstm.executeUpdate();
+    }
+    
+    public static void deleteFiles(Connection conn, int id)
+            throws SQLException{
+        String sql = "delete From attachment where id=?";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        pstm.setInt(1, id);
         
         pstm.executeUpdate();
     }

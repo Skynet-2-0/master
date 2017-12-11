@@ -24,6 +24,9 @@ VALUES('tom', 'M','TOM CRUISE','tom001', 'tombadass@hotmail.com', 'ADMIN');
 INSERT INTO User_Account (User_Name, Gender, Name, Password, Email, Usertype)
 VALUES('mette', 'F','METTE MARIT','mette001', 'metteprinsesse@gmail.com', 'ADMIN');
 
+INSERT INTO User_Account (User_Name, Gender, Name, Password, Email, Usertype)
+VALUES('test', 'M','TESTIE','test', 'testie@gmail.com', 'USER');
+
 
 CREATE TABLE Module(
 Module_ID INT NOT NULL AUTO_INCREMENT,
@@ -44,6 +47,9 @@ VALUES('bli kjent med blueJ', 'Kunne BlueJ sine grunnleggende funksjoner', 'kap1
 insert into Module (Description, Teaching_Goal, Resources)
 VALUES('bli kjent med koding', 'Kunne hente og legge til verdier', 'kap2');
 
+insert into Module (Description, Teaching_Goal, Resources)
+VALUES('bli kjent med koding', 'Kunne hente og legge til verdier', 'kap3');
+
 
 CREATE TABLE Feedback(
 Status varchar(30) NOT NULL,
@@ -60,7 +66,7 @@ CONSTRAINT Feedback_pk PRIMARY KEY(User_Account_ID, Module_ID)
 );
 
 create table Calendar(
-Calendar_ID INT UNSIGNED NOT NULL,
+Calendar_ID INT NOT NULL,
 Dato DATE,
 Event VARCHAR(300),
 
@@ -68,7 +74,7 @@ CONSTRAINT Calendar_pk primary key(Calendar_ID)
 );
 
 create table Forum(
-Post_ID INT UNSIGNED NOT NULL,
+Post_ID INT NOT NULL,
 Title varchar(50),
 User_Account_ID INT NOT NULL,
 
@@ -85,30 +91,26 @@ CONSTRAINT Comment_pk primary key(Comment_ID),
 CONSTRAINT User_Account_fk3 FOREIGN KEY (User_Account_ID) references User_Account (User_Account_ID)
 );
 
-create table File_Attachment(
-File_ID INT NOT NULL,
-File_Name varchar(100),
-Comment varchar (300),
-User_Account_ID INT NOT NULL,
-Module_ID INT NOT NULL,
-Delivery_Date date,
+create table ATTACHMENT(
+ID          BIGINT not null,
+FILE_NAME   VARCHAR(50) not null,
+FILE_DATA   LONGBLOB not null,
+DESCRIPTION VARCHAR(255),
 
-CONSTRAINT File_pk primary key(File_ID),
-CONSTRAINT User_fk4 FOREIGN KEY (User_Account_ID) references User_Account (User_Account_ID),
-CONSTRAINT Module_fk2 FOREIGN KEY (Module_ID) references Module (Module_ID)
+CONSTRAINT File_pk primary key(ID)
 );
 
 create table Delivery(
-Delivery_ID INT UNSIGNED NOT NULL,
+Delivery_ID INT NOT NULL,
 Date date,
-File_ID INT NOT NULL,
+ID BIGINT NOT NULL,
 
 CONSTRAINT Delivery_pk primary key(Delivery_ID),
-CONSTRAINT File_fk1 FOREIGN KEY (File_ID) references File_Attachment(File_ID)
+CONSTRAINT File_fk1 FOREIGN KEY (ID) references ATTACHMENT(ID)
 );
 
 create table Log(
-Log_ID INT UNSIGNED NOT NULL,
+Log_ID INT NOT NULL,
 Content varchar (1000),
 Week int,
 Date date,

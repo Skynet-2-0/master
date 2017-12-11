@@ -6,7 +6,7 @@ package Connection;
  * and open the template in the editor.
  */
 
-import Users.UserAccount;
+import Admin.UserAccount;
 import java.sql.Connection;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.Cookie;

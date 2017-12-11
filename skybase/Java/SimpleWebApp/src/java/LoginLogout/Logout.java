@@ -21,6 +21,8 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(urlPatterns = {"/logout.jsp"})
 public class Logout extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    
     public Logout() {
         super();
     }
@@ -43,6 +45,8 @@ public class Logout extends HttpServlet {
         HttpSession session = request.getSession(false);
             if(session != null)
                 session.invalidate();
-                    request.getRequestDispatcher("/WEB-INF/views/homeView.jsp").forward(request,response);
+                
+                    request.getRequestDispatcher("/WEB-INF/views/loginView.jsp").forward(request,response);
+                    System.out.println("Logged out");
         }
     }

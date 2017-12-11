@@ -87,7 +87,7 @@ function keyPush(evt) {
 </script>
 <br>
 <div style="padding: 5px; padding-left: 350px;">
-<a href="${pageContext.request.contextPath}/userInfo">Tilbake</a>
+    <a href="${requestScope["javax.servlet.forward.request_uri"]}">RESET</a>
 </div>
 <h1>Score:</h1> <input id="score" type="text">
 <br><br>

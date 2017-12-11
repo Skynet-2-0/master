@@ -1,4 +1,4 @@
-package Users;
+package Admin;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -64,8 +64,18 @@ public class CreateStudentServlet extends HttpServlet {
        if(errorString == null){
        try{      
            try{
-                   DBUtils.insertStudents(conn, useraccount);
+               boolean hasError;
+               hasError = false;
+               
+               if(username == null || password == null || gender == null || name == null || email == null || usertype == null ||
+                       username.length() == 0 || password.length() == 0 || gender.length() == 0 || name.length() == 0 || email.length() == 0 || usertype.length() == 0){
                    
+            hasError = true;
+            errorString = "Ett eller flere av feltene har ikke blitt fylt ut";
+            
+        }else{
+                   DBUtils.insertStudents(conn, useraccount);
+               }     
            }catch(StringIndexOutOfBoundsException e){
                e.printStackTrace();
                errorString = e.getMessage();

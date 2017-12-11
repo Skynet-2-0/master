@@ -35,8 +35,11 @@
              <td><input type="text" name="username" value="${useraccount.userName}" /></td>
           </tr>
           <tr>
-             <td>Gender</td>
-             <td><input type="text" name="gender" value="${useraccount.gender}" /></td>
+             <td>User type</td>
+             <td><select name="gender" size="2" value="${useraccount.gender}">
+              <option>M</option>
+              <option>F</option>
+              </select>
           <tr>
               <td>Name</td>
              <td><input type="text" name="name" value="${useraccount.name}" /></td>
@@ -55,7 +58,7 @@
              <td>User type</td>
              <td><select name="usertype" size="2" value="${useraccount.userType}">
               <option>ADMIN</option>
-              <option>BRUKER</option>
+              <option>USER</option>
               </select>
                  <%--<input type="text" name="usertype" value="${useraccount.userType}" /></td>--%>
           </tr>

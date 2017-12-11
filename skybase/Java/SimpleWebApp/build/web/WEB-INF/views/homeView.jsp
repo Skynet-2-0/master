@@ -20,19 +20,7 @@
       <h3>Home Page</h3>
       <img src="http://tflip.uia.no/images/uia_logo.gif" alt="uia_logo" style="width:600px;height:100px;">
       
-      <form name="myForm" action="display.jsp" method="POST">
-          <table border="0">
-              
-              <tbody>
-                  <tr>
-                      <td>Studentsøk: </td>
-                      <td> <input type="text" name="name" value="" size="50" /> </td>
-                  </tr>
-              </tbody>
-          </table>
-          &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="reset" value="Clear" name="clear" />
-          &nbsp;<input type="submit" value="Submit" name="submit" />
-      </form>
+      
       
       <br>Dette er en Simple web application med bruk av jsp, servlet &amp; Jdbc. <br><br>
       <b>Den inneholder disse funksjonene til nå:</b>

@@ -6,7 +6,7 @@ package Filter;
  * and open the template in the editor.
  */
 
-import Users.UserAccount;
+import Admin.UserAccount;
 import Connection.DBUtils;
 import Connection.MyUtils;
 import java.io.IOException;

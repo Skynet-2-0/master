@@ -7,7 +7,7 @@ package Progress;
 
 import Connection.DBUtils;
 import Connection.MyUtils;
-import Users.UserAccount;
+import Admin.UserAccount;
 import Feedback.Feedback;
 import java.io.IOException;
 import java.sql.Connection;
