@@ -8,7 +8,6 @@ package Progress;
 import Connection.DBUtils;
 import Connection.MyUtils;
 import Admin.UserAccount;
-import Feedback.Feedback;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -19,67 +18,45 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Brage
  */
-@WebServlet(urlPatterns = {"/progressMenu"})
-public class ProgressMenu extends HttpServlet{
+@WebServlet(urlPatterns = {"/progressMenuAdmin_1"})
+public class ProgressMenuAdmin_1 extends HttpServlet{
     
     private static final long serialVersionUID = 1L;
     
-    public ProgressMenu(){
+    public ProgressMenuAdmin_1(){
         super();
     }
 
 
   @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+ protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         
+
         Connection conn = MyUtils.getStoredConnection(request);
-            //sjekker om bruker er logget på
-        HttpSession session = request.getSession();
         
-        UserAccount loginedUser = MyUtils.getLoginedUser(session);
-        UserAccount loginedID = MyUtils.getLoginedUser(session);
-        //ikke logge inn
-        if(loginedUser == null){
-            //redirect
-            response.sendRedirect(request.getContextPath() + "/login");
-            return;
-        }
-        
-         //lagre info i request attributes
-        request.setAttribute("user", loginedUser);
-        request.setAttribute("id", loginedID);
-    
-       //String user_account_id = (String) request.getParameter("user_account_id");
-      
         String errorString = null;
-        List<Feedback> list = null;
+        List<UserAccount> list = null;
         try{
-            list = DBUtils.queryFeedback(conn);
+            list = DBUtils.queryUserAccount(conn);
         }
         catch(SQLException e){
             e.printStackTrace();
             errorString = e.getMessage();
         }
-        
-     
         request.setAttribute("errorString", errorString);
-        request.setAttribute("feedbackList", list);
-       
-        
-        
-        
-        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/progressmenuview.jsp");
-        
+        request.setAttribute("userAccountList", list);
+
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/progressmenuadminview_1.jsp");
         dispatcher.forward(request, response);
     }
-    
+
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{

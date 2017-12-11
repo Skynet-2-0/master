@@ -28,6 +28,7 @@ INSERT INTO User_Account (User_Name, Gender, Name, Password, Email, Usertype)
 VALUES('test', 'M','TESTIE','test', 'testie@gmail.com', 'USER');
 
 
+
 CREATE TABLE Module(
 Module_ID INT NOT NULL AUTO_INCREMENT,
 Description varchar (500) NOT NULL,
@@ -58,6 +59,7 @@ Comment_hidden varchar(300) NOT NULL,
 Score int,
 Module_ID INT NOT NULL,
 User_Account_ID INT NOT NULL,
+
 
 CONSTRAINT User_Account_fk1 FOREIGN KEY (User_Account_ID) references User_Account (User_Account_ID),
 CONSTRAINT Module_fk1 FOREIGN KEY (Module_ID) references Module (Module_ID),
@@ -103,7 +105,11 @@ CONSTRAINT File_pk primary key(ID)
 create table Delivery(
 Delivery_ID INT NOT NULL,
 Date date,
+<<<<<<< HEAD
 ID BIGINT NOT NULL,
+=======
+File_ID INT NOT NULL,
+>>>>>>> origin/BrageEksamen
 
 CONSTRAINT Delivery_pk primary key(Delivery_ID),
 CONSTRAINT File_fk1 FOREIGN KEY (ID) references ATTACHMENT(ID)
@@ -119,3 +125,11 @@ User_Account_ID INT NOT NULL,
 CONSTRAINT Log_pk primary key(Log_ID),
 CONSTRAINT User_fk5 FOREIGN KEY (User_Account_ID) references User_Account (User_Account_ID)
 );
+
+
+
+
+
+
+
+select * from feedback;

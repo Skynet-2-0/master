@@ -24,7 +24,7 @@
 
       
        
-        Oversikt over <b>${user.userName}</b>'s progresjon <b>${id.id}</b>
+        Oversikt over alle studenters progresjon
                 
     
     <br>
@@ -32,21 +32,45 @@
    <table border="1" cellpadding="5" cellspacing="1" >
       
         <tr>
+            <th>Navn</th>
             <th>Modul no.</th>
             <th>Status</th>
             <th>Poeng</th>
             <th>Kommentar</th>
+            <th>Lukket kommentar</th>
         </tr>
 
-            <c:forEach items="${feedbackList}" var="feedback" >
-                
-          <tr>
-             <td>${feedback.module_id}</td>
-             <td>${feedback.status}</td>
-             <td>${feedback.score}</td>
-             <td>${feedback.commentOpen}</td>
         
+            <c:forEach items="${map}" var="map" >
+              <tr>
+                    <td>${map.key}</td>
+                    
+                        
+                   
+             <c:forEach items="${map.value}" var="feedback">
+                
+                
+                 <td>${feedback.module_id}</td>
+                 <td>${feedback.status}</td>
+                 <td>${feedback.score}</td>
+                 <td>${feedback.commentOpen}</td>
+                 <td>${feedback.commentHidden}</td>
+               
+                 
+                 
+              
+             
+        
+             </c:forEach>
+               
+             
+            
+                    </tr>
+                    
+    
        </c:forEach>
+                 
+ 
          </table> 
     
     </body>

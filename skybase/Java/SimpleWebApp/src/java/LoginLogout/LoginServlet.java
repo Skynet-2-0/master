@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet{
             Connection conn = MyUtils.getStoredConnection(request);
             try{
                 user = DBUtils.findUser(conn, userName, password);
-                
+
                 if(user == null){
                     hasError = true;
                     errorString = "Brukernavn eller passord er ikke riktig";
@@ -99,6 +99,8 @@ public class LoginServlet extends HttpServlet{
         else{
             HttpSession session = request.getSession();
             MyUtils.storeLoginedUser(session, user);
+            MyUtils.storeLoginedUserID(session, user);
+            System.out.println("userid cookie set");
             
             if(remember){
                 MyUtils.storeUserCookie(response, user);

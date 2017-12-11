@@ -38,13 +38,12 @@ public class Modul1 extends HttpServlet{
     @Override
    protected void doGet(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
-        
-       RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/modul1view.jsp");
+       
+      RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/modul1view.jsp");
        
         dispatcher.forward(request, response);
-        
     }
-    
+        
     @Override
     protected void doPost (HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
@@ -66,20 +65,12 @@ public class Modul1 extends HttpServlet{
        String errorString = null;
        
        if(errorString == null){
-       try{      
            try{
-                   DBUtils.insertOralFeedback(conn, feedback);
                    
            }catch(StringIndexOutOfBoundsException e){
                e.printStackTrace();
                errorString = e.getMessage();
-           }      
-         
-       }
-       catch(SQLException e){
-           e.printStackTrace();
-           errorString = e.getMessage();
-        }
+           }
        }
        
        request.setAttribute("errorString", errorString);

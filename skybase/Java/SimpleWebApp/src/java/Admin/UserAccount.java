@@ -36,6 +36,12 @@ public class UserAccount {
         this.email = email;
         this.usertype = usertype;
     }
+    
+    public UserAccount (String name) {
+        
+        this.name = name;
+       // this.user_account_id = user_account_id;
+    }
 
     
     
@@ -63,7 +69,7 @@ public class UserAccount {
         this.password = password;
     }
     
-     public String getUser_account_id(){
+        public String getUser_account_id(){
         return user_account_id;
     }
     

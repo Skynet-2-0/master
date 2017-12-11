@@ -28,7 +28,7 @@
     
            <tr>
             <td>4. </td>
-            <td>Opprette, åpne og lagre et prosjekt i BlueJ</td>
+             <td><blink>  Opprette, åpne og lagre et prosjekt i BlueJ<blink/></td> 
          </tr>
          
       </table>
