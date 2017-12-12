@@ -61,34 +61,48 @@
                         st = conn.createStatement();
                           //String sql = "Select a.Calendar_ID, a.Dato, a.Hendelse from Calendar a"
                 //+ " where a.Dato = ? ";
-                          String sql = "Select Calendar_ID, Dato, Hendelse from Calendar ";
+                          String sql = "SELECT * FROM Calendar ORDER BY Calendar_ID";
                         //String sql = "SELECT * FROM Calendar LIMIT 100;";
                         rs = st.executeQuery(sql);
-                        while (rs.next()) {
+                        while ((rs!=null) && (rs.next())) {
                         %> 
                         <tbody> 
                             <tr>
                                 
-                    <td><%= rs.getString("Calendar_ID") %></td>
+                    <td><%= rs.getInt("Calendar_ID") %></td>
                     <td><%= rs.getString("Dato") %></td>
                     <td><%= rs.getString("Hendelse") %></td>
-                    <td> <a href="editCalendar.jsp?Calendar_ID=<%=rs.getString("Calendar_ID")%>">Edit</a></td>
+                   
+                    <td> <a href="editCalendar?Calendar_ID=<%=rs.getInt("Calendar_ID")%>">Edit</a></td>
                     
-
                     </tr>
                     
            
                         <%
                         }
                         } catch (Exception e) {
-                        e.printStackTrace();
-                        }
+			// TODO Auto-generated catch block
+			out.println(e.getMessage());
+			e.printStackTrace();
+		}
+	
+		try {
+			if(st!=null){
+				st.close();
+				conn.close();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			out.println(e.getMessage());
+			e.printStackTrace();
+		}
                         %>
                         
                         
                         </table>
-                        
+
                         <a href="${pageContext.request.contextPath}/Calendar">Tilbake</a>
+                        <a href="${pageContext.request.contextPath}/editCalendar">Edit</a>
                         
                         </body>
                         </html>

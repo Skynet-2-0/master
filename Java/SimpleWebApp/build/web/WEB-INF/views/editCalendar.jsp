@@ -13,6 +13,7 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.DriverManager" %>
 
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,7 +22,7 @@
     <body>
 
 <%	
-        String id = request.getParameter("Calendar_ID");
+        String Calendar_ID = request.getParameter("Calendar_ID");
 	String driverName = "com.mysql.jdbc.Driver";
         String hostName = "jdbc:mysql://localhost:3306/";
         String dbName = "Skybase";
@@ -45,24 +46,24 @@
 		if(rs != null) {
 			rs.next();
 		%>
-
-                <form name="frmUpdate" method="post" action="save.jsp?Dato=<%=rs.getString("Calendar_ID")%>">	
+                
+                <form name="frmUpdate" method="post" action=saveCalendar.jsp?Calendar_ID=<%=rs.getInt("Calendar_ID")%>" >	
 		Update Form
 			<table width="428" border="1">	
 			<tr>
 				<th width="181">
 				<div align="left">Calendar_ID </div></th>
-				<td width="231"><%=rs.getString("Calendar_ID")%></td>
+				<td width="231"><%=rs.getInt("Calendar_ID")%></td>
 			</tr>
 			<tr>
 				<th width="181">
 				<div align="left">Dato </div></th>
-				<td><input type="text" name="txtName" size="20" value="<%=rs.getString("Dato")%>"></td>
+				<td><input type="text" name="txtDato" size="20" value="<%=rs.getString("Dato")%>"></td>
 			</tr>
 			<tr>
 				<th width="181">
 				<div align="left">Hendelse </div></th>
-				<td><input type="text" name="txtEmail" size="20" value="<%=rec.getString("Hendelse")%>"></td>
+				<td><input type="text" name="txtHendelse" size="20" value="<%=rs.getString("Hendelse")%>"></td>
 			</tr>
 			
 			

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : editCalendar
-    Created on : 11.des.2017, 15:57:22
+    Document   : saveCalendar
+    Created on : 12.des.2017, 15:57:24
     Author     : Ann Margrethe
 --%>
 
@@ -13,15 +13,14 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.DriverManager" %>
 
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-
-<%	
+        
+        <%	
         String Calendar_ID = request.getParameter("Calendar_ID");
 	String driverName = "com.mysql.jdbc.Driver";
         String hostName = "jdbc:mysql://localhost:3306/";
@@ -39,40 +38,20 @@
 		conn =  DriverManager.getConnection(hostName+ dbName, userName, password);
 		
 		st = conn.createStatement();
+                
+                String strCalendar_ID = request.getParameter("Calendar_ID");
+		String strDato = request.getParameter("txtDato");
+		String strHendelse = request.getParameter("txtHendelse");
 		
-		String sql = "SELECT * FROM Calendar WHERE Calendar_ID = '" + Calendar_ID + "'  ";
+		String sql = "UPDATE Calendar " +
+                        "SET Dato = '"+ strDato + "' " +
+                        "Hendelse = '"+ strHendelse + "' " +
+                        "WHERE Calendar_ID = '" + strCalendar_ID + "'  ";
 		
 		rs = st.executeQuery(sql);
-		if(rs != null) {
-			rs.next();
-		%>
-                
-                <form name="frmUpdate" method="post" action=saveCalendar.jsp?Calendar_ID=<%=rs.getInt("Calendar_ID")%>" >	
-		Update Form
-			<table width="428" border="1">	
-			<tr>
-				<th width="181">
-				<div align="left">Calendar_ID </div></th>
-				<td width="231"><%=rs.getInt("Calendar_ID")%></td>
-			</tr>
-			<tr>
-				<th width="181">
-				<div align="left">Dato </div></th>
-				<td><input type="text" name="txtDato" size="20" value="<%=rs.getString("Dato")%>"></td>
-			</tr>
-			<tr>
-				<th width="181">
-				<div align="left">Hendelse </div></th>
-				<td><input type="text" name="txtHendelse" size="20" value="<%=rs.getString("Hendelse")%>"></td>
-			</tr>
-			
-			
-	
-			</table> 
-		<input type="submit" value="Save">
-		</form> 
-		
-		<% }
+
+		out.println("Record Update Successfully");
+	  		
 	  		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -91,5 +70,5 @@
 			e.printStackTrace();
 		}
 	%>
-</body>
+    </body>
 </html>

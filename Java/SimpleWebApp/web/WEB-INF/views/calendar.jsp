@@ -64,7 +64,7 @@
 		
 		st = conn.createStatement();
 		
-		String sql = "SELECT * FROM  Calendar WHERE Dato like '%" +  keyword + "%' ";
+		String sql = "SELECT * FROM  Calendar WHERE Dato like '%" +  keyword + "%' OR Hendelse like '%" +  keyword + "%' ";
 		
 		
 		System.out.println(sql);

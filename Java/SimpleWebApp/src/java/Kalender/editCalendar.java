@@ -1,14 +1,13 @@
+package Kalender;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Kalender;
 
-import Connection.MyUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Ann Margrethe
  */
-@WebServlet(name = "CalendarEdit", urlPatterns = {"/CalendarEdit"})
-public class CalendarEdit extends HttpServlet {
+@WebServlet(urlPatterns = {"/editCalendar"})
+public class editCalendar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,7 +39,7 @@ public class CalendarEdit extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Kalender Edit</title>");            
+            out.println("<title>Kalender</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Kalender " + "</h1>");
@@ -51,7 +50,6 @@ public class CalendarEdit extends HttpServlet {
 @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        
         
         RequestDispatcher dispatcher;
         dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/editCalendar.jsp");
