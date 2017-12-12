@@ -30,7 +30,7 @@
          </tr>
         <c:forEach items="${moduleList}" var="module">
          <tr>
-             <td>${module.module_id}</td>
+             <td><a href="moduleDetails?module_id=${module.module_id}">${module.module_id}</td>
              <td>${module.module_name}</td>
              <td>${module.delivery_date}</td>
              <td>

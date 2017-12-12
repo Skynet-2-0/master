@@ -22,11 +22,11 @@
       <h3>Edit Module</h3>
  
       <p style="color: red;">${errorString}</p>
- 
+      <%--hvis listen ikke er tom--%>
       <c:if test="${not empty module}">
        
          <form method="POST" action="${pageContext.request.contextPath}/editModule">
-            <input type="hidden" name="code" value="${module.module_id}" />
+            <input type="hidden" name="module_id" value="${module.module_id}" />
             <table style="border-collapse: collapse; margin: 25px 0px 0px 25px;" class="opprettStudent" border="0">
                <tr>
                   <td>Module ID</td>
@@ -34,7 +34,7 @@
                </tr>
                <tr>
                   <td>Module Name</td>
-                  <td><input style="width: 400px;" type="text" name="name" value="${module.module_name}" /></td>
+                  <td><input style="width: 400px;" type="text" name="module_name" value="${module.module_name}" /></td>
                </tr>
                <tr>
                   <td>Delivery Date</td>
@@ -42,7 +42,7 @@
                </tr>
                <tr>
                   <td>Description</td>
-                  <td><input style="width: 400px; height: 140px;" type="text" name="description" value="${module.description}" /></textarea></td>
+                  <td><input style="width: 400px; height: 140px;" type="text" name="description" value="${module.description}" /></td>
                </tr>
                <tr>
                   <td>learningGoals</td>

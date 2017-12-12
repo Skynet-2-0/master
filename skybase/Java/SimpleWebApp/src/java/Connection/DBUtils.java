@@ -215,7 +215,7 @@ public class DBUtils {
     }
    
     public static List<Module> listAllModules(Connection conn) throws SQLException {
-        List<Module> listM = new ArrayList<>();
+        List<Module> list = new ArrayList<>();
          
         String sql = "SELECT * FROM Module";
         PreparedStatement pstm = conn.prepareStatement(sql);
@@ -231,11 +231,37 @@ public class DBUtils {
             String resources = rs.getString("resources");
              
             Module module = new Module(module_id, module_name, delivery_date, description, learningGoals, resources);
-            listM.add(module);
+            list.add(module);
         }
 
-        return listM;
+        return list;
     }
+    
+       
+    public static List<Module> listModuleDetails(Connection conn, String module_id) throws SQLException {
+        List<Module> list = new ArrayList<>();
+         
+        //String sql = "SELECT * FROM Module";
+        String sql = "select a.module_id, a.module_name, a.delivery_date, a.description, a.learningGoals, a.resources from Module a where a.module_id=?";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, module_id);
+        ResultSet rs = pstm.executeQuery();
+         
+        while (rs.next()) {
+            String module_name = rs.getString("module_name");
+            String delivery_date = rs.getString("delivery_date");
+            String description = rs.getString("description");
+            String learningGoals = rs.getString("learningGoals");
+            String resources = rs.getString("resources");
+             
+            Module module = new Module(module_id, module_name, delivery_date, description, learningGoals, resources);
+            list.add(module);
+        }
+
+        return list;
+    }
+    
+    
     
         public static Module findModule(Connection conn, String module_id)
             throws SQLException{
@@ -260,7 +286,7 @@ public class DBUtils {
     
     
     public static void editModules(Connection conn, Module module)throws SQLException{
-    try{   
+      
     String sql = "Update Module set Module_Name=?, Delivery_Date=?, Description=?, LearningGoals=?, Resources=? where Module_id=?";
     PreparedStatement pstm = conn.prepareStatement(sql);
     
@@ -269,12 +295,10 @@ public class DBUtils {
     pstm.setString(3, module.getDescription());
     pstm.setString(4, module.getLearningGoals());
     pstm.setString(5, module.getResources());
+    pstm.setString(6, module.getModule_id());
    
     pstm.executeUpdate();
     
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
 }
     public static void deleteModule(Connection conn, int module_id)throws SQLException{
         try{

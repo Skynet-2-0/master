@@ -29,8 +29,7 @@
             <tr>
                 <p style="color: red;">${errorString}</p>
                 <td>ID</td>
-                <td style="color:red;">${module.module_id}</td>
-                <%--<td><input type="hidden" name="module_id" value="${module.module_id}" /></td>--%>
+                <td><input type="hidden" name="module_id" value="${module.module_id}" /></td>
             </tr>
             <tr>
                 <td>Module Name</td>
