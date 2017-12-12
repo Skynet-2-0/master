@@ -52,14 +52,15 @@
 
                    </tr>
                                       <tr>
-
-                       <td>Er modulen godkjent?</td>                      
-                     <td><input type="text" name="status" value="${feedback.status}" /></td>
-                   </tr>
+                                          <td>Er modulen godkjent?</td>               
+                    <td><select name="status" size="2" value="${feedback.status}">
+              <option>Godkjent</option>
+              <option>Ikke godkjent</option>
+              </select>
                
                    <tr>
                        <td>Hvor mange poeng vil du gi</td>                      
-                    <td><input type="text" name="score" value="${feedback.score}" /></td>
+                    <td><input type="number" min="1" max="10" name="score" value="${feedback.score}" /></td>
                    </tr>
                    
                    <tr>

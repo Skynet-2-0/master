@@ -40,6 +40,7 @@
              <td>${feedback.score}</td>
              <td>${feedback.commentOpen}</td>
              <td>${feedback.commentHidden}</td>
+             
        </c:forEach>
         </table>
  </body>

@@ -52,17 +52,17 @@
         </div>
         <script>
             var code = `#include <linux/delay.h>
-#include <linux/init.h>
-#include <linux/irqdomain.h>
-#include <linux/pci.h>
-#include <linux/msi.h>
-#include <linux/pci_hotplug.h>
-#include <linux/module.h>
-#include <linux/pci-aspm.h>
-#include <linux/pci-acpi.h>
-#include <linux/pm_runtime.h>
-#include <linux/pm_qos.h>
-#include "pci.h"
+jonas er en kuge
+jonas er en kuge
+jonas er en kuge
+jonas er en kuge
+jonas er en kuge
+jonas er en kuge
+jonas er en kuge
+jonas er en kuge
+jonas er en kuge
+jonas er en kuge
+jonas er en kuge
 
 /*
  * The UUID is defined in the PCI Firmware Specification available here:
