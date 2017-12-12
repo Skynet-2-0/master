@@ -15,9 +15,11 @@
 |
    <a href="${pageContext.request.contextPath}/modules">Modules</a>
    |--%>
-   <a href="${pageContext.request.contextPath}/progressMenus">Progress</a>
+   <a href="${pageContext.request.contextPath}/progressMenus2">Progress</a>
    |
    <a href="${pageContext.request.contextPath}/uploadToDB">Upload</a>
+   |  
+   <a href="${pageContext.request.contextPath}/Blog">Blog</a>
    
    
    

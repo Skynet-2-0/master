@@ -28,7 +28,6 @@ INSERT INTO User_Account (User_Name, Gender, Name, Password, Email, Usertype)
 VALUES('test', 'M','TESTIE','test', 'testie@gmail.com', 'USER');
 
 
-
 CREATE TABLE Module(
 Module_ID INT NOT NULL AUTO_INCREMENT,
 Description varchar (500) NOT NULL,
@@ -60,7 +59,6 @@ Score int,
 Module_ID INT NOT NULL,
 User_Account_ID INT NOT NULL,
 
-
 CONSTRAINT User_Account_fk1 FOREIGN KEY (User_Account_ID) references User_Account (User_Account_ID),
 CONSTRAINT Module_fk1 FOREIGN KEY (Module_ID) references Module (Module_ID),
 CONSTRAINT Feedback_pk PRIMARY KEY(User_Account_ID, Module_ID)
@@ -68,12 +66,15 @@ CONSTRAINT Feedback_pk PRIMARY KEY(User_Account_ID, Module_ID)
 );
 
 create table Calendar(
-Calendar_ID INT NOT NULL,
-Dato DATE,
-Event VARCHAR(300),
+Calendar_ID INT UNSIGNED NOT NULL,
+Dato VARCHAR(10),
+Hendelse VARCHAR(300),
 
 CONSTRAINT Calendar_pk primary key(Calendar_ID)
 );
+
+insert into Calendar (Calendar_ID, Dato, Hendelse)
+values(1, '20171101', 'Eksamen');
 
 create table Forum(
 Post_ID INT NOT NULL,
@@ -106,7 +107,6 @@ create table Delivery(
 Delivery_ID INT NOT NULL,
 Date date,
 ID BIGINT NOT NULL,
-File_ID INT NOT NULL,
 
 CONSTRAINT Delivery_pk primary key(Delivery_ID),
 CONSTRAINT File_fk1 FOREIGN KEY (ID) references ATTACHMENT(ID)

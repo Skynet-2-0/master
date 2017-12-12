@@ -6,7 +6,9 @@ package Connection;
  * and open the template in the editor.
  */
 import Admin.UserAccount;
+import Blog.BlogBlog;
 import Feedback.Feedback;
+import Kalender.CalendarCalendar;
 import Uploads.Files;
 import java.sql.Blob;
 import java.sql.CallableStatement;
@@ -292,6 +294,75 @@ public class DBUtils {
         pstm.executeUpdate();
     }
     
+    public static void insertBlogPost(Connection conn, int userid, String title, String content) {
+        String sql = "Insert into Log (title, content, date, User_Account_ID) VALUES (?, ?, now(), ?)";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, title);
+            ps.setString(2, content);
+            ps.setInt(3, userid);
+            
+            ps.executeUpdate();
+            conn.commit();
+            
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+
+    
+    public static List<BlogBlog> queryBlogList(Connection conn)
+            throws SQLException{
+        String sql =  "Select, a.Log_ID, a.Title, a.Content a.Date, a.User_Account_ID from Log a";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        ResultSet rs = pstm.executeQuery();
+        List<BlogBlog> list = new ArrayList<>();
+        while(rs.next()){
+            int Log_ID = rs.getInt("Log_ID");
+            String Title = rs.getString("Title");
+            String Content = rs.getString("Content");
+            String Date = rs.getString("Date");
+            int User_Account_ID = rs.getInt("User_Account_ID");
+            BlogBlog blog = new BlogBlog();
+            blog.setLog_ID(Log_ID);
+            blog.setTitle(Title);
+            blog.setContent(Content);
+            blog.setDate(Date);
+            list.add(blog);
+        }
+        return list;
+    }
+      
+
+    public static BlogBlog findPost(Connection conn, int userid, String title, String content)
+            throws SQLException {
+        String sql = "Select, a.Log_ID, a.Title, a.Content a.Date, a.User_Account_Id from Log a"
+                + " where a.Title = ? ";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, title);
+        ResultSet rs = pstm.executeQuery();
+        List<BlogBlog> list = new ArrayList<>();
+        
+        if(rs.next()){
+            int Log_ID = rs.getInt("Log_ID");
+            String Title = rs.getString("Title");
+            String Content = rs.getString("Content");
+            String Date = rs.getString("Date");
+            BlogBlog blog = new BlogBlog();
+            blog.setLog_ID(Log_ID);
+            blog.setTitle(Title);
+            blog.setContent(Content);
+            blog.setDate(Date);
+            list.add(blog);
+            return blog;
+        }
+        return null;
+    }
+    
    // static Students findStudents(Connection conn, int id) {
      //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     //}
@@ -439,10 +510,85 @@ public class DBUtils {
           
             
         
-    }
+        }
     
-    return list;   
-}
+        return list;   
+    }
+     
+     public static List<CalendarCalendar> queryCalendar(Connection conn)
+            throws SQLException{
+        String sql = "Select a.Dato, a.Hendelse from Calendar a";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        ResultSet rs = pstm.executeQuery();
+        List<CalendarCalendar> list = new ArrayList<>();
+        while(rs.next()){
+            String dato = rs.getString("Dato");
+            String hendelse = rs.getString("Hendelse");
+            CalendarCalendar calendar = new CalendarCalendar();
+            calendar.setDato(dato);
+            calendar.setHendelse(hendelse);
+            list.add(calendar);
+        }
+        return list;
+    }
+      
+  
+
+    public static CalendarCalendar findDate(Connection conn, String Dato, String Hendelse)
+            throws SQLException {
+        String sql = "Select a.Calendar_ID, a.Dato, a.Hendelse from Calendar a"
+                + " where a.Dato = ? ";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, Dato);
+        ResultSet rs = pstm.executeQuery();
+        List<CalendarCalendar> list = new ArrayList<>();
+        
+        if(rs.next()){
+            //String Dato;
+            Dato = rs.getString("dato");
+            CalendarCalendar calendar = new CalendarCalendar();
+            calendar.setDato(Dato);
+            calendar.setHendelse(Hendelse);
+            list.add(calendar);
+            return calendar;
+        }
+        return null;
+    }
+        public static String findDate(Connection conn, String Dato)
+            throws SQLException {
+        String sql = "Select a.Dato from Calendar a"
+                + " where a.Dato = ?";
+        
+     
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, Dato);
+        
+        ResultSet rs = pstm.executeQuery();
+        
+        try {
+            while (rs.next()) {
+                rs.getString("Dato");
+                System.out.println("Dato :" + rs.getString("Dato"));
+                return rs.getString("dato");
+               
+                
+            }
+            
+        } catch (SQLException e1) {
+            
+           System.out.println(e1.getMessage());
+           
+        }
+           
+   
+      
+   return null;
+    }
+     
 }
       
 

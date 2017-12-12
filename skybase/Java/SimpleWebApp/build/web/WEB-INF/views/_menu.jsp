@@ -26,6 +26,10 @@
    <a href="${pageContext.request.contextPath}/uploadToDB">Upload</a>
    |
    <a href="${pageContext.request.contextPath}/files">Retrieve Files</a>
+   |  
+   <a href="${pageContext.request.contextPath}/Blog">Blog</a>
+   |  
+   <a href="${pageContext.request.contextPath}/Calendar">Calendar</a>
    
    
 </div>  
