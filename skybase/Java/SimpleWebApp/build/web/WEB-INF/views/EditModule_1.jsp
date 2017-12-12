@@ -34,23 +34,23 @@
                </tr>
                <tr>
                   <td>Module Name</td>
-                  <td><input style="width: 450px;" type="text" name="module_name" value="${module.module_name}" /></td>
+                  <td><input style="width: 400px;" type="text" name="module_name" value="${module.module_name}" /></td>
                </tr>
                <tr>
                   <td>Delivery Date</td>
-                  <td><input style="width: 450px;" type="text" name="delivery_date" value="${module.delivery_date}" /></td>
+                  <td><input style="width: 400px;" type="text" name="delivery_date" value="${module.delivery_date}" /></td>
                </tr>
                <tr>
                   <td>Description</td>
-                  <td><textarea style="width: 450px; height: 140px;" type="text" name="description">${module.description}</textarea></td>
+                  <td><input style="width: 400px; height: 140px;" type="text" name="description" value="${module.description}" /></td>
                </tr>
                <tr>
                   <td>learningGoals</td>
-                  <td><textarea style="width: 450px; height: 140px;" type="text" name="learningGoals">${module.learningGoals}</textarea></td>
+                  <td><input style="width: 400px; height: 140px; " type="text" name="learningGoals" value="${module.learningGoals}" /></td>
                </tr>
                <tr>
                   <td>Resources</td>
-                  <td><textarea style="width: 450px; height: 140px;" type="text" name="resources">${module.resources}</textarea></td>
+                  <td><input style="width: 400px; height: 140px;" type="text" name="resources" value="${module.resources}" /></td>
                </tr>
                <tr>
                   <td colspan = "2">
