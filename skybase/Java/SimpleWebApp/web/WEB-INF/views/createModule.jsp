@@ -54,7 +54,7 @@
             <tr>
                 <td style="background-color:#355C7D;" colspan="2">
                     <input type="submit" value="Submit"/>&nbsp;&nbsp;
-                    <button><a href="moduleList" style="margin-left: 15 px">Cancel</a></button>
+                    <button><a href="moduleList">Cancel</a></button>
             </tr>
         </table>
       </form>

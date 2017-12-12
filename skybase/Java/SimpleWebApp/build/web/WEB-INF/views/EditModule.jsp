@@ -53,10 +53,10 @@
                   <td><textarea style="width: 450px; height: 140px;" type="text" name="resources">${module.resources}</textarea></td>
                </tr>
                <tr>
-                  <td colspan = "2">
-                      <input type="submit" value="Submit"/>
+                  <td style="background-color:#355C7D;" colspan = "2">
+                      <input type="submit" value="Submit"/>&nbsp;&nbsp;
                       <button><a href="${pageContext.request.contextPath}/moduleList">Cancel</a></button>
-                  </td>
+                  </td>                     
                </tr>
             </table>
           </form>          
