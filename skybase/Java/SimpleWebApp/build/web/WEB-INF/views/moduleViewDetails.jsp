@@ -41,5 +41,7 @@
                     <td>${moduleList.resources}</td>
         </c:forEach>
         </table>
+        <p></p>
+        <button style="margin-left: 25px;"><a href="moduleList">Tilbake</a></button> 
     </body>
 </html>
