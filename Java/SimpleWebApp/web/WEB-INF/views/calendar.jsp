@@ -21,14 +21,9 @@
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
  
-
-
-
     <body>
 <h1>Kalender</h1>
-    
- 
-   
+     
   <%
 	String keyword = "";
 	if(request.getParameter("txtKeyword") != null) {
@@ -66,7 +61,6 @@
 		
 		String sql = "SELECT * FROM  Calendar WHERE Dato like '%" +  keyword + "%' OR Hendelse like '%" +  keyword + "%' ";
 		
-		
 		System.out.println(sql);
 		
 		rs = st.executeQuery(sql);
@@ -76,8 +70,6 @@
                     
 		  <tr>
                      <tr bgcolor = "#009999" >
-                    
-  
 		    <th width="50" height="40"> <div align="center">Dato </div></th>
 		    <th width="50" height="40"> <div align="center">Hendelse </div></th>
 		    
@@ -108,10 +100,8 @@
 			e.printStackTrace();
 		}
 	%>
-             
-             
+                      
              <h3>Kalender Liste</h3>
-              <a href="${pageContext.request.contextPath}/CalendarList">KalenderListe</a>
-       
+              <a href="${pageContext.request.contextPath}/CalendarList">KalenderListe</a>     
     </body>           
 </html>

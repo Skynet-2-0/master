@@ -10,18 +10,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Post View</title>
+        <title>Kalender Søk</title>
     </head>
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
 
-
         <body>
-            <h1>Kalender Søk</h1>
-
-            
+            <h1>Kalender Søk</h1>          
 
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
@@ -35,8 +31,6 @@
 		keyword = request.getParameter("txtKeyword");
 	}
 %>
-
-
 
        <%
         String driverName = "com.mysql.jdbc.Driver";
@@ -72,7 +66,7 @@
 			<%while((rs!=null) && (rs.next())) { %>
 				  <tr>
 				    <td><div align="center"><%=rs.getString("Dato")%></div></td>
-				    <td><%=rs.getString("Hendelse")%></td>
+				    <td><div align="center"><%=rs.getString("Hendelse")%></td>
 				  </tr>
 	       	<%}%>
 	  	</table>      
@@ -94,10 +88,9 @@
 			out.println(e.getMessage());
 			e.printStackTrace();
 		}
-	%>
-                      
+	%>                   
                         
-                        <a href="${pageContext.request.contextPath}/Calendar">Tilbake</a>
+                        <p><a href="${pageContext.request.contextPath}/Calendar">Tilbake</a>
                         
                         </body>
                          </html>

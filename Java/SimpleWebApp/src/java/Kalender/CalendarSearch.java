@@ -5,12 +5,7 @@
  */
 package Kalender;
 
-import Connection.DBUtils;
-import Connection.MyUtils;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,33 +20,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "CalendarSearch", urlPatterns = {"/CalendarSearch"})
 public class CalendarSearch extends HttpServlet {
     
-    private static final long serialVersionUID = 1L;
-    
-   public CalendarSearch() {
-       super();
-   }
-    
    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        
-        //Connection conn = MyUtils.getStoredConnection(request);
-        
-        //String Dato = (String) request.getParameter("Dato");
-        //String Hendelse = (String) request.getParameter("Hendelse");
-        
-        //String errorString = null;
-        //List<CalendarCalendar> list = null;
-        //try{
-            //list = DBUtils.queryCalendar(conn);
-        //}
-        //catch(SQLException e){
-            //e.printStackTrace();
-            //errorString = e.getMessage();
-        //}
-        //request.setAttribute("errorString", errorString);
-        //request.setAttribute("calendar", list);
-        
+               
         RequestDispatcher dispatcher;
         dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/CalendarSearch.jsp");
         

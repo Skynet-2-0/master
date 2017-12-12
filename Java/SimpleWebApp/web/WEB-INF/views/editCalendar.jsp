@@ -13,14 +13,16 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.DriverManager" %>
 
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        
+        <title>Edit Kalender</title><p>
     </head>
+     <jsp:include page="_header.jsp"></jsp:include>
+    <jsp:include page="_menu.jsp"></jsp:include>
     <body>
-
+        <h1>Kalender Edit</h1>
 <%	
         String Calendar_ID = request.getParameter("Calendar_ID");
 	String driverName = "com.mysql.jdbc.Driver";
@@ -47,9 +49,9 @@
 			rs.next();
 		%>
                 
-                <form name="frmUpdate" method="post" action=saveCalendar.jsp?Calendar_ID=<%=rs.getInt("Calendar_ID")%>" >	
-		Update Form
-			<table width="428" border="1">	
+                <form name="frmUpdate" method="post" action=saveCalendar?Calendar_ID=<%=rs.getInt("Calendar_ID")%>" >	
+		Endre dato eller hendelse
+                <p><table width="428" border="1">	
 			<tr>
 				<th width="181">
 				<div align="left">Calendar_ID </div></th>
@@ -64,12 +66,10 @@
 				<th width="181">
 				<div align="left">Hendelse </div></th>
 				<td><input type="text" name="txtHendelse" size="20" value="<%=rs.getString("Hendelse")%>"></td>
-			</tr>
-			
-			
+			</tr>			
 	
 			</table> 
-		<input type="submit" value="Save">
+                        <p><input type="submit" value="Save">
 		</form> 
 		
 		<% }
