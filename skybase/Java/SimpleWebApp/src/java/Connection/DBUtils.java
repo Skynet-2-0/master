@@ -188,7 +188,7 @@ public class DBUtils {
     
     public static void insertStudents(Connection conn, UserAccount useraccount)
             throws SQLException{
-        String sql = "insert into user_account (user_name, gender,  name, password, email, usertype) values(?, ?, ?, ?, ?, ?)";
+        String sql = "insert into user_account (user_name, gender, name, password, email, usertype) values(?, ?, ?, ?, ?, ?)";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
 

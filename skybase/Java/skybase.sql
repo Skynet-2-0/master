@@ -42,7 +42,7 @@ CONSTRAINT Modul_pk primary key(Module_ID)
 INSERT INTO Module (Description, Teaching_Goal, Resources)
 VALUES('bli kjent med blueJ', 'Kunne BlueJ sine grunnleggende funksjoner', 'kap1');
 
-insert into Module (Description, Teaching_Goal, Resources)
+insert into Module (Description, Teaching_Goal, Resources)create_feedback
 VALUES('bli kjent med koding', 'Kunne hente og legge til verdier', 'kap2');
 
 insert into Module (Description, Teaching_Goal, Resources)
@@ -129,4 +129,4 @@ CONSTRAINT User_fk5 FOREIGN KEY (User_Account_ID) references User_Account (User_
 
 
 
-select * from feedback;
+select * from skybase.user_account;

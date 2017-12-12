@@ -27,7 +27,7 @@
        <table border="0">
           <tr>
               <p style="color: red;">${errorString}</p> 
-             <td>Id - autogenerert</td>
+             <td>Id - autogenerert</td> 
              <td><input type="hidden" name="user_account_id" value="${useraccount.user_account_id}" /></td>
           </tr>
           <tr>

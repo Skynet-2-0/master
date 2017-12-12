@@ -59,7 +59,7 @@
              <tr>
                 <td colspan = "2">
                     <input type="submit" value="Submit" />
-                    <a href="${pageContext.request.contextPath}/studentList">Cancel</a>
+                    <button><a href="${pageContext.request.contextPath}/studentList">Cancel</a></button>
                 </td>
              </tr>
           </table>
