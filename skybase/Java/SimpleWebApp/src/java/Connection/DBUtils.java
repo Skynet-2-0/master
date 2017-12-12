@@ -165,6 +165,45 @@ public class DBUtils {
         return list;
     }
     
+        public static List<UserAccount> queryUserAccountSearch(Connection conn, String name)
+            throws SQLException{
+        
+      
+            
+  //      String sql = "Select User_Account_Id, User_Name, Gender, Name, Email, Usertype from User_Account where name like '%"+name+"'%";
+          String sql = "Select User_Account_Id, User_Name, Gender, Name, Email, Usertype from User_Account where name=?";
+
+        
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        pstm.setString(1, name);
+        
+        
+        
+        ResultSet rs = pstm.executeQuery();
+        List<UserAccount> list = new ArrayList<>();
+        while(rs.next()){
+            String user_account_id  = rs.getString("user_account_id");
+            String username = rs.getString("user_name");
+            String gender = rs.getString("gender");
+            rs.getString("name");
+            String email = rs.getString("email");
+            String usertype = rs.getString("usertype");
+            
+            
+            UserAccount useraccount = new UserAccount();
+            useraccount.setUser_account_id(user_account_id);
+            useraccount.setUserName(username);
+            useraccount.setGender(gender);
+            useraccount.setName(name);
+            useraccount.setEmail(email);
+            useraccount.setUserType(usertype);
+            list.add(useraccount);
+        }
+        return list;
+    }
+    
     
     
     public static void updateStudents(Connection conn, UserAccount useraccount)
@@ -335,7 +374,7 @@ public class DBUtils {
             String comment_open = rs.getString("comment_open");
             String comment_hidden = rs.getString("comment_hidden");
             String score = rs.getString("score");
-            String module_id = rs.getString("module_:id");
+            String module_id = rs.getString("module_id");
             String user_account_id = rs.getString("user_account_id");
             Feedback feedback = new Feedback();
             feedback.setStatus(status);

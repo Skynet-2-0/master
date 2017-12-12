@@ -20,34 +20,7 @@
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
 
-    
-
-      
-       
-    <h3> Oversikt over alle studenters progresjon </h3>
-        
-        
-        
-         <form method="GET" action="${pageContext.request.contextPath}/ProgressMenuAdminSearch">
-          <table border="0">
-              
-              <tbody>
-                  <tr>
-                      <td>Studentsøk: </td>
-                      <td> <input type="text" name="name" value="${useraccount.name}" size="50" /> </td>
-                  </tr>
-              </tbody>
-          </table>
-          &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-          <input type="submit" value="Submit" /> 
-      </form>
-
-      
-     
-    
-    <textarea name="txtReason" id="txtReason" style="display: none;" class="textboxmulti">
-
-</textarea>
+Progresjon
     
     <br>
     
