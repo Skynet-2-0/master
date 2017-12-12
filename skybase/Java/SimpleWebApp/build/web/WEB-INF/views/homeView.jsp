@@ -20,19 +20,27 @@
       <h3>Home Page</h3>
       <img src="http://tflip.uia.no/images/uia_logo.gif" alt="uia_logo" style="width:600px;height:100px;">
       
-      <form name="myForm" action="display.jsp" method="POST">
+         
+         <form method="GET" action="${pageContext.request.contextPath}/ProgressMenuAdminSearch">
           <table border="0">
               
               <tbody>
                   <tr>
                       <td>Studentsøk: </td>
-                      <td> <input type="text" name="name" value="" size="50" /> </td>
+                      <td> <input type="text" name="name" value="${useraccount.name}" size="50" /> </td>
                   </tr>
               </tbody>
           </table>
-          &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="reset" value="Clear" name="clear" />
-          &nbsp;<input type="submit" value="Submit" name="submit" />
+          &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+          <input type="submit" value="Submit" /> 
       </form>
+
+      
+     
+    
+    <textarea name="txtReason" id="txtReason" style="display: none;" class="textboxmulti">
+
+</textarea>
       
      
     
