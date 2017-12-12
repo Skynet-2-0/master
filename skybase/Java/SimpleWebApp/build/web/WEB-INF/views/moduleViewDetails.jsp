@@ -30,15 +30,15 @@
                 </tr>
                 <tr>
                     <td style="vertical-align: top; text-align: left;">Description</td>
-                    <td style="vertical-align: top; text-align: left; width: 450px; height: 140px;">${moduleList.description}</td>
+                    <td><textarea readonly style="width: 450px; height: 140px;" type="text" name="description">${moduleList.description}</textarea></td>
                 </tr>
                 <tr>
                     <td style="vertical-align: top; text-align: left;">Learning Goals</td>
-                    <td style="vertical-align: top; text-align: left; width: 450px; height: 140px;">${moduleList.learningGoals}</td>
+                    <td><textarea readonly="" style="width: 450px; height: 140px;" type="text" name="learningGoals">${moduleList.learningGoals}</textarea></td>
                 </tr>
                 <tr>
                     <td style="vertical-align: top; text-align: left;">Resources</td>
-                    <td style="vertical-align: top; text-align: left; width: 450px; height: 140px; ">${moduleList.resources}</td>
+                    <td><textarea readonly style="width: 450px; height: 140px;" type="text" name="resources">${moduleList.resources}</textarea></td>
         </c:forEach>
         </table>
         <p></p>

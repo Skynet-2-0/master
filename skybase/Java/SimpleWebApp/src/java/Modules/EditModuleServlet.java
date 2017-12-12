@@ -18,11 +18,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 @WebServlet(urlPatterns = {"/editModule"})
-public class EditModule extends HttpServlet {
+public class EditModuleServlet extends HttpServlet {
     
     private static final long serialVersionUID = 1L;
  
-    public EditModule() {
+    public EditModuleServlet() {
         super();
     }
     // Viser module redigerings siden.
