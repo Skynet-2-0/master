@@ -25,20 +25,20 @@
                     <th colspan="2">Module ${moduleList.module_id} - ${moduleList.module_name}</th>
                 </tr>
                 <tr>
-                    <td>Delivery Date</td>
-                    <td>${moduleList.delivery_date}</td>
+                    <td style="vertical-align: top; text-align: left;">Delivery Date</td>
+                    <td style="vertical-align: top; text-align: left; width: 450px; height: 140px;">${moduleList.delivery_date}</td>
                 </tr>
                 <tr>
-                    <td>Description</td>
-                    <td>${moduleList.description}</td>
+                    <td style="vertical-align: top; text-align: left;">Description</td>
+                    <td style="vertical-align: top; text-align: left; width: 450px; height: 140px;">${moduleList.description}</td>
                 </tr>
                 <tr>
-                    <td>Learning Goals</td>
-                    <td>${moduleList.learningGoals}</td>
+                    <td style="vertical-align: top; text-align: left;">Learning Goals</td>
+                    <td style="vertical-align: top; text-align: left; width: 450px; height: 140px;">${moduleList.learningGoals}</td>
                 </tr>
                 <tr>
-                    <td>Resources</td>
-                    <td>${moduleList.resources}</td>
+                    <td style="vertical-align: top; text-align: left;">Resources</td>
+                    <td style="vertical-align: top; text-align: left; width: 450px; height: 140px; ">${moduleList.resources}</td>
         </c:forEach>
         </table>
         <p></p>

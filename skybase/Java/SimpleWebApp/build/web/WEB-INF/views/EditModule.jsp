@@ -29,27 +29,27 @@
             <input type="hidden" name="module_id" value="${module.module_id}" />
             <table style="border-collapse: collapse; margin: 25px 0px 0px 25px;" class="opprettStudent" border="0">
                <tr>
-                  <td>Module ID</td>
+                  <td style="vertical-align: top; text-align: left;">Module ID</td>
                   <td style="color:red;">${module.module_id}</td>
                </tr>
                <tr>
-                  <td>Module Name</td>
+                  <td style="vertical-align: top; text-align: left;">Module Name</td>
                   <td><input style="width: 450px;" type="text" name="module_name" value="${module.module_name}" /></td>
                </tr>
                <tr>
-                  <td>Delivery Date</td>
+                  <td style="vertical-align: top; text-align: left;">Delivery Date</td>
                   <td><input style="width: 450px;" type="text" name="delivery_date" value="${module.delivery_date}" /></td>
                </tr>
                <tr>
-                  <td>Description</td>
+                  <td style="vertical-align: top; text-align: left;">Description</td>
                   <td><textarea style="width: 450px; height: 140px;" type="text" name="description">${module.description}</textarea></td>
                </tr>
                <tr>
-                  <td>learningGoals</td>
+                  <td style="vertical-align: top; text-align: left;">learningGoals</td>
                   <td><textarea style="width: 450px; height: 140px;" type="text" name="learningGoals">${module.learningGoals}</textarea></td>
                </tr>
                <tr>
-                  <td>Resources</td>
+                  <td style="vertical-align: top; text-align: left;">Resources</td>
                   <td><textarea style="width: 450px; height: 140px;" type="text" name="resources">${module.resources}</textarea></td>
                </tr>
                <tr>

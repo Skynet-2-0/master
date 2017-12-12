@@ -83,3 +83,27 @@ h3 {
 #userinfo {
     margin-left: 25px;
 }
+
+//Module details
+
+.moduleDetails {
+    border-collapse: collapse;
+    font-size: 14px
+    width: 100%;
+}
+
+.moduleDetails td, .moduleDetails th {
+    font-family: roboto;
+    border: 2px solid #ddd;
+    padding: 12px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.moduleDetails th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #355C7D;
+    color: white;
+}
