@@ -11,11 +11,12 @@
 <title>Upload files</title>
 </head>
 <body>
- 
+    <jsp:include page="_header.jsp"></jsp:include>
+    <jsp:include page="_menu2.jsp"></jsp:include>
     <h3>Upload has been done successfully!</h3>
     <a href="${pageContext.request.contextPath}/uploadToDB">Continue Upload</a>
     
-    <a href="${pageContext.request.contextPath}/userInfo">Tilbake</a>
+    <a href="${pageContext.request.contextPath}/userInfo2">Tilbake</a>
       
     
 </body>

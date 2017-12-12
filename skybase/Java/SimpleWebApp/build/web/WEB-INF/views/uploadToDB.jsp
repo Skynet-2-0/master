@@ -11,7 +11,8 @@
 <title>Upload files</title>
 </head>
 <body>
- 
+    <jsp:include page="_header.jsp"></jsp:include>
+    <jsp:include page="_menu2.jsp"></jsp:include>
     <div style="padding:5px; color:red;font-style:italic;">
        ${errorMessage}
     </div>
@@ -29,11 +30,11 @@
         <br />
         Description:
         <br />
-        <input type="text" name="description" size="100" />
+        <textarea rows="5" cols="50" name="description"></textarea>
         <br />
         <br />
         <input type="submit" value="Upload" />
-        <a href="${pageContext.request.contextPath}/userInfo">Tilbake</a>
+        <a href="${pageContext.request.contextPath}/userInfo2">Tilbake</a>
     </form>
     
 </body>
