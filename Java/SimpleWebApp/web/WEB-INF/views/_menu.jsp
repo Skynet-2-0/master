@@ -21,4 +21,5 @@
    |
    <a href="${pageContext.request.contextPath}/studentForum">Student forum</a>
    
+   
 </div>  

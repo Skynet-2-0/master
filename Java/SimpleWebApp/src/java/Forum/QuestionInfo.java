@@ -3,29 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Forum;
 
+import Forum.QuestionQuestion;
+import Connection.MyUtils;
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author ellak
  */
-@WebServlet(urlPatterns = {"/IS-111"})
-public class IS111Servlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/questionInfo"})
+public class QuestionInfo extends HttpServlet {
+        
+ private static final long serialVersionUID = 1L;
     
-    private static final long serialVersionUID = 1L;
-    
-    public IS111Servlet() {
+    public QuestionInfo(){
         super();
     }
-
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -40,11 +42,21 @@ public class IS111Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            
+        HttpSession session = request.getSession();
+        QuestionQuestion createQuestion = MyUtils.getCreateQuestion(session);
+         if(createQuestion == null){
+            //redirect
+            response.sendRedirect(request.getContextPath() + "/createQuestion");
+            return;
+        }
+            //lagre info i request attributes
+        request.setAttribute("Question", createQuestion);
         
-       RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/is111View.jsp");
-       dispatcher.forward(request, response);
+        //
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/questionInfoView.jsp");
+        dispatcher.forward(request, response);
     }
-
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -56,18 +68,8 @@ public class IS111Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        doGet(request, response);
+     
+            doGet(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+    
 }

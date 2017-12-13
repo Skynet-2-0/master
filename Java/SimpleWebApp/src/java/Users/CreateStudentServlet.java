@@ -9,7 +9,6 @@ package Users;
 import Connection.MyUtils;
 import Connection.DBUtils;
 import java.io.IOException;
-import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.SQLException;
  

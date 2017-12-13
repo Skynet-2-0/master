@@ -6,22 +6,26 @@ package Connection;
  * and open the template in the editor.
  */
 
+import Forum.QuestionQuestion;
 import Users.Students;
+
 import Users.UserAccount;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.sql.Statement;
+//import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 /**
  *
  * @author mathi
  */
 public class DBUtils {
-    
+
     public static UserAccount findUser(Connection conn, String userName, String password)
             throws SQLException {
         String sql = "Select a.User_Name, a.Password, a.Gender from User_Account a"
@@ -192,5 +196,96 @@ public class DBUtils {
    
       
    return null;
+    }
+ 
+   public static List<QuestionQuestion> queryQuestionQuestion(Connection conn)
+            throws SQLException{
+        String sql = "Select a.Question_ID, a.Title, a.Details, a.CreateDate, a.Name, a.Email from Forum";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        ResultSet rs = pstm.executeQuery();
+        List<QuestionQuestion> list = new ArrayList<>();
+        while(rs.next()){
+            String question_id  = rs.getString("question_id");
+            String title = rs.getString("title");
+            String details = rs.getString("details");
+            String createDate = rs.getString("createDate");
+            String name = rs.getString("name");
+            String email = rs.getString("email");
+            
+            
+            
+            QuestionQuestion question;
+            question = new QuestionQuestion();
+            //question.setQuestion_ID(question_id);
+            question.setTitle(title);
+            question.setDetails(details);
+            question.setCreateDate(createDate);
+            question.setName(name);
+            question.setEmail(email);
+            list.add(question);
+        }
+        return list;
+    }
+     public static void updateQuestion(Connection conn, QuestionQuestion question)
+            throws SQLException{
+        
+        String sql = "Update Forum set Title =?, Details=?, CreateDate=?, Name=?, Email=? where question_id=?";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        
+        pstm.setString(1, question.getTitle());
+        pstm.setString(2, question.getDetails());
+        pstm.setString(3, question.getCreateDate());
+        pstm.setString(4, question.getName());
+        pstm.setString(5, question.getEmail()); 
+        //pstm.setString(6, forumforum.getQuestion_id());
+           
+        pstm.executeUpdate();
+        
+     }
+    public static void insertQuestion(Connection conn, QuestionQuestion questionquestion) 
+        throws SQLException{
+        String sql = "insert into forum (title, details,  createDate, name, email) values(?, ?, ?, ?, ?)";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+
+        
+        pstm.setString(1, questionquestion.getTitle());
+        pstm.setString(2, questionquestion.getDetails());
+        pstm.setString(3, questionquestion.getCreateDate());
+        pstm.setString(4, questionquestion.getName());
+        pstm.setString(5, questionquestion.getEmail());
+     
+        
+        pstm.executeUpdate();
+    }
+        
+      public static QuestionQuestion findQuestion (Connection conn, String question_ID, String question_id)
+            throws SQLException{
+        
+         String sql = "Select a.question_id, a.title, a.details, a.createDate, a.name, a.email from Forum a where a.question_id=?";
+             
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, question_ID);
+        
+        ResultSet rs = pstm.executeQuery();
+       
+        
+        if(rs.next()){
+          
+            String title = rs.getString("title");
+            String details = rs.getString("details");
+            String createDate = rs.getString("createDate");
+            String name = rs.getString("name");
+            String email = rs.getString("email");
+            QuestionQuestion question = new QuestionQuestion(question_id, title, details, createDate, name, email);
+          
+            return question;
+        }
+        return null;
     }
 }

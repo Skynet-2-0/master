@@ -1,3 +1,5 @@
+package Forum;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,25 +19,32 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ellak
  */
-
-
-@WebServlet(urlPatterns = {"/studentForum"})
-public class ForumServlet extends HttpServlet {
-
+@WebServlet(urlPatterns = {"/IS-111"})
+public class IS111Servlet extends HttpServlet {
+    
     private static final long serialVersionUID = 1L;
     
-    public ForumServlet(){
+    public IS111Servlet() {
         super();
     }
-            
-  
+
+
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/forumView.jsp");
-        
-        dispatcher.forward(request, response);
+       RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/is111View.jsp");
+       dispatcher.forward(request, response);
     }
 
     /**

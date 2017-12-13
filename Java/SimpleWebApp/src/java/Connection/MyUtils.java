@@ -6,6 +6,7 @@ package Connection;
  * and open the template in the editor.
  */
 
+import Forum.QuestionQuestion;
 import Users.UserAccount;
 import java.sql.Connection;
 import javax.servlet.ServletRequest;
@@ -23,6 +24,8 @@ public class MyUtils {
     public static final String ATT_NAME_CONNECTION = "ATTRIBUTE_FOR_CONNECTION";
     
     public static final String ATT_NAME_USER_NAME = "ATTRIBUTE_FOR_STORE_USER_NAME_IN_COOKIE";
+    
+    public static final String ATT_NAME_USER_ID = "ATTRIBUTE_FOR_STORE_USER_ID_IN_COOKIE";
     
     //lagre Connection i request attribute
     //Informasjonen lagres kun under requests
@@ -75,5 +78,27 @@ public class MyUtils {
         //cookie slettes umiddelbart
         cookieUserName.setMaxAge(0);
         response.addCookie(cookieUserName);
+    }
+
+    public static QuestionQuestion getCreateQuestion(HttpSession session) {
+         QuestionQuestion createQuestion = (QuestionQuestion) session.getAttribute("createQuestion");
+        return createQuestion;
+    }
+    
+    public static void storeCreateQuestionID(HttpSession session, QuestionQuestion createQuestion){
+        //JSP kan aksesere via ${createQuestion}
+     session.setAttribute("createQuestion", createQuestion);   
+    }
+        //få brukeren sin info lagret i session
+    public static QuestionQuestion getCreateQuestionID(HttpSession session){
+        QuestionQuestion createQuestionID = (QuestionQuestion) session.getAttribute("createQuestionID");
+        return createQuestionID;
+    }
+    public static void storeUserCookie(HttpServletResponse response, QuestionQuestion createTopic) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void storeLoginedUser(HttpSession session, QuestionQuestion createTopic) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -1,91 +1,88 @@
 <%-- 
     Document   : is100View
-    Created on : 26.okt.2017, 10:02:14
+    Created on : 12.des.2017, 16:38:24
     Author     : ellak
 --%>
 
-<%@page import="java.sql.SQLException"%>
-<%@page import="java.sql.ResultSetMetaData"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
-<%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
-
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>Forum</title>
-        <style>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <style>
             
-            table{
-                border: 2px solid black;
+            
+            table {
+                border: 1px solid black;
                 border-collapse: collapse;
-                width: 100%
-            
+                
+                width: 100% 
+                
+                
+                
             }
+            
+            table, th, td {
+                color: #000;
+           
+            }
+            
+            table a hover {
+                color: #000;
+                text-align: left;
+                
+            }   
+            
+            th{
+                background-color: #F0F0F0;
+                color: #000;
+                padding: 5px;
+              
+            }
+            
+            .leftpart {
+                width: 60%;
+            }
+            
+            .rightpart {
+                width: 40%;
+            }
+     
        
         </style>
+        <title>IS-100 Forums</title>
     </head>
+        <jsp:include page="_header.jsp"></jsp:include>
+        <jsp:include page="_menu.jsp"></jsp:include>
     <body>
+           <h1>Forum List</h1>
         
-    <jsp:include page="_header.jsp"></jsp:include>
-    <jsp:include page="_menu2.jsp"></jsp:include>
-
-    
-        <h3>IS-100 forums</h3>
-        
-        <table border ="1">
-            <th>QuestionID</th>
-            <th>Question</th>
-            <th>Name</th>
-            <th>CreateDate</th>
-            <th>View</th>
-            <th>Reply</th>
-            
-            
-            </tr>
-            <td>001</td>
-            <td> <a href="${pageContext.request.contextPath}/">What is means with Process Effectiveness? </td>
-            <td>Mette</td>
-            <td>2017.11.13 <p>16:12:24</p> </td>
-            <td>0</td>
-            <td>0</td>
-            
-            <tr>
-                <td>002</td>
-                <td> <a href="${pageContext.request.contextPath}/">What is a database?</a></td>
-                <td>Tom</td>
-                <td>2017.11.13 <p>15:37:54</p> </td>
-                <td>0</td>
-                <td>0</td>
-                
-            </tr>
-            
-            <tr>
-                <td>003</td>
-                <td> <a href="${pageContext.request.contextPath}/">What is primary key? </td>
-                <td>Vegar</td>
-                <td>2017.11.13 <p>15:12:24</p> </td>
-                <td>0</td>
-                <td>0</td>
-                
-            </tr>
-            
-            <tr>
-                <td>004</td>
-                <td> <a href="${pageContext.request.contextPath}/">What is information silo?</td>
-                <td>Joakim</td>
-                <td>2017.11.13 <p>15:12:04</p> </td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-        </table>
-                <a href="${pageContext.request.contextPath}/studentForum">Back to previous</a>
-                <a href="${pageContext.request.contextPath}/">Next>></a>
-            
+        <p style="color: red;">${errorString}</p>
+ 
+    <table border="1" cellpadding="4" cellspacing="0" >
+       <tr>
+          <th>Title</th>
+          <th>Details</th>
+          <th>CreateDate</th>
+          <th>Name</th>
+          <th>Email</th>
        
+       </tr>
+       <c:forEach items="${questionList}" var="question" >
+          <tr>
+             <td>${forum.question_id}</td>
+             <td>${forum.createDate}</td> 
+             <td>${forum.details}</td>
+             <td>${forum.name}</td>
+             <td>${forum.view}</td>
+             <td>${forum.user_account_id}</td>
+             
+            
+             
+       </c:forEach>
+    </table>
+ 
+    <a href="createQuestion" >Create Question</a>
+ 
     </body>
 </html>

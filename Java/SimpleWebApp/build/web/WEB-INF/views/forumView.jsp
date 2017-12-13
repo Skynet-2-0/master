@@ -50,11 +50,11 @@
      
        
         </style>
-        <title>Student-forum</title>
+        <title>Forum</title>
      
     </head>
     <jsp:include page="_header.jsp"></jsp:include>
-    <jsp:include page="_menu2.jsp"></jsp:include>
+    <jsp:include page="_menu.jsp"></jsp:include>
     <body>
         
         <h1>Forums</h1>
@@ -63,24 +63,24 @@
        
             <tr>
                 <th>Category</th>
-                <th>Last topic</th>
+                
             </tr>
             <td> <a href="${pageContext.request.contextPath}/IS-100">IS-100-1</a> <p></p> Introduksjon til informasjonssystemer</td>
-            <td>No topic</td>
+           
             
             <tr>
                 <td> <a href="${pageContext.request.contextPath}/IS-104">IS-104-1</a> <p></p> Brukergrensesnitt</td>
-                <td>No topic</td>
+                
             </tr>
             
             <tr>
                 <td> <a href="${pageContext.request.contextPath}/IS-109">IS-109-1</a> <p></p> Objektorientert programmering 1 </td>
-                <td>No topic</td>
+                
             </tr>
             
             <tr>
                 <td> <a href="${pageContext.request.contextPath}/IS-111">IS-111-1 </a> <p></p> Introduksjon til systemutviklingsprosjekter </td>
-                <td>No topic</td>
+               
             </tr>
         </table>
     </body>

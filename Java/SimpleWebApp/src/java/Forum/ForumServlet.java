@@ -1,3 +1,5 @@
+package Forum;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,20 +19,23 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ellak
  */
-@WebServlet(urlPatterns = {"/topic"})
-public class TopicServlet extends HttpServlet {
-    
+
+
+@WebServlet(urlPatterns = {"/studentForum"})
+public class ForumServlet extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
     
-    public TopicServlet(){
+    public ForumServlet(){
         super();
     }
-
+            
+  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/topicView.jsp");
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/forumView.jsp");
         
         dispatcher.forward(request, response);
     }
@@ -46,7 +51,7 @@ public class TopicServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        
         doGet(request, response);
     }
 
