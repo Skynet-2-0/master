@@ -19,8 +19,6 @@ public class ModuleFeedback {
     private String score;
     private String commentHidden;
     private String commentOpen;
-    
-    
 
  public ModuleFeedback(){
         
