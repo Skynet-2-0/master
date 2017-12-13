@@ -32,6 +32,8 @@
    <a href="${pageContext.request.contextPath}/Calendar">Calendar</a>
    |
    <a href="${pageContext.request.contextPath}/moduleList">Modules</a>
+   |
+   <a href="${pageContext.request.contextPath}/uploadModuleStudents">uploadstudent</a>
    
    
 </div>  

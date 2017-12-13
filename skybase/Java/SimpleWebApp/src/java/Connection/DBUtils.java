@@ -11,6 +11,7 @@ import Feedback.Feedback;
 import Kalender.CalendarCalendar;
 import Modules.Module;
 import Modules.ModuleFeedback;
+import Uploads.Delivery;
 import Uploads.Files;
 import java.sql.Blob;
 import java.sql.CallableStatement;
@@ -747,9 +748,20 @@ public class DBUtils {
         }
         return list;
     }
+     public static void insertDelivery (Connection conn, Delivery delivery)
+            throws SQLException{
+        
+        String sql = "insert into delivery (ATTACHMENT_ID, user_account_id, module_id) values(?, ?, ?)";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        pstm.setString(1, delivery.getModule());
+        pstm.setString(2, delivery.getUser());
+        pstm.setString(3, delivery.getUser_account_id());
+
+        pstm.executeUpdate();
+        
+    }
+     
 }
     
-
-    
-               
-        
