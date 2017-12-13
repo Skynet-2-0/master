@@ -19,6 +19,71 @@
     
     <filter-mapping>
         <filter-name>aut</filter-name>
+        <url-pattern>/home</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>aut</filter-name>
+        <url-pattern>/studentList</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>aut</filter-name>
+        <url-pattern>/modules</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>aut</filter-name>
+        <url-pattern>/progressMenuAdmin_1</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>aut</filter-name>
+        <url-pattern>/files</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>aut</filter-name>
+        <url-pattern>/Calendar</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>aut</filter-name>
+        <url-pattern>/moduleList</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>aut</filter-name>
+        <url-pattern>/CalendarList</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>aut</filter-name>
+        <url-pattern>/StudentInformation</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>aut</filter-name>
+        <url-pattern>/progressMenus2</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>aut</filter-name>
+        <url-pattern>/uploadToDB</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>aut</filter-name>
+        <url-pattern>/Blog</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>aut</filter-name>
+        <url-pattern>/Calendar2</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>aut</filter-name>
         <url-pattern>/editStudents</url-pattern>
     </filter-mapping>
     

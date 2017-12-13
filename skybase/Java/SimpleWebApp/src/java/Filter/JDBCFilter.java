@@ -58,7 +58,7 @@ public class JDBCFilter implements Filter {
                .getServletRegistrations();
  
  
-       // Collection of all servlet in your webapp.
+       // Kolleksjon av alle servlet i min webapp.
        Collection<? extends ServletRegistration> values = servletRegistrations.values();
        for (ServletRegistration sr : values) {
            Collection<String> mappings = sr.getMappings();
@@ -75,14 +75,6 @@ public class JDBCFilter implements Filter {
  
        HttpServletRequest req = (HttpServletRequest) request;
  
- 
-       //
-       // Only open connections for the special requests need
-       // connection. (For example, the path to the servlet, JSP, ..)
-       //
-       // Avoid open connection for commons request
-       // (for example: image, css, javascript,... )
-       //
        if(this.needJDBC(req)) {
  
            System.out.println("Open Connection for: " + req.getServletPath());

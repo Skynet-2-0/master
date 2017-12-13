@@ -80,7 +80,7 @@ public class CreateStudentServlet extends HttpServlet {
                e.printStackTrace();
                errorString = e.getMessage();
            }      
-          // DBUtils.insertStudents(conn, students);
+          
        }
        catch(SQLException e){
            e.printStackTrace();

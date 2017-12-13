@@ -89,6 +89,7 @@ function keyPush(evt) {
 <div style="padding: 5px; padding-left: 350px;">
     <a href="${requestScope["javax.servlet.forward.request_uri"]}">RESET</a>
 </div>
+<button type="button" name="back" onclick="history.back()">back</button>
 <h1>Score:</h1> <input id="score" type="text">
 <br><br>
 <b>Credit til:&nbsp;&emsp; https://pastebin.com/Z3zhb7cY<br>

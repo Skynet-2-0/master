@@ -1,11 +1,23 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%-- 
-    Document   : calendar
-    Created on : 17.okt.2017, 11:23:06
+    Document   : CalendarSearch
+    Created on : 14.nov.2017, 10:48:34
     Author     : Ann Margrethe
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Kalender Søk</title>
+    </head>
+    <jsp:include page="_header.jsp"></jsp:include>
+    <%--<jsp:include page="_menu.jsp"></jsp:include>--%>
+
+        <body>
+            <h1>Kalender Søk</h1>          
 
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
@@ -13,33 +25,12 @@
 <%@page import="java.sql.Connection"%>
 <%@ page import="java.sql.SQLException" %> 
 
-<html>
- <head>
-    <meta charset="UTF-8">
-    <title>Kalender</title>
- </head>
-    <jsp:include page="_header.jsp"></jsp:include>
-    <jsp:include page="_menu.jsp"></jsp:include>
- 
-    <body>
-<h1>Kalender</h1>
-     
   <%
 	String keyword = "";
 	if(request.getParameter("txtKeyword") != null) {
 		keyword = request.getParameter("txtKeyword");
 	}
 %>
-
-<form name="frmSearch" method="get" action="CalendarSearch"><p>
-	  
-	    <tr>
-	      <th>Søk etter dato
-	      <input name="txtKeyword" type="text" id="txtKeyword" value="<%=keyword%>">
-	      <input type="submit" value="Search"></th>
-	    </tr>
-	  </table>
-	</form>
 
        <%
         String driverName = "com.mysql.jdbc.Driver";
@@ -66,18 +57,16 @@
 		rs = st.executeQuery(sql);
 		%>      
              
-                <table width="400" border="1" >
-                    
+                <table width="600" border="1">
 		  <tr>
-                     <tr bgcolor = "#009999" >
-		    <th width="50" height="40"> <div align="center">Dato </div></th>
-		    <th width="50" height="40"> <div align="center">Hendelse </div></th>
+		    <th width="91"> <div align="center">Dato </div></th>
+		    <th width="98"> <div align="center">Hendelse </div></th>
 		    
 		  </tr>	
 			<%while((rs!=null) && (rs.next())) { %>
 				  <tr>
 				    <td><div align="center"><%=rs.getString("Dato")%></div></td>
-				    <td><%=rs.getString("Hendelse")%></td>
+				    <td><div align="center"><%=rs.getString("Hendelse")%></td>
 				  </tr>
 	       	<%}%>
 	  	</table>      
@@ -99,11 +88,9 @@
 			out.println(e.getMessage());
 			e.printStackTrace();
 		}
-	%>
-                      
-             <h3>Kalender Liste</h3>
-              <a href="${pageContext.request.contextPath}/CalendarList">KalenderListe</a>
-              <a href="${pageContext.request.contextPath}/userInfo"><input type="submit" value="Back" name="back" /></a>
-              
-    </body>           
-</html>
+	%>                   
+                        
+                        <p><a href="${pageContext.request.contextPath}/Calendar2">Tilbake</a>
+                        
+                        </body>
+                         </html>

@@ -25,7 +25,7 @@ import java.lang.String;
 
 /**
  *
- * @author Mathias, Brage
+ * @author Mathias, Brage, Morten, Jonas, Eva, Ella, Ann Margrete
  */
 public class DBUtils {
     

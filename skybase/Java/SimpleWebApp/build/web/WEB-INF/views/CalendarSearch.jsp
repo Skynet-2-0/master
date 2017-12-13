@@ -14,7 +14,7 @@
         <title>Kalender Søk</title>
     </head>
     <jsp:include page="_header.jsp"></jsp:include>
-    <jsp:include page="_menu.jsp"></jsp:include>
+    <%--<jsp:include page="_menu.jsp"></jsp:include>--%>
 
         <body>
             <h1>Kalender Søk</h1>          

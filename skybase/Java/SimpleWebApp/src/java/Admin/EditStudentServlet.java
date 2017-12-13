@@ -37,7 +37,6 @@ public class EditStudentServlet extends HttpServlet {
             throws ServletException, IOException{
         Connection conn = MyUtils.getStoredConnection(request);
         
-        //String id = (String) request.getParameter("id");
         String user_account_id = (String) request.getParameter("user_account_id");
         
         UserAccount useraccount = null;

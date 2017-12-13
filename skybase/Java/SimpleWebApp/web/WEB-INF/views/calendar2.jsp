@@ -19,7 +19,7 @@
     <title>Kalender</title>
  </head>
     <jsp:include page="_header.jsp"></jsp:include>
-    <jsp:include page="_menu.jsp"></jsp:include>
+    <%--<jsp:include page="_menu.jsp"></jsp:include>--%>
  
     <body>
 <h1>Kalender</h1>
@@ -31,7 +31,7 @@
 	}
 %>
 
-<form name="frmSearch" method="get" action="CalendarSearch"><p>
+<form name="frmSearch" method="get" action="CalendarSearcher"><p>
 	  
 	    <tr>
 	      <th>Søk etter dato
@@ -102,8 +102,7 @@
 	%>
                       
              <h3>Kalender Liste</h3>
-              <a href="${pageContext.request.contextPath}/CalendarList">KalenderListe</a>
-              <a href="${pageContext.request.contextPath}/userInfo"><input type="submit" value="Back" name="back" /></a>
+              <a href="${pageContext.request.contextPath}/StudentInformation"><input type="submit" value="Back" name="back" /></a>
               
     </body>           
 </html>

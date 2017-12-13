@@ -30,6 +30,6 @@
     ───────────█████████████──────────<br>
     ──────────────────────────────────<br>
     ──────────────────────────────────<br>
-    <a href="${requestScope["javax.servlet.forward.request_uri"]}">Tilbake</a>
+    <button type="button" name="back" onclick="history.back()">back</button>
     </body>
 </html>

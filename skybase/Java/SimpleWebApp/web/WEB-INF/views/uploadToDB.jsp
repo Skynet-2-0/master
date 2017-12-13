@@ -34,7 +34,7 @@
         <br />
         <br />
         <input type="submit" value="Upload" />
-        <a href="${pageContext.request.contextPath}/userInfo2">Tilbake</a>
+        <button type="button" name="back" onclick="history.back()">back</button>
     </form>
     
 </body>

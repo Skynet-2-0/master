@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mathi, Jonas
+ * @author Mathias, Jonas
  */
 
 @WebServlet(urlPatterns = {"/login"})
@@ -125,7 +125,7 @@ public class LoginServlet extends HttpServlet{
                         session.setAttribute("User", userName);
                         request.setAttribute("userName", userName);
                         //request.getRequestDispatcher("/WEB-INF/views/userInfoStud.jsp").forward(request, response);
-                        response.sendRedirect(request.getContextPath() + "/userInfo2");
+                        response.sendRedirect(request.getContextPath() + "/StudentInformation");
                         break;
                     default:
                         System.out.println("Error message = "+userValidate);

@@ -7,7 +7,7 @@ package LoginLogout;
 
 /**
  *
- * @author mathi
+ * @author Mathias, Jonas
  */
 import Connection.MySQLConnUtils;
 import Admin.UserAccount;

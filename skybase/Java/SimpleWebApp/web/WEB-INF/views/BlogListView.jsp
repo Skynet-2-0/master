@@ -13,7 +13,7 @@
         <title>Post View</title>
     </head>
     <jsp:include page="_header.jsp"></jsp:include>
-    <jsp:include page="_menu.jsp"></jsp:include>
+    <%--<jsp:include page="_menu.jsp"></jsp:include>--%>
 
 
         <body>
@@ -82,6 +82,6 @@
                         }
                         %>
                         </table>
-
+                        <a href="${pageContext.request.contextPath}/Blog"><input type="submit" value="Back" name="back" /></a>
                         </body>
                         </html>

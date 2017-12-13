@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  * @author mathi
  */
 
-@WebServlet(urlPatterns = {"/userInfo2"})
+@WebServlet(urlPatterns = {"/StudentInformation"})
 public class UserInfoStud extends HttpServlet {
     
     private static final long serialVersionUID = 1L;

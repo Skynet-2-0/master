@@ -38,7 +38,7 @@ public class UserInfoServlet extends HttpServlet{
         
         
         UserAccount loginedUser = MyUtils.getLoginedUser(session);
-        //ikke logge inn
+        //ikke logget inn
         if(loginedUser == null){
             //redirect
             response.sendRedirect(request.getContextPath() + "/login");

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mathi
+ * @author Mathias, Brage
  */
 public class MyUtils {
     
@@ -40,7 +40,7 @@ public class MyUtils {
     
     //lagre bruker info i session
     public static void storeLoginedUser(HttpSession session, UserAccount loginedUser){
-        //JSP kan aksesere via ${loginedUser}
+        //JSP kan få tilgang via ${loginedUser}
         session.setAttribute("loginedUser", loginedUser);
     }
     

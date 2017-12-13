@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mathi
+ * @author Mathias
  */
 
 @WebFilter(filterName = "aut", urlPatterns = {"/aut/*"})
@@ -44,46 +44,18 @@ public class LoginRestrictions implements Filter{
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
-        //UserAccount loginedUser = MyUtils.getLoginedUser(session);
-        /*
-        String requestPath;
-        requestPath = HttpServletRequest.getRequestURI();   //CLIENT_CERT_AUTH;
-        */
-        if(/*needsAuthentication(requestPath) ||*/ session == null || session.getAttribute("loginedUser") == null){
+    
+        if(session == null || session.getAttribute("loginedUser") == null){
             response.sendRedirect(request.getContextPath() + "/login"); // redirect hvis ikke logget inn
         }
         else{
             chain.doFilter(req, res); //Hvis loget inn, alt er greit
         }
         
-        /*
-        Connection conn = MyUtils.getStoredConnection(req);
-        
-        try {
-            UserAccount admin = DBUtils.findUser(conn, "tom");
-            if(admin == admin){
-                needsAuthentication(requestPath);
-                }
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginRestrictions.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
     }
     
     public void destroy(){
         //clean/close
     }
-    /*
-    //Validasjon av sider som ikke trenger autentikasjon
-    private boolean needsAuthentication(String url){
-        String[] validNonAuthenticationUrls = {"/WEB-INF/views/loginView.jsp", "/WEB-INF/views/homeView.jsp"};
-        
-        for(String validUrl : validNonAuthenticationUrls){
-            if(url.endsWith(validUrl)){
-                return false;
-            }
-        }
-        return true;
-    }
-    */
+    
 }

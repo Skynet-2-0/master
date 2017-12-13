@@ -105,7 +105,7 @@
         </script>
     </head>
     <jsp:include page="_header.jsp"></jsp:include>
-    <jsp:include page="_menu.jsp"></jsp:include>
+    <%--<jsp:include page="_menu.jsp"></jsp:include>--%>
 
 
     <body>
@@ -171,7 +171,7 @@
                     theForm.submit();
                 };
             </script>
-           
+            <br><a href="${pageContext.request.contextPath}/StudentInformation"><input type="submit" value="Back" name="back" /></a>
             
             <!-- <div id="richTextArea">
                  <iframe id="theWYSIWYG" name="theWYSIWYG" frameborder="2"></iframe>
