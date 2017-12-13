@@ -46,8 +46,8 @@
               
                      <tr bgcolor = "darkred" >
                      <td><b>Calendar_ID</b></td> 
-                     <td><b>Dato</b></td> 
-                     <td><b>Hendelse</b></td>
+                     <td><b>Date</b></td> 
+                     <td><b>Event</b></td>
                      <td><b>Edit</b></td>
                      
                      </tr>
@@ -65,8 +65,8 @@
                             <tr>
                                 
                     <td><%= rs.getInt("Calendar_ID") %></td>
-                    <td><%= rs.getString("Dato") %></td>
-                    <td><%= rs.getString("Hendelse") %></td>
+                    <td><%= rs.getString("Date") %></td>
+                    <td><%= rs.getString("Event") %></td>
                    
                     <td> <a href="editCalendar?Calendar_ID=<%=rs.getInt("Calendar_ID")%>">Edit</a></td>
                     

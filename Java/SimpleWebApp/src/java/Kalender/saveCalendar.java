@@ -41,12 +41,20 @@ public class saveCalendar extends HttpServlet {
             out.println("<title>Kalender</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Kalender " + "</h1>");
+            out.println("<h1>Kalender!!!! " + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
-
+@Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+        
+        RequestDispatcher dispatcher;
+        dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/saveCalendar.jsp");
+        
+        dispatcher.forward(request, response);
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -56,14 +64,7 @@ public class saveCalendar extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-        
-        RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/saveCalendar.jsp");
-        dispatcher.forward(request, response);
-    }
+   
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -77,6 +78,8 @@ public class saveCalendar extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+     
     }
 
     /**

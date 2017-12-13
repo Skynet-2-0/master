@@ -50,7 +50,7 @@
 		
 		st = conn.createStatement();
 		
-		String sql = "SELECT * FROM  Calendar WHERE Dato like '%" +  keyword + "%' OR Hendelse like '%" +  keyword + "%' ";
+		String sql = "SELECT * FROM  Calendar WHERE Date like '%" +  keyword + "%' OR Event like '%" +  keyword + "%' ";
 		
 		System.out.println(sql);
 		
@@ -59,14 +59,14 @@
              
                 <table width="600" border="1">
 		  <tr>
-		    <th width="91"> <div align="center">Dato </div></th>
-		    <th width="98"> <div align="center">Hendelse </div></th>
+		    <th width="91"> <div align="center">Date </div></th>
+		    <th width="98"> <div align="center">Event </div></th>
 		    
 		  </tr>	
 			<%while((rs!=null) && (rs.next())) { %>
 				  <tr>
-				    <td><div align="center"><%=rs.getString("Dato")%></div></td>
-				    <td><div align="center"><%=rs.getString("Hendelse")%></td>
+				    <td><div align="center"><%=rs.getString("Date")%></div></td>
+				    <td><div align="center"><%=rs.getString("Event")%></td>
 				  </tr>
 	       	<%}%>
 	  	</table>      

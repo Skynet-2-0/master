@@ -115,6 +115,18 @@ public class DBUtils {
         pstm.executeUpdate();
     }
     
+    public static void updateCalendar(Connection conn, CalendarCalendar calendar)
+            throws SQLException{
+        String sql = "Update Calendar set Date=?, Event=? where Calendar_ID=?";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        pstm.setString(1, calendar.getDate());
+        pstm.setString(2, calendar.getEvent());
+        pstm.setString(3, calendar.getCalendar_ID());
+        pstm.executeUpdate();
+    }
+    
     public static void insertStudents(Connection conn, Students students)
             throws SQLException{
         String sql = "insert into students (Id, Name, Email) values(?, ?, ?)";
@@ -172,65 +184,47 @@ public class DBUtils {
      return null;
     }
     
-       public static List<CalendarCalendar> queryCalendar(Connection conn)
-            throws SQLException{
-        String sql = "Select a.Dato, a.Hendelse from Calendar a";
-        
-        PreparedStatement pstm = conn.prepareStatement(sql);
-        
-        ResultSet rs = pstm.executeQuery();
-        List<CalendarCalendar> list = new ArrayList<>();
-        while(rs.next()){
-            String dato = rs.getString("Dato");
-            String hendelse = rs.getString("Hendelse");
-            CalendarCalendar calendar = new CalendarCalendar();
-            calendar.setDato(dato);
-            calendar.setHendelse(hendelse);
-            list.add(calendar);
-        }
-        return list;
-    }
       
   
 
-    public static CalendarCalendar findDate(Connection conn, String Dato, String Hendelse)
+    public static CalendarCalendar findDate(Connection conn, String Date, String Event)
             throws SQLException {
-        String sql = "Select a.Calendar_ID, a.Dato, a.Hendelse from Calendar a"
-                + " where a.Dato = ? ";
+        String sql = "Select a.Calendar_ID, a.Date, a.Event from Calendar a"
+                + " where a.Date = ? ";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setString(1, Dato);
+        pstm.setString(1, Date);
         ResultSet rs = pstm.executeQuery();
         List<CalendarCalendar> list = new ArrayList<>();
         
         if(rs.next()){
             //String Dato;
-            Dato = rs.getString("dato");
+            Date = rs.getString("Date");
             CalendarCalendar calendar = new CalendarCalendar();
-            calendar.setDato(Dato);
-            calendar.setHendelse(Hendelse);
+            calendar.setDate(Date);
+            calendar.setEvent(Event);
             list.add(calendar);
             return calendar;
         }
         return null;
     }
-        public static String findDate(Connection conn, String Dato)
+        public static String findDate(Connection conn, String Date)
             throws SQLException {
-        String sql = "Select a.Dato from Calendar a"
-                + " where a.Dato = ?";
+        String sql = "Select a.Date from Calendar a"
+                + " where a.Date = ?";
         
      
 
         PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setString(1, Dato);
+        pstm.setString(1, Date);
         
         ResultSet rs = pstm.executeQuery();
         
         try {
             while (rs.next()) {
-                rs.getString("Dato");
-                System.out.println("Dato :" + rs.getString("Dato"));
-                return rs.getString("dato");
+                rs.getString("Date");
+                System.out.println("Date :" + rs.getString("Date"));
+                return rs.getString("Date");
                
                 
             }

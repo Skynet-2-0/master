@@ -50,7 +50,7 @@
                         "Hendelse = '"+ strHendelse + "' " +
                         "WHERE Calendar_ID = '" + strCalendar_ID + "'  ";
 		
-		rs = st.executeQuery(sql);
+		st.execute(sql);
 
 		out.println("Record Update Successfully");
 	  		

@@ -48,24 +48,28 @@
 		if(rs != null) {
 			rs.next();
 		%>
+                 <c:if test="${not empty calendar}">
+                <form name="frmUpdate" method="POST" action="${pageContext.request.contextPath}/editCalendar">
                 
-                <form name="frmUpdate" method="post" action=saveCalendar?Calendar_ID=<%=rs.getInt("Calendar_ID")%>" >	
 		Endre dato eller hendelse
                 <p><table width="428" border="1">	
 			<tr>
 				<th width="181">
 				<div align="left">Calendar_ID </div></th>
-				<td width="231"><%=rs.getInt("Calendar_ID")%></td>
+                                <td><input type="text" name="Calendar_ID" value="${calendar.Calendar_ID}" /></td>
+				
 			</tr>
 			<tr>
 				<th width="181">
-				<div align="left">Dato </div></th>
-				<td><input type="text" name="txtDato" size="20" value="<%=rs.getString("Dato")%>"></td>
+				<div align="left">Date </div></th>
+                                <td><input type="text" name="Date" value="${calendar.Date}" /></td>
+				
 			</tr>
 			<tr>
 				<th width="181">
-				<div align="left">Hendelse </div></th>
-				<td><input type="text" name="txtHendelse" size="20" value="<%=rs.getString("Hendelse")%>"></td>
+				<div align="left">Event </div></th>
+                                <td><input type="text" name="Event" value="${calendar.Event}" /></td>
+				
 			</tr>			
 	
 			</table> 
