@@ -6,8 +6,14 @@ package Modules;
  * and open the template in the editor.
  */
 
+import Connection.MyUtils;
+import Connection.DBUtils;
 import java.io.IOException;
- 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+import Feedback.Feedback;
+import Users.UserAccount;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,16 +38,28 @@ public class Modul2 extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
+        Connection conn = MyUtils.getStoredConnection(request);
+        ModuleFeedback id = null;
+        String errorString = null;
+        List<ModuleFeedback> list = null;
+        try{
+            list = DBUtils.queryModuleFeedback(conn, id);
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+            errorString = e.getMessage();
+        }
+        request.setAttribute("errorString", errorString);
+        request.setAttribute("moduleFeedbackList", list);
         
-        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/modul2view.jsp");
-        
+        RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/modul2view.jsp");
         dispatcher.forward(request, response);
     }
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        
         doGet(request, response);
     }
+    
 }

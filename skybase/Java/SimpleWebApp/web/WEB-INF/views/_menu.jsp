@@ -19,15 +19,9 @@
    |  
    <a href="${pageContext.request.contextPath}/modules">Modules</a>
    |
-   <a href="${pageContext.request.contextPath}/progressMenu">Progress</a>
+   <a href="${pageContext.request.contextPath}/progressMenu">Min progresjon</a>
    |
-   <a href="${pageContext.request.contextPath}/progressMenu">Blogg</a>
-   |
-   <a href="${pageContext.request.contextPath}/progressMenu">Forum</a>
-   |
-   <a href="${pageContext.request.contextPath}/progressMenu">Kalender</a>
-   |
-   <a href="${pageContext.request.contextPath}/progressMenuAdmin_1">Progress Admin</a>
+   <a href="${pageContext.request.contextPath}/progressMenuAdmin_1">Progresjon</a>
    
    
 </div>  

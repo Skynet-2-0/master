@@ -8,6 +8,7 @@ package Connection;
 
 import Users.UserAccount;
 import Feedback.Feedback;
+import Modules.ModuleFeedback;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -170,7 +171,7 @@ public class DBUtils {
         
       
             
-  //      String sql = "Select User_Account_Id, User_Name, Gender, Name, Email, Usertype from User_Account where name like '%"+name+"'%";
+   //   String sql = "Select User_Account_Id, User_Name, Gender, Name, Email, Usertype from User_Account where name like '%"+name+"'%";
           String sql = "Select User_Account_Id, User_Name, Gender, Name, Email, Usertype from User_Account where name=?";
 
         
@@ -387,6 +388,55 @@ public class DBUtils {
         }
         return null;
     }
+    
+      public static List<ModuleFeedback> queryModuleFeedback(Connection conn, ModuleFeedback id)
+            throws SQLException{
+    
+     
+     String sql = "select user_account.name, feedback.user_account_id, feedback.module_id, feedback.status, feedback.score,"
+             + "feedback.comment_open, feedback.comment_hidden, delivery.attachment_id"
+             + "from user_account"
+             + "inner join feedback"
+             + "on user_account.user_account_id = feedback.user_account_id"
+             + "inner join delivery"
+             + "on feedback.module_id = delivery.module_id"
+             + "where delivery.module_id=?";
+               
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, id.getModule_id());
+        
+        
+        
+        ResultSet rs = pstm.executeQuery();
+        List<ModuleFeedback> list = new ArrayList<>();
+        while(rs.next()){
+            String attachment_id = rs.getString("attachment_id");
+            String name = rs.getString("name");
+            String user_account_id = rs.getString("user_account_id");
+            String status = rs.getString("status");
+            String comment_open = rs.getString("comment_open");
+            String score = rs.getString("score");
+            String module_id = rs.getString("module_id");
+            String comment_hidden = rs.getString("comment_hidden");
+           
+            
+            
+            ModuleFeedback modulefeedback = new ModuleFeedback();
+            modulefeedback.setStatus(status);
+            modulefeedback.setCommentOpen(comment_open);
+            modulefeedback.setScore(score);
+            modulefeedback.setModule_id(module_id);
+            modulefeedback.setUser_account_id(user_account_id);
+            modulefeedback.setFileAttachment(attachment_id);
+            modulefeedback.setName(name);
+            modulefeedback.setCommentHidden(comment_hidden);
+            list.add(modulefeedback);
+        }
+        return list;
+    }
+    
+
     
      public static List<Feedback> queryFeedback(Connection conn, UserAccount id)
             throws SQLException{

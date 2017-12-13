@@ -20,9 +20,9 @@
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
 
-Progresjon
+    Ditt søk etter <b><%= request.getParameter("name") %></b> ga dette resultatet:
     
-    <br>
+  
     
         <table border="1" cellpadding="5" cellspacing="1" >
        <tr>
@@ -46,6 +46,7 @@ Progresjon
        </c:forEach>
     </table>
  
-    <a href="modules" >Go to modules</a>
+    <br>
+    <a href="progressMenuAdmin_1" >Gå tilbake til søk</a>
  </body>
 </html>

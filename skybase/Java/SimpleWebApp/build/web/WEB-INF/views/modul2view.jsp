@@ -6,6 +6,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
  <head>
@@ -41,54 +42,29 @@
         
         <tr>
             <th>Navn</th>
+            <th>Module ID</th>
+            <th>UserID</th>
             <th>Filnavn</th>
-            <th>Innleveringsdato</th>
             <th>Status</th>
             <th>Poeng</th>
-            <th>Vurdert av</th>
-            <th>Kommentar</th>
+            <th>Åpen kommentar</th>
+            <th>Skjult kommentar</th>
         </tr>
             
-        <tr>
+    <c:forEach items="${moduleFeedbackList}" var="modulefeedback" >
             
-            <td>Brage Fosso</td>
-            <td>Modul2.jar</td>
-            <td>01.02.18 04:20</td>
-            <td>Godkjent</td>
-            <td>10</td> 
-            <td>Christian Moen</td>
-            <td></td>
-            
-      </tr>
-      
-      <tr>
-            
-            <td>Jonas Omdal</td>
-            <td></td>
-            <td></td>
-            <td>Ikke levert</td>
-            <td></td>
-            <td></td>
-            <td></td>
-           
-            
-      </tr>
-      
-            <tr>
-            
-            <td>Mathias Evensen</td>
-            <td>Modul2boi.jar</td>
-            <td>02.05.18 21:54</td>
-            <td>Levert</td>
-            <td><input type="text" name="Poeng"</td>
-            <td><input type="text" name="Vurdert av"</td>
-            <td><input type="text" name="Kommentar"</td>
-            
-      </tr>
+          <tr>
+             <td>${modulefeedback.name}</td>
+             <td>${modulefeedback.module_id}</td>
+             <td>${modulefeedback.user_account_id}</td>
+             <td>${modulefeedback.attachment_id}</td>
+             <td>${modulefeedback.status}</td>
+             <td>${modulefeedback.score}</td>
+             <td>${modulefeedback.commentOpen}</td>
+             <td>${modulefeedback.commentHidden}</td>
+             
+       </c:forEach>
         
     </table>
-    
-    <form name="myForm" action="kjøyr" method="POST">
-                    <input type="submit" value="Submit" name="submit"/>
 
-                    <a href="${pageContext.request.contextPath}/modules">Tilbake</a>
+ <a href="${pageContext.request.contextPath}/modules">Tilbake</a>

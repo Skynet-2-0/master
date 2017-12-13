@@ -34,7 +34,7 @@
               <tbody>
                   <tr>
                       <td>Studentsøk: </td>
-                      <td> <input type="text" name="name" value="${useraccount.name}" size="50" /> </td>
+                      <td> <input type="text" name="name" value="${useraccount.name}" size="20" /> </td>
                   </tr>
               </tbody>
           </table>
@@ -73,6 +73,6 @@
        </c:forEach>
     </table>
  
-    <a href="modules" >Go to modules</a>
+    <a href="home" >Gå tilbake til hjem</a>
  </body>
 </html>

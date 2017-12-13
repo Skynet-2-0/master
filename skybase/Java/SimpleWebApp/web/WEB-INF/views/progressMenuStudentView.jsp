@@ -19,7 +19,7 @@
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
  
-    <h3>Progress for student</h3>
+    <h3>Progresjon for student</h3>
  
      <table border="1" cellpadding="5" cellspacing="1" >
       
