@@ -33,7 +33,7 @@ public class Modules extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         
-        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/modulesView.jsp");
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/modulesView1.jsp");
         
         dispatcher.forward(request, response);
     }

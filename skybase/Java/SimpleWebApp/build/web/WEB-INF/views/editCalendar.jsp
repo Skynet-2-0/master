@@ -42,14 +42,14 @@
 		
 		st = conn.createStatement();
 		
-		String sql = "SELECT * FROM Calendar WHERE Calendar_ID = '" + Calendar_ID + "'  ";
+		String sql = "SELECT * FROM Calendar WHERE Calendar_ID ="+Calendar_ID+"";
 		
 		rs = st.executeQuery(sql);
 		if(rs != null) {
 			rs.next();
 		%>
                 
-                <form name="frmUpdate" method="post" action=saveCalendar?Calendar_ID=<%=rs.getInt("Calendar_ID")%>" >	
+                <form name="frmUpdate" method="post" action="saveCalendar?Calendar_ID=<%=rs.getInt("Calendar_ID")%>" >	
 		Endre dato eller hendelse
                 <p><table width="428" border="1">	
 			<tr>

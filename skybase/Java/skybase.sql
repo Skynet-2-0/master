@@ -27,7 +27,7 @@ VALUES('mette', 'F','METTE MARIT','mette001', 'metteprinsesse@gmail.com', 'ADMIN
 INSERT INTO User_Account (User_Name, Gender, Name, Password, Email, Usertype)
 VALUES('test', 'M','TESTIE','test', 'testie@gmail.com', 'USER');
 
-
+/*
 CREATE TABLE Module(
 Module_ID INT NOT NULL AUTO_INCREMENT,
 Description varchar (500) NOT NULL,
@@ -49,7 +49,23 @@ VALUES('bli kjent med koding', 'Kunne hente og legge til verdier', 'kap2');
 
 insert into Module (Description, Teaching_Goal, Resources)
 VALUES('bli kjent med koding', 'Kunne hente og legge til verdier', 'kap3');
+*/
 
+CREATE TABLE Module(
+Module_id INT NOT NULL AUTO_INCREMENT,
+Module_Name varchar (70) NOT NULL,
+Delivery_Date varchar (70) NOT NULL,
+Description varchar (500) NOT NULL,
+LearningGoals varchar (500) NOT NULL,
+Resources varchar (300),
+
+CONSTRAINT Modul_pk primary key(Module_ID)
+);
+
+-- Insert Data --
+
+INSERT INTO Module (Module_Name, Delivery_Date, Description, LearningGoals, Resources)
+VALUES('Introduksjon til BlueJ', '2.februar - kl. 23.59', 'bli kjent med blueJ', 'Kunne BlueJ sine grunnleggende funksjoner', 'kap1');
 
 CREATE TABLE Feedback(
 Status varchar(30) NOT NULL,
@@ -113,9 +129,9 @@ CONSTRAINT File_fk1 FOREIGN KEY (ID) references ATTACHMENT(ID)
 );
 
 create table Log(
-Log_ID INT NOT NULL,
+Log_ID INT auto_increment,
+Title varchar(50),
 Content varchar (1000),
-Week int,
 Date date,
 User_Account_ID INT NOT NULL,
 

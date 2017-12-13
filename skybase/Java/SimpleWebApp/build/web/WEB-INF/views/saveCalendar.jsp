@@ -4,6 +4,7 @@
     Author     : Ann Margrethe
 --%>
 
+<%@page import="java.sql.PreparedStatement"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -46,9 +47,14 @@
 		String strHendelse = request.getParameter("txtHendelse");
 		
 		String sql = "UPDATE Calendar " +
-                        "SET Dato = '"+ strDato + "' " +
-                        "Hendelse = '"+ strHendelse + "' " +
-                        "WHERE Calendar_ID = '" + strCalendar_ID + "'  ";
+                        "SET Dato = "+strDato+"" +
+                        ",Hendelse = "+strHendelse+"" +
+                        " WHERE Calendar_ID = "+strCalendar_ID+"";
+                
+                PreparedStatement pstm = conn.prepareStatement(sql);
+                pstm.setString(1, strDato);
+                pstm.setString(2, strHendelse);
+                pstm.setString(3, strCalendar_ID);
 		
 		rs = st.executeQuery(sql);
 		out.println("Record Update Successfully");

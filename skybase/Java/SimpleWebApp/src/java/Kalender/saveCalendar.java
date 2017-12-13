@@ -59,11 +59,13 @@ public class saveCalendar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         processRequest(request, response);
         
         RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/saveCalendar.jsp");
         dispatcher.forward(request, response);
-    }
+    
+        }
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -76,6 +78,7 @@ public class saveCalendar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.sendRedirect(request.getContextPath() + "/CalendarList");
         processRequest(request, response);
     }
 

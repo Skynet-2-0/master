@@ -30,6 +30,8 @@
    <a href="${pageContext.request.contextPath}/Blog">Blog</a>
    |  
    <a href="${pageContext.request.contextPath}/Calendar">Calendar</a>
+   |
+   <a href="${pageContext.request.contextPath}/moduleList">Modules</a>
    
    
 </div>  
