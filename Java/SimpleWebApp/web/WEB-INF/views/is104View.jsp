@@ -17,77 +17,47 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Forum</title>
-         <style>
-            
-            
-            table {
-                border: 2px solid black;
-                border-collapse: collapse;
-                width: 100% 
-           
-            }
-     
-        </style>
+        <title>Question List</title>
     </head>
     <body>
         
-    <jsp:include page="_header.jsp"></jsp:include>
-    <jsp:include page="_menu2.jsp"></jsp:include>
-
-    
-        <h3>IS-104 forums</h3>
+        <jsp:include page="_header.jsp"></jsp:include>
+        <jsp:include page="_menu.jsp"></jsp:include>
         
-        <table border ="1">
-            <th>QuestionID</th>
-            <th>Question</th>
-            <th>Name</th>
-            <th>CreateDate</th>
-            <th>View</th>
-            <th>Reply</th>
-            
-            
-            </tr>
-            <td>001</td>
-            <td> <a href="${pageContext.request.contextPath}/">What is usability? </td>
-            <td>Mette</td>
-            <td>2017.11.13 <p>16:12:24</p> </td>
-            <td>0</td>
-            <td>0</td>
-            
-            <tr>
-                <td>002</td>
-                <td> <a href="${pageContext.request.contextPath}/">What is UI Stack?</a></td>
-                <td>Tom</td>
-                <td>2017.11.13 <p>15:37:54</p> </td>
-                <td>0</td>
-                <td>0</td>
-                
-            </tr>
-            
-            <tr>
-                <td>003</td>
-                <td> <a href="${pageContext.request.contextPath}/">What is the key concept of gamification? </td>
-                <td>Vegar</td>
-                <td>2017.11.13 <p>15:12:24</p> </td>
-                <td>0</td>
-                <td>0</td>
-                
-            </tr>
-            
-            <tr>
-                <td>004</td>
-                <td> <a href="${pageContext.request.contextPath}/">What is the purpose of Human Interface design?</td>
-                <td>Joakim</td>
-                <td>2017.11.13 <p>15:12:04</p> </td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-        </table>
-                <a href="${pageContext.request.contextPath}/studentForum">Back to previous</a>
-                <a href="${pageContext.request.contextPath}/">Next>></a>
-            
+        <h1>Question List</h1>
+         
+        <p style="color: red;">${errorString}</p>
+        
+        <a href="createQuestion" >Create Questions</a> <<>>
+         <a href="studentForum" >Back to forum</a>
+        <table border="1" cellpadding="4" cellspacing="1" >
+        <tr>
+          <th>Question_ID</th> 
+          <th>Title</th>
+          <th>Details</th>
+          <th>Id</th>
+          <th>CreateDate</th>
+          <th>Name</th>
+          <th>Email</th>
+         
+         
+          
+          
+       </tr>
+       <c:forEach items="${questionList}" var="question" >
+          <tr>
+             <td>${question.question_id}</td>
+             <td>${question.title}</td>
+             <td>${question.details}</td> 
+             <td>${question.createDate}</td>
+             <td>${question.name}</td>
+             <td>${question.email}</td>
+             
+             <td>
+         </c:forEach>
+    </table>
+ 
        
     </body>
-</html>
+</html>    
 

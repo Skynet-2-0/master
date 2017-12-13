@@ -60,6 +60,7 @@ public class ForumListServlet extends HttpServlet {
         
         String errorString = null;
         List<QuestionQuestion> list = null;
+      
         try {
             list = DBUtils.queryQuestionQuestion(conn);
         } catch (SQLException ex) {

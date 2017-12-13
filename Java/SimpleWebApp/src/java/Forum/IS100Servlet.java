@@ -5,8 +5,14 @@
  */
 package Forum;
 
+
+import Connection.MyUtils;
+import Connection.DBUtils;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+ 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,36 +26,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/IS-100"})
 public class IS100Servlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>IS-100</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>IS-100 " + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+ private static final long serialVersionUID = 1L;
+    
+    public IS100Servlet(){
+        super();
     }
-
+  
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -62,11 +44,22 @@ public class IS100Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       
+        Connection conn = MyUtils.getStoredConnection(request);
+      
+        String errorString = null;
+        List<QuestionQuestion> list = null;
+        try{
+            list = DBUtils.queryQuestionQuestion(conn);
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+            errorString = e.getMessage();
+        }
+        request.setAttribute("errorString", errorString);
+        request.setAttribute("questionList", list);
         
-        
-        RequestDispatcher dispatcher;
-        dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/is100View.jsp");
-        
+        RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/questionListView.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -81,22 +74,7 @@ public class IS100Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            processRequest(request, response);
-        
-        RequestDispatcher dispatcher;
-        dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/is100View.jsp");
-        
-        dispatcher.forward(request, response);
+    doGet(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

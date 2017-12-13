@@ -200,7 +200,7 @@ public class DBUtils {
  
    public static List<QuestionQuestion> queryQuestionQuestion(Connection conn)
             throws SQLException{
-        String sql = "Select a.Question_ID, a.Title, a.Details, a.CreateDate, a.Name, a.Email from Forum";
+        String sql = "Select a.Question_ID, a.Title, a.Details, a.CreateDate, a.Name, a.Email from Forum a";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
         
@@ -216,9 +216,8 @@ public class DBUtils {
             
             
             
-            QuestionQuestion question;
-            question = new QuestionQuestion();
-            //question.setQuestion_ID(question_id);
+            QuestionQuestion question = new QuestionQuestion();
+            question.setQuestion_id(question_id);
             question.setTitle(title);
             question.setDetails(details);
             question.setCreateDate(createDate);

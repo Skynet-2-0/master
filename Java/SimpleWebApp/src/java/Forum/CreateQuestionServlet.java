@@ -34,17 +34,7 @@ public class CreateQuestionServlet extends HttpServlet {
         super();
     }
 
-  
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+ 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -53,14 +43,7 @@ public class CreateQuestionServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+ 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -74,13 +57,13 @@ public class CreateQuestionServlet extends HttpServlet {
         String name = (String) request.getParameter("name").toUpperCase();
         String email = (String) request.getParameter("email").toLowerCase();
         
-        QuestionQuestion questionquestion = new QuestionQuestion(question_id, title, details, createDate, name, email);
+        QuestionQuestion question = new QuestionQuestion(question_id, title, details, createDate, name, email);
         
         String errorString = null;
                 
          
         if(errorString == null){
-         try {
+         //try{
              try{
             boolean hasError;
             hasError = false;
@@ -89,39 +72,38 @@ public class CreateQuestionServlet extends HttpServlet {
                     title.length() == 0 || details.length() == 0 || createDate.length() == 0 || name.length() == 0|| email.length() == 0){
                             
                                 
-                                hasError = true;
-                                errorString = "Trenger å fylle på alt feltene";
+                hasError = true;
+                errorString = "Trenger å fylle på alt feltene";
                                 
-                            }
-                            
-                
-                    DBUtils.insertQuestion (conn, questionquestion);
-                } catch (SQLException ex) {
-                    Logger.getLogger(CreateQuestionServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                            
-         
-         
-        
-         }catch(StringIndexOutOfBoundsException e) {
-             e.printStackTrace();
-         }
-         
+                }else{
+                           
+                    DBUtils.insertQuestion (conn, question);
+                    
+                    }
+               }catch(StringIndexOutOfBoundsException e){
+               e.printStackTrace();
+               errorString = e.getMessage();
             
+              }
+                catch(SQLException e){
+                 e.printStackTrace();
+                errorString = e.getMessage();
+             }
+         }
             request.setAttribute("errorString", errorString);
-            request.setAttribute("Question", questionquestion);
+            request.setAttribute("QuestionQuestion", question);
             
             
             if(errorString != null){
-                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/createQuestionView.jsp");
+                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/questionInfoView.jsp");
                 dispatcher.forward(request, response);
             
             }
-       else{
-           response.sendRedirect(request.getContextPath() + "/questionInfo");
+            else{
+                response.sendRedirect(request.getContextPath() + "/questionList");
        }
      }
    }
-}
- 
+  
+
 

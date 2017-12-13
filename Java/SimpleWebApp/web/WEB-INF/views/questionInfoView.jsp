@@ -18,7 +18,7 @@
     
     <h3>Forum Info:</h3>
     
-    <h3>Your post has been sucess! <p style="color: red;">${user.name}</p></h3>
+    <h3>Your post has been sucess! <p style="color: red;">${question.name}</p></h3>
     <table border="1" cellpadding="4" cellspacing="0" >
     <tr>
           <th>Title</th>
@@ -28,13 +28,13 @@
     </tr>
     
     <tr>
-        <td>${questionquestion.title}</td>
-        <td>${questionquestion.question_id}</td>
-        <td>${questionquestion.name}</td>
-        <td>${questionquestion.email}</td>
+        <td>${question.title}</td>
+        <td>${question.question_id}</td>
+        <td>${question.name}</td>
+        <td>${question.email}</td>
     </tr>
     </table>
     <br>
-    <a href="${pageContext.request.contextPath}/questionListView.jsp">Back to forum</a>
+  
     </body>
 </html>

@@ -5,7 +5,6 @@
  */
 package Forum;
 
-import Forum.QuestionQuestion;
 import Connection.MyUtils;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;

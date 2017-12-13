@@ -8,81 +8,46 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <style>
-            
-            
-            table {
-                border: 1px solid black;
-                border-collapse: collapse;
-                
-                width: 100% 
-                
-                
-                
-            }
-            
-            table, th, td {
-                color: #000;
-           
-            }
-            
-            table a hover {
-                color: #000;
-                text-align: left;
-                
-            }   
-            
-            th{
-                background-color: #F0F0F0;
-                color: #000;
-                padding: 5px;
-              
-            }
-            
-            .leftpart {
-                width: 60%;
-            }
-            
-            .rightpart {
-                width: 40%;
-            }
-     
-       
-        </style>
-        <title>IS-100 Forums</title>
+        <meta charset="UTF-8">
+        <title>Question List</title>
     </head>
+    <body>
+        
         <jsp:include page="_header.jsp"></jsp:include>
         <jsp:include page="_menu.jsp"></jsp:include>
-    <body>
-           <h1>Forum List</h1>
         
+        <h1>Question List</h1>
+         
         <p style="color: red;">${errorString}</p>
- 
-    <table border="1" cellpadding="4" cellspacing="0" >
-       <tr>
+        
+        <a href="createQuestion" >Create Questions</a> <<>>
+         <a href="studentForum" >Back to forum</a>
+        <table border="1" cellpadding="4" cellspacing="0" >
+        <tr>
+          <th>Question_ID</th> 
           <th>Title</th>
           <th>Details</th>
           <th>CreateDate</th>
           <th>Name</th>
           <th>Email</th>
-       
+         
+         
+          
+          
        </tr>
        <c:forEach items="${questionList}" var="question" >
           <tr>
-             <td>${forum.question_id}</td>
-             <td>${forum.createDate}</td> 
-             <td>${forum.details}</td>
-             <td>${forum.name}</td>
-             <td>${forum.view}</td>
-             <td>${forum.user_account_id}</td>
+             <td>${question.question_id}</td>
+             <td>${question.title}</td>
+             <td>${question.details}</td> 
+             <td>${question.createDate}</td>
+             <td>${question.name}</td>
+             <td>${question.email}</td>
              
-            
-             
-       </c:forEach>
+             <td>
+         </c:forEach>
     </table>
  
-    <a href="createQuestion" >Create Question</a>
- 
+       
     </body>
 </html>

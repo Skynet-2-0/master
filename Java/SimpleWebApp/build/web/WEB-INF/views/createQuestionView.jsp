@@ -22,13 +22,13 @@
    
     <a href="IS-100">Back to forums</a>
     
-    <form id="new_question" name="new_question" method="POST" action="${pageContext.request.contextPath}/createQuestion">
+    <form method="POST" action="${pageContext.request.contextPath}/createQuestion">
        <table width="500" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#000000" >
              
            <td>
         <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
             <tr>
-                <td colspan="3" bgcolor="#000000"><b style="color: #eae8e8;">Create question</b> </td>
+                <td colspan="3" bgcolor="#d1cfcf"><b style="color: #000000;">Create question</b> </td>
             </tr>
             
             <tr>
@@ -58,9 +58,8 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td><input type="submit" name="Submit" value="Add forum" /> 
-                    <input type="reset" name="Submit2" value="Clear" /></td>
-          
+                <td><input type="submit"  value="Add forum" />     
+                <a href="questionList">Clear</a>  
             </tr>
             
         </table>
