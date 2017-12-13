@@ -92,6 +92,8 @@ public class BlogList extends HttpServlet {
         dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/BlogListView.jsp");
 
         dispatcher.forward(request, response);
+        
+        
     }
 
 }

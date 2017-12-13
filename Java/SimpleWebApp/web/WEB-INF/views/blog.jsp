@@ -10,6 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Blog</title>
+        
+   
         <style>
             div#textEditor{
                 margin: 1px;
@@ -123,16 +125,16 @@
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
 
+       
+        <body>
+            
+            <h1>Blog</h1>
+            <form method="post" action="${pageContext.request.contextPath}/BlogListView" >
+            <input type="submit" value="Your posts" name="Yourposts" />
 
-    <body>
-
-        <h1>Blog</h1>
-        <form method="post" action="${pageContext.request.contextPath}/BlogListView">
-        <input type="submit" value="Your posts" name="Yourposts" />
-    
-    </form>
+                </form>
         <p>New blog post:</p>
-        
+
 
         <div id="textEditor">   
             <div id="theRibbon">
@@ -166,49 +168,32 @@
                 <button id="undoButton" title="Undo the previous action">&larr;</button>
                 <button id="redoButton" title="Redo">&rarr;</button>
             </div>
-
-             <form action=BlogPost name="myform" id="myform" method= "post" > 
-                 
-                 <input type="text" id="titlebar" name="title" value="Title">
-                    
-            <textarea style= "display: none;" name= "blog-post"  id="blog-post" cols="100" rows="20"></textarea>
-            <iframe name="richTextArea" id="richTextArea" frameborder="2"></iframe>
-
-
+ <form  action=BlogPost name="myform" id="myform" method= "post"> 
+ 
             
-            <input name="upload" type="button" value="Upload" onClick="Upload();"/>
+                <input type="text" id="titlebar" name="title" value="Title">
+
+                <textarea style= "display: none;" name= "blog-post"  id="blog-post" cols="100" rows="20"></textarea>
+                <iframe name="richTextArea" id="richTextArea" frameborder="2"></iframe>
+
+           
+
+                <input name="upload" type="button" value="Upload" onClick="Upload();"/>
             
-             </form>
-            
+ </form>                   
+           
+
             <script>
 
                 function Upload() {
                     var theForm = document.getElementById("myform");
                     theForm.elements["blog-post"].value = window.frames["richTextArea"].document.body.innerHTML;
                     theForm.submit();
-                };
+                }
+                ;
             </script>
-           
-            
-            <!-- <div id="richTextArea">
-                 <iframe id="theWYSIWYG" name="theWYSIWYG" frameborder="2"></iframe>
-                </div> 
-            
-            <input name="post" type="button" value="Upload" onClick="submit_form();"/>
-            <input type="submit" value="Publiser">
-             </div>
-              <div id="richTextArea">
-                <iframe id="theWYSIWYG" name="theWYSIWYG" frameborder="2"></iframe>
-            </div> 
-            <textarea id="richTextArea" name="theWYSIWYG"></textarea>
-           
-                <div style="position: relative; top:50px;">
-                    <input type="submit" value="Publiser">
-                </div>
-            
-            <form   
-                action = "BlogPost" method= "post" >
-                       </form>    -->
 
+      
     </body>
+    
 </html>

@@ -1,10 +1,9 @@
-package Blog;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Blog;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,22 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Connection.*;
-import java.sql.Connection;
+
 /**
  *
  * @author evakristine
  */
-@WebServlet(urlPatterns = {"/BlogPost"})
-public class BlogPost extends HttpServlet {
-    
- private static final long serialVersionUID = 1L;
-    
-    public BlogPost(){
-        super();
-    }
+@WebServlet(name = "saveBlog", urlPatterns = {"/saveBlog"})
+public class saveBlog extends HttpServlet {
 
-  
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -42,46 +33,20 @@ public class BlogPost extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        
-        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>BlogPost</title>");            
+            out.println("<title>Save blog post</title>");
             out.println("</head>");
             out.println("<body>");
-            
-            String title = request.getParameter("title");
-            String content = request.getParameter("blog-post");
-            
-            
-            
-            Connection conn = MyUtils.getStoredConnection(request);
-            int userid = 1;
-            DBUtils.insertBlogPost(conn, userid, title, content);
-            
-            out.println("<h1>Blog post " + "</h1>");
-            out.println("<h2>" + title + "</h2>");
-            out.println("<p>" + content +  "</p>");
+            out.println("<h1> Save blog post" + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            
-        
-       
         }
     }
-@Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
-        
-        RequestDispatcher dispatcher;
-        dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/BlogPost.jsp");
-        
-        dispatcher.forward(request, response); 
-    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -91,7 +56,15 @@ public class BlogPost extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+
+        RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/saveBlog.jsp");
+        dispatcher.forward(request, response);
+    }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -103,17 +76,11 @@ public class BlogPost extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         processRequest(request, response);
-        
     
-        RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/BlogListView.jsp");
-          dispatcher.forward(request, response);
-           
-           response.sendRedirect(request.getContextPath() + "/BlogListView");
-           
-    }
-
+    RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/saveBlog.jsp");
+        dispatcher.forward(request, response);
+}
     /**
      * Returns a short description of the servlet.
      *

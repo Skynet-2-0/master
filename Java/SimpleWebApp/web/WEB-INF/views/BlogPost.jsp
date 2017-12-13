@@ -22,10 +22,11 @@
     
         <h1>Blog post:</h1>
           
-           
-        </div>  
+
+
+        <div
         <a href="${pageContext.request.contextPath}/Blog">Cancel</a>
-         <div style="position: relative; top:50px;"></div>
-    
+         <a href="${pageContext.request.contextPath}/BlogListView">Your posts</a>
+     </div>
     </body>
 </html>

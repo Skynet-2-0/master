@@ -12,7 +12,7 @@ package Blog;
  */
   
  public class BlogBlog {
-    private int Log_ID;
+    private String Log_ID;
     private String Title;
     private String Content;
     private String Date;
@@ -23,7 +23,7 @@ package Blog;
         
     }
     
-    public BlogBlog(int Log_ID, String Title, String Content, String Date, String User_Account_ID){
+    public BlogBlog(String Log_ID, String Title, String Content, String Date, String User_Account_ID){
         this.Log_ID = Log_ID;
         this.Title = Title;
         this.Content = Content;
@@ -31,8 +31,9 @@ package Blog;
         this.User_Account_ID = User_Account_ID;
     }
 
+    
    
-    public int getLog_ID(){
+    public String getLog_ID(){
         return Log_ID;
     }
     
@@ -53,7 +54,11 @@ package Blog;
     public void getUser_Account_ID(String User_Account_ID){
         this.User_Account_ID = User_Account_ID;
     }
-    public void setLog_ID(int Log_ID){
+    
+     public void setUser_Account_ID(String User_Account_ID){
+        this.User_Account_ID = User_Account_ID;    
+    }
+    public void setLog_ID(String Log_ID){
         this.Log_ID = Log_ID;    
     }
     
