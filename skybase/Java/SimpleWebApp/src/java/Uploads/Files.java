@@ -13,7 +13,7 @@ import java.sql.Blob;
  */
 public class Files {
     
-    private Integer id;
+    private Integer attachment_id;
     private String fileName;
     private Blob fileData;
     private String description;
@@ -22,8 +22,8 @@ public class Files {
 
     }
     
-    public Files(Integer id, String fileName, Blob fileData, String description){
-        this.id = id;
+    public Files(Integer attachment_id, String fileName, Blob fileData, String description){
+        this.attachment_id = attachment_id;
         this.fileName = fileName;
         this.fileData = fileData;
         this.description = description;
@@ -32,11 +32,11 @@ public class Files {
     
     
     public Integer getId(){
-        return id;
+        return attachment_id;
     }
     
-    public void setId(Integer id){
-        this.id = id;
+    public void setId(Integer attachment_id){
+        this.attachment_id = attachment_id;
     }
     
     public String getFileName(){

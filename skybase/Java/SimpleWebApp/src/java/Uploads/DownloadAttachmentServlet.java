@@ -47,7 +47,7 @@ public class DownloadAttachmentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 // get upload id from URL's parameters
-        int uploadId = Integer.parseInt(request.getParameter("id"));
+        int uploadId = Integer.parseInt(request.getParameter("attachment_id"));
          
         Connection conn = null; // connection to the database
          
@@ -57,7 +57,7 @@ public class DownloadAttachmentServlet extends HttpServlet {
             conn = MySQLConnUtils.getMySQLConnection();//DriverManager.getConnection(dbURL, dbUser, dbPass);
  
             // queries the database
-            String sql = "SELECT * FROM attachment WHERE id = ?";
+            String sql = "SELECT * FROM attachment WHERE attachment_id = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, uploadId);
  

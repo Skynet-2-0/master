@@ -98,7 +98,7 @@ public class UploadToDBServlet extends HttpServlet {
     }
  
     private Long getMaxAttachmentId(Connection conn) throws SQLException {
-        String sql = "Select max(a.id) from Attachment a";
+        String sql = "Select max(a.attachment_id) from Attachment a";
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
         if (rs.next()) {
@@ -110,7 +110,7 @@ public class UploadToDBServlet extends HttpServlet {
  
     private void writeToDB(Connection conn, String fileName, InputStream is, String description) throws SQLException {
  
-        String sql = "Insert into Attachment(Id,File_Name,File_Data,Description) " //
+        String sql = "Insert into Attachment(attachment_Id,File_Name,File_Data,Description) " //
                 + " values (?,?,?,?) ";
         PreparedStatement pstm = conn.prepareStatement(sql);
  

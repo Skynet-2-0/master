@@ -111,21 +111,23 @@ CONSTRAINT User_Account_fk3 FOREIGN KEY (User_Account_ID) references User_Accoun
 );
 
 create table ATTACHMENT(
-ID          BIGINT not null,
+attachment_ID BIGINT not null,
 FILE_NAME   VARCHAR(50) not null,
 FILE_DATA   LONGBLOB not null,
 DESCRIPTION VARCHAR(255),
 
-CONSTRAINT File_pk primary key(ID)
+CONSTRAINT File_pk primary key(attachment_ID)
 );
 
 create table Delivery(
-Delivery_ID INT NOT NULL,
-Date date,
-ID BIGINT NOT NULL,
+ATTACHMENT_ID BIGINT NOT NULL,
+user_account_id int not null,
+module_id int not null,
 
-CONSTRAINT Delivery_pk primary key(Delivery_ID),
-CONSTRAINT File_fk1 FOREIGN KEY (ID) references ATTACHMENT(ID)
+CONSTRAINT File_fk1 FOREIGN KEY (ATTACHMENT_ID) references ATTACHMENT(ATTACHMENT_ID),
+CONSTRAINT user_account_fk7 FOREIGN KEY (user_account_id) references user_account(user_account_id),
+CONSTRAINT module_fk7 FOREIGN KEY (module_id) references module(module_id),
+CONSTRAINT Delivery_pk primary key(ATTACHMENT_ID, user_account_id, module_id)
 );
 
 create table Log(
@@ -138,3 +140,12 @@ User_Account_ID INT NOT NULL,
 CONSTRAINT Log_pk primary key(Log_ID),
 CONSTRAINT User_fk5 FOREIGN KEY (User_Account_ID) references User_Account (User_Account_ID)
 );
+/*
+select user_account.name, feedback.user_account_id, feedback.module_id, feedback.status, feedback.score,
+feedback.comment_open, feedback.comment_hidden, delivery.attachment_id
+from user_account
+inner join feedback
+on user_account.user_account_id = feedback.user_account_id
+inner join delivery
+on feedback.module_id = delivery.module_id
+where delivery.module_id=1;

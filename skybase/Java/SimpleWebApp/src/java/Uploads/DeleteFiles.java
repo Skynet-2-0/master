@@ -37,7 +37,7 @@ public class DeleteFiles extends HttpServlet{
             throws ServletException, IOException {
         Connection conn = MyUtils.getStoredConnection(request);
         
-        String id = (String) request.getParameter("id");
+        String id = (String) request.getParameter("attachment_id");
         
         String errorString = null;
         

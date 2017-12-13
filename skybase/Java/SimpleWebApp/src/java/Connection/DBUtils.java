@@ -10,6 +10,7 @@ import Blog.BlogBlog;
 import Feedback.Feedback;
 import Kalender.CalendarCalendar;
 import Modules.Module;
+import Modules.ModuleFeedback;
 import Uploads.Files;
 import java.sql.Blob;
 import java.sql.CallableStatement;
@@ -29,13 +30,13 @@ public class DBUtils {
     
     public static List<Files> queryFiles(Connection conn) throws SQLException{
         
-        String sql = "SELECT a.id, a.file_name, a.file_data, a.description FROM attachment a";
+        String sql = "SELECT a.attachment_id, a.file_name, a.file_data, a.description FROM attachment a";
         PreparedStatement pstm = conn.prepareStatement(sql);
         
         ResultSet rs = pstm.executeQuery();
         List<Files> list = new ArrayList<>();
         while(rs.next()){
-            Integer id  = Integer.parseInt(rs.getString("id"));
+            Integer attachment_id  = Integer.parseInt(rs.getString("attachment_id"));
             String fileName = rs.getString("file_name");
             Blob fileData = rs.getBlob("file_data");
             String description = rs.getString("description");
@@ -47,7 +48,7 @@ public class DBUtils {
             fileData.free();
             
             Files file = new Files();
-            file.setId(id);
+            file.setId(attachment_id);
             file.setFileName(fileName);
             file.setFileData(fileData);
             file.setDescription(description);
@@ -286,7 +287,7 @@ public class DBUtils {
     
     public static void deleteFiles(Connection conn, int id)
             throws SQLException{
-        String sql = "delete From attachment where id=?";
+        String sql = "delete From attachment where attachment_id=?";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
         
@@ -700,10 +701,55 @@ public class DBUtils {
         }
     }
     
+     public static List<ModuleFeedback> queryModuleFeedback(Connection conn, ModuleFeedback id)
+            throws SQLException{
+    
+     
+     String sql = "select user_account.name, feedback.user_account_id, feedback.module_id, feedback.status, feedback.score,"
+             + "feedback.comment_open, feedback.comment_hidden, delivery.attachment_id"
+             + "from user_account"
+             + "inner join feedback"
+             + "on user_account.user_account_id = feedback.user_account_id"
+             + "inner join delivery"
+             + "on feedback.module_id = delivery.module_id"
+             + "where delivery.module_id=?";
+               
         
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, id.getModule_id());
+        
+        
+        
+        ResultSet rs = pstm.executeQuery();
+        List<ModuleFeedback> list = new ArrayList<>();
+        while(rs.next()){
+            String attachment_id = rs.getString("attachment_id");
+            String name = rs.getString("name");
+            String user_account_id = rs.getString("user_account_id");
+            String status = rs.getString("status");
+            String comment_open = rs.getString("comment_open");
+            String score = rs.getString("score");
+            String module_id = rs.getString("module_id");
+            String comment_hidden = rs.getString("comment_hidden");
+           
+            
+            
+            ModuleFeedback modulefeedback = new ModuleFeedback();
+            modulefeedback.setStatus(status);
+            modulefeedback.setCommentOpen(comment_open);
+            modulefeedback.setScore(score);
+            modulefeedback.setModule_id(module_id);
+            modulefeedback.setUser_account_id(user_account_id);
+            modulefeedback.setFileAttachment(attachment_id);
+            modulefeedback.setName(name);
+            modulefeedback.setCommentHidden(comment_hidden);
+            list.add(modulefeedback);
+        }
+        return list;
+    }
 }
-      
-
     
 
-
+    
+               
+        

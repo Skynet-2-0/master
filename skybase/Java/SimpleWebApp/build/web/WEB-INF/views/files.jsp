@@ -37,10 +37,10 @@
              <td>${file.fileName}</td> 
              <td>${file.description}</td>
              <td>
-                 <a href="downloadAttachment?id=${file.id}"><input type="submit" value="Download" name="download" /></a>
+                 <a href="downloadAttachment?attachment_id=${file.id}"><input type="submit" value="Download" name="download" /></a>
              </td>
              <td>
-                 <a href="deleteFiles?id=${file.id}"><input type="submit" value="Delete" name="delete" /></a>
+                 <a href="deleteFiles?attachment_id=${file.id}"><input type="submit" value="Delete" name="delete" /></a>
              </td>
              
        </c:forEach>
