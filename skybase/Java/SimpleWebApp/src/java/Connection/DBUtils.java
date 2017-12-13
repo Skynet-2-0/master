@@ -8,6 +8,7 @@ package Connection;
 import Admin.UserAccount;
 import Feedback.Feedback;
 import Uploads.Files;
+import Uploads.Delivery;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -325,10 +326,26 @@ public class DBUtils {
         }
         return list;
     }
-    
-    
-    
         
+     public static void insertDelivery (Connection conn, Delivery delivery)
+            throws SQLException{
+        
+        String sql = "insert into delivery (ATTACHMENT_ID, user_account_id, module_id) values(?, ?, ?)";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+       
+        pstm.setString(1, delivery.getModule());
+        pstm.setString(2, delivery.getUser());
+        pstm.setString(3, delivery.getUser_account_id());
+   
+        
+
+        
+        pstm.executeUpdate();
+        
+    }
+     
 }
     
 

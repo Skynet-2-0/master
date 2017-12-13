@@ -21,7 +21,7 @@
    |
    <a href="${pageContext.request.contextPath}/progressMenu">Progress</a>
    |
-   <a href="${pageContext.request.contextPath}/uploadToDB">Upload</a>
+   <a href="${pageContext.request.contextPath}//uploadModuleStudent">Upload</a>
    |
    <a href="${pageContext.request.contextPath}/files">Retrieve Files</a>
    

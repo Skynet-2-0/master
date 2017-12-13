@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/github/Repos/Skynet/master/skybase/Java/SimpleWebApp/src/java/Uploads/UploadModuleStudent.java</file>
+            <file>file:/C:/github/Repos/Skynet/master/skybase/Java/SimpleWebApp/src/java/Admin/CreateStudentServlet.java</file>
+            <file>file:/C:/github/Repos/Skynet/master/skybase/Java/SimpleWebApp/src/java/Admin/UserAccount.java</file>
+            <file>file:/C:/github/Repos/Skynet/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/_menu.jsp</file>
+            <file>file:/C:/github/Repos/Skynet/master/skybase/Java/SimpleWebApp/src/java/Feedback/Feedback.java</file>
+            <file>file:/C:/github/Repos/Skynet/master/skybase/Java/SimpleWebApp/src/java/Uploads/DeleteFiles.java</file>
+            <file>file:/C:/github/Repos/Skynet/master/skybase/Java/SimpleWebApp/src/java/Uploads/Delivery.java</file>
+            <file>file:/C:/github/Repos/Skynet/master/skybase/Java/SimpleWebApp/src/java/Connection/DBUtils.java</file>
+            <file>file:/C:/github/Repos/Skynet/master/skybase/Java/SimpleWebApp/src/java/Admin/StudentsListServlet.java</file>
+        </group>
     </open-files>
 </project-private>
