@@ -44,11 +44,9 @@ public class CalendarSearch extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       //doGet(request, response);
-        RequestDispatcher dispatcher;
-        dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/CalendarSearch.jsp");
+       
         
-        dispatcher.forward(request, response);
+        
     }
 
    

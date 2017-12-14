@@ -57,7 +57,7 @@ public class DownloadAttachmentServlet extends HttpServlet {
             conn = MySQLConnUtils.getMySQLConnection();//DriverManager.getConnection(dbURL, dbUser, dbPass);
  
             // queries the database
-            String sql = "SELECT * FROM attachment WHERE attachment_id = ?";
+            String sql = "SELECT * FROM delivery WHERE attachment_id = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, uploadId);
  

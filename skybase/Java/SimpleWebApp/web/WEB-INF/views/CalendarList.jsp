@@ -9,13 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Post View</title>
+        <title>Calendar List</title>
     </head>
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
 
         <body>
-            <h1>Kalender liste med edit</h1>
+            <h1>Calendar list with edit</h1>
 
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
@@ -46,8 +46,8 @@
               
                      <tr bgcolor = "darkred" >
                      <td><b>Calendar_ID</b></td> 
-                     <td><b>Dato</b></td> 
-                     <td><b>Hendelse</b></td>
+                     <td><b>Date</b></td> 
+                     <td><b>Event</b></td>
                      <td><b>Edit</b></td>
                      
                      </tr>
@@ -55,6 +55,7 @@
                         try {
                         conn = DriverManager.getConnection(hostName+ dbName, userName, password);
                         st = conn.createStatement();
+
                           String sql = "SELECT * FROM Calendar ORDER BY Calendar_ID";
                           
                         rs = st.executeQuery(sql);
@@ -64,8 +65,8 @@
                             <tr>
                                 
                     <td><%= rs.getInt("Calendar_ID") %></td>
-                    <td><%= rs.getString("Dato") %></td>
-                    <td><%= rs.getString("Hendelse") %></td>
+                    <td><%= rs.getString("Date") %></td>
+                    <td><%= rs.getString("Event") %></td>
                    
                     <td> <a href="editCalendar?Calendar_ID=<%=rs.getInt("Calendar_ID")%>">Edit</a></td>
                     
@@ -92,8 +93,10 @@
                         %>
                             
                         </table>
+                        
+                       
 
-                        <p><a href="${pageContext.request.contextPath}/Calendar">Tilbake</a>
+                        <p><a href="${pageContext.request.contextPath}/Calendar">Return</a>
                         
                         </body>
                         </html>

@@ -18,6 +18,7 @@
         <jsp:include page="_menu.jsp"></jsp:include>
         
         <h3>Module Oversikt</h3>
+       
         <c:forEach items="${moduleList}" var="moduleList">
         <table style="border-collapse: collapse; margin: 25px 0px 0px 25px;" class="opprettStudent" border="0">
             <tr>
@@ -42,6 +43,61 @@
         </c:forEach>
         </table>
         <p></p>
-        <button style="margin-left: 25px;"><a href="moduleList">Tilbake</a></button> 
+        <button style="margin-left: 25px;"><a href="modules">Tilbake</a></button> 
+        
+        
+
+               
+                <br></br>
+                <div style="margin-left: 25px;">
+                    <p style="color: red;">${errorString}</p>
+    
+    <form method="POST" action="${pageContext.request.contextPath}/modul1">
+       <table border="0">
+                
+               <table border="1">
+                   
+                     <tr>
+                       <td>Hvem vurderer du?</td>                      
+                     <td><input type="text" name="name" value="${user_account.name}" /></td>  
+                         <%--     <td><input type="text" name="user_account_id" value="${feedback.user_account_id}" /></td>  --%>  
+
+                   </tr>
+                                      <tr>
+                                          <td>Er modulen godkjent?</td>               
+                    <td><select name="status" size="2" value="${feedback.status}">
+              <option>Godkjent</option>
+              <option>Ikke godkjent</option>
+              </select>
+               
+                   <tr>
+                       <td>Hvor mange poeng vil du gi</td>                      
+                    <td><input type="number" min="1" max="10" name="score" value="${feedback.score}" /></td>
+                   </tr>
+                   
+                   <tr>
+                       <td>Åpen kommentar</td>
+                       <td><input type="text" name="commentOpen" value="${feedback.commentOpen}" /></td>
+                     
+                   </tr>
+                   
+                     <tr>
+                       <td>Skjult kommentar</td>
+                       <td><input type="text" name="commentHidden" value="${feedback.commentHidden}" /></td>
+                     
+                   </tr>
+                   
+                        <tr>
+                       <td>Module no.</td>
+                       <td><input type="text" name="module_id" value="${feedback.module_id}" /></td>
+                     
+                   </tr>
+                          <td colspan="2">                  
+                 <input type="submit" value="submit" />
+                <a href="${pageContext.request.contextPath}/modules">Cancel</a>
+           
+        </table>
+        </div>
+        
     </body>
 </html>

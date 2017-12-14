@@ -57,13 +57,15 @@
 |
    <a href="${pageContext.request.contextPath}/modules">Modules</a>
    |--%>
-   <li><a href="${pageContext.request.contextPath}/progressMenus2">Progress</a></li>
+   <li><a href="${pageContext.request.contextPath}/progressMenus2">My Progression</a></li>
    
    <li><a href="${pageContext.request.contextPath}/uploadToDB">Upload</a></li>
      
    <li><a href="${pageContext.request.contextPath}/Blog">Blog</a></li>
    
-   <li><a href="${pageContext.request.contextPath}/Calendar2">Calendar</a></li>
+   <li><a href="${pageContext.request.contextPath}/Calendars2">Calendar</a></li>
+   
+   <li><a href="${pageContext.request.contextPath}/studentForum">Forum</a></li>
    
    <li><a class="logoutbutton" href="logout.jsp"/>LOGOUT</a></li>
     </ul>

@@ -1,9 +1,12 @@
+package Blog;
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Blog;
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/Blog"})
 public class Blog extends HttpServlet {
-    
-    
+
+   
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -100,4 +103,6 @@ public class Blog extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+
+ 
 }

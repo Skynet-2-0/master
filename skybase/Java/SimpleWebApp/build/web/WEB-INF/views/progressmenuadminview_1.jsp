@@ -73,6 +73,6 @@
        </c:forEach>
     </table>
  
-    <a href="modules" >Go to modules</a>
+    <a href="home" >Go Home</a>
  </body>
 </html>

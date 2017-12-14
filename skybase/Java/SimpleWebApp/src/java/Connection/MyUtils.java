@@ -7,6 +7,7 @@ package Connection;
  */
 
 import Admin.UserAccount;
+import Forum.QuestionQuestion;
 import java.sql.Connection;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.Cookie;
@@ -115,5 +116,27 @@ public class MyUtils {
         //cookie slettes umiddelbart
         cookieUserName.setMaxAge(0);
         response.addCookie(cookieUserName);
+    }
+    
+    public static QuestionQuestion getCreateQuestion(HttpSession session) {
+         QuestionQuestion createQuestion = (QuestionQuestion) session.getAttribute("createQuestion");
+        return createQuestion;
+    }
+    
+    public static void storeCreateQuestionID(HttpSession session, QuestionQuestion createQuestion){
+        //JSP kan aksesere via ${createQuestion}
+     session.setAttribute("createQuestion", createQuestion);   
+    }
+        //få brukeren sin info lagret i session
+    public static QuestionQuestion getCreateQuestionID(HttpSession session){
+        QuestionQuestion createQuestionID = (QuestionQuestion) session.getAttribute("createQuestionID");
+        return createQuestionID;
+    }
+    public static void storeUserCookie(HttpServletResponse response, QuestionQuestion createTopic) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void storeLoginedUser(HttpSession session, QuestionQuestion createTopic) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

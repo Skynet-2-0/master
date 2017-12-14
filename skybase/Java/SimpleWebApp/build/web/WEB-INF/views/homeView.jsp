@@ -20,7 +20,19 @@
       <h3>Home Page</h3>
       <img src="http://tflip.uia.no/images/uia_logo.gif" alt="uia_logo" style="width:600px;height:100px;">
       
-      
+      <form method="GET" action="${pageContext.request.contextPath}/ProgressMenuAdminSearch">
+          <table border="0">
+              
+              <tbody>
+                  <tr>
+                      <td>Studentsøk: </td>
+                      <td> <input type="text" name="name" value="${useraccount.name}" size="50" /> </td>
+                  </tr>
+              </tbody>
+          </table>
+          &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+          <input type="submit" value="Submit" /> 
+      </form>
       
      
     

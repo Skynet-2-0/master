@@ -10,6 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Blog</title>
+
+
         <style>
             div#textEditor{
                 margin: 1px;
@@ -50,54 +52,70 @@
                 background-color: grey;
                 cursor: pointer;
             }
+
         </style>
         <script>
             window.addEventListener("load", function () {
                 var editor = richTextArea.document;
                 editor.designMode = "on";
+
                 boldButton.addEventListener("click", function () {
                     editor.execCommand("Bold", false, null);
                 }, false);
+
                 italicButton.addEventListener("click", function () {
                     editor.execCommand("Italic", false, null);
                 }, false);
+
                 underlineButton.addEventListener("click", function () {
                     editor.execCommand("Underline", false, null);
                 }, false);
+
                 strikeButton.addEventListener("click", function () {
                     editor.execCommand("Strikethrough", false, null);
                 }, false);
+
                 orderedListButton.addEventListener("click", function () {
                     editor.execCommand("InsertOrderedList", false, "newOL" + Math.round(Math.random() * 1000));
                 }, false);
+
                 unorderedListButton.addEventListener("click", function () {
                     editor.execCommand("InsertUnorderedList", false, "newOL" + Math.round(Math.random() * 1000));
                 }, false);
+
                 fontColorButton.addEventListener("change", function (event) {
                     editor.execCommand("ForeColor", false, event.target.value);
                 }, false);
+
                 highlightButton.addEventListener("change", function (event) {
                     editor.execCommand("BackColor", false, event.target.value);
                 }, false);
+
                 fontChanger.addEventListener("change", function (event) {
                     editor.execCommand("FontName", false, event.target.value);
                 }, false);
+
                 fontSizeChanger.addEventListener("change", function (event) {
                     editor.execCommand("FontSize", false, event.target.value);
                 }, false);
+
                 linkButton.addEventListener("click", function () {
                     var url = prompt("Enter a URL", "http://");
                     editor.execCommand("CreateLink", false, url);
                 }, false);
+
                 unLinkButton.addEventListener("click", function () {
                     editor.execCommand("UnLink", false, null);
                 }, false);
+
                 undoButton.addEventListener("click", function () {
                     editor.execCommand("undo", false, null);
                 }, false);
+
                 redoButton.addEventListener("click", function () {
                     editor.execCommand("redo", false, null);
                 }, false);
+
                 titleInput.addEventListener("click", function () {
                     editor.execCommand("clear", false, null);
                 }, false);
@@ -105,18 +123,18 @@
         </script>
     </head>
     <jsp:include page="_header.jsp"></jsp:include>
-    <%--<jsp:include page="_menu.jsp"></jsp:include>--%>
+    <jsp:include page="_menu.jsp"></jsp:include>
 
 
-    <body>
+        <body>
 
-        <h1>Blog</h1>
-        <form method="post" action="${pageContext.request.contextPath}/BlogListView">
-        <input type="submit" value="Your posts" name="Yourposts" />
-    
-    </form>
+            <h1>Blog</h1>
+            <form method="post" action="${pageContext.request.contextPath}/BlogListView" >
+            <input type="submit" value="Your posts" name="Yourposts" />
+
+        </form>
         <p>New blog post:</p>
-        
+
 
         <div id="textEditor">   
             <div id="theRibbon">
@@ -151,47 +169,32 @@
                 <button id="redoButton" title="Redo">&rarr;</button>
             </div>
 
-             <form action=BlogPost name="myform" id="myform" method= "post" > 
-                 
-                 <input type="text" id="titlebar" name="title" value="Title">
-                    
-            <textarea style= "display: none;" name= "blog-post"  id="blog-post" cols="100" rows="20"></textarea>
-            <iframe name="richTextArea" id="richTextArea" frameborder="2"></iframe>
+            <form  action=BlogPost name="myform" id="myform" method= "post"> 
 
 
-            
-            <input name="upload" type="button" value="Upload" onClick="Upload();"/>
-            
-             </form>
-            
+                <input type="text" id="titlebar" name="title" value="Title">
+
+                <textarea style= "display: none;" name= "blog-post"  id="blog-post" cols="100" rows="20"></textarea>
+                <iframe name="richTextArea" id="richTextArea" frameborder="2"></iframe>
+
+
+
+                <input name="upload" type="button" value="Upload" onClick="Upload();"/>
+
+            </form>                   
+
+
             <script>
+
                 function Upload() {
                     var theForm = document.getElementById("myform");
                     theForm.elements["blog-post"].value = window.frames["richTextArea"].document.body.innerHTML;
                     theForm.submit();
-                };
+                }
+                ;
             </script>
-            <br><a href="${pageContext.request.contextPath}/StudentInformation"><input type="submit" value="Back" name="back" /></a>
-            
-            <!-- <div id="richTextArea">
-                 <iframe id="theWYSIWYG" name="theWYSIWYG" frameborder="2"></iframe>
-                </div> 
-            
-            <input name="post" type="button" value="Upload" onClick="submit_form();"/>
-            <input type="submit" value="Publiser">
-             </div>
-              <div id="richTextArea">
-                <iframe id="theWYSIWYG" name="theWYSIWYG" frameborder="2"></iframe>
-            </div> 
-            <textarea id="richTextArea" name="theWYSIWYG"></textarea>
-           
-                <div style="position: relative; top:50px;">
-                    <input type="submit" value="Publiser">
-                </div>
-            
-            <form   
-                action = "BlogPost" method= "post" >
-                       </form>    -->
+
 
     </body>
+
 </html>

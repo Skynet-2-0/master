@@ -14,11 +14,12 @@ public class ModuleFeedback {
     private String module_id;
     private String user_account_id;
     private String name;
-    private String fileAttachment;
+    private String attachment_id;
     private String status;
     private String score;
     private String commentHidden;
     private String commentOpen;
+    private String description;
     
     
 
@@ -26,16 +27,17 @@ public class ModuleFeedback {
         
     }
     
-    public ModuleFeedback(String module_id, String user_account_id, String name, String fileAttachment, String status, String score,  String commentHidden, String commentOpen){
+    public ModuleFeedback(String module_id, String user_account_id, String name, String attachment_id, String status, String score,  String commentHidden, String commentOpen, String description){
         
         this.module_id = module_id;
         this.user_account_id = user_account_id; 
         this.name = name;
-        this.fileAttachment = fileAttachment;
+        this.attachment_id = attachment_id;
         this.status = status;
         this.score = score;
         this.commentHidden = commentHidden;
         this.commentOpen = commentOpen;
+        this.description = description;
         
     }    
     
@@ -63,12 +65,12 @@ public class ModuleFeedback {
         this.name = name;
     }
     
-    public String getFileAttachment(){
-        return fileAttachment;
+    public String getAttachment_id(){
+        return attachment_id;
     }
     
-    public void setFileAttachment(String fileAttachment){
-        this.fileAttachment = fileAttachment;
+    public void setAttachment_id(String attachment_id){
+        this.attachment_id = attachment_id;
     }
     
      public String getStatus(){
@@ -102,6 +104,15 @@ public class ModuleFeedback {
     public void setScore(String score){
         this.score = score;
     }
+    
+    public String getDescription(){
+        return description;
+    }
+    
+    public void setDescription(String description){
+        this.description = description;
       
+    
+}
     
 }

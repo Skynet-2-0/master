@@ -28,13 +28,35 @@
         <br />
         <input type="file" name="file" />
         <br />
-        Description:
+        
         <br />
-        <textarea rows="5" cols="50" name="description"></textarea>
+       <table border="0">
+                
+           <table border="1">
+               
+                    <tr>
+                       <td>Description</td>
+                       <td><input type="text" name="description" /></td>
+                     
+                   </tr>
+                   
+                        <tr>
+                       <td>Module no.</td>
+                       <td><input type="text" name="module_id" /></td>
+                     
+                   </tr>
+                    </tr>
+                   
+                        <tr>
+                       <td>User ID</td>
+                       <td><input type="text" name="user_account_id"/></td>
+                     
+                   </tr>
+                   </table>
         <br />
         <br />
         <input type="submit" value="Upload" />
-        <button type="button" name="back" onclick="history.back()">back</button>
+        <a href="${pageContext.request.contextPath}/userInfo2">Tilbake</a>
     </form>
     
 </body>

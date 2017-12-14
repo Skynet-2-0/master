@@ -46,6 +46,6 @@ Progresjon
        </c:forEach>
     </table>
  
-    <a href="modules" >Go to modules</a>
+    <a href="progressMenuAdmin_1" >Go to search</a>
  </body>
 </html>

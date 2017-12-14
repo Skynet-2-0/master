@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author brage
  */
 
-@WebServlet(urlPatterns = {"/modules"})
+@WebServlet(urlPatterns = {"/modulesfake"})
 public class Modules extends HttpServlet{
     
     private static final long serialVersionUID = 1L;

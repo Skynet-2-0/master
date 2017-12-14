@@ -28,24 +28,20 @@
             </tr>
             <tr>
                 <p style="color: red;">${errorString}</p>
-                <td>ID</td>
-                <td><input type="hidden" name="module_id" value="${module.module_id}" /></td>
-            </tr>
-            <tr>
                 <td>Module Name</td>
-                <td><input style="width: 400px;" type="text" name="module_name" value="${module.module_name}" /></td>
+                <td><input required style="width: 400px;" type="text" name="module_name" value="${module.module_name}" /></td>
             </tr>
             <tr>
                 <td>Delivery Date</td>
-                <td><input style="width: 400px;" type="text" name="delivery_date" value="${module.delivery_date}" /></td>
+                <td><input required style="width: 400px;" type="datetime-local" name="delivery_date" value="${module.delivery_date}" /></td>
             </tr>
             <tr>
                 <td>Description</td>
-                <td><textarea style="width: 400px; height: 140px;" type="text" name="description" value="${module.description}"/></textarea></td>
+                <td><textarea required style="width: 400px; height: 140px;" type="text" name="description" value="${module.description}"/></textarea></td>
             </tr>
             <tr>
                 <td>Learning Goals</td>
-                <td><textarea style="width: 400px; height: 140px;" type="text" name="learningGoals" value="${module.learningGoals}"/></textarea></td>
+                <td><textarea required style="width: 400px; height: 140px;" type="text" name="learningGoals" value="${module.learningGoals}"/></textarea></td>
             </tr>
             <tr>
                 <td>Resources</td>
@@ -54,7 +50,7 @@
             <tr>
                 <td style="background-color:#355C7D;" colspan="2">
                     <input type="submit" value="Submit"/>&nbsp;&nbsp;
-                    <button><a href="moduleList">Cancel</a></button>
+                    <button><a href="modules">Cancel</a></button>
             </tr>
         </table>
       </form>

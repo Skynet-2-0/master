@@ -71,11 +71,9 @@
     <%-- 
    <a href="${pageContext.request.contextPath}/Blog">Blog</a>
    |  --%>
-   <li><a href="${pageContext.request.contextPath}/Calendar">Calendar</a></li>
+   <li><a href="${pageContext.request.contextPath}/Calendars">Calendar</a></li>
    
-   <li><a href="${pageContext.request.contextPath}/moduleList">Modules</a></li>
-   
-   <li><a href="${pageContext.request.contextPath}/uploadModuleStudents">uploadstudent</a></li>
+   <li><a href="${pageContext.request.contextPath}/DeliveredModules">Delivered Modules</a></li>
    
    <li><a class="logoutbutton" href="logout.jsp"/>LOGOUT</a></li>
    </ul>

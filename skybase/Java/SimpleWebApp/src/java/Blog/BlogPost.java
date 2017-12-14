@@ -1,9 +1,9 @@
+package Blog;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Blog;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -56,7 +56,7 @@ public class BlogPost extends HttpServlet {
             String title = request.getParameter("title");
             String content = request.getParameter("blog-post");
             
-            // Lekse. få tak i conn, og userid
+            
             
             Connection conn = MyUtils.getStoredConnection(request);
             int userid = 1;
@@ -68,18 +68,17 @@ public class BlogPost extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
             
-            
-       
+        
+       RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/BlogPost.jsp");
+          dispatcher.forward(request, response);
+           
+           //response.sendRedirect(request.getContextPath() + "/BlogListView");
         }
     }
 @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        
-        RequestDispatcher dispatcher;
-        dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/BlogPost.jsp");
-        
-        dispatcher.forward(request, response); 
+    
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -102,11 +101,12 @@ public class BlogPost extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         processRequest(request, response);
         
     
-        RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/BlogPost.jsp");
-           dispatcher.forward(request, response);
+        
+           
     }
 
     /**

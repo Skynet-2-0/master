@@ -10,37 +10,43 @@ package Kalender;
  * @author Ann Margrethe
  */
 public class CalendarCalendar {
-    private int Calendar_ID;
-    private String Dato;
-    private String Hendelse;
+    private String Calendar_ID;
+    private String Date;
+    private String Event;
     
     public CalendarCalendar(){
         
     }
     
-    public CalendarCalendar(int Calendar_ID, String Dato, String Hendelse){
+    public CalendarCalendar(String Calendar_ID, String Date, String Event){
         this.Calendar_ID = Calendar_ID;
-        this.Dato = Dato;
-        this.Hendelse = Hendelse;
+        this.Date = Date;
+        this.Event = Event;
     }
 
-    CalendarCalendar(String Dato, String Hendelse) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    
+    public String getCalendar_ID(){
+        return Calendar_ID;
     }
     
-    public String getDato(){
-        return Dato;
+    public String getDate(){
+        return Date;
     }
     
-    public String getHendelse(){
-        return Hendelse;
+    public String getEvent(){
+        return Event;
     }
     
-    public void setDato(String Dato){
-        this.Dato = Dato;
+    public void setCalendar_ID(String Calendar_ID){
+        this.Calendar_ID = Calendar_ID;
+    }
+    
+    public void setDate(String Date){
+        this.Date = Date;
     }
 
-    public void setHendelse(String Hendelse){
-        this.Hendelse = Hendelse;
+    public void setEvent(String Event){
+        this.Event = Event;
     }
 }

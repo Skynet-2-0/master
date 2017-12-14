@@ -5,9 +5,11 @@ package Connection;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Admin.Students;
 import Admin.UserAccount;
 import Blog.BlogBlog;
 import Feedback.Feedback;
+import Forum.QuestionQuestion;
 import Kalender.CalendarCalendar;
 import Modules.Module;
 import Modules.ModuleFeedback;
@@ -31,7 +33,7 @@ public class DBUtils {
     
     public static List<Files> queryFiles(Connection conn) throws SQLException{
         
-        String sql = "SELECT a.attachment_id, a.file_name, a.file_data, a.description FROM attachment a";
+        String sql = "SELECT a.attachment_id, a.file_name, a.file_data, a.description, a.user_account_id, a.module_id FROM delivery a";
         PreparedStatement pstm = conn.prepareStatement(sql);
         
         ResultSet rs = pstm.executeQuery();
@@ -41,6 +43,8 @@ public class DBUtils {
             String fileName = rs.getString("file_name");
             Blob fileData = rs.getBlob("file_data");
             String description = rs.getString("description");
+            String user_account_id = rs.getString("user_account_id");
+            String module_id = rs.getString("module_id");
             
             int blobLength = (int) fileData.length();  
             byte[] blobAsBytes = fileData.getBytes(1, blobLength);
@@ -53,6 +57,8 @@ public class DBUtils {
             file.setFileName(fileName);
             file.setFileData(fileData);
             file.setDescription(description);
+            file.setUser_account_id(user_account_id);
+            file.setModule_id(module_id);
             
             list.add(file);
         }
@@ -297,40 +303,41 @@ public class DBUtils {
         pstm.executeUpdate();
     }
     
-    public static void insertBlogPost(Connection conn, int userid, String title, String content) {
+   public static void insertBlogPost(Connection conn, int userid, String title, String content) {
         String sql = "Insert into Log (title, content, date, User_Account_ID) VALUES (?, ?, now(), ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, title);
             ps.setString(2, content);
             ps.setInt(3, userid);
-            
+
             ps.executeUpdate();
             conn.commit();
-            
-        }catch(Exception e) {
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
 
     
-    public static List<BlogBlog> queryBlogList(Connection conn)
-            throws SQLException{
-        String sql =  "Select, a.Log_ID, a.Title, a.Content a.Date, a.User_Account_ID from Log a";
-        
+   public static List<BlogBlog> queryBlogList(Connection conn)
+            throws SQLException {
+        String sql = "Select a.Log_ID, a.Title, a.Content, a.Date, a.User_Account_ID from Log a";
+
         PreparedStatement pstm = conn.prepareStatement(sql);
-        
+
         ResultSet rs = pstm.executeQuery();
         List<BlogBlog> list = new ArrayList<>();
-        while(rs.next()){
-            int Log_ID = rs.getInt("Log_ID");
+        while (rs.next()) {
+            String Log_ID = rs.getString("Log_ID");
             String Title = rs.getString("Title");
             String Content = rs.getString("Content");
             String Date = rs.getString("Date");
-            int User_Account_ID = rs.getInt("User_Account_ID");
+            String User_Account_ID = rs.getString("User_Account_ID");
             BlogBlog blog = new BlogBlog();
             blog.setLog_ID(Log_ID);
+            blog.setUser_Account_ID(User_Account_ID);
             blog.setTitle(Title);
             blog.setContent(Content);
             blog.setDate(Date);
@@ -351,7 +358,7 @@ public class DBUtils {
         List<BlogBlog> list = new ArrayList<>();
         
         if(rs.next()){
-            int Log_ID = rs.getInt("Log_ID");
+            String Log_ID = rs.getString("Log_ID");
             String Title = rs.getString("Title");
             String Content = rs.getString("Content");
             String Date = rs.getString("Date");
@@ -517,7 +524,7 @@ public class DBUtils {
     
         return list;   
     }
-     
+     /*
      public static List<CalendarCalendar> queryCalendar(Connection conn)
             throws SQLException{
         String sql = "Select a.Dato, a.Hendelse from Calendar a";
@@ -537,24 +544,24 @@ public class DBUtils {
         return list;
     }
       
-  
+  */
 
-    public static CalendarCalendar findDate(Connection conn, String Dato, String Hendelse)
+    public static CalendarCalendar findDate(Connection conn, String Date, String Event)
             throws SQLException {
-        String sql = "Select a.Calendar_ID, a.Dato, a.Hendelse from Calendar a"
-                + " where a.Dato = ? ";
+        String sql = "Select a.Calendar_ID, a.Date, a.Event from Calendar a"
+                + " where a.Date = ? ";
         
         PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setString(1, Dato);
+        pstm.setString(1, Date);
         ResultSet rs = pstm.executeQuery();
         List<CalendarCalendar> list = new ArrayList<>();
         
         if(rs.next()){
             //String Dato;
-            Dato = rs.getString("dato");
+            Date = rs.getString("Date");
             CalendarCalendar calendar = new CalendarCalendar();
-            calendar.setDato(Dato);
-            calendar.setHendelse(Hendelse);
+            calendar.setDate(Date);
+            calendar.setEvent(Event);
             list.add(calendar);
             return calendar;
         }
@@ -702,22 +709,21 @@ public class DBUtils {
         }
     }
     
-     public static List<ModuleFeedback> queryModuleFeedback(Connection conn, ModuleFeedback id)
+     public static List<ModuleFeedback> queryModuleFeedback(Connection conn)
             throws SQLException{
     
      
-     String sql = "select user_account.name, feedback.user_account_id, feedback.module_id, feedback.status, feedback.score,"
-             + "feedback.comment_open, feedback.comment_hidden, delivery.attachment_id"
-             + "from user_account"
-             + "inner join feedback"
-             + "on user_account.user_account_id = feedback.user_account_id"
-             + "inner join delivery"
-             + "on feedback.module_id = delivery.module_id"
-             + "where delivery.module_id=?";
+     String sql = "select user_account.name, feedback.user_account_id, feedback.module_id, feedback.status, feedback.score, "
+             + "feedback.comment_open, feedback.comment_hidden, delivery.attachment_id, delivery.description, user_account.user_account_id "
+             + "from user_account "
+             + "inner join feedback "
+             + "on user_account.user_account_id = feedback.user_account_id "
+             + "inner join delivery "
+             + "on feedback.module_id = delivery.module_id ";
                
         
         PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setString(1, id.getModule_id());
+        
         
         
         
@@ -732,6 +738,7 @@ public class DBUtils {
             String score = rs.getString("score");
             String module_id = rs.getString("module_id");
             String comment_hidden = rs.getString("comment_hidden");
+            String description= rs.getString("description");
            
             
             
@@ -741,13 +748,15 @@ public class DBUtils {
             modulefeedback.setScore(score);
             modulefeedback.setModule_id(module_id);
             modulefeedback.setUser_account_id(user_account_id);
-            modulefeedback.setFileAttachment(attachment_id);
+            modulefeedback.setAttachment_id(attachment_id);
             modulefeedback.setName(name);
             modulefeedback.setCommentHidden(comment_hidden);
+            modulefeedback.setDescription(description);
             list.add(modulefeedback);
         }
         return list;
     }
+     
      public static void insertDelivery (Connection conn, Delivery delivery)
             throws SQLException{
         
@@ -761,6 +770,191 @@ public class DBUtils {
 
         pstm.executeUpdate();
         
+    }
+     
+     public static List<QuestionQuestion> queryQuestionQuestion(Connection conn)
+            throws SQLException{
+        String sql = "Select a.Question_ID, a.Title, a.Details, a.CreateDate, a.Name, a.Email from Forum a";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        ResultSet rs = pstm.executeQuery();
+        List<QuestionQuestion> list = new ArrayList<>();
+        while(rs.next()){
+            String question_id  = rs.getString("question_id");
+            String title = rs.getString("title");
+            String details = rs.getString("details");
+            String createDate = rs.getString("createDate");
+            String name = rs.getString("name");
+            String email = rs.getString("email");
+            
+            
+            
+            QuestionQuestion question = new QuestionQuestion();
+            question.setQuestion_id(question_id);
+            question.setTitle(title);
+            question.setDetails(details);
+            question.setCreateDate(createDate);
+            question.setName(name);
+            question.setEmail(email);
+            list.add(question);
+        }
+        return list;
+    }
+     public static void updateQuestion(Connection conn, QuestionQuestion question)
+            throws SQLException{
+        
+        String sql = "Update Forum set Title =?, Details=?, CreateDate=?, Name=?, Email=? where question_id=?";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        
+        pstm.setString(1, question.getTitle());
+        pstm.setString(2, question.getDetails());
+        pstm.setString(3, question.getCreateDate());
+        pstm.setString(4, question.getName());
+        pstm.setString(5, question.getEmail()); 
+        //pstm.setString(6, forumforum.getQuestion_id());
+           
+        pstm.executeUpdate();
+        
+     }
+    public static void insertQuestion(Connection conn, QuestionQuestion questionquestion) 
+        throws SQLException{
+        String sql = "insert into forum (title, details,  createDate, name, email) values(?, ?, ?, ?, ?)";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+
+        
+        pstm.setString(1, questionquestion.getTitle());
+        pstm.setString(2, questionquestion.getDetails());
+        pstm.setString(3, questionquestion.getCreateDate());
+        pstm.setString(4, questionquestion.getName());
+        pstm.setString(5, questionquestion.getEmail());
+     
+        
+        pstm.executeUpdate();
+    }
+        
+      public static QuestionQuestion findQuestion (Connection conn, String question_ID, String question_id)
+            throws SQLException{
+        
+         String sql = "Select a.question_id, a.title, a.details, a.createDate, a.name, a.email from Forum a where a.question_id=?";
+             
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, question_ID);
+        
+        ResultSet rs = pstm.executeQuery();
+       
+        
+        if(rs.next()){
+          
+            String title = rs.getString("title");
+            String details = rs.getString("details");
+            String createDate = rs.getString("createDate");
+            String name = rs.getString("name");
+            String email = rs.getString("email");
+            QuestionQuestion question = new QuestionQuestion(question_id, title, details, createDate, name, email);
+          
+            return question;
+        }
+        return null;
+    }
+      
+      public static void updateCalendar(Connection conn, CalendarCalendar calendar)
+            throws SQLException{
+        String sql = "Update Calendar set Date=?, Event=? where Calendar_ID=?";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        pstm.setString(1, calendar.getDate());
+        pstm.setString(2, calendar.getEvent());
+        pstm.setString(3, calendar.getCalendar_ID());
+        pstm.executeUpdate();
+      }
+      
+   
+
+    public static void updateBlog(Connection conn, BlogBlog blogBlog)
+            throws SQLException {
+
+        String sql = "Update Log set Title=?, Content=? where Log_ID=?";
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+
+        pstm.setString(1, blogBlog.getTitle());
+        pstm.setString(2, blogBlog.getContent());
+       pstm.setString(3, blogBlog.getLog_ID());
+
+        pstm.executeUpdate();
+    }
+
+    public static void deleteBlog(Connection conn, String Log_ID)
+            throws SQLException {
+        String sql = "delete From Log where Log_ID=?";
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+
+        pstm.setString(1, Log_ID);
+
+        pstm.executeUpdate();
+    }
+
+    
+
+    public static BlogBlog findPost(Connection conn, String title, String content)
+            throws SQLException {
+        String sql = "Select a.Log_ID, a.Title, a.Content, a.Date, a.User_Account_Id from Log a"
+                + " where a.Title = ? ";
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, title);
+        ResultSet rs = pstm.executeQuery();
+        List<BlogBlog> list = new ArrayList<>();
+
+        if (rs.next()) {
+            String Log_ID = rs.getString("Log_ID");
+            String Title = rs.getString("Title");
+            String Content = rs.getString("Content");
+            String Date = rs.getString("Date");
+            BlogBlog blog = new BlogBlog();
+            blog.setLog_ID(Log_ID);
+            blog.setTitle(Title);
+            blog.setContent(Content);
+            blog.setDate(Date);
+            list.add(blog);
+            return blog;
+        }
+        return null;
+    }
+
+    public static String findTitle(Connection conn, String title)
+            throws SQLException {
+        String sql = "Select a.Title from Log a"
+                + " where a.Title = ?";
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, title);
+
+        ResultSet rs = pstm.executeQuery();
+
+        try {
+            while (rs.next()) {
+                rs.getString("Title");
+                System.out.println("Title :" + rs.getString("Title"));
+                return rs.getString("title");
+
+            }
+
+        } catch (SQLException e1) {
+
+            System.out.println(e1.getMessage());
+
+        }
+
+        return null;
     }
      
 }

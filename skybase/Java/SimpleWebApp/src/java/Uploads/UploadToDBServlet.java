@@ -52,6 +52,8 @@ public class UploadToDBServlet extends HttpServlet {
             conn.setAutoCommit(false);
  
             String description = request.getParameter("description");
+            String user_account_id = request.getParameter("user_account_id");
+            String module_id = request.getParameter("module_id");
  
             // Part list (multi files).
             for (Part part : request.getParts()) {
@@ -60,7 +62,7 @@ public class UploadToDBServlet extends HttpServlet {
                     // File data
                     InputStream is = part.getInputStream();
                     // Write to file
-                    this.writeToDB(conn, fileName, is, description);
+                    this.writeToDB(conn, fileName, is, description, user_account_id, module_id);
                 }
             }
             conn.commit();
@@ -98,7 +100,7 @@ public class UploadToDBServlet extends HttpServlet {
     }
  
     private Long getMaxAttachmentId(Connection conn) throws SQLException {
-        String sql = "Select max(a.attachment_id) from Attachment a";
+        String sql = "Select max(a.attachment_id) from delivery a";
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
         if (rs.next()) {
@@ -108,10 +110,10 @@ public class UploadToDBServlet extends HttpServlet {
         return 0L;
     }
  
-    private void writeToDB(Connection conn, String fileName, InputStream is, String description) throws SQLException {
+    private void writeToDB(Connection conn, String fileName, InputStream is, String description, String user_account_id, String module_id) throws SQLException {
  
-        String sql = "Insert into Attachment(attachment_Id,File_Name,File_Data,Description) " //
-                + " values (?,?,?,?) ";
+        String sql = "Insert into Delivery(attachment_Id,File_Name,File_Data,Description, user_account_id, module_id) " //
+                + " values (?,?,?,?,?,?) ";
         PreparedStatement pstm = conn.prepareStatement(sql);
  
         Long id = this.getMaxAttachmentId(conn) + 1;
@@ -119,6 +121,8 @@ public class UploadToDBServlet extends HttpServlet {
         pstm.setString(2, fileName);
         pstm.setBlob(3, is);
         pstm.setString(4, description);
+        pstm.setString(5, user_account_id);
+        pstm.setString(6, module_id);
         pstm.executeUpdate();
     }
  

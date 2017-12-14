@@ -16,13 +16,13 @@
 <html>
  <head>
     <meta charset="UTF-8">
-    <title>Kalender</title>
+    <title>Calendar</title>
  </head>
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
  
     <body>
-<h1>Kalender</h1>
+<h1>Calendar</h1>
      
   <%
 	String keyword = "";
@@ -34,7 +34,7 @@
 <form name="frmSearch" method="get" action="CalendarSearch"><p>
 	  
 	    <tr>
-	      <th>Søk etter dato
+	      <th>Search for date
 	      <input name="txtKeyword" type="text" id="txtKeyword" value="<%=keyword%>">
 	      <input type="submit" value="Search"></th>
 	    </tr>
@@ -59,7 +59,7 @@
 		
 		st = conn.createStatement();
 		
-		String sql = "SELECT * FROM  Calendar WHERE Dato like '%" +  keyword + "%' OR Hendelse like '%" +  keyword + "%' ";
+		String sql = "SELECT * FROM  Calendar WHERE Date like '%" +  keyword + "%' OR Event like '%" +  keyword + "%' ";
 		
 		System.out.println(sql);
 		
@@ -70,14 +70,14 @@
                     
 		  <tr>
                      <tr bgcolor = "#009999" >
-		    <th width="50" height="40"> <div align="center">Dato </div></th>
-		    <th width="50" height="40"> <div align="center">Hendelse </div></th>
+		    <th width="50" height="40"> <div align="center">Date </div></th>
+		    <th width="50" height="40"> <div align="center">Event </div></th>
 		    
 		  </tr>	
 			<%while((rs!=null) && (rs.next())) { %>
 				  <tr>
-				    <td><div align="center"><%=rs.getString("Dato")%></div></td>
-				    <td><%=rs.getString("Hendelse")%></td>
+				    <td><div align="center"><%=rs.getString("Date")%></div></td>
+				    <td><%=rs.getString("Event")%></td>
 				  </tr>
 	       	<%}%>
 	  	</table>      
@@ -101,9 +101,7 @@
 		}
 	%>
                       
-             <h3>Kalender Liste</h3>
-              <a href="${pageContext.request.contextPath}/CalendarList">KalenderListe</a>
-              <a href="${pageContext.request.contextPath}/userInfo"><input type="submit" value="Back" name="back" /></a>
-              
+             <h3>Calendar List</h3>
+              <a href="${pageContext.request.contextPath}/CalendarList">Go to calendar list to edit</a>     
     </body>           
 </html>
