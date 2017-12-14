@@ -17,12 +17,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
-        <title>Edit Kalender</title><p>
+        <title>Edit Calendar</title><p>
     </head>
      <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
     <body>
-        <h1>Kalender Edit</h1>
+        <h1>Calendar Edit</h1>
 <%	
         String Calendar_ID = request.getParameter("Calendar_ID");
 	String driverName = "com.mysql.jdbc.Driver";
@@ -48,27 +48,32 @@
 		if(rs != null) {
 			rs.next();
 		%>
-                 <c:if test="${not empty calendar}">
+     
                 <form name="frmUpdate" method="POST" action="${pageContext.request.contextPath}/editCalendar">
                 
-		Endre dato eller hendelse
-                <p><table width="428" border="1">	
+                Edit date or event
+
+                <p><table border="1">	
 			<tr>
-				<th width="181">
+				<th>
 				<div align="left">Calendar_ID </div></th>
+                                <td><%=rs.getString("Calendar_ID")%></td>
                                 <td><input type="text" name="Calendar_ID" value="${calendar.Calendar_ID}" /></td>
 				
 			</tr>
 			<tr>
-				<th width="181">
+				<th>
 				<div align="left">Date </div></th>
+                                <td><%=rs.getString("Date")%></td>
                                 <td><input type="text" name="Date" value="${calendar.Date}" /></td>
 				
 			</tr>
 			<tr>
-				<th width="181">
+				<th>
 				<div align="left">Event </div></th>
+                                <td><%=rs.getString("Event")%></td>
                                 <td><input type="text" name="Event" value="${calendar.Event}" /></td>
+                                
 				
 			</tr>			
 	

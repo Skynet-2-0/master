@@ -127,6 +127,20 @@ public class DBUtils {
         pstm.executeUpdate();
     }
     
+     public static void insertCalendar(Connection conn, CalendarCalendar calendar)
+            throws SQLException{
+        String sql = "insert into Calendar (Calendar_ID, Date, Event) values(?, ?, ?)";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+
+        pstm.setString(1, calendar.getCalendar_ID());
+        pstm.setString(2, calendar.getEvent());
+        pstm.setString(3, calendar.getEvent());
+
+        
+        pstm.executeUpdate();
+    }
+    
     public static void insertStudents(Connection conn, Students students)
             throws SQLException{
         String sql = "insert into students (Id, Name, Email) values(?, ?, ?)";

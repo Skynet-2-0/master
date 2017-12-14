@@ -16,13 +16,13 @@
 <html>
  <head>
     <meta charset="UTF-8">
-    <title>Kalender</title>
+    <title>Calendar</title>
  </head>
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
  
     <body>
-<h1>Kalender</h1>
+<h1>Calendar</h1>
      
   <%
 	String keyword = "";
@@ -34,7 +34,7 @@
 <form name="frmSearch" method="get" action="CalendarSearch"><p>
 	  
 	    <tr>
-	      <th>Søk etter dato
+	      <th>Search for date
 	      <input name="txtKeyword" type="text" id="txtKeyword" value="<%=keyword%>">
 	      <input type="submit" value="Search"></th>
 	    </tr>
@@ -101,7 +101,7 @@
 		}
 	%>
                       
-             <h3>Kalender Liste</h3>
-              <a href="${pageContext.request.contextPath}/CalendarList">KalenderListe</a>     
+             <h3>Calendar List</h3>
+              <a href="${pageContext.request.contextPath}/CalendarList">Go to calendar list to edit</a>     
     </body>           
 </html>

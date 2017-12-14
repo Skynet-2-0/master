@@ -9,13 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Post View</title>
+        <title>Calendar List</title>
     </head>
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
 
         <body>
-            <h1>Kalender liste med edit</h1>
+            <h1>Calendar list with edit</h1>
 
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
@@ -93,8 +93,10 @@
                         %>
                             
                         </table>
+                        
+                       
 
-                        <p><a href="${pageContext.request.contextPath}/Calendar">Tilbake</a>
+                        <p><a href="${pageContext.request.contextPath}/Calendar">Return</a>
                         
                         </body>
                         </html>
