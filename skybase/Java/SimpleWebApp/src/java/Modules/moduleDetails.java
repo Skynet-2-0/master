@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modules;
 
 import Connection.DBUtils;
@@ -22,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jonas
  */
+
 @WebServlet(name = "moduleDetails", urlPatterns = {"/moduleDetails"})
 public class moduleDetails extends HttpServlet {
 

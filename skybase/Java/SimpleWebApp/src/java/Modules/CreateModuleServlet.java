@@ -1,11 +1,5 @@
 package Modules;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import Connection.MyUtils;
 import Connection.DBUtils;
 import java.io.IOException;
@@ -21,11 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author mathi
+ * @author Jonas
  */
 
-@WebServlet(urlPatterns = {"/createModule"})
-public class CreateModuleServlet extends HttpServlet {
+    @WebServlet(urlPatterns = {"/createModule"})
+    public class CreateModuleServlet extends HttpServlet {
     
     private static final long serialVersionUID = 1L;
     
@@ -33,7 +27,8 @@ public class CreateModuleServlet extends HttpServlet {
         super();
     }
     
-    //show module creation page
+    //Viser Opprett Modul siden.
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
@@ -42,8 +37,7 @@ public class CreateModuleServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
     
-    //When the user enters the modules information, and click Submit.
-    //This method will be called
+    //Når brukeren skriver module informasjonen, og klikker Submit.
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
@@ -62,36 +56,30 @@ public class CreateModuleServlet extends HttpServlet {
        String errorString = null;
        
        if(errorString == null){
-       try{      
-           try{
-                   DBUtils.createModules(conn, module);
-                   
-           }catch(StringIndexOutOfBoundsException e){
-               e.printStackTrace();
-               errorString = e.getMessage();
-           }      
-          // DBUtils.insertStudents(conn, students);
+       try{
+           DBUtils.createModules(conn, module);
        }
        catch(SQLException e){
            e.printStackTrace();
            errorString = e.getMessage();
-        }
+          
        }
-       
-       //Store information to request attribute, before forward to views.
+
+       //Lagrer informasjon til request attribrute.
        request.setAttribute("errorString", errorString);
        request.setAttribute("module", module);
        
-       //if error, forward to edit page
+       //Hvis feil, videresend til Edit page.
        if(errorString != null){
            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/createModule.jsp");
            dispatcher.forward(request, response);
        }
-       //If everything is going after the plan
-       //Redirect to the listing page.
+       
+       //Hvis alt fungerer som det skal.
+       //Omdiriger til Module list siden.
        else{
            response.sendRedirect(request.getContextPath() + "/moduleList");
        }
    }
-}
+}}
     

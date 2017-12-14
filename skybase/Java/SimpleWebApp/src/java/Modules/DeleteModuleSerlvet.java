@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author mathi
+ * @author Jonas
  */
 @WebServlet(urlPatterns = {"/deleteModule"})
 public class DeleteModuleSerlvet extends HttpServlet{
@@ -49,21 +49,24 @@ public class DeleteModuleSerlvet extends HttpServlet{
             errorString = e.getMessage();
         }
         
+        //Hvis det er feil, omdiriger til Moduleerror siden.
         if(errorString != null){
             request.setAttribute("errorString", errorString);
             
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/DeleteModuleServlet.jsp");
             dispatcher.forward(request, response);
         }
+        
+        //Hvis alt funker som det skal.
+        //omdiriger til Moduleliste siden.
         else{
             response.sendRedirect(request.getContextPath() + "/moduleList");
         }
     }
     
-     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        @Override
+             protected void doPost(HttpServletRequest request, HttpServletResponse response)
+             throws ServletException, IOException {
         doGet(request, response);
-    }
-    
+    }  
 }

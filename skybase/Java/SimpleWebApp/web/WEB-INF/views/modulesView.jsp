@@ -2,7 +2,7 @@
  <%-- 
     Document   : modulView
     Created on : Sep 24, 2017, 10:35:44 PM
-    Author     : Brage
+    Author     : jonas
 --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -18,8 +18,9 @@
  <body>
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
-
-     <h3>Modules Overview</h3>
+     
+     <h3 style="margin-left: 25px; font-family: Helvetica; text-decoration: underline;">Modules Overview</h3>
+    
      <table style="border-collapse:collapse; margin-left: 25px;" class="tables">
          <tr>
              <th>ID</th>

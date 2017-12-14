@@ -13,20 +13,21 @@
  <head>
     <meta charset="UTF-8">
     <title>Edit Student</title>
+    <link href="Main.css" rel="stylesheet" type="text/css">
  </head>
  <body>
  
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
  
-    <h3>Edit Student</h3>
+    <h3 style="margin-left: 25px; font-family: Helvetica; text-decoration: underline;">Edit Student</h3>
  
     <p style="color: red;">${errorString}</p>
  
     <c:if test="${not empty useraccount}">
         <form method="POST" action="${pageContext.request.contextPath}/editStudents">
           <input type="hidden" name="user_account_id" value="${useraccount.user_account_id}" />
-          <table border="0">
+          <table style="border-collapse: collapse; margin: 25px 0px 0px 25px;" class="opprettStudent" border="0">
              <tr>
                 <td>Id</td>
                 <td style="color: red;">${useraccount.user_account_id}</td>
@@ -57,9 +58,9 @@
              <td><input type="text" name="usertype" value="${useraccount.userType}" /></td>
           </tr>
              <tr>
-                <td colspan = "2">
+                <td style="background-color:#355C7D;" colspan = "2">
                     <input type="submit" value="Submit" />
-                    <a href="${pageContext.request.contextPath}/studentList">Cancel</a>
+                    <button><a href="${pageContext.request.contextPath}/studentList">Cancel</a></button>
                 </td>
              </tr>
           </table>

@@ -18,7 +18,7 @@
      <jsp:include page="_menu.jsp"></jsp:include>
     
       <img src="http://tflip.uia.no/images/uia_logo.gif" alt="uia_logo" style="width:600px;height:100px; margin-top: 25px;">
-      <h3>Home Page</h3>
+      <h3 style="margin-left: 25px; font-family: Helvetica; text-decoration: underline;">Home Page</h3>
       <div style="margin-left: 25px">
 
               <tbody>

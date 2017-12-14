@@ -19,10 +19,11 @@
       <jsp:include page="_header.jsp"></jsp:include>
       <jsp:include page="_menu.jsp"></jsp:include>
  
-      <h3>Edit Module</h3>
- 
+          <h3 style="margin-left: 25px; font-family: Helvetica; text-decoration: underline;">Edit Module</h3>
+          
       <p style="color: red;">${errorString}</p>
-      <%--hvis listen ikke er tom--%>
+      
+      <%--Sjekker om en lsiten er tom--%>
       <c:if test="${not empty module}">
        
          <form method="POST" action="${pageContext.request.contextPath}/editModule">
@@ -38,7 +39,7 @@
                </tr>
                <tr>
                   <td style="vertical-align: top; text-align: left;">Delivery Date</td>
-                  <td><input style="width: 450px;" type="text" name="delivery_date" value="${module.delivery_date}" /></td>
+                  <td><input style="width: 450px;" type="datetime-local" name="delivery_date" value="${module.delivery_date}" /></td>
                </tr>
                <tr>
                   <td style="vertical-align: top; text-align: left;">Description</td>

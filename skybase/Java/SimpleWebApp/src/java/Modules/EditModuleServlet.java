@@ -47,13 +47,13 @@ public class EditModuleServlet extends HttpServlet {
         
         //Hvis det ikke er feilmeldinger.
         //Eksisterer ikke modulen til å redigeres.
-        //omdirigerer til modulliste siden.
+        //omdirigerer til Modulliste siden.
         if(errorString != null && module == null){
             response.sendRedirect(request.getServletPath() + "/moduleList");
             return;
         }
         
-        //Lagrer errorString i request attribute, før viderere til visnigner
+        //Lagrer errorString pg module i request attribute, videresend til visnigner
         request.setAttribute("errorString", errorString);
         request.setAttribute("module", module);
         
@@ -61,7 +61,7 @@ public class EditModuleServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
     
-    //Etter brukeren modifiserer moduleninformasjonen, og klikker Submit.
+    //Etter brukeren modifiserer modulinformasjonen, og klikker Submit.
     //Denne metoden blir utført.
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -78,29 +78,30 @@ public class EditModuleServlet extends HttpServlet {
 
        Module module = new Module(module_id, module_name, delivery_date, description, learningGoals, resources);
         
-       String errorString = null;
-          
-        try{    
+       String errorString = null;   
+       
+        try{
             DBUtils.editModules(conn, module); 
         }
         catch(SQLException e){
             e.printStackTrace();
             errorString = e.getMessage();
         }      
-        
-        //lagrer informasjon til request attribute, før viderere til visnigner.
+               
+        //lagrer informasjon til request attribute, videresend til visnigner.
         request.setAttribute("errorString", errorString);
         request.setAttribute("module", module);
         
-        //if error, før viderer til redigeringssiden
+        //Hvis error, videresend til redigeringssiden
         if(errorString != null){
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/EditModule.jsp");
             dispatcher.forward(request, response);
         }
-        //Hvis alt fungerer.
-        //Omdiriger til module liste siden
+        //Hvis alt fungerer som det skal.
+        //Omdiriger til Module List siden
         else{
             response.sendRedirect(request.getContextPath() + "/moduleList");
         }
-    }  
+    }
 }
+

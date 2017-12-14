@@ -200,7 +200,7 @@ public class DBUtils {
    return null;
     }
     
-    // For modules
+    // Oppretter moduler.
     public static void createModules (Connection conn, Module module) throws SQLException{
         String sql = "insert into Module (Module_Name, Delivery_Date, Description, LearningGoals, Resources) values (?, ?, ?, ?, ?)";
         PreparedStatement pstm = conn.prepareStatement (sql);
@@ -214,6 +214,8 @@ public class DBUtils {
         pstm.executeUpdate();
     }
    
+    //Lister alle modulene 
+    //@Return - modullisten
     public static List<Module> listAllModules(Connection conn) throws SQLException {
         List<Module> list = new ArrayList<>();
          
@@ -305,8 +307,8 @@ public class DBUtils {
             String sql = "Delete from Module where Module_ID=?";
             PreparedStatement pstm = conn.prepareStatement(sql);      
             
-            pstm.setInt(1,module_id);
-            pstm.executeUpdate();            
+            pstm.setInt(1, module_id);
+            pstm.executeUpdate();
         }
         catch (SQLException e) {
         e.printStackTrace();

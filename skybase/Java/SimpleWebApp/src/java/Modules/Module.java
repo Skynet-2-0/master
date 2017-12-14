@@ -1,23 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modules;
 
-public class Module {
-       
-    private String module_id;
-    private String module_name;
-    private String delivery_date;
-    private String description;
-    private String learningGoals;
-    private String resources;
-  
-    
-    public Module(){
+/**
+ *
+ * @author Jonas
+ */
 
-    }
+//simulerer tabellen modul i databasen
+    public class Module {
+       
+        private String module_id;
+        private String module_name;
+        private String delivery_date;
+        private String description;
+        private String learningGoals;
+        private String resources; 
     
     public Module(String module_id, String module_name, String delivery_date, String description, String learningGoals, String resources){
         
@@ -26,8 +22,7 @@ public class Module {
         this.delivery_date = delivery_date;
         this.description = description;
         this.learningGoals = learningGoals;
-        this.resources = resources;
-        
+        this.resources = resources;    
     }  
     
     public String getModule_id(){
