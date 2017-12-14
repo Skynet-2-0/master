@@ -56,33 +56,33 @@
                 <form name="frmUpdate" method="post" action= "${pageContext.request.contextPath}/editBlog">
                     
 		Edit title or content
-                <p><table width="200" border="1">	
+                <p><table align = "left" cellpadding = "5" cellspacing = "5" border = "1" >
 			<tr>
                            
-				<th width="60">
+                            <th >
 				<div align="left">Log_ID </div></th>
                                 <td> <%=rs.getString("Log_ID") %> </td>
-                                <td><input type="text" name="Log_ID" size="60" value="${blogBlog.Log_ID}"></td>
+                                <td><input type="text" name="Log_ID" value="${blogBlog.Log_ID}"></td>
                                 
                                    
 			</tr>
 			<tr>
-				<th width=60>
+				<th >
 				<div align="left">Title </div></th>
                                 <td> <%=rs.getString("Title") %> </td>
-				<td><input type="text" name="Title" size="60" value="${blogBlog.Title}"></td>
+				<td><input type="text" name="Title"  value="${blogBlog.Title}"></td>
 			</tr>
 			<tr>
-				<th width="60">
+				<th >
 				<div align="left">Content </div></th>
                                 <td> <%=rs.getString("Content") %> </td>
-				<td><input type="text" name="Content" size="60" value="${blogBlog.Content}"></td>
+				<td><input type="text" name="Content" value="${blogBlog.Content}"></td>
 			</tr>			
 	
 			</table> 
-                      
-                        <p> <input type="submit" value="Save">
-                  
+                        <p> 
+                        <p> <input align="bottom" type="submit" value="Save">
+                  </p>
 		</form> 
 		
 		<% }

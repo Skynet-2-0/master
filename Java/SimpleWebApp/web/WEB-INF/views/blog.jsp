@@ -10,8 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Blog</title>
-        
-   
+
+
         <style>
             div#textEditor{
                 margin: 1px;
@@ -125,14 +125,14 @@
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu.jsp"></jsp:include>
 
-       
+
         <body>
-            
+
             <h1>Blog</h1>
             <form method="post" action="${pageContext.request.contextPath}/BlogListView" >
             <input type="submit" value="Your posts" name="Yourposts" />
 
-                </form>
+        </form>
         <p>New blog post:</p>
 
 
@@ -168,20 +168,21 @@
                 <button id="undoButton" title="Undo the previous action">&larr;</button>
                 <button id="redoButton" title="Redo">&rarr;</button>
             </div>
- <form  action=BlogPost name="myform" id="myform" method= "post"> 
- 
-            
+
+            <form  action=BlogPost name="myform" id="myform" method= "post"> 
+
+
                 <input type="text" id="titlebar" name="title" value="Title">
 
                 <textarea style= "display: none;" name= "blog-post"  id="blog-post" cols="100" rows="20"></textarea>
                 <iframe name="richTextArea" id="richTextArea" frameborder="2"></iframe>
 
-           
+
 
                 <input name="upload" type="button" value="Upload" onClick="Upload();"/>
-            
- </form>                   
-           
+
+            </form>                   
+
 
             <script>
 
@@ -193,7 +194,7 @@
                 ;
             </script>
 
-      
+
     </body>
-    
+
 </html>

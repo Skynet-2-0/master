@@ -47,8 +47,8 @@
 		st = conn.createStatement();
                 
                 String strLog_ID = request.getParameter("Log_ID");
-		String strTitle = request.getParameter("txtTitle");
-		String strContent = request.getParameter("txtContent");
+		String strTitle = request.getParameter("Title");
+		String strContent = request.getParameter("Content");
 		
 		String sql = "UPDATE Log " +
                         "SET Title = '"+ strTitle + "' " +

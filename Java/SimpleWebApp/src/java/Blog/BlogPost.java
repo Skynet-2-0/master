@@ -70,17 +70,16 @@ public class BlogPost extends HttpServlet {
             out.println("</html>");
             
         
-       
+       RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/BlogPost.jsp");
+          dispatcher.forward(request, response);
+           
+           response.sendRedirect(request.getContextPath() + "/BlogListView");
         }
     }
 @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        
-        RequestDispatcher dispatcher;
-        dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/BlogPost.jsp");
-        
-        dispatcher.forward(request, response); 
+    
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -107,10 +106,7 @@ public class BlogPost extends HttpServlet {
         processRequest(request, response);
         
     
-        RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/BlogListView.jsp");
-          dispatcher.forward(request, response);
-           
-           response.sendRedirect(request.getContextPath() + "/BlogListView");
+        
            
     }
 
