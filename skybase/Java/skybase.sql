@@ -24,7 +24,7 @@ VALUES('tom', 'M','TOM CRUISE','tom001', 'tombadass@hotmail.com', 'ADMIN');
 INSERT INTO User_Account (User_Name, Gender, Name, Password, Email, Usertype)
 VALUES('mette', 'F','METTE MARIT','mette001', 'metteprinsesse@gmail.com', 'ADMIN');
 
-
+-- Delivery_Date DATETIME NOT NULL, --
 CREATE TABLE Module(
 Module_id INT NOT NULL AUTO_INCREMENT,
 Module_Name varchar (70) NOT NULL,
@@ -35,12 +35,10 @@ Resources varchar (300),
 
 CONSTRAINT Modul_pk primary key(Module_ID)
 );
-
 -- Insert Data --
 
 INSERT INTO Module (Module_Name, Delivery_Date, Description, LearningGoals, Resources)
-VALUES('Introduksjon til BlueJ', '2.februar - kl. 23.59', 'bli kjent med blueJ', 'Kunne BlueJ sine grunnleggende funksjoner', 'kap1');
-
+VALUES('Introduksjon til BlueJ', '2017-11-08T23:59', 'bli kjent med blueJ', 'Kunne BlueJ sine grunnleggende funksjoner', 'kap1');
 
 
 CREATE TABLE Feedback(
@@ -115,3 +113,5 @@ User_Account_ID INT NOT NULL,
 CONSTRAINT Log_pk primary key(Log_ID),
 CONSTRAINT User_fk5 FOREIGN KEY (User_Account_ID) references User_Account (User_Account_ID)
 );
+
+select * from skybase.module

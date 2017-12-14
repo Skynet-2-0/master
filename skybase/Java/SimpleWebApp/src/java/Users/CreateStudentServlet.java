@@ -88,9 +88,7 @@ public class CreateStudentServlet extends HttpServlet {
        else{
            response.sendRedirect(request.getContextPath() + "/studentList");
        }
-   }
-        
-//doGet(request, response);
+    }
 }
     
 

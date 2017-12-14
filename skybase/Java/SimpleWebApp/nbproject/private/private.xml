@@ -17,13 +17,16 @@
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/modulesView.jsp</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Modules/Modul1graded.java</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/LoginLogout/LoginServlet.java</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/modul5view.jsp</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Modules/ModulesServlet.java</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Modules/modul1search.java</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/homeView.jsp</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/Forside.css</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Users/EditStudentServlet.java</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/modul1view.jsp</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/Main.css</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Connection/MyUtils.java</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/modul2view_1.jsp</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/DeleteModuleError.jsp</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/LoginLogout/LoginDao.java</file>
@@ -41,9 +44,11 @@
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Modules/EditModuleServlet.java</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Modules/Module.java</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Users/UserInfoServlet.java</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Users/CreateStudentServlet.java</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Modules/Modul2.java</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Modules/Modul8.java</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/Snake.jsp</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Users/DeleteStudentServlet.java</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Modules/Modules2.java</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Modules/DeleteModuleSerlvet.java</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/modulesView_2.jsp</file>
@@ -53,6 +58,7 @@
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/EditModule.jsp</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Modules/Modul9.java</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/logout.jsp</file>
+            <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/modul2view.jsp</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Modules/Modul6.java</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/web/WEB-INF/views/createModule.jsp</file>
             <file>file:/C:/Users/jonas/Documents/GitHub/master/skybase/Java/SimpleWebApp/src/java/Modules/Modul3.java</file>
